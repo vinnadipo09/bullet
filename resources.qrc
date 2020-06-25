@@ -1,0 +1,169 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/bg1.jpg</file>
+        <file>resources/bg01.jpg</file>
+        <file>resources/bg02.jpg</file>
+        <file>resources/coins.jpg</file>
+        <file>resources/paper001.jpg</file>
+        <file>resources/wood.jpg</file>
+        <file>resources/wood001.jpg</file>
+        <file>resources/wood003.jpg</file>
+        <file>resources/wood004.jpg</file>
+        <file>resources/background/bg1.jpg</file>
+        <file>resources/background/bg2.jpg</file>
+        <file>resources/background/bg3.jpg</file>
+        <file>resources/background/bg4.jpg</file>
+        <file>resources/background/bg5.jpg</file>
+        <file>resources/background/bg6.jpg</file>
+        <file>resources/background/bg7.jpg</file>
+        <file>resources/background/resolve.jpg</file>
+        <file>resources/background/resolve2.jpg</file>
+        <file>resources/icons/06-Wallet-icon.png</file>
+        <file>resources/icons/account.png</file>
+        <file>resources/icons/badge.png</file>
+        <file>resources/icons/cancellation.png</file>
+        <file>resources/icons/Coins-icon.png</file>
+        <file>resources/icons/Credit-Card-3-icon.png</file>
+        <file>resources/icons/done.png</file>
+        <file>resources/icons/interface.png</file>
+        <file>resources/icons/interfaces.png</file>
+        <file>resources/icons/Logo2.png</file>
+        <file>resources/icons/man.png</file>
+        <file>resources/icons/management.png</file>
+        <file>resources/icons/man-avatar.png</file>
+        <file>resources/icons/multimedia.png</file>
+        <file>resources/icons/multimedia (1).png</file>
+        <file>resources/icons/noun_dashboard_2686729.png</file>
+        <file>resources/icons/password.png</file>
+        <file>resources/icons/Pencil-icon.png</file>
+        <file>resources/icons/pw.png</file>
+        <file>resources/icons/rss-button.png</file>
+        <file>resources/icons/rss-button (1).png</file>
+        <file>resources/icons/search-good-icon.png</file>
+        <file>resources/icons/server.png</file>
+        <file>resources/icons/settings-icon.png</file>
+        <file>resources/icons/shapes-and-symbols.png</file>
+        <file>resources/icons/shopping-bag-icon.png</file>
+        <file>resources/icons/signs.png</file>
+        <file>resources/icons/signs (1).png</file>
+        <file>resources/icons/signs (2).png</file>
+        <file>resources/icons/signs (3).png</file>
+        <file>resources/icons/social-media.png</file>
+        <file>resources/icons/Stock-icon.png</file>
+        <file>resources/icons/Stocks-icon.png</file>
+        <file>resources/icons/tools-and-utensils.png</file>
+        <file>resources/icons/user.png</file>
+        <file>resources/icons/user001.png</file>
+        <file>resources/icons/Users-Group-icon.png</file>
+        <file>resources/icons/user_small.png</file>
+        <file>resources/newIcons/Apps-user-info-icon.png</file>
+        <file>resources/newIcons/App-user-icon.png</file>
+        <file>resources/newIcons/check-icon.png</file>
+        <file>resources/newIcons/missed-calls-icon.png</file>
+        <file>resources/newIcons/user.png</file>
+        <file>resources/newIcons/Users-Administrator-icon.png</file>
+        <file>resources/newIcons/Users-Administrator-icon (1).png</file>
+        <file>resources/newIcons/Users-Name-icon.png</file>
+        <file>resources/background/dw.jpeg</file>
+        <file>resources/background/dw2.jpg</file>
+        <file>resources/background/image_2.jpeg</file>
+        <file>resources/background/img_1.jpg</file>
+        <file>resources/background/picklit.jpg</file>
+        <file>resources/background/picklit2.jpg</file>
+        <file>resources/background/users.jpg</file>
+        <file>resources/background/users_1.jpg</file>
+        <file>resources/background/users_2.jpg</file>
+        <file>resources/icons/edit-icon.png</file>
+        <file>resources/icons/eye.png</file>
+        <file>resources/icons/eye (1).png</file>
+        <file>resources/icons/icons8-delete-bin-96.png</file>
+        <file>resources/icons/icons8-edit-48.png</file>
+        <file>resources/newIcons/eye.png</file>
+        <file>resources/newIcons/eye (1).png</file>
+        <file>resources/newIcons/eye (2).png</file>
+        <file>resources/newIcons/eye (3).png</file>
+        <file>resources/newIcons/icons8-add-administrator-100.png</file>
+        <file>resources/newIcons/icons8-change-user-90.png</file>
+        <file>resources/newIcons/icons8-change-user-100.png</file>
+        <file>resources/newIcons/icons8-closed-captioning-90.png</file>
+        <file>resources/newIcons/icons8-credit-card-90.png</file>
+        <file>resources/newIcons/icons8-credit-card-96.png</file>
+        <file>resources/newIcons/icons8-credit-card-96 (1).png</file>
+        <file>resources/newIcons/icons8-credit-card-100.png</file>
+        <file>resources/newIcons/icons8-credit-card-200.png</file>
+        <file>resources/newIcons/icons8-credit-control-90.png</file>
+        <file>resources/newIcons/icons8-credit-control-100.png</file>
+        <file>resources/newIcons/icons8-details-52.png</file>
+        <file>resources/newIcons/icons8-details-100.png</file>
+        <file>resources/newIcons/icons8-gmail-login-90.png</file>
+        <file>resources/newIcons/icons8-inventory-flow-100.png</file>
+        <file>resources/newIcons/icons8-login-50.png</file>
+        <file>resources/newIcons/icons8-login-96.png</file>
+        <file>resources/newIcons/icons8-login-100.png</file>
+        <file>resources/newIcons/icons8-logout-rounded-left-24.png</file>
+        <file>resources/newIcons/icons8-logout-rounded-left-50.png</file>
+        <file>resources/newIcons/icons8-logout-rounded-left-90.png</file>
+        <file>resources/newIcons/icons8-logout-rounded-left-96.png</file>
+        <file>resources/newIcons/icons8-logout-rounded-left-100.png</file>
+        <file>resources/newIcons/icons8-macbook-money-100.png</file>
+        <file>resources/newIcons/icons8-money-256.png</file>
+        <file>resources/newIcons/icons8-open-sign-100.png</file>
+        <file>resources/newIcons/icons8-package-100.png</file>
+        <file>resources/newIcons/icons8-product-96.png</file>
+        <file>resources/newIcons/icons8-product-100.png</file>
+        <file>resources/newIcons/icons8-product-100 (1).png</file>
+        <file>resources/newIcons/icons8-sales-performance-96.png</file>
+        <file>resources/newIcons/icons8-sales-performance-100.png</file>
+        <file>resources/newIcons/icons8-sell-100.png</file>
+        <file>resources/newIcons/icons8-sell-100 (1).png</file>
+        <file>resources/newIcons/icons8-sell-stock-96.png</file>
+        <file>resources/newIcons/icons8-sell-stock-100.png</file>
+        <file>resources/newIcons/icons8-supplier-96.png</file>
+        <file>resources/newIcons/icons8-supplier-100.png</file>
+        <file>resources/newIcons/icons8-supplier-128.png</file>
+        <file>resources/newIcons/icons8-user-group-90.png</file>
+        <file>resources/newIcons/icons8-edit-100.png</file>
+        <file>resources/newIcons/icons8-edit-120.png</file>
+        <file>resources/newIcons/icons8-edit-240.png</file>
+        <file>resources/newIcons/icons8-opened-folder-96.png</file>
+        <file>resources/new_icons_2/icons8-cancel-96.png</file>
+        <file>resources/new_icons_2/icons8-ok-96.png</file>
+        <file>resources/new_icons_2/icons8-queue-90.png</file>
+        <file>resources/new_icons_2/backgroundsales.jpg</file>
+        <file>resources/new_icons_2/icons8-add-property-96.png</file>
+        <file>resources/new_icons_2/icons8-delete-100.png</file>
+        <file>resources/new_icons_2/icons8-delete-128.png</file>
+        <file>resources/new_icons_2/icons8-delete-128 (1).png</file>
+        <file>resources/new_icons_2/icons8-invisible-90.png</file>
+        <file>resources/new_icons_2/icons8-invisible-100.png</file>
+        <file>resources/new_icons_2/icons8-invisible-144.png</file>
+        <file>resources/new_icons_2/icons8-minus-96.png</file>
+        <file>resources/new_icons_2/icons8-minus-100.png</file>
+        <file>resources/new_icons_2/icons8-minus-100 (1).png</file>
+        <file>resources/new_icons_2/icons8-open-door-100.png</file>
+        <file>resources/new_icons_2/icons8-plus-96.png</file>
+        <file>resources/new_icons_2/icons8-plus-128.png</file>
+        <file>resources/new_icons_2/icons8-plus-144.png</file>
+        <file>resources/new_icons_2/100.jpg</file>
+        <file>resources/new_icons_2/100-kashas-2019-avers.png</file>
+        <file>resources/new_icons_2/card.jpg</file>
+        <file>resources/new_icons_2/cards.jpeg</file>
+        <file>resources/new_icons_2/download.jpeg</file>
+        <file>resources/new_icons_2/download (1).jpeg</file>
+        <file>resources/new_icons_2/download (2).jpeg</file>
+        <file>resources/new_icons_2/icons8-barcode-scanner-400.png</file>
+        <file>resources/new_icons_2/icons8-receipt-80.png</file>
+        <file>resources/new_icons_2/icons8-receipt-96.png</file>
+        <file>resources/new_icons_2/kenya-money.jpg</file>
+        <file>resources/new_icons_2/money.jpg</file>
+        <file>resources/new_icons_2/Mpesa-logo.jpg</file>
+        <file>resources/new_icons_2/Mwananchi-Credit-Loans-in-Kenya.jpg</file>
+        <file>resources/new_icons_2/new-kenya-money.png</file>
+        <file>resources/new_icons_2/credit.png</file>
+        <file>resources/new_icons_2/icons8-coin-in-hand-60.png</file>
+        <file>resources/new_icons_2/icons8-money-bag-90.png</file>
+        <file>resources/new_icons_2/icons8-wallet-52.png</file>
+        <file>resources/new_icons_2/icons8-wallet-60.png</file>
+        <file>resources/new_icons_2/icons8-wallet-100.png</file>
+    </qresource>
+</RCC>

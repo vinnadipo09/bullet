@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SupervisorWindow</class>
+ <widget class="QMainWindow" name="SupervisorWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>2919</width>
+    <height>944</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="pushButton_13">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>PushButton</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_2">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(143, 89, 2);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QLabel" name="label_8">
+           <property name="geometry">
+            <rect>
+             <x>540</x>
+             <y>2</y>
+             <width>131</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>SUPERVISOR CENTRAL</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QFrame" name="frame">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(238, 238, 236);</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>150</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border-image: url(:/resources/icons/man.png);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <item>
+                <widget class="QPushButton" name="pushButton_dashboard">
+                 <property name="text">
+                  <string>Dashboard</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_users">
+                 <property name="text">
+                  <string>Users</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_8">
+                 <property name="text">
+                  <string>Dashboard</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_4">
+                 <property name="text">
+                  <string>Two</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_3">
+                 <property name="text">
+                  <string>Three</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_12">
+                 <property name="text">
+                  <string>Four</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_7">
+                 <property name="text">
+                  <string>Dashboard</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_9">
+                 <property name="text">
+                  <string>Dashboard</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_6">
+                 <property name="text">
+                  <string>Dashboard</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_10">
+                 <property name="text">
+                  <string>Dashboard</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_11">
+                 <property name="text">
+                  <string>Five</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_viewProfile">
+                 <property name="text">
+                  <string>View Profile</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pb_logout_supervisor">
+                 <property name="text">
+                  <string>Logout</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QStackedWidget" name="stackedWidget">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="page_dashboard">
+             <widget class="QLabel" name="label_2">
+              <property name="geometry">
+               <rect>
+                <x>540</x>
+                <y>220</y>
+                <width>421</width>
+                <height>301</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>21</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(143, 89, 2);</string>
+              </property>
+              <property name="text">
+               <string>DASHBOARD</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_users">
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="0" column="0">
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QFrame" name="frame_3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <widget class="QPushButton" name="pushButton_addNewUser">
+                   <property name="geometry">
+                    <rect>
+                     <x>10</x>
+                     <y>4</y>
+                     <width>80</width>
+                     <height>23</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>Add User</string>
+                   </property>
+                  </widget>
+                  <widget class="QPushButton" name="btn_loadUsers">
+                   <property name="geometry">
+                    <rect>
+                     <x>100</x>
+                     <y>4</y>
+                     <width>80</width>
+                     <height>23</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>Load Users</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_3">
+                   <property name="geometry">
+                    <rect>
+                     <x>210</x>
+                     <y>7</y>
+                     <width>401</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>13</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>USERS</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_4">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(143, 89, 2);</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <widget class="QLabel" name="label_5">
+                   <property name="geometry">
+                    <rect>
+                     <x>420</x>
+                     <y>10</y>
+                     <width>71</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>CASHIERS</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTableWidget" name="tableWidgetCashiers">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>300</height>
+                   </size>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>User ID</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>First Name</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Other Names</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Email</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Phone Number</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Username</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>User Role</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Avatar</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>View User</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_5">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(143, 89, 2);</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <widget class="QLabel" name="label_6">
+                   <property name="geometry">
+                    <rect>
+                     <x>420</x>
+                     <y>10</y>
+                     <width>81</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>SUPERVISORS</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTableWidget" name="tableWidgetSupervisors">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>300</height>
+                   </size>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>User ID</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>First Name</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>New Column</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Other Names</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Email</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Phone Number</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Username</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>User Role</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Avatar</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>View Record</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_6">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(143, 89, 2);</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <widget class="QLabel" name="label_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>420</x>
+                     <y>10</y>
+                     <width>111</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>ADMINISTRATORS</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTableWidget" name="tableWidgetAdministrators">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>300</height>
+                   </size>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>User ID</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>First Name</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>New Column</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Other Names</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Email</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Phone Number</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Username</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>User Role</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Avatar</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>View Record</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>2919</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
