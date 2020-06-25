@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "debugger.h"
+#include "databaseconnection.h"
 namespace Ui {
 class AddCustomer;
 }
@@ -17,9 +18,19 @@ public:
 
 private slots:
     void on_btnDiscard_clicked();
+    void on_btnOkay_clicked();
 
 private:
     Ui::AddCustomer *ui;
+private:
+    void checkForEmptyFields();
+    void checkForDuplicatePhones(QString &);
+    void addCustomerToDb();
+    databaseConnection* addNewCustomerConnection;
+    bool phoneExists = false;
+    Customer* newCustomer;
+    bool fieldEmpty;
+    bool noCustomerTypeDefinition;
 };
 
 #endif // ADDCUSTOMER_H

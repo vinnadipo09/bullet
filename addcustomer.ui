@@ -238,6 +238,21 @@ color: rgb(238, 238, 236);</string>
       <height>31</height>
      </rect>
     </property>
+    <item>
+     <property name="text">
+      <string>agent</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>wholesaler</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>customer</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QLabel" name="label_2">

@@ -41,6 +41,13 @@ struct loggedUser{
     QString user_status;
     QDateTime timestamp;
 };
+struct Customer{
+    int customer_id;
+    QString name;
+    QString phone;
+    QString customerType;
+    bool creditAllowed;
+};
 struct productFromDb{
     QString product_id;
     QString product_name;

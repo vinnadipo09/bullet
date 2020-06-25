@@ -29,8 +29,8 @@ public:
     QLabel *label;
     QGroupBox *groupBox;
     QLabel *lbl_first_name;
-    QPushButton *btn_edit_view;
-    QPushButton *btn_delete_user;
+    QPushButton *btnOkay;
+    QPushButton *btnDiscard;
     QLineEdit *le_Name;
     QLabel *lbl_first_name_2;
     QLineEdit *le_Phone;
@@ -62,20 +62,20 @@ public:
 "color: rgb(238, 238, 236);"));
         lbl_first_name->setFrameShape(QFrame::Panel);
         lbl_first_name->setFrameShadow(QFrame::Raised);
-        btn_edit_view = new QPushButton(groupBox);
-        btn_edit_view->setObjectName(QStringLiteral("btn_edit_view"));
-        btn_edit_view->setGeometry(QRect(74, 220, 131, 41));
+        btnOkay = new QPushButton(groupBox);
+        btnOkay->setObjectName(QStringLiteral("btnOkay"));
+        btnOkay->setGeometry(QRect(74, 220, 131, 41));
         QIcon icon;
         icon.addFile(QStringLiteral(":/resources/icons/interfaces.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_edit_view->setIcon(icon);
-        btn_edit_view->setIconSize(QSize(24, 24));
-        btn_delete_user = new QPushButton(groupBox);
-        btn_delete_user->setObjectName(QStringLiteral("btn_delete_user"));
-        btn_delete_user->setGeometry(QRect(230, 220, 141, 41));
+        btnOkay->setIcon(icon);
+        btnOkay->setIconSize(QSize(24, 24));
+        btnDiscard = new QPushButton(groupBox);
+        btnDiscard->setObjectName(QStringLiteral("btnDiscard"));
+        btnDiscard->setGeometry(QRect(230, 220, 141, 41));
         QIcon icon1;
         icon1.addFile(QStringLiteral(":/resources/icons/signs (3).png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_delete_user->setIcon(icon1);
-        btn_delete_user->setIconSize(QSize(24, 24));
+        btnDiscard->setIcon(icon1);
+        btnDiscard->setIconSize(QSize(24, 24));
         le_Name = new QLineEdit(groupBox);
         le_Name->setObjectName(QStringLiteral("le_Name"));
         le_Name->setGeometry(QRect(220, 30, 241, 31));
@@ -131,11 +131,17 @@ public:
         label->setText(QString());
         groupBox->setTitle(QApplication::translate("AddCustomer", "Add New Customer", Q_NULLPTR));
         lbl_first_name->setText(QApplication::translate("AddCustomer", "Name", Q_NULLPTR));
-        btn_edit_view->setText(QApplication::translate("AddCustomer", "OK", Q_NULLPTR));
-        btn_delete_user->setText(QApplication::translate("AddCustomer", "Discard", Q_NULLPTR));
+        btnOkay->setText(QApplication::translate("AddCustomer", "OK", Q_NULLPTR));
+        btnDiscard->setText(QApplication::translate("AddCustomer", "Discard", Q_NULLPTR));
         lbl_first_name_2->setText(QApplication::translate("AddCustomer", "Phone Number", Q_NULLPTR));
         lbl_first_name_3->setText(QApplication::translate("AddCustomer", "Credit Allowed", Q_NULLPTR));
         lbl_first_name_4->setText(QApplication::translate("AddCustomer", "Customer Type", Q_NULLPTR));
+        cbCustomerType->clear();
+        cbCustomerType->insertItems(0, QStringList()
+         << QApplication::translate("AddCustomer", "agent", Q_NULLPTR)
+         << QApplication::translate("AddCustomer", "wholesaler", Q_NULLPTR)
+         << QApplication::translate("AddCustomer", "customer", Q_NULLPTR)
+        );
         label_2->setText(QString());
     } // retranslateUi
 
