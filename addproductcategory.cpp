@@ -12,6 +12,7 @@ AddProductCategory::AddProductCategory(QWidget *parent, loggedUser &currentLogge
     currentUser = new loggedUser;
     *currentUser = currentLoggedInUser;
     addCategoryConnection = new databaseConnection;
+
 }
 
 AddProductCategory::~AddProductCategory()
@@ -38,7 +39,7 @@ void AddProductCategory::on_btnApply_clicked()
             if(categoryAdditionSuccessful){
                 QMessageBox::information(this, "Category Addition Successful!", "Category "+ *productCategory+" has been successfully added");
                 this->accept();
-                emit categoryAddedSuccess();
+                emit productCategoryOperationsComplete();
             }else{
                 QMessageBox::warning(this, "Entry Error!", "The process encountered error!");
                 return;
@@ -58,14 +59,15 @@ void AddProductCategory::on_btnCancel_clicked()
                 , "You have unsaved changes. Closing the Program will discare all your work. Continue?"
                 , QMessageBox::Yes | QMessageBox::Cancel);
         if(reply==QMessageBox::Yes){
+            emit productCategoryOperationsComplete();
             this->accept();
-            emit categoryAddedSuccess();
         }else{
             return;
         }
     }else{
+        emit productCategoryOperationsComplete();
         this->reject();
-        emit categoryAddedSuccess();
+
     }
 }
 
@@ -124,3 +126,4 @@ void AddProductCategory::cleanUp() {
     delete categoryDescription;
 
 }
+

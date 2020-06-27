@@ -16,6 +16,7 @@
 #include "salesclient.h"
 #include "addtransactiontype.h"
 #include "addproductcategory.h"
+#include "editproductcategory.h"
 namespace Ui {
 class AdminWindow;
 }
@@ -140,6 +141,17 @@ private slots:
 private:
     void loadUsersDataFromDb();
     AddProductCategory* addProductCategory;
+    void loadProductCategory();
+    void editProductCategory(QString&);
+    void deleteProductCategory(QString&);
+    EditProductCategory* editCategory;
+    QString *category;
+    QString* description;
+    int* category_id;
+private slots:
+    void receive_editProductCategory();
+    void receive_deleteProductCategory();
+    void receiveEditCategoryComplete();
 
 
 };

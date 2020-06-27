@@ -118,6 +118,11 @@ color: rgb(238, 238, 236);</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(85, 87, 83);
 color: rgb(238, 238, 236);</string>
@@ -189,7 +194,7 @@ color: rgb(238, 238, 236);</string>
      <string>Product Quantity</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_edit_view">
+   <widget class="QPushButton" name="btnOkay">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -212,7 +217,7 @@ color: rgb(238, 238, 236);</string>
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_close_view">
+   <widget class="QPushButton" name="btnCancel">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -407,7 +412,7 @@ background-color: rgb(136, 138, 133);</string>
 background-color: rgb(136, 138, 133);</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnAvatar">
     <property name="geometry">
      <rect>
       <x>520</x>

@@ -222,7 +222,7 @@ color: rgb(238, 238, 236);</string>
      <string>Entered By</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_edit_view">
+   <widget class="QPushButton" name="btnApply">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -245,7 +245,7 @@ color: rgb(238, 238, 236);</string>
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_close_view">
+   <widget class="QPushButton" name="btnCancel">
     <property name="geometry">
      <rect>
       <x>290</x>

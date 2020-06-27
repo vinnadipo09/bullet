@@ -157,6 +157,10 @@ else()
     addproductcategory.cpp
     addproductcategory.h
     addproductcategory.ui
+
+    editproductcategory.cpp
+    editproductcategory.h
+    editproductcategory.ui
   )
 endif()
 

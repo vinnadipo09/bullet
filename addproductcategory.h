@@ -36,6 +36,7 @@ private:
     void cleanUp();
 signals:
     void categoryAddedSuccess();
+    void productCategoryOperationsComplete();
 
 };
 

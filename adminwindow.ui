@@ -258,19 +258,6 @@ background-color: rgb(238, 238, 236);</string>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_2">
-                 <property name="styleSheet">
-                  <string notr="true">text-align:left;
-padding-left:2px;
-padding: 1.5px;
-background-color: rgb(238, 238, 236);</string>
-                 </property>
-                 <property name="text">
-                  <string>PushButton</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <widget class="QPushButton" name="pushButton_products">
                  <property name="styleSheet">
                   <string notr="true">text-align:left;
@@ -330,6 +317,29 @@ background-color: rgb(238, 238, 236);</string>
                  <property name="icon">
                   <iconset resource="resources.qrc">
                    <normaloff>:/resources/newIcons/icons8-supplier-100.png</normaloff>:/resources/newIcons/icons8-supplier-100.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>24</width>
+                   <height>24</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_suppliers">
+                 <property name="styleSheet">
+                  <string notr="true">text-align:left;
+padding-left:2px;
+padding: 1.5px;
+background-color: rgb(238, 238, 236);</string>
+                 </property>
+                 <property name="text">
+                  <string>Suppliers</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources.qrc">
+                   <normaloff>:/resources/newIcons/icons8-supplier-128.png</normaloff>:/resources/newIcons/icons8-supplier-128.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -409,7 +419,7 @@ background-color: rgb(238, 238, 236);</string>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_suppliers">
+                <widget class="QPushButton" name="pushButton_2">
                  <property name="styleSheet">
                   <string notr="true">text-align:left;
 padding-left:2px;
@@ -417,17 +427,7 @@ padding: 1.5px;
 background-color: rgb(238, 238, 236);</string>
                  </property>
                  <property name="text">
-                  <string>Suppliers</string>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="resources.qrc">
-                   <normaloff>:/resources/newIcons/icons8-supplier-128.png</normaloff>:/resources/newIcons/icons8-supplier-128.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>24</width>
-                   <height>24</height>
-                  </size>
+                  <string>PushButton</string>
                  </property>
                 </widget>
                </item>
@@ -570,23 +570,6 @@ background-color: rgb(238, 238, 236);</string>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pb_testButton">
-                 <property name="styleSheet">
-                  <string notr="true">text-align:left;
-padding-left:2px;
-padding: 1.5px;
-background-color: rgb(238, 238, 236);</string>
-                 </property>
-                 <property name="text">
-                  <string> Cashier</string>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="resources.qrc">
-                   <normaloff>:/resources/new_icons_2/icons8-invisible-144.png</normaloff>:/resources/new_icons_2/icons8-invisible-144.png</iconset>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <widget class="QPushButton" name="pushButton_be_a_cashier">
                  <property name="styleSheet">
                   <string notr="true">text-align:left;
@@ -606,6 +589,23 @@ background-color: rgb(238, 238, 236);</string>
                    <width>24</width>
                    <height>24</height>
                   </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pb_testButton">
+                 <property name="styleSheet">
+                  <string notr="true">text-align:left;
+padding-left:2px;
+padding: 1.5px;
+background-color: rgb(238, 238, 236);</string>
+                 </property>
+                 <property name="text">
+                  <string> Cashier</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources.qrc">
+                   <normaloff>:/resources/new_icons_2/icons8-invisible-144.png</normaloff>:/resources/new_icons_2/icons8-invisible-144.png</iconset>
                  </property>
                 </widget>
                </item>
@@ -1400,6 +1400,99 @@ background-color: rgb(238, 238, 236);</string>
                      </size>
                     </property>
                    </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_60">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(164, 0, 0);</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <widget class="QLabel" name="label_65">
+                   <property name="geometry">
+                    <rect>
+                     <x>320</x>
+                     <y>10</y>
+                     <width>191</width>
+                     <height>20</height>
+                    </rect>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>PRODUCT CATEGORY MANAGER</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <item>
+                   <widget class="QTableWidget" name="twProductCategory">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>1200</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>Category</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Description</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Added By</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Edit</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Delete</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton">
+                    <property name="text">
+                     <string>PushButton</string>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>

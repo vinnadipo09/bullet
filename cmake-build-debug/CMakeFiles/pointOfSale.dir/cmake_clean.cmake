@@ -19,6 +19,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pointOfSale.dir/databaseconnection.cpp.o"
   "CMakeFiles/pointOfSale.dir/debugger.cpp.o"
   "CMakeFiles/pointOfSale.dir/editcustomer.cpp.o"
+  "CMakeFiles/pointOfSale.dir/editproductcategory.cpp.o"
   "CMakeFiles/pointOfSale.dir/edituser.cpp.o"
   "CMakeFiles/pointOfSale.dir/login.cpp.o"
   "CMakeFiles/pointOfSale.dir/main.cpp.o"

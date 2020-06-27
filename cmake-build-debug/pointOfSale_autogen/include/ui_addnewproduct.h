@@ -33,8 +33,8 @@ public:
     QLabel *lbl_date;
     QLabel *lbl_username;
     QLabel *lbl_phone;
-    QPushButton *btn_edit_view;
-    QPushButton *btn_close_view;
+    QPushButton *btnOkay;
+    QPushButton *btnCancel;
     QLabel *lbl_avatar;
     QLabel *label_11;
     QLabel *lbl_username_2;
@@ -45,7 +45,7 @@ public:
     QLineEdit *leProductQuantity;
     QLineEdit *leWholeSalePrice;
     QLineEdit *leRetailPrice;
-    QPushButton *pushButton;
+    QPushButton *btnAvatar;
     QLabel *lbl_first_name_2;
     QComboBox *cbProductCategory;
     QLabel *label_2;
@@ -88,6 +88,7 @@ public:
         lbl_date = new QLabel(groupBox);
         lbl_date->setObjectName(QStringLiteral("lbl_date"));
         lbl_date->setGeometry(QRect(70, 250, 201, 31));
+        lbl_date->setFont(font);
         lbl_date->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
 "color: rgb(238, 238, 236);"));
         lbl_date->setFrameShape(QFrame::Panel);
@@ -111,20 +112,20 @@ public:
 "color: rgb(238, 238, 236);"));
         lbl_phone->setFrameShape(QFrame::Panel);
         lbl_phone->setFrameShadow(QFrame::Sunken);
-        btn_edit_view = new QPushButton(groupBox);
-        btn_edit_view->setObjectName(QStringLiteral("btn_edit_view"));
-        btn_edit_view->setGeometry(QRect(130, 600, 141, 31));
+        btnOkay = new QPushButton(groupBox);
+        btnOkay->setObjectName(QStringLiteral("btnOkay"));
+        btnOkay->setGeometry(QRect(130, 600, 141, 31));
         QIcon icon;
         icon.addFile(QStringLiteral(":/resources/icons/interface.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_edit_view->setIcon(icon);
-        btn_edit_view->setIconSize(QSize(24, 24));
-        btn_close_view = new QPushButton(groupBox);
-        btn_close_view->setObjectName(QStringLiteral("btn_close_view"));
-        btn_close_view->setGeometry(QRect(290, 600, 141, 31));
+        btnOkay->setIcon(icon);
+        btnOkay->setIconSize(QSize(24, 24));
+        btnCancel = new QPushButton(groupBox);
+        btnCancel->setObjectName(QStringLiteral("btnCancel"));
+        btnCancel->setGeometry(QRect(290, 600, 141, 31));
         QIcon icon1;
         icon1.addFile(QStringLiteral(":/resources/icons/signs (2).png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_close_view->setIcon(icon1);
-        btn_close_view->setIconSize(QSize(24, 24));
+        btnCancel->setIcon(icon1);
+        btnCancel->setIconSize(QSize(24, 24));
         lbl_avatar = new QLabel(groupBox);
         lbl_avatar->setObjectName(QStringLiteral("lbl_avatar"));
         lbl_avatar->setGeometry(QRect(70, 80, 171, 151));
@@ -186,13 +187,13 @@ public:
         leRetailPrice->setGeometry(QRect(290, 530, 221, 31));
         leRetailPrice->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
-        pushButton = new QPushButton(groupBox);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(520, 250, 91, 31));
+        btnAvatar = new QPushButton(groupBox);
+        btnAvatar->setObjectName(QStringLiteral("btnAvatar"));
+        btnAvatar->setGeometry(QRect(520, 250, 91, 31));
         QIcon icon2;
         icon2.addFile(QStringLiteral(":/resources/newIcons/icons8-opened-folder-96.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton->setIcon(icon2);
-        pushButton->setIconSize(QSize(24, 24));
+        btnAvatar->setIcon(icon2);
+        btnAvatar->setIconSize(QSize(24, 24));
         lbl_first_name_2 = new QLabel(groupBox);
         lbl_first_name_2->setObjectName(QStringLiteral("lbl_first_name_2"));
         lbl_first_name_2->setGeometry(QRect(70, 330, 201, 31));
@@ -231,12 +232,12 @@ public:
         lbl_date->setText(QApplication::translate("AddNewProduct", "Product Image", Q_NULLPTR));
         lbl_username->setText(QApplication::translate("AddNewProduct", "Wholesale Price", Q_NULLPTR));
         lbl_phone->setText(QApplication::translate("AddNewProduct", "Product Quantity", Q_NULLPTR));
-        btn_edit_view->setText(QApplication::translate("AddNewProduct", "Ok", Q_NULLPTR));
-        btn_close_view->setText(QApplication::translate("AddNewProduct", "Cancel", Q_NULLPTR));
+        btnOkay->setText(QApplication::translate("AddNewProduct", "Ok", Q_NULLPTR));
+        btnCancel->setText(QApplication::translate("AddNewProduct", "Cancel", Q_NULLPTR));
         lbl_avatar->setText(QString());
         label_11->setText(QApplication::translate("AddNewProduct", "*Please take uttermost care before editing or deleting any information from the table*", Q_NULLPTR));
         lbl_username_2->setText(QApplication::translate("AddNewProduct", "Retail Price", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("AddNewProduct", "Open...", Q_NULLPTR));
+        btnAvatar->setText(QApplication::translate("AddNewProduct", "Open...", Q_NULLPTR));
         lbl_first_name_2->setText(QApplication::translate("AddNewProduct", "Product Name", Q_NULLPTR));
         cbProductCategory->clear();
         cbProductCategory->insertItems(0, QStringList()

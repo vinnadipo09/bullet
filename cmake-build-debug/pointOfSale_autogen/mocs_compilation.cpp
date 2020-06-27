@@ -14,6 +14,7 @@
 #include "EWIEGA46WW/moc_completepaymentwindow.cpp"
 #include "EWIEGA46WW/moc_customerpaydebt.cpp"
 #include "EWIEGA46WW/moc_editcustomer.cpp"
+#include "EWIEGA46WW/moc_editproductcategory.cpp"
 #include "EWIEGA46WW/moc_edituser.cpp"
 #include "EWIEGA46WW/moc_login.cpp"
 #include "EWIEGA46WW/moc_passwordconfirmation.cpp"

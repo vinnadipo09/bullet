@@ -93,6 +93,11 @@
 			"EWIEGA46WW/moc_editcustomer.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/editproductcategory.h",
+			"MU",
+			"EWIEGA46WW/moc_editproductcategory.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/edituser.h",
 			"MU",
 			"EWIEGA46WW/moc_edituser.cpp"
@@ -225,6 +230,7 @@
 		[ "/home/vee/pointOfSale/databaseconnection.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/debugger.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editcustomer.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/editproductcategory.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/edituser.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/login.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/main.cpp", "MU" ],

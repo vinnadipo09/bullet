@@ -51,14 +51,29 @@ struct Customer{
 struct productFromDb{
     QString product_id;
     QString product_name;
+    int product_category;
     QString product_barcode;
     QString product_shortcode;
     QString product_quantity;
     int product_wsprice;
     int product_rtprice;
     QString product_image;
+    int modifiedBy;
+    QDateTime modifiedAt;
 };
-
+struct productToDatabase{
+    QString product_id;
+    QString product_name;
+    int product_category;
+    QString product_barcode;
+    QString product_shortcode;
+    QString product_quantity;
+    double product_wsprice;
+    double product_rtprice;
+    QString product_image;
+    int modifiedBy;
+    QDateTime modifiedAt;
+};
 class Debugger
 {
 public:

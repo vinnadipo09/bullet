@@ -278,6 +278,15 @@
 		<Unit filename="/home/vee/pointOfSale/editcustomer.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductcategory.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductcategory.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductcategory.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/edituser.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>

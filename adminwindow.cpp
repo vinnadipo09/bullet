@@ -22,6 +22,7 @@ AdminWindow::AdminWindow(QWidget *parent, loggedUser &currentLoggedInUser) :
     loadUsersDataFromDb();
     loadAllProducts();
     loadTransactionTypes();
+    loadProductCategory();
 }
 
 AdminWindow::~AdminWindow()
@@ -676,14 +677,137 @@ void AdminWindow::on_btnAddCategory_clicked()
 {
     addProductCategory = new AddProductCategory(this, *adminUser);
     addProductCategory->setModal(true);
-    addProductCategory->exec();
-    QObject::connect(addProductCategory, SIGNAL(categoryAddedSuccess()), this,
+    addProductCategory->show();
+    QObject::connect(addProductCategory, SIGNAL(productCategoryOperationsComplete()), this,
             SLOT(receiveOperationsCompleteAddProductCategory()));
 }
 
 void AdminWindow::receiveOperationsCompleteAddProductCategory() {
-    LOGx("closed call");
-    addProductCategory->setModal(false);
+//IMPLEMENT LOAD TRANSACTION TYPES
+    loadProductCategory();
     addProductCategory->close();
+}
 
+void AdminWindow::loadProductCategory() {
+    ui->twProductCategory->horizontalHeader()->setVisible(true);
+    ui->twProductCategory->horizontalHeader()->setDefaultSectionSize(200);
+    ui->twProductCategory->horizontalHeader()->setStretchLastSection(true);
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(category_id) FROM product_category"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else{
+            while (query.next()){
+                int num_transaction_type_rows = query.value(0).toInt();
+                ui->twProductCategory->setRowCount(num_transaction_type_rows);
+                query.prepare("SELECT product_category.category, product_category.description, users.name FROM (product_category "
+                              "INNER JOIN users ON product_category.user_id = users.user_id)");
+                if(!query.exec()){
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                }else{
+
+                    for(rows=0, query.first(); query.isValid(); query.next(), rows++){
+                        for(columns=0; columns<5; columns++){
+                            if(columns==3){
+                                QPushButton* btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("Edit");
+                                ui->twProductCategory->setCellWidget(rows, 3, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this, &AdminWindow::receive_editProductCategory);
+                            }else if(columns==4){
+                                QPushButton* btn_deleteProductCategory = new QPushButton;
+                                btn_deleteProductCategory->setText("Delete");
+                                ui->twProductCategory->setCellWidget(rows, 4, btn_deleteProductCategory);
+                                QObject::connect(btn_deleteProductCategory, &QPushButton::clicked, this, &AdminWindow::receive_deleteProductCategory);
+                            }
+                            ui->twProductCategory->setItem(rows, columns, new QTableWidgetItem(query.value(columns).toString()));
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+void AdminWindow::editProductCategory(QString& productCategory) {
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT category_id, category, description FROM product_category WHERE "
+                              "category = :currentCategory"));
+        query.bindValue(":currentCategory", productCategory);
+        if (!query.exec()) {
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        } else {
+            while (query.next()) {
+                category = new QString;
+                description = new QString;
+                category_id = new int;
+                *category_id = query.value(0).toInt();
+                *category = query.value(1).toString();
+                *description = query.value(2).toString();
+                editCategory = new EditProductCategory(this, *adminUser,*category, *description, *category_id);
+                editCategory->show();
+                QObject::connect(editCategory, SIGNAL(editJobCompleted()), this, SLOT(receiveEditCategoryComplete()));
+            }
+        }
+}
+
+void AdminWindow::deleteProductCategory(QString& productCategory) {
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::warning(this, "Delete Category", "This Process CANNOT be undone. Are you sure?",
+                                 QMessageBox::Yes | QMessageBox::Cancel);
+    if (reply == QMessageBox::Yes) {
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("DELETE FROM product_category WHERE "
+                              "category = :currentCategory"));
+        query.bindValue(":currentCategory", productCategory);
+        if (!query.exec()) {
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        } else {
+            while (query.next()) {
+                QMessageBox::information(this, "Successfully Deleted!", "Category Successfully Deleted!");
+
+            }
+            LOGx("delete requested");
+        }
+    }else{
+        return;
+    }
+}
+
+void AdminWindow::receive_editProductCategory() {
+    int row;
+    int col;
+    for(row=0; row<ui->twProductCategory->rowCount(); row++){
+        for(col=0; col<ui->twProductCategory->columnCount(); col++){
+            if(sender() == ui->twProductCategory->cellWidget(row,col)){
+                QString currentProductCategory = ui->twProductCategory->item(row, 0)->text();
+                editProductCategory(currentProductCategory);
+            }
+        }
+    }
+    this->loadProductCategory();
+}
+
+void AdminWindow::receive_deleteProductCategory() {
+    int row;
+    int col;
+    for(row=0; row<ui->twProductCategory->rowCount(); row++){
+        for(col=0; col<ui->twProductCategory->columnCount(); col++){
+            if(sender() == ui->twProductCategory->cellWidget(row,col)){
+                QString currentProductCategory = ui->twProductCategory->item(row, 0)->text();
+                deleteProductCategory(currentProductCategory);
+            }
+        }
+    }
+    this->loadProductCategory();
+}
+
+void AdminWindow::receiveEditCategoryComplete() {
+    this->loadProductCategory();
+    editCategory->close();
 }

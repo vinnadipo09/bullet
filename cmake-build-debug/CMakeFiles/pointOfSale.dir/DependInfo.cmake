@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vee/pointOfSale/databaseconnection.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/databaseconnection.cpp.o"
   "/home/vee/pointOfSale/debugger.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/debugger.cpp.o"
   "/home/vee/pointOfSale/editcustomer.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/editcustomer.cpp.o"
+  "/home/vee/pointOfSale/editproductcategory.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/editproductcategory.cpp.o"
   "/home/vee/pointOfSale/edituser.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/edituser.cpp.o"
   "/home/vee/pointOfSale/login.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/login.cpp.o"
   "/home/vee/pointOfSale/main.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/main.cpp.o"

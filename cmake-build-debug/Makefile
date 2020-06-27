@@ -595,6 +595,33 @@ editcustomer.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editcustomer.cpp.s
 .PHONY : editcustomer.cpp.s
 
+editproductcategory.o: editproductcategory.cpp.o
+
+.PHONY : editproductcategory.o
+
+# target to build an object file
+editproductcategory.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editproductcategory.cpp.o
+.PHONY : editproductcategory.cpp.o
+
+editproductcategory.i: editproductcategory.cpp.i
+
+.PHONY : editproductcategory.i
+
+# target to preprocess a source file
+editproductcategory.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editproductcategory.cpp.i
+.PHONY : editproductcategory.cpp.i
+
+editproductcategory.s: editproductcategory.cpp.s
+
+.PHONY : editproductcategory.s
+
+# target to generate assembly for a file
+editproductcategory.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editproductcategory.cpp.s
+.PHONY : editproductcategory.cpp.s
+
 edituser.o: edituser.cpp.o
 
 .PHONY : edituser.o
@@ -1088,6 +1115,9 @@ help:
 	@echo "... editcustomer.o"
 	@echo "... editcustomer.i"
 	@echo "... editcustomer.s"
+	@echo "... editproductcategory.o"
+	@echo "... editproductcategory.i"
+	@echo "... editproductcategory.s"
 	@echo "... edituser.o"
 	@echo "... edituser.i"
 	@echo "... edituser.s"
