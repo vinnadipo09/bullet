@@ -15,6 +15,7 @@
 #include "addnewproduct.h"
 #include "salesclient.h"
 #include "addtransactiontype.h"
+#include "addproductcategory.h"
 namespace Ui {
 class AdminWindow;
 }
@@ -133,9 +134,12 @@ private slots:
     void viewAdmin();
     void viewSuperAdmin();
     void viewCashier();
+    void on_btnAddCategory_clicked();
+    void receiveOperationsCompleteAddProductCategory();
 
 private:
     void loadUsersDataFromDb();
+    AddProductCategory* addProductCategory;
 
 
 };

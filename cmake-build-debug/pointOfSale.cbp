@@ -149,6 +149,15 @@
 		<Unit filename="/home/vee/pointOfSale/addnewuser.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductcategory.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductcategory.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductcategory.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addtransactiontype.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>

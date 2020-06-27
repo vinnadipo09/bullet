@@ -671,3 +671,19 @@ void AdminWindow::receiveUserDeleted() {
 
 
 
+
+void AdminWindow::on_btnAddCategory_clicked()
+{
+    addProductCategory = new AddProductCategory(this, *adminUser);
+    addProductCategory->setModal(true);
+    addProductCategory->exec();
+    QObject::connect(addProductCategory, SIGNAL(categoryAddedSuccess()), this,
+            SLOT(receiveOperationsCompleteAddProductCategory()));
+}
+
+void AdminWindow::receiveOperationsCompleteAddProductCategory() {
+    LOGx("closed call");
+    addProductCategory->setModal(false);
+    addProductCategory->close();
+
+}

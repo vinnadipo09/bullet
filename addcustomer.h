@@ -31,6 +31,7 @@ private:
     Customer* newCustomer;
     bool fieldEmpty;
     bool noCustomerTypeDefinition;
+    void loadCustomerTypesToCb();
 };
 
 #endif // ADDCUSTOMER_H

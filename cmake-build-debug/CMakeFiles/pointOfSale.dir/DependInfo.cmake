@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vee/pointOfSale/addcustomer.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addcustomer.cpp.o"
   "/home/vee/pointOfSale/addnewproduct.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o"
   "/home/vee/pointOfSale/addnewuser.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addnewuser.cpp.o"
+  "/home/vee/pointOfSale/addproductcategory.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o"
   "/home/vee/pointOfSale/addtransactiontype.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.o"
   "/home/vee/pointOfSale/adminwindow.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/adminwindow.cpp.o"
   "/home/vee/pointOfSale/cashierwindow.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/cashierwindow.cpp.o"

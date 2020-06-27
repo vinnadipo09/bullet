@@ -217,6 +217,33 @@ addnewuser.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addnewuser.cpp.s
 .PHONY : addnewuser.cpp.s
 
+addproductcategory.o: addproductcategory.cpp.o
+
+.PHONY : addproductcategory.o
+
+# target to build an object file
+addproductcategory.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o
+.PHONY : addproductcategory.cpp.o
+
+addproductcategory.i: addproductcategory.cpp.i
+
+.PHONY : addproductcategory.i
+
+# target to preprocess a source file
+addproductcategory.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproductcategory.cpp.i
+.PHONY : addproductcategory.cpp.i
+
+addproductcategory.s: addproductcategory.cpp.s
+
+.PHONY : addproductcategory.s
+
+# target to generate assembly for a file
+addproductcategory.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproductcategory.cpp.s
+.PHONY : addproductcategory.cpp.s
+
 addtransactiontype.o: addtransactiontype.cpp.o
 
 .PHONY : addtransactiontype.o
@@ -1019,6 +1046,9 @@ help:
 	@echo "... addnewuser.o"
 	@echo "... addnewuser.i"
 	@echo "... addnewuser.s"
+	@echo "... addproductcategory.o"
+	@echo "... addproductcategory.i"
+	@echo "... addproductcategory.s"
 	@echo "... addtransactiontype.o"
 	@echo "... addtransactiontype.i"
 	@echo "... addtransactiontype.s"

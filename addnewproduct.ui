@@ -57,7 +57,7 @@ color: rgb(238, 238, 236);</string>
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>330</y>
+      <y>370</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -68,7 +68,8 @@ color: rgb(238, 238, 236);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(136, 138, 133);</string>
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(238, 238, 236);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Panel</enum>
@@ -84,7 +85,7 @@ color: rgb(238, 238, 236);</string>
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>370</y>
+      <y>410</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -95,7 +96,8 @@ color: rgb(238, 238, 236);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(136, 138, 133);</string>
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(238, 238, 236);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Panel</enum>
@@ -117,7 +119,8 @@ color: rgb(238, 238, 236);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(136, 138, 133);</string>
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(238, 238, 236);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Panel</enum>
@@ -133,7 +136,7 @@ color: rgb(238, 238, 236);</string>
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>450</y>
+      <y>490</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -145,7 +148,8 @@ color: rgb(238, 238, 236);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(136, 138, 133);</string>
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(238, 238, 236);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Panel</enum>
@@ -161,7 +165,7 @@ color: rgb(238, 238, 236);</string>
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>410</y>
+      <y>450</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -172,7 +176,8 @@ color: rgb(238, 238, 236);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(136, 138, 133);</string>
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(238, 238, 236);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Panel</enum>
@@ -184,33 +189,11 @@ color: rgb(238, 238, 236);</string>
      <string>Product Quantity</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_admin">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>570</y>
-      <width>201</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(136, 138, 133);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <property name="text">
-     <string>Entered By</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btn_edit_view">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>630</y>
+      <y>600</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -233,7 +216,7 @@ color: rgb(238, 238, 236);</string>
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>630</y>
+      <y>600</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -250,28 +233,6 @@ color: rgb(238, 238, 236);</string>
       <width>24</width>
       <height>24</height>
      </size>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lbl_time">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>530</y>
-      <width>201</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(136, 138, 133);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
-    </property>
-    <property name="text">
-     <string>Product Entry Date</string>
     </property>
    </widget>
    <widget class="QLabel" name="lbl_avatar">
@@ -321,7 +282,7 @@ color: rgb(239, 41, 41);
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>490</y>
+      <y>530</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -335,7 +296,8 @@ color: rgb(239, 41, 41);
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(136, 138, 133);</string>
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(238, 238, 236);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Panel</enum>
@@ -347,7 +309,7 @@ color: rgb(239, 41, 41);
      <string>Retail Price</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="leProductImage">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -361,7 +323,7 @@ color: rgb(239, 41, 41);
 background-color: rgb(136, 138, 133);</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="leProductName">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -375,21 +337,7 @@ background-color: rgb(136, 138, 133);</string>
 background-color: rgb(136, 138, 133);</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>330</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 4px;
-background-color: rgb(136, 138, 133);</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="leProductUniqueId">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -403,7 +351,7 @@ background-color: rgb(136, 138, 133);</string>
 background-color: rgb(136, 138, 133);</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_5">
+   <widget class="QLineEdit" name="leProductShortCode">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -417,7 +365,7 @@ background-color: rgb(136, 138, 133);</string>
 background-color: rgb(136, 138, 133);</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_6">
+   <widget class="QLineEdit" name="leProductQuantity">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -431,7 +379,7 @@ background-color: rgb(136, 138, 133);</string>
 background-color: rgb(136, 138, 133);</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_7">
+   <widget class="QLineEdit" name="leWholeSalePrice">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -445,25 +393,11 @@ background-color: rgb(136, 138, 133);</string>
 background-color: rgb(136, 138, 133);</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_8">
+   <widget class="QLineEdit" name="leRetailPrice">
     <property name="geometry">
      <rect>
       <x>290</x>
       <y>530</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 4px;
-background-color: rgb(136, 138, 133);</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_9">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>570</y>
       <width>221</width>
       <height>31</height>
      </rect>
@@ -495,6 +429,49 @@ background-color: rgb(136, 138, 133);</string>
       <height>24</height>
      </size>
     </property>
+   </widget>
+   <widget class="QLabel" name="lbl_first_name_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>330</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(238, 238, 236);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string>Product Name</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cbProductCategory">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>330</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Select Product Category</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QLabel" name="label_2">

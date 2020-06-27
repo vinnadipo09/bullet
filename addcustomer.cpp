@@ -8,6 +8,7 @@ AddCustomer::AddCustomer(QWidget *parent, loggedUser &currentLoggedInUser) :
     ui->setupUi(this);
     addNewCustomerConnection = new databaseConnection;
     newCustomer = new Customer;
+    loadCustomerTypesToCb();
     ui->leCreditAllowed->setText("0.00");
 }
 
@@ -95,4 +96,20 @@ void AddCustomer::checkForDuplicatePhones(QString &phoneNumber) {
 
 void AddCustomer::addCustomerToDb() {
     LOGx("************************************************************************");
+}
+
+void AddCustomer::loadCustomerTypesToCb() {
+    addNewCustomerConnection->conn_open();
+    if(addNewCustomerConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT cusType FROM cusType"));
+        if(!query.exec()){
+            LOGx("DB not responding!");
+        }else{
+            while(query.next()){
+                QString customerTypeItem = query.value(0).toString();
+                ui->cbCustomerType->addItem(customerTypeItem);
+            }
+        }
+    }
 }

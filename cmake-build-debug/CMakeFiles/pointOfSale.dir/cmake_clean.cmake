@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pointOfSale.dir/addcustomer.cpp.o"
   "CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o"
   "CMakeFiles/pointOfSale.dir/addnewuser.cpp.o"
+  "CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o"
   "CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.o"
   "CMakeFiles/pointOfSale.dir/adminwindow.cpp.o"
   "CMakeFiles/pointOfSale.dir/cashierwindow.cpp.o"

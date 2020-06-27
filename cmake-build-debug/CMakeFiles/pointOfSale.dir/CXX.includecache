@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/vee/pointOfSale/addcustomer.cpp
-addcustomer.h
-/home/vee/pointOfSale/addcustomer.h
-ui_addcustomer.h
-/home/vee/pointOfSale/ui_addcustomer.h
+/home/vee/pointOfSale/addproductcategory.cpp
+addproductcategory.h
+/home/vee/pointOfSale/addproductcategory.h
+ui_addproductcategory.h
+/home/vee/pointOfSale/ui_addproductcategory.h
 
-/home/vee/pointOfSale/addcustomer.h
+/home/vee/pointOfSale/addproductcategory.h
 QDialog
 -
 debugger.h
@@ -2354,10 +2354,6 @@ qapplication.h
 qbuttongroup.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QComboBox
-qcombobox.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h
-
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog
 qdialog.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h
@@ -2714,7 +2710,7 @@ QtGui/qkeysequence.h
 QtGui/qevent.h
 -
 
-pointOfSale_autogen/include/ui_addcustomer.h
+pointOfSale_autogen/include/ui_addproductcategory.h
 QtCore/QVariant
 -
 QtWidgets/QAction
@@ -2722,8 +2718,6 @@ QtWidgets/QAction
 QtWidgets/QApplication
 -
 QtWidgets/QButtonGroup
--
-QtWidgets/QComboBox
 -
 QtWidgets/QDialog
 -

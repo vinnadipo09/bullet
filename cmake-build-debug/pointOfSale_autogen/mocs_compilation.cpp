@@ -2,6 +2,7 @@
 #include "EWIEGA46WW/moc_addcustomer.cpp"
 #include "EWIEGA46WW/moc_addnewproduct.cpp"
 #include "EWIEGA46WW/moc_addnewuser.cpp"
+#include "EWIEGA46WW/moc_addproductcategory.cpp"
 #include "EWIEGA46WW/moc_addtransactiontype.cpp"
 #include "EWIEGA46WW/moc_adminwindow.cpp"
 #include "EWIEGA46WW/moc_cashierwindow.cpp"
