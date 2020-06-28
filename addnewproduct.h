@@ -5,7 +5,7 @@
 #include "debugger.h"
 #include "debugger.h"
 #include "databaseconnection.h"
-
+#include "verifynewproduct.h"
 namespace Ui {
 class AddNewProduct;
 }
@@ -40,6 +40,19 @@ private:
     bool allFieldsFilled = false;
     bool allvaluesTyped = false;
     bool selectionFilled = false;
+    bool productAlreadyExists= false;
+
+private:
+    VerifyNewProduct* verifyProduct;
+    void proceedToVerification();
+
+private slots:
+    void receiveEditRequest();
+    void receiveDiscardRequest();
+    void receiveAdditionCompletion();
+signals:
+    void productAdditionCompleted();
+
 
 };
 

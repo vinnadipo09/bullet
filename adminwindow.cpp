@@ -529,6 +529,8 @@ void AdminWindow::on_pb_addNewProducts_clicked()
     addNewProduct = new AddNewProduct(this, *adminUser);
     addNewProduct->setModal(true);
     addNewProduct->show();
+    QObject::connect(addNewProduct, SIGNAL(productAdditionCompleted()), this, SLOT(receiveProdAdditionComplete()));
+
 }
 
 
@@ -810,4 +812,10 @@ void AdminWindow::receive_deleteProductCategory() {
 void AdminWindow::receiveEditCategoryComplete() {
     this->loadProductCategory();
     editCategory->close();
+}
+
+void AdminWindow::receiveProdAdditionComplete() {
+    loadAllProducts();
+    addNewProduct->close();
+
 }

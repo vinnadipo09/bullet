@@ -99,6 +99,8 @@ private:
 private:
     AddNewProduct* addNewProduct;
 private slots:
+    void receiveProdAdditionComplete();
+private slots:
     void on_btn_viewFromAllProductsClicked();
     void on_pb_addNewProducts_clicked();
     void receive_salesClientClosed();

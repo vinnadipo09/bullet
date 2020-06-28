@@ -62,22 +62,22 @@ public:
     QPushButton *pushButton_dashboard;
     QPushButton *pushButton_users;
     QPushButton *btn_transactions;
-    QPushButton *pushButton_2;
     QPushButton *pushButton_products;
     QPushButton *pushButton_stock;
     QPushButton *pushButton_customers;
+    QPushButton *pushButton_suppliers;
     QPushButton *pushButton_agents;
     QPushButton *pushButton_sales;
     QPushButton *pushButton_orders;
-    QPushButton *pushButton_suppliers;
+    QPushButton *pushButton_2;
     QPushButton *pushButton_openingClosing;
     QPushButton *pushButton_profitsManager;
     QPushButton *pushButton_creditManager;
     QPushButton *pushButton_infoCenter;
     QPushButton *pushButton_assets;
     QPushButton *pushButton_businessWorth;
-    QPushButton *pb_testButton;
     QPushButton *pushButton_be_a_cashier;
+    QPushButton *pb_testButton;
     QSpacerItem *verticalSpacer;
     QPushButton *btn_viewProfile;
     QPushButton *pushbutton_logout;
@@ -501,15 +501,6 @@ public:
 
         verticalLayout_2->addWidget(btn_transactions);
 
-        pushButton_2 = new QPushButton(frame);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setStyleSheet(QLatin1String("text-align:left;\n"
-"padding-left:2px;\n"
-"padding: 1.5px;\n"
-"background-color: rgb(238, 238, 236);"));
-
-        verticalLayout_2->addWidget(pushButton_2);
-
         pushButton_products = new QPushButton(frame);
         pushButton_products->setObjectName(QStringLiteral("pushButton_products"));
         pushButton_products->setStyleSheet(QLatin1String("text-align:left;\n"
@@ -549,15 +540,28 @@ public:
 
         verticalLayout_2->addWidget(pushButton_customers);
 
+        pushButton_suppliers = new QPushButton(frame);
+        pushButton_suppliers->setObjectName(QStringLiteral("pushButton_suppliers"));
+        pushButton_suppliers->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding-left:2px;\n"
+"padding: 1.5px;\n"
+"background-color: rgb(238, 238, 236);"));
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/resources/newIcons/icons8-supplier-128.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_suppliers->setIcon(icon6);
+        pushButton_suppliers->setIconSize(QSize(24, 24));
+
+        verticalLayout_2->addWidget(pushButton_suppliers);
+
         pushButton_agents = new QPushButton(frame);
         pushButton_agents->setObjectName(QStringLiteral("pushButton_agents"));
         pushButton_agents->setStyleSheet(QLatin1String("text-align:left;\n"
 "padding-left:2px;\n"
 "padding: 1.5px;\n"
 "background-color: rgb(238, 238, 236);"));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/resources/newIcons/icons8-supplier-96.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_agents->setIcon(icon6);
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/resources/newIcons/icons8-supplier-96.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_agents->setIcon(icon7);
         pushButton_agents->setIconSize(QSize(24, 24));
 
         verticalLayout_2->addWidget(pushButton_agents);
@@ -568,9 +572,9 @@ public:
 "padding-left:2px;\n"
 "padding: 1.5px;\n"
 "background-color: rgb(238, 238, 236);"));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/resources/newIcons/icons8-macbook-money-100.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_sales->setIcon(icon7);
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/resources/newIcons/icons8-macbook-money-100.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_sales->setIcon(icon8);
         pushButton_sales->setIconSize(QSize(24, 24));
 
         verticalLayout_2->addWidget(pushButton_sales);
@@ -581,25 +585,21 @@ public:
 "padding-left:2px;\n"
 "padding: 1.5px;\n"
 "background-color: rgb(238, 238, 236);"));
-        QIcon icon8;
-        icon8.addFile(QStringLiteral(":/resources/newIcons/icons8-sell-stock-96.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_orders->setIcon(icon8);
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/resources/newIcons/icons8-sell-stock-96.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_orders->setIcon(icon9);
         pushButton_orders->setIconSize(QSize(24, 24));
 
         verticalLayout_2->addWidget(pushButton_orders);
 
-        pushButton_suppliers = new QPushButton(frame);
-        pushButton_suppliers->setObjectName(QStringLiteral("pushButton_suppliers"));
-        pushButton_suppliers->setStyleSheet(QLatin1String("text-align:left;\n"
+        pushButton_2 = new QPushButton(frame);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setStyleSheet(QLatin1String("text-align:left;\n"
 "padding-left:2px;\n"
 "padding: 1.5px;\n"
 "background-color: rgb(238, 238, 236);"));
-        QIcon icon9;
-        icon9.addFile(QStringLiteral(":/resources/newIcons/icons8-supplier-128.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_suppliers->setIcon(icon9);
-        pushButton_suppliers->setIconSize(QSize(24, 24));
 
-        verticalLayout_2->addWidget(pushButton_suppliers);
+        verticalLayout_2->addWidget(pushButton_2);
 
         pushButton_openingClosing = new QPushButton(frame);
         pushButton_openingClosing->setObjectName(QStringLiteral("pushButton_openingClosing"));
@@ -679,30 +679,30 @@ public:
 
         verticalLayout_2->addWidget(pushButton_businessWorth);
 
-        pb_testButton = new QPushButton(frame);
-        pb_testButton->setObjectName(QStringLiteral("pb_testButton"));
-        pb_testButton->setStyleSheet(QLatin1String("text-align:left;\n"
-"padding-left:2px;\n"
-"padding: 1.5px;\n"
-"background-color: rgb(238, 238, 236);"));
-        QIcon icon16;
-        icon16.addFile(QStringLiteral(":/resources/new_icons_2/icons8-invisible-144.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pb_testButton->setIcon(icon16);
-
-        verticalLayout_2->addWidget(pb_testButton);
-
         pushButton_be_a_cashier = new QPushButton(frame);
         pushButton_be_a_cashier->setObjectName(QStringLiteral("pushButton_be_a_cashier"));
         pushButton_be_a_cashier->setStyleSheet(QLatin1String("text-align:left;\n"
 "padding-left:2px;\n"
 "padding: 1.5px;\n"
 "background-color: rgb(238, 238, 236);"));
-        QIcon icon17;
-        icon17.addFile(QStringLiteral(":/resources/newIcons/icons8-login-96.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_be_a_cashier->setIcon(icon17);
+        QIcon icon16;
+        icon16.addFile(QStringLiteral(":/resources/newIcons/icons8-login-96.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_be_a_cashier->setIcon(icon16);
         pushButton_be_a_cashier->setIconSize(QSize(24, 24));
 
         verticalLayout_2->addWidget(pushButton_be_a_cashier);
+
+        pb_testButton = new QPushButton(frame);
+        pb_testButton->setObjectName(QStringLiteral("pb_testButton"));
+        pb_testButton->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding-left:2px;\n"
+"padding: 1.5px;\n"
+"background-color: rgb(238, 238, 236);"));
+        QIcon icon17;
+        icon17.addFile(QStringLiteral(":/resources/new_icons_2/icons8-invisible-144.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pb_testButton->setIcon(icon17);
+
+        verticalLayout_2->addWidget(pb_testButton);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -3290,22 +3290,22 @@ public:
         pushButton_dashboard->setText(QApplication::translate("AdminWindow", "Dashboard", Q_NULLPTR));
         pushButton_users->setText(QApplication::translate("AdminWindow", "Users", Q_NULLPTR));
         btn_transactions->setText(QApplication::translate("AdminWindow", "Transactions", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("AdminWindow", "PushButton", Q_NULLPTR));
         pushButton_products->setText(QApplication::translate("AdminWindow", "Products", Q_NULLPTR));
         pushButton_stock->setText(QApplication::translate("AdminWindow", "Stock", Q_NULLPTR));
         pushButton_customers->setText(QApplication::translate("AdminWindow", "Customers", Q_NULLPTR));
+        pushButton_suppliers->setText(QApplication::translate("AdminWindow", "Suppliers", Q_NULLPTR));
         pushButton_agents->setText(QApplication::translate("AdminWindow", "Agents", Q_NULLPTR));
         pushButton_sales->setText(QApplication::translate("AdminWindow", "Sales", Q_NULLPTR));
         pushButton_orders->setText(QApplication::translate("AdminWindow", "Orders", Q_NULLPTR));
-        pushButton_suppliers->setText(QApplication::translate("AdminWindow", "Suppliers", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("AdminWindow", "PushButton", Q_NULLPTR));
         pushButton_openingClosing->setText(QApplication::translate("AdminWindow", "Closing/Opening", Q_NULLPTR));
         pushButton_profitsManager->setText(QApplication::translate("AdminWindow", "Profits Manager", Q_NULLPTR));
         pushButton_creditManager->setText(QApplication::translate("AdminWindow", "Credit Manager", Q_NULLPTR));
         pushButton_infoCenter->setText(QApplication::translate("AdminWindow", "Information Center", Q_NULLPTR));
         pushButton_assets->setText(QApplication::translate("AdminWindow", "Assets", Q_NULLPTR));
         pushButton_businessWorth->setText(QApplication::translate("AdminWindow", "Business Worth", Q_NULLPTR));
-        pb_testButton->setText(QApplication::translate("AdminWindow", " Cashier", Q_NULLPTR));
         pushButton_be_a_cashier->setText(QApplication::translate("AdminWindow", "Transactions ", Q_NULLPTR));
+        pb_testButton->setText(QApplication::translate("AdminWindow", " Cashier", Q_NULLPTR));
         btn_viewProfile->setText(QApplication::translate("AdminWindow", "View Profile", Q_NULLPTR));
         pushbutton_logout->setText(QApplication::translate("AdminWindow", "Logout", Q_NULLPTR));
         label_2->setText(QApplication::translate("AdminWindow", "WELCOME HOME", Q_NULLPTR));

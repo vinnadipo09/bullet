@@ -51,6 +51,12 @@ void AddNewProduct::on_btnOkay_clicked()
             QMessageBox::warning(this, "Selection Error!", "Please select product category");
             return;
         }else{
+            if(productAlreadyExists){
+                QMessageBox::warning(this, "Duplicate Error!", "Product already exists in the database");
+                return;
+            }else{
+                proceedToVerification();
+            }
 //            IMPLEMENT FIRST IN THE MORNING
 
         }
@@ -81,8 +87,7 @@ void AddNewProduct::loadProductCategoryToComboBox() {
 void AddNewProduct::grabAllProductDetails() {
     productTodB->product_name = ui->leProductName->text();
     productTodB->product_image = ui->leProductImage->text();
-    category = new QString;
-    *category = ui->cbProductCategory->currentText();
+    productTodB->product_cat = ui->cbProductCategory->currentText();
     productTodB->product_barcode = ui->leProductUniqueId->text();
     productTodB->product_shortcode = ui->leProductShortCode->text();
     productTodB->product_quantity = ui->leProductQuantity->text();
@@ -117,7 +122,7 @@ void AddNewProduct::resolveDatabaseValues() {
     if(addProductConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
         query.prepare(QString("SELECT category_id FROM product_category WHERE category = :categoryEntered"));
-        query.bindValue(":categoryEntered", *category);
+        query.bindValue(":categoryEntered", productTodB->product_cat);
         if(!query.exec()){
             LOGx("DB not responding!");
         }else{
@@ -129,9 +134,51 @@ void AddNewProduct::resolveDatabaseValues() {
         }
     }
 }
-
 void AddNewProduct::checkForDuplicateProducts() {
+    if(addProductConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(product_id) FROM products WHERE product_barcode = :uniqueId"));
+        query.bindValue(":uniqueId", productTodB->product_barcode);
+        if(!query.exec()){
+            LOGx("DB not responding!");
+        }else{
+            while(query.next()){
+                int numberOfProducts = query.value(0).toInt();
+                LOGxy("Number of count", numberOfProducts);
+                if(numberOfProducts>0){
+                    LOGx(numberOfProducts);
+                    productAlreadyExists=true;
+                    return;
+                } else{
+                    productAlreadyExists= false;
+                }
+            }
+        }
+    }
+}
 
+void AddNewProduct::proceedToVerification() {
+    verifyProduct = new VerifyNewProduct(this, *currentUser, *productTodB);
+//    this->hide();
+    verifyProduct->show();
+    QObject::connect(verifyProduct, SIGNAL(productAdditionJobComplete()), this, SLOT(receiveAdditionCompletion()));
+    QObject::connect(verifyProduct, SIGNAL(editRequested()), this, SLOT(receiveEditRequest()));
+    QObject::connect(verifyProduct, SIGNAL(discardRequested()), this, SLOT(receiveDiscardRequest()));
+}
+
+void AddNewProduct::receiveEditRequest() {
+    verifyProduct->close();
+    this->show();
+}
+
+void AddNewProduct::receiveDiscardRequest() {
+    verifyProduct->close();
+    emit productAdditionCompleted();
+}
+
+void AddNewProduct::receiveAdditionCompletion() {
+    verifyProduct->close();
+    emit productAdditionCompleted();
 }
 
 
