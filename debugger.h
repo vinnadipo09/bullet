@@ -52,11 +52,14 @@ struct productFromDb{
     QString product_id;
     QString product_name;
     int product_category;
+    QString product_cat;
     QString product_barcode;
     QString product_shortcode;
     QString product_quantity;
-    int product_wsprice;
-    int product_rtprice;
+    double product_wsprice;
+    double product_rtprice;
+    double  product_discount;
+    double product_rewards;
     QString product_image;
     int modifiedBy;
     QDateTime modifiedAt;
@@ -71,6 +74,8 @@ struct productToDatabase{
     QString product_quantity;
     double product_wsprice;
     double product_rtprice;
+    double  product_discount;
+    double product_rewards;
     QString product_image;
     int modifiedBy;
     QDateTime modifiedAt;

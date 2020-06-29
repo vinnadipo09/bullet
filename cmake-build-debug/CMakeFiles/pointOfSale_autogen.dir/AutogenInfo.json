@@ -109,6 +109,21 @@
 			"EWIEGA46WW/moc_passwordconfirmation.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/productdiscounteditor.h",
+			"MU",
+			"EWIEGA46WW/moc_productdiscounteditor.cpp"
+		],
+		[
+			"/home/vee/pointOfSale/producteditor.h",
+			"MU",
+			"EWIEGA46WW/moc_producteditor.cpp"
+		],
+		[
+			"/home/vee/pointOfSale/productrewardeditor.h",
+			"MU",
+			"EWIEGA46WW/moc_productrewardeditor.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/profileviewer.h",
 			"MU",
 			"EWIEGA46WW/moc_profileviewer.cpp"
@@ -235,6 +250,9 @@
 		[ "/home/vee/pointOfSale/login.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/main.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/passwordconfirmation.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/productdiscounteditor.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/producteditor.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/productrewardeditor.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/profileviewer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/salesclient.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/supervisorwindow.cpp", "MU" ],

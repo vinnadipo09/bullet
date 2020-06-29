@@ -161,6 +161,18 @@ else()
     editproductcategory.cpp
     editproductcategory.h
     editproductcategory.ui
+
+    productdiscounteditor.cpp
+    productdiscounteditor.h
+    productdiscounteditor.ui
+
+    productrewardeditor.cpp
+    productrewardeditor.h
+    productrewardeditor.ui
+
+    producteditor.cpp
+    producteditor.h
+    producteditor.ui
   )
 endif()
 

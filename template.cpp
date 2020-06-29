@@ -12,3 +12,5 @@ Template::~Template()
 {
     delete ui;
 }
+
+

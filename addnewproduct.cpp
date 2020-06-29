@@ -33,16 +33,7 @@ void AddNewProduct::on_btnOkay_clicked()
     grabAllProductDetails();
     resolveDatabaseValues();
     checkIfAllFieldsCaptured();
-    Debug(productTodB->product_category);
-    Debug(productTodB->product_rtprice);
-    Debug(productTodB->product_wsprice);
-    Debug(productTodB->product_quantity);
-    Debug(productTodB->product_shortcode);
-    Debug(productTodB->product_barcode);
-    Debug(productTodB->product_image);
-    Debug(productTodB->product_name);
-    Debug(productTodB->modifiedAt);
-    Debug(productTodB->modifiedBy);
+    checkForDuplicateProducts();
     if(!allvaluesTyped){
         QMessageBox::warning(this, "Empty Cells Error!", "Pleaase fill in all the required fields!");
         return;

@@ -95,6 +95,7 @@ private:
     QString currentProductViewId;
     productFromDb* productToView;
     ViewProduct* viewProduct;
+    ViewProduct* viewProduct2;
 //    Add new product
 private:
     AddNewProduct* addNewProduct;
@@ -154,8 +155,10 @@ private slots:
     void receive_editProductCategory();
     void receive_deleteProductCategory();
     void receiveEditCategoryComplete();
+    void receiveReloadProductWithNewValues(int);
 
 
+signals:
 };
 
 #endif // ADMINWINDOW_H

@@ -12,7 +12,6 @@ AddProductCategory::AddProductCategory(QWidget *parent, loggedUser &currentLogge
     currentUser = new loggedUser;
     *currentUser = currentLoggedInUser;
     addCategoryConnection = new databaseConnection;
-
 }
 
 AddProductCategory::~AddProductCategory()
@@ -66,7 +65,6 @@ void AddProductCategory::on_btnCancel_clicked()
         }
     }else{
         emit productCategoryOperationsComplete();
-        this->reject();
 
     }
 }

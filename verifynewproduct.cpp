@@ -66,8 +66,6 @@ void VerifyNewProduct::on_btnCancel_clicked()
     }else{
         return;
     }
-
-
 }
 
 void VerifyNewProduct::enterNewIntoDb() {
@@ -79,7 +77,7 @@ void VerifyNewProduct::enterNewIntoDb() {
                               "product_image, product_addedby, product_addedon, product_updatedby, product_updatedon) "
                               "VALUES(:name, :category, :barcode, :shortCode, :prodQty"
                               ",:wsPrice, :rtPrice, :image, :addingUser, :addingDate,"
-                              "NULL, NULL)"));
+                              ":addingUser, :addingDate)"));
         query.bindValue(":name", verifyProduct->product_name);
         query.bindValue(":category", verifyProduct->product_category);
         query.bindValue(":barcode", verifyProduct->product_barcode);

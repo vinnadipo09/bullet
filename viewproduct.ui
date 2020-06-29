@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>50</y>
+     <y>0</y>
      <width>681</width>
-     <height>721</height>
+     <height>771</height>
     </rect>
    </property>
    <property name="title">
@@ -116,6 +116,11 @@ color: rgb(238, 238, 236);</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(136, 138, 133);</string>
     </property>
@@ -193,6 +198,11 @@ color: rgb(238, 238, 236);</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(136, 138, 133);</string>
     </property>
@@ -203,20 +213,20 @@ color: rgb(238, 238, 236);</string>
      <enum>QFrame::Raised</enum>
     </property>
     <property name="text">
-     <string>Entered By</string>
+     <string>Product Discount</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_edit_view">
+   <widget class="QPushButton" name="btnEditProduct">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>640</y>
+      <y>720</y>
       <width>141</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Ok</string>
+     <string>Edit Product</string>
     </property>
     <property name="icon">
      <iconset resource="resources.qrc">
@@ -229,11 +239,11 @@ color: rgb(238, 238, 236);</string>
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_close_view">
+   <widget class="QPushButton" name="btnClose">
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>640</y>
+      <y>720</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -261,6 +271,11 @@ color: rgb(238, 238, 236);</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(136, 138, 133);</string>
     </property>
@@ -271,7 +286,7 @@ color: rgb(238, 238, 236);</string>
      <enum>QFrame::Sunken</enum>
     </property>
     <property name="text">
-     <string>Product Entry Date</string>
+     <string>Product Reward</string>
     </property>
    </widget>
    <widget class="QLabel" name="lbl_avatar">
@@ -317,7 +332,7 @@ color: rgb(239, 41, 41);
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_product_name">
+   <widget class="QLabel" name="name">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -339,7 +354,7 @@ color: rgb(239, 41, 41);
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_product_barcode">
+   <widget class="QLabel" name="barcode">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -361,7 +376,7 @@ color: rgb(239, 41, 41);
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_product_shortCode">
+   <widget class="QLabel" name="shortCode">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -383,7 +398,7 @@ color: rgb(239, 41, 41);
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_product_Quantity">
+   <widget class="QLabel" name="qty">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -405,7 +420,7 @@ color: rgb(239, 41, 41);
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_product_entryDate">
+   <widget class="QLabel" name="reward">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -427,7 +442,7 @@ color: rgb(239, 41, 41);
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_product_wsPrice">
+   <widget class="QLabel" name="wPrice">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -449,7 +464,7 @@ color: rgb(239, 41, 41);
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_product_enteredBy">
+   <widget class="QLabel" name="discount">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -471,7 +486,7 @@ color: rgb(239, 41, 41);
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_product_image">
+   <widget class="QLabel" name="image">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -493,7 +508,7 @@ color: rgb(239, 41, 41);
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_product_rtPrice">
+   <widget class="QLabel" name="rPrice">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -545,17 +560,17 @@ color: rgb(239, 41, 41);
      <string>Retail Price</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_delete_user">
+   <widget class="QPushButton" name="btnDelete">
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>640</y>
+      <y>720</y>
       <width>141</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Delete</string>
+     <string>Delete Product</string>
     </property>
     <property name="icon">
      <iconset resource="resources.qrc">
@@ -568,11 +583,11 @@ color: rgb(239, 41, 41);
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_editProductImage">
+   <widget class="QPushButton" name="btnReward">
     <property name="geometry">
      <rect>
       <x>500</x>
-      <y>250</y>
+      <y>530</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -591,11 +606,11 @@ color: rgb(239, 41, 41);
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_editProductName">
+   <widget class="QPushButton" name="btnDiscount">
     <property name="geometry">
      <rect>
       <x>500</x>
-      <y>290</y>
+      <y>570</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -614,119 +629,102 @@ color: rgb(239, 41, 41);
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_editProductBarcode">
+   <widget class="QLabel" name="lbl_admin_2">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>330</y>
-      <width>91</width>
+      <x>70</x>
+      <y>650</y>
+      <width>201</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(136, 138, 133);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
     <property name="text">
-     <string>Edit</string>
-    </property>
-    <property name="icon">
-     <iconset resource="resources.qrc">
-      <normaloff>:/resources/newIcons/icons8-edit-120.png</normaloff>:/resources/newIcons/icons8-edit-120.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
+     <string>Authorizing User</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_editProductShortCode">
+   <widget class="QLabel" name="lbl_time_2">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>370</y>
-      <width>91</width>
+      <x>70</x>
+      <y>610</y>
+      <width>201</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(136, 138, 133);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
     <property name="text">
-     <string>Edit</string>
-    </property>
-    <property name="icon">
-     <iconset resource="resources.qrc">
-      <normaloff>:/resources/newIcons/icons8-edit-120.png</normaloff>:/resources/newIcons/icons8-edit-120.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
+     <string>Data Modification Date</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_editProductQuantity">
+   <widget class="QLabel" name="user">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>410</y>
-      <width>91</width>
+      <x>290</x>
+      <y>650</y>
+      <width>201</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(186, 189, 182);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
     <property name="text">
-     <string>Edit</string>
-    </property>
-    <property name="icon">
-     <iconset resource="resources.qrc">
-      <normaloff>:/resources/newIcons/icons8-edit-120.png</normaloff>:/resources/newIcons/icons8-edit-120.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
+     <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_editProductWholesalePrice">
+   <widget class="QLabel" name="modDate">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>450</y>
-      <width>91</width>
+      <x>290</x>
+      <y>610</y>
+      <width>201</width>
       <height>31</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Edit</string>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(186, 189, 182);</string>
     </property>
-    <property name="icon">
-     <iconset resource="resources.qrc">
-      <normaloff>:/resources/newIcons/icons8-edit-120.png</normaloff>:/resources/newIcons/icons8-edit-120.png</iconset>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
     </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pb_editProductRetailPrice">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>490</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
     </property>
     <property name="text">
-     <string>Edit</string>
-    </property>
-    <property name="icon">
-     <iconset resource="resources.qrc">
-      <normaloff>:/resources/newIcons/icons8-edit-120.png</normaloff>:/resources/newIcons/icons8-edit-120.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
+     <string/>
     </property>
    </widget>
   </widget>
@@ -750,9 +748,9 @@ color: rgb(239, 41, 41);
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>20</y>
+     <y>-10</y>
      <width>1061</width>
-     <height>781</height>
+     <height>811</height>
     </rect>
    </property>
    <property name="styleSheet">

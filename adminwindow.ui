@@ -1547,7 +1547,7 @@ background-color: rgb(238, 238, 236);</string>
                   </property>
                   <column>
                    <property name="text">
-                    <string>Product ID</string>
+                    <string>Product DB Id</string>
                    </property>
                   </column>
                   <column>
@@ -1587,7 +1587,22 @@ background-color: rgb(238, 238, 236);</string>
                   </column>
                   <column>
                    <property name="text">
+                    <string>Product Discount</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Product Reward</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
                     <string>View Product</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string/>
                    </property>
                   </column>
                  </widget>

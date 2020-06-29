@@ -317,6 +317,33 @@
 		<Unit filename="/home/vee/pointOfSale/passwordconfirmation.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productdiscounteditor.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productdiscounteditor.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productdiscounteditor.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/producteditor.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/producteditor.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/producteditor.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productrewardeditor.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productrewardeditor.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productrewardeditor.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/profileviewer.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>

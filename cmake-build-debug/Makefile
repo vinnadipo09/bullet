@@ -784,6 +784,87 @@ pointOfSale_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/pointOfSale_autogen/mocs_compilation.cpp.s
 .PHONY : pointOfSale_autogen/mocs_compilation.cpp.s
 
+productdiscounteditor.o: productdiscounteditor.cpp.o
+
+.PHONY : productdiscounteditor.o
+
+# target to build an object file
+productdiscounteditor.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.o
+.PHONY : productdiscounteditor.cpp.o
+
+productdiscounteditor.i: productdiscounteditor.cpp.i
+
+.PHONY : productdiscounteditor.i
+
+# target to preprocess a source file
+productdiscounteditor.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.i
+.PHONY : productdiscounteditor.cpp.i
+
+productdiscounteditor.s: productdiscounteditor.cpp.s
+
+.PHONY : productdiscounteditor.s
+
+# target to generate assembly for a file
+productdiscounteditor.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.s
+.PHONY : productdiscounteditor.cpp.s
+
+producteditor.o: producteditor.cpp.o
+
+.PHONY : producteditor.o
+
+# target to build an object file
+producteditor.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/producteditor.cpp.o
+.PHONY : producteditor.cpp.o
+
+producteditor.i: producteditor.cpp.i
+
+.PHONY : producteditor.i
+
+# target to preprocess a source file
+producteditor.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/producteditor.cpp.i
+.PHONY : producteditor.cpp.i
+
+producteditor.s: producteditor.cpp.s
+
+.PHONY : producteditor.s
+
+# target to generate assembly for a file
+producteditor.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/producteditor.cpp.s
+.PHONY : producteditor.cpp.s
+
+productrewardeditor.o: productrewardeditor.cpp.o
+
+.PHONY : productrewardeditor.o
+
+# target to build an object file
+productrewardeditor.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.o
+.PHONY : productrewardeditor.cpp.o
+
+productrewardeditor.i: productrewardeditor.cpp.i
+
+.PHONY : productrewardeditor.i
+
+# target to preprocess a source file
+productrewardeditor.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.i
+.PHONY : productrewardeditor.cpp.i
+
+productrewardeditor.s: productrewardeditor.cpp.s
+
+.PHONY : productrewardeditor.s
+
+# target to generate assembly for a file
+productrewardeditor.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.s
+.PHONY : productrewardeditor.cpp.s
+
 profileviewer.o: profileviewer.cpp.o
 
 .PHONY : profileviewer.o
@@ -1136,6 +1217,15 @@ help:
 	@echo "... pointOfSale_autogen/mocs_compilation.o"
 	@echo "... pointOfSale_autogen/mocs_compilation.i"
 	@echo "... pointOfSale_autogen/mocs_compilation.s"
+	@echo "... productdiscounteditor.o"
+	@echo "... productdiscounteditor.i"
+	@echo "... productdiscounteditor.s"
+	@echo "... producteditor.o"
+	@echo "... producteditor.i"
+	@echo "... producteditor.s"
+	@echo "... productrewardeditor.o"
+	@echo "... productrewardeditor.i"
+	@echo "... productrewardeditor.s"
 	@echo "... profileviewer.o"
 	@echo "... profileviewer.i"
 	@echo "... profileviewer.s"
