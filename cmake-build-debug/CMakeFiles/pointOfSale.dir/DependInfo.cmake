@@ -4,10 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/vee/pointOfSale/acquirestock.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/acquirestock.cpp.o"
   "/home/vee/pointOfSale/addcustomer.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addcustomer.cpp.o"
   "/home/vee/pointOfSale/addnewproduct.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o"
   "/home/vee/pointOfSale/addnewuser.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addnewuser.cpp.o"
   "/home/vee/pointOfSale/addproductcategory.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o"
+  "/home/vee/pointOfSale/addsupplier.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addsupplier.cpp.o"
   "/home/vee/pointOfSale/addtransactiontype.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.o"
   "/home/vee/pointOfSale/adminwindow.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/adminwindow.cpp.o"
   "/home/vee/pointOfSale/cashierwindow.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/cashierwindow.cpp.o"
@@ -22,6 +24,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vee/pointOfSale/debugger.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/debugger.cpp.o"
   "/home/vee/pointOfSale/editcustomer.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/editcustomer.cpp.o"
   "/home/vee/pointOfSale/editproductcategory.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/editproductcategory.cpp.o"
+  "/home/vee/pointOfSale/editsupplier.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/editsupplier.cpp.o"
   "/home/vee/pointOfSale/edituser.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/edituser.cpp.o"
   "/home/vee/pointOfSale/login.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/login.cpp.o"
   "/home/vee/pointOfSale/main.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/main.cpp.o"
@@ -40,6 +43,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vee/pointOfSale/viaddialog.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/viaddialog.cpp.o"
   "/home/vee/pointOfSale/viewcustomer.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/viewcustomer.cpp.o"
   "/home/vee/pointOfSale/viewproduct.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/viewproduct.cpp.o"
+  "/home/vee/pointOfSale/viewsupplier.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/viewsupplier.cpp.o"
   "/home/vee/pointOfSale/viewuser.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/viewuser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

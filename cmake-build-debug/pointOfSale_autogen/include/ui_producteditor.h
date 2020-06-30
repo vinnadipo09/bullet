@@ -239,7 +239,7 @@ public:
         label_11->setText(QApplication::translate("ProductEditor", "*Please take uttermost care before editing or deleting any information from the table*", Q_NULLPTR));
         lbl_username_2->setText(QApplication::translate("ProductEditor", "Retail Price", Q_NULLPTR));
         btnAvatar->setText(QApplication::translate("ProductEditor", "Open...", Q_NULLPTR));
-        lbl_first_name_2->setText(QApplication::translate("ProductEditor", "Product Name", Q_NULLPTR));
+        lbl_first_name_2->setText(QApplication::translate("ProductEditor", "Product Category", Q_NULLPTR));
         cbProductCategory->clear();
         cbProductCategory->insertItems(0, QStringList()
          << QApplication::translate("ProductEditor", "Select Product Category", Q_NULLPTR)

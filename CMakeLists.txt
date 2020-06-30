@@ -173,6 +173,22 @@ else()
     producteditor.cpp
     producteditor.h
     producteditor.ui
+
+    addsupplier.cpp
+    addsupplier.h
+    addsupplier.ui
+
+    editsupplier.cpp
+    editsupplier.h
+    editsupplier.ui
+
+    viewsupplier.cpp
+    viewsupplier.h
+    viewsupplier.ui
+
+    acquirestock.cpp
+    acquirestock.h
+    acquirestock.ui
   )
 endif()
 

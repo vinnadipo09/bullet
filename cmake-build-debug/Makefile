@@ -136,6 +136,33 @@ pointOfSale_autogen/fast:
 	$(MAKE) -f CMakeFiles/pointOfSale_autogen.dir/build.make CMakeFiles/pointOfSale_autogen.dir/build
 .PHONY : pointOfSale_autogen/fast
 
+acquirestock.o: acquirestock.cpp.o
+
+.PHONY : acquirestock.o
+
+# target to build an object file
+acquirestock.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/acquirestock.cpp.o
+.PHONY : acquirestock.cpp.o
+
+acquirestock.i: acquirestock.cpp.i
+
+.PHONY : acquirestock.i
+
+# target to preprocess a source file
+acquirestock.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/acquirestock.cpp.i
+.PHONY : acquirestock.cpp.i
+
+acquirestock.s: acquirestock.cpp.s
+
+.PHONY : acquirestock.s
+
+# target to generate assembly for a file
+acquirestock.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/acquirestock.cpp.s
+.PHONY : acquirestock.cpp.s
+
 addcustomer.o: addcustomer.cpp.o
 
 .PHONY : addcustomer.o
@@ -243,6 +270,33 @@ addproductcategory.s: addproductcategory.cpp.s
 addproductcategory.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproductcategory.cpp.s
 .PHONY : addproductcategory.cpp.s
+
+addsupplier.o: addsupplier.cpp.o
+
+.PHONY : addsupplier.o
+
+# target to build an object file
+addsupplier.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addsupplier.cpp.o
+.PHONY : addsupplier.cpp.o
+
+addsupplier.i: addsupplier.cpp.i
+
+.PHONY : addsupplier.i
+
+# target to preprocess a source file
+addsupplier.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addsupplier.cpp.i
+.PHONY : addsupplier.cpp.i
+
+addsupplier.s: addsupplier.cpp.s
+
+.PHONY : addsupplier.s
+
+# target to generate assembly for a file
+addsupplier.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addsupplier.cpp.s
+.PHONY : addsupplier.cpp.s
 
 addtransactiontype.o: addtransactiontype.cpp.o
 
@@ -621,6 +675,33 @@ editproductcategory.s: editproductcategory.cpp.s
 editproductcategory.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editproductcategory.cpp.s
 .PHONY : editproductcategory.cpp.s
+
+editsupplier.o: editsupplier.cpp.o
+
+.PHONY : editsupplier.o
+
+# target to build an object file
+editsupplier.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editsupplier.cpp.o
+.PHONY : editsupplier.cpp.o
+
+editsupplier.i: editsupplier.cpp.i
+
+.PHONY : editsupplier.i
+
+# target to preprocess a source file
+editsupplier.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editsupplier.cpp.i
+.PHONY : editsupplier.cpp.i
+
+editsupplier.s: editsupplier.cpp.s
+
+.PHONY : editsupplier.s
+
+# target to generate assembly for a file
+editsupplier.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editsupplier.cpp.s
+.PHONY : editsupplier.cpp.s
 
 edituser.o: edituser.cpp.o
 
@@ -1108,6 +1189,33 @@ viewproduct.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/viewproduct.cpp.s
 .PHONY : viewproduct.cpp.s
 
+viewsupplier.o: viewsupplier.cpp.o
+
+.PHONY : viewsupplier.o
+
+# target to build an object file
+viewsupplier.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/viewsupplier.cpp.o
+.PHONY : viewsupplier.cpp.o
+
+viewsupplier.i: viewsupplier.cpp.i
+
+.PHONY : viewsupplier.i
+
+# target to preprocess a source file
+viewsupplier.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/viewsupplier.cpp.i
+.PHONY : viewsupplier.cpp.i
+
+viewsupplier.s: viewsupplier.cpp.s
+
+.PHONY : viewsupplier.s
+
+# target to generate assembly for a file
+viewsupplier.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/viewsupplier.cpp.s
+.PHONY : viewsupplier.cpp.s
+
 viewuser.o: viewuser.cpp.o
 
 .PHONY : viewuser.o
@@ -1145,6 +1253,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... pointOfSale"
 	@echo "... pointOfSale_autogen"
+	@echo "... acquirestock.o"
+	@echo "... acquirestock.i"
+	@echo "... acquirestock.s"
 	@echo "... addcustomer.o"
 	@echo "... addcustomer.i"
 	@echo "... addcustomer.s"
@@ -1157,6 +1268,9 @@ help:
 	@echo "... addproductcategory.o"
 	@echo "... addproductcategory.i"
 	@echo "... addproductcategory.s"
+	@echo "... addsupplier.o"
+	@echo "... addsupplier.i"
+	@echo "... addsupplier.s"
 	@echo "... addtransactiontype.o"
 	@echo "... addtransactiontype.i"
 	@echo "... addtransactiontype.s"
@@ -1199,6 +1313,9 @@ help:
 	@echo "... editproductcategory.o"
 	@echo "... editproductcategory.i"
 	@echo "... editproductcategory.s"
+	@echo "... editsupplier.o"
+	@echo "... editsupplier.i"
+	@echo "... editsupplier.s"
 	@echo "... edituser.o"
 	@echo "... edituser.i"
 	@echo "... edituser.s"
@@ -1253,6 +1370,9 @@ help:
 	@echo "... viewproduct.o"
 	@echo "... viewproduct.i"
 	@echo "... viewproduct.s"
+	@echo "... viewsupplier.o"
+	@echo "... viewsupplier.i"
+	@echo "... viewsupplier.s"
 	@echo "... viewuser.o"
 	@echo "... viewuser.i"
 	@echo "... viewuser.s"

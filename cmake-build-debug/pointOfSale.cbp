@@ -122,6 +122,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/vee/pointOfSale/acquirestock.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/acquirestock.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/acquirestock.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addcustomer.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>
@@ -156,6 +165,15 @@
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addproductcategory.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addsupplier.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addsupplier.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addsupplier.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addtransactiontype.cpp">
@@ -285,6 +303,15 @@
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/editproductcategory.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editsupplier.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editsupplier.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editsupplier.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/edituser.cpp">
@@ -426,6 +453,15 @@
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/viewproduct.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewsupplier.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewsupplier.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewsupplier.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/viewuser.cpp">

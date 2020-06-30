@@ -51,7 +51,7 @@ void ViewProduct::on_btnEditProduct_clicked()
 {
     editProduct = new ProductEditor(this, *currentUser, *productToView);
     editProduct->show();
-    QObject::connect(editProduct, SIGNAL(editWorkComplete()), this, SLOT(receiveEditWorkComplete()));
+    QObject::connect(editProduct, SIGNAL(productEditingCompleted()), this, SLOT(receiveEditWorkComplete()));
 }
 
 void ViewProduct::on_btnClose_clicked()

@@ -682,7 +682,7 @@ background-color: rgb(238, 238, 236);</string>
              <string notr="true"/>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="page_dashboard">
              <widget class="QLabel" name="label_2">
@@ -1557,6 +1557,11 @@ background-color: rgb(238, 238, 236);</string>
                   </column>
                   <column>
                    <property name="text">
+                    <string>Product Category</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
                     <string>Product Barcode</string>
                    </property>
                   </column>
@@ -1598,11 +1603,6 @@ background-color: rgb(238, 238, 236);</string>
                   <column>
                    <property name="text">
                     <string>View Product</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string/>
                    </property>
                   </column>
                  </widget>
@@ -1841,7 +1841,7 @@ color: rgb(243, 243, 243);</string>
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
                   </property>
-                  <widget class="QPushButton" name="pushButton_addNewUser_3">
+                  <widget class="QPushButton" name="btnAcquireStock">
                    <property name="geometry">
                     <rect>
                      <x>10</x>
@@ -1851,7 +1851,7 @@ color: rgb(243, 243, 243);</string>
                     </rect>
                    </property>
                    <property name="text">
-                    <string>Add User</string>
+                    <string>Acquire Stock</string>
                    </property>
                   </widget>
                   <widget class="QPushButton" name="btn_loadUsers_3">
@@ -1864,7 +1864,7 @@ color: rgb(243, 243, 243);</string>
                     </rect>
                    </property>
                    <property name="text">
-                    <string>Load Users</string>
+                    <string>Load Stock</string>
                    </property>
                   </widget>
                   <widget class="QLabel" name="label_12">
@@ -3930,30 +3930,44 @@ color: rgb(243, 243, 243);</string>
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
                   </property>
-                  <widget class="QPushButton" name="pushButton_addNewUser_8">
+                  <widget class="QPushButton" name="btnAddSupplier">
                    <property name="geometry">
                     <rect>
                      <x>10</x>
                      <y>4</y>
-                     <width>80</width>
+                     <width>121</width>
                      <height>23</height>
                     </rect>
                    </property>
                    <property name="text">
-                    <string>Add User</string>
+                    <string>Add New </string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resources.qrc">
+                     <normaloff>:/resources/new_icons_2/icons8-plus-144.png</normaloff>:/resources/new_icons_2/icons8-plus-144.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
                    </property>
                   </widget>
                   <widget class="QPushButton" name="btn_loadUsers_8">
                    <property name="geometry">
                     <rect>
-                     <x>100</x>
-                     <y>4</y>
-                     <width>80</width>
+                     <x>140</x>
+                     <y>0</y>
+                     <width>111</width>
                      <height>23</height>
                     </rect>
                    </property>
                    <property name="text">
-                    <string>Load Users</string>
+                    <string>Load Suppliers</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resources.qrc">
+                     <normaloff>:/resources/new_icons_2/icons8-add-property-96.png</normaloff>:/resources/new_icons_2/icons8-add-property-96.png</iconset>
                    </property>
                   </widget>
                   <widget class="QLabel" name="label_32">
@@ -4015,13 +4029,13 @@ color: rgb(243, 243, 243);</string>
                     <string notr="true">color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="text">
-                    <string>CASHIERS</string>
+                    <string>SUPPLIERS</string>
                    </property>
                   </widget>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QTableWidget" name="tableWidgetCashiers_8">
+                 <widget class="QTableWidget" name="twSuppliers">
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
@@ -4030,17 +4044,27 @@ color: rgb(243, 243, 243);</string>
                   </property>
                   <column>
                    <property name="text">
-                    <string>User ID</string>
+                    <string>Supplier Id</string>
                    </property>
                   </column>
                   <column>
                    <property name="text">
-                    <string>First Name</string>
+                    <string>Name</string>
                    </property>
                   </column>
                   <column>
                    <property name="text">
-                    <string>Other Names</string>
+                    <string>Alias</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Company</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Phone</string>
                    </property>
                   </column>
                   <column>
@@ -4050,27 +4074,27 @@ color: rgb(243, 243, 243);</string>
                   </column>
                   <column>
                    <property name="text">
-                    <string>Phone Number</string>
+                    <string>Products Supplied</string>
                    </property>
                   </column>
                   <column>
                    <property name="text">
-                    <string>Username</string>
+                    <string>Debt Owed</string>
                    </property>
                   </column>
                   <column>
                    <property name="text">
-                    <string>User Role</string>
+                    <string>Cash Paid</string>
                    </property>
                   </column>
                   <column>
                    <property name="text">
-                    <string>Avatar</string>
+                    <string>Total Supplies</string>
                    </property>
                   </column>
                   <column>
                    <property name="text">
-                    <string>View User</string>
+                    <string>View Supplier</string>
                    </property>
                   </column>
                  </widget>

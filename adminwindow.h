@@ -17,6 +17,9 @@
 #include "addtransactiontype.h"
 #include "addproductcategory.h"
 #include "editproductcategory.h"
+#include "addsupplier.h"
+#include "viewsupplier.h"
+#include "acquirestock.h"
 namespace Ui {
 class AdminWindow;
 }
@@ -156,9 +159,21 @@ private slots:
     void receive_deleteProductCategory();
     void receiveEditCategoryComplete();
     void receiveReloadProductWithNewValues(int);
+    void receiveViewSupplier();
+    void receiveSupplierWorkComplete();
 
+    void on_btnAddSupplier_clicked();
 
-signals:
+    void on_btnAcquireStock_clicked();
+
+private:
+    AddSupplier* addNewSupplier;
+private:
+    void loadSuppliers();
+
+private:
+    ViewSupplier* viewSupplier;
+    AcquireStock* acquireStock;
 };
 
 #endif // ADMINWINDOW_H

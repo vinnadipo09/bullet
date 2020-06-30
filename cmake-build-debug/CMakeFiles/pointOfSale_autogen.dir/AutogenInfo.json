@@ -8,6 +8,11 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/vee/pointOfSale/acquirestock.h",
+			"MU",
+			"EWIEGA46WW/moc_acquirestock.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/addcustomer.h",
 			"MU",
 			"EWIEGA46WW/moc_addcustomer.cpp"
@@ -26,6 +31,11 @@
 			"/home/vee/pointOfSale/addproductcategory.h",
 			"MU",
 			"EWIEGA46WW/moc_addproductcategory.cpp"
+		],
+		[
+			"/home/vee/pointOfSale/addsupplier.h",
+			"MU",
+			"EWIEGA46WW/moc_addsupplier.cpp"
 		],
 		[
 			"/home/vee/pointOfSale/addtransactiontype.h",
@@ -96,6 +106,11 @@
 			"/home/vee/pointOfSale/editproductcategory.h",
 			"MU",
 			"EWIEGA46WW/moc_editproductcategory.cpp"
+		],
+		[
+			"/home/vee/pointOfSale/editsupplier.h",
+			"MU",
+			"EWIEGA46WW/moc_editsupplier.cpp"
 		],
 		[
 			"/home/vee/pointOfSale/edituser.h",
@@ -169,6 +184,11 @@
 			"EWIEGA46WW/moc_viewproduct.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/viewsupplier.h",
+			"MU",
+			"EWIEGA46WW/moc_viewsupplier.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/viewuser.h",
 			"MU",
 			"EWIEGA46WW/moc_viewuser.cpp"
@@ -228,10 +248,12 @@
 	"SETTINGS_FILE" : "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/vee/pointOfSale/acquirestock.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addcustomer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addnewproduct.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addnewuser.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addproductcategory.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/addsupplier.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addtransactiontype.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/adminwindow.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/cashierwindow.cpp", "MU" ],
@@ -246,6 +268,7 @@
 		[ "/home/vee/pointOfSale/debugger.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editcustomer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editproductcategory.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/editsupplier.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/edituser.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/login.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/main.cpp", "MU" ],
@@ -262,6 +285,7 @@
 		[ "/home/vee/pointOfSale/viaddialog.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/viewcustomer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/viewproduct.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/viewsupplier.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/viewuser.cpp", "MU" ]
 	],
 	"UIC_OPTIONS" : [],

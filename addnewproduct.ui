@@ -460,7 +460,7 @@ color: rgb(238, 238, 236);</string>
      <enum>QFrame::Raised</enum>
     </property>
     <property name="text">
-     <string>Product Name</string>
+     <string>Product Category</string>
     </property>
    </widget>
    <widget class="QComboBox" name="cbProductCategory">

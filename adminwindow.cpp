@@ -23,6 +23,7 @@ AdminWindow::AdminWindow(QWidget *parent, loggedUser &currentLoggedInUser) :
     loadAllProducts();
     loadTransactionTypes();
     loadProductCategory();
+    loadSuppliers();
 }
 
 AdminWindow::~AdminWindow()
@@ -89,7 +90,7 @@ void AdminWindow::on_pushButton_orders_clicked()
 
 void AdminWindow::on_pushButton_suppliers_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(8);
+    ui->stackedWidget->setCurrentIndex(9);
 }
 
 void AdminWindow::on_pushButton_openingClosing_clicked()
@@ -462,21 +463,22 @@ void AdminWindow::loadAllProducts() {
                 numrowsAllProducts=queryOne.value(0).toInt();
                 ui->tableWidget_allProducts->setRowCount(numrowsAllProducts);
                 QSqlQuery query(QSqlDatabase::database("MyConnect"));
-                query.prepare(QString("SELECT  products.product_id, products.product_name, products.product_barcode, products.product_shortcode, products.product_quantity,"
+                query.prepare(QString("SELECT  products.product_id, products.product_name, product_category.category, products.product_barcode, products.product_shortcode, products.product_quantity,"
                                       " products.product_wsprice, products.product_rtprice,"
-                                      "products.product_image, productDiscounts.amount,  productRewards.reward_amount FROM ((products LEFT JOIN productDiscounts ON"
+                                      "products.product_image, productDiscounts.amount,  productRewards.reward_amount FROM (((products LEFT JOIN productDiscounts ON"
                                       " products.product_id = productDiscounts.product_id)LEFT JOIN productRewards ON"
-                                      " productRewards.product_id=products.product_id)"));
+                                      " productRewards.product_id=products.product_id)LEFT JOIN product_category ON"
+                                      " product_category.category_id=products.product_category)"));
                 if(!query.exec()){
                     QMessageBox::critical(this, "Database Error", query.lastError().text());
                     Debug(query.lastError());
                 }else{
                     for(allProductsRows=0, query.first(); query.isValid(); query.next(), allProductsRows++){
-                        for(allProductsColumns=0; allProductsColumns<11; allProductsColumns++){
-                            if(allProductsColumns==10){
+                        for(allProductsColumns=0; allProductsColumns<12; allProductsColumns++){
+                            if(allProductsColumns==11){
                                 QPushButton* btn_edit_allProducts = new QPushButton;
                                 btn_edit_allProducts->setText("View");
-                                ui->tableWidget_allProducts->setCellWidget(allProductsRows, 10, btn_edit_allProducts);
+                                ui->tableWidget_allProducts->setCellWidget(allProductsRows, 11, btn_edit_allProducts);
                                 QObject::connect(btn_edit_allProducts, &QPushButton::clicked, this, &AdminWindow::on_btn_viewFromAllProductsClicked);
                             }
                             ui->tableWidget_allProducts->setItem(allProductsRows, allProductsColumns, new QTableWidgetItem(query.value(allProductsColumns).toString()));
@@ -505,11 +507,12 @@ void AdminWindow::on_btn_viewFromAllProductsClicked() {
 }
 void AdminWindow::grabAllProductsProductToView() {
     QSqlQuery query(QSqlDatabase::database("MyConnect"));
-    query.prepare(QString("SELECT  products.product_id, products.product_name, products.product_barcode, products.product_shortcode, products.product_quantity,"
+    query.prepare(QString("SELECT  products.product_id, products.product_name, product_category.category, products.product_barcode, products.product_shortcode, products.product_quantity,"
                           " products.product_wsprice, products.product_rtprice,"
-                          "products.product_image, productDiscounts.amount,  productRewards.reward_amount, products.product_updatedby, products.product_updatedon FROM ((products LEFT JOIN productDiscounts ON"
+                          "products.product_image, productDiscounts.amount,  productRewards.reward_amount, products.product_updatedby, products.product_updatedon FROM (((products LEFT JOIN productDiscounts ON"
                           " products.product_id = productDiscounts.product_id)LEFT JOIN productRewards ON"
-                          " productRewards.product_id=products.product_id) WHERE products.product_id = :productId"));
+                          " productRewards.product_id=products.product_id)LEFT JOIN product_category ON"
+                          " product_category.category_id=products.product_category)  WHERE products.product_id = :productId"));
     query.bindValue(":productId", currentProductViewId);
     if(!query.exec()){
         QMessageBox::critical(this, "Database Error", query.lastError().text());
@@ -519,16 +522,17 @@ void AdminWindow::grabAllProductsProductToView() {
             productToView = new productFromDb;
             productToView->product_id = query.value(0).toString();
             productToView->product_name = query.value(1).toString();
-            productToView->product_barcode = query.value(2).toString();
-            productToView->product_shortcode = query.value(3).toString();
-            productToView->product_quantity = query.value(4).toString();
-            productToView->product_wsprice = query.value(5).toDouble();
-            productToView->product_rtprice = query.value(6).toDouble();
-            productToView->product_image = query.value(7).toString();
-            productToView->product_discount = query.value(8).toDouble();
-            productToView->product_rewards = query.value(9).toDouble();
-            productToView->modifiedBy = query.value(10).toInt();
-            productToView->modifiedAt = query.value(11).toDateTime();
+            productToView->product_cat = query.value(2).toString();
+            productToView->product_barcode = query.value(3).toString();
+            productToView->product_shortcode = query.value(4).toString();
+            productToView->product_quantity = query.value(5).toString();
+            productToView->product_wsprice = query.value(6).toDouble();
+            productToView->product_rtprice = query.value(7).toDouble();
+            productToView->product_image = query.value(8).toString();
+            productToView->product_discount = query.value(9).toDouble();
+            productToView->product_rewards = query.value(10).toDouble();
+            productToView->modifiedBy = query.value(11).toInt();
+            productToView->modifiedAt = query.value(12).toDateTime();
             viewProduct = new ViewProduct(this, *adminUser, *productToView);
         }
     }
@@ -867,4 +871,71 @@ void AdminWindow::receiveProdAdditionComplete() {
 
 }
 
+void AdminWindow::on_btnAddSupplier_clicked()
+{
+    addNewSupplier = new AddSupplier(this, *adminUser);
+    addNewSupplier->setModal(true);
+    addNewSupplier->show();
+    QObject::connect(addNewSupplier, SIGNAL(supplierAdditionSuccess()), this, SLOT(receiveSupplierWorkComplete()));
 
+
+}
+
+void AdminWindow::loadSuppliers() {
+    ui->twSuppliers->horizontalHeader()->setVisible(true);
+    ui->twSuppliers->horizontalHeader()->setDefaultSectionSize(120);
+    ui->twSuppliers->horizontalHeader()->setStretchLastSection(true);
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery queryOne(QSqlDatabase::database("MyConnect"));
+        queryOne.prepare(QString("SELECT COUNT(supplier_id) FROM suppliers"));
+        if(!queryOne.exec()){
+            QMessageBox::critical(this, "Database Error", queryOne.lastError().text());
+            return;
+        }else{
+            while(queryOne.next()){
+                int num_transaction_type_rows = queryOne.value(0).toInt();
+                ui->twSuppliers->setRowCount(num_transaction_type_rows);
+                QSqlQuery query(QSqlDatabase::database("MyConnect"));
+                query.prepare("SELECT supplier_id, name, alias, company, phone, email, product_supplied FROM suppliers");
+                if(!query.exec()){
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                    Debug(query.lastError());
+                }else{
+                    for(rows=0, query.first(); query.isValid(); query.next(), rows++){
+                        for(columns=0; columns<11; columns++){
+                            if(columns==10) {
+                                QPushButton *btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("View");
+                                ui->twSuppliers->setCellWidget(rows, 10, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                 &AdminWindow::receiveViewSupplier);
+                            }
+                            ui->twSuppliers->setItem(rows, columns, new QTableWidgetItem(query.value(columns).toString()));
+                        }
+                    }
+
+                }
+
+            }}
+        }
+
+    }
+
+
+void AdminWindow::receiveViewSupplier() {
+//    viewSupplier = new ViewSupplier(this, *adminUser, *edi);
+//    viewSupplier->setModal(true);
+//    viewSupplier->show();
+}
+
+void AdminWindow::receiveSupplierWorkComplete() {
+    addNewSupplier->close();
+    loadSuppliers();
+}
+
+void AdminWindow::on_btnAcquireStock_clicked()
+{
+    acquireStock = new AcquireStock(this, *adminUser);
+    acquireStock->setModal(true);
+    acquireStock->show();
+}

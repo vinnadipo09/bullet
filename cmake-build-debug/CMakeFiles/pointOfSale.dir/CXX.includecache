@@ -48,6 +48,14 @@ debugger.h
 databaseconnection.h
 ../databaseconnection.h
 
+../addsupplier.h
+QDialog
+-
+debugger.h
+../debugger.h
+databaseconnection.h
+../databaseconnection.h
+
 ../addtransactiontype.h
 QDialog
 -
@@ -89,6 +97,10 @@ addproductcategory.h
 ../addproductcategory.h
 editproductcategory.h
 ../editproductcategory.h
+addsupplier.h
+../addsupplier.h
+viewsupplier.h
+../viewsupplier.h
 
 ../cashierwindow.h
 QMainWindow
@@ -174,6 +186,10 @@ debugger.h
 databaseconnection.h
 ../databaseconnection.h
 
+../editsupplier.h
+QDialog
+-
+
 ../edituser.h
 QDialog
 -
@@ -213,6 +229,8 @@ debugger.h
 ../debugger.h
 databaseconnection.h
 ../databaseconnection.h
+verifynewproduct.h
+../verifynewproduct.h
 
 ../productrewardeditor.h
 QDialog
@@ -320,6 +338,14 @@ productdiscounteditor.h
 productrewardeditor.h
 ../productrewardeditor.h
 
+../viewsupplier.h
+QDialog
+-
+debugger.h
+../debugger.h
+databaseconnection.h
+../databaseconnection.h
+
 ../viewuser.h
 QDialog
 -
@@ -365,6 +391,14 @@ viewuser.h
 /home/vee/pointOfSale/viewuser.h
 
 /home/vee/pointOfSale/addproductcategory.h
+QDialog
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
+
+/home/vee/pointOfSale/addsupplier.h
 QDialog
 -
 debugger.h
@@ -419,6 +453,10 @@ addproductcategory.h
 /home/vee/pointOfSale/addproductcategory.h
 editproductcategory.h
 /home/vee/pointOfSale/editproductcategory.h
+addsupplier.h
+/home/vee/pointOfSale/addsupplier.h
+viewsupplier.h
+/home/vee/pointOfSale/viewsupplier.h
 
 /home/vee/pointOfSale/cashierwindow.h
 QMainWindow
@@ -471,6 +509,14 @@ QtCore/qmetatype.h
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_addproductcategory.cpp
 addproductcategory.h
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/addproductcategory.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
+-
+
+/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_addsupplier.cpp
+addsupplier.h
+/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/addsupplier.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
@@ -567,6 +613,14 @@ QtCore/qmetatype.h
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_editproductcategory.cpp
 editproductcategory.h
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/editproductcategory.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
+-
+
+/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_editsupplier.cpp
+editsupplier.h
+/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/editsupplier.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
@@ -692,6 +746,14 @@ QtCore/qbytearray.h
 QtCore/qmetatype.h
 -
 
+/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_viewsupplier.cpp
+viewsupplier.h
+/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/viewsupplier.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
+-
+
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_viewuser.cpp
 viewuser.h
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/viewuser.h
@@ -709,6 +771,8 @@ EWIEGA46WW/moc_addnewuser.cpp
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_addnewuser.cpp
 EWIEGA46WW/moc_addproductcategory.cpp
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_addproductcategory.cpp
+EWIEGA46WW/moc_addsupplier.cpp
+/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_addsupplier.cpp
 EWIEGA46WW/moc_addtransactiontype.cpp
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_addtransactiontype.cpp
 EWIEGA46WW/moc_adminwindow.cpp
@@ -733,6 +797,8 @@ EWIEGA46WW/moc_editcustomer.cpp
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_editcustomer.cpp
 EWIEGA46WW/moc_editproductcategory.cpp
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_editproductcategory.cpp
+EWIEGA46WW/moc_editsupplier.cpp
+/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_editsupplier.cpp
 EWIEGA46WW/moc_edituser.cpp
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_edituser.cpp
 EWIEGA46WW/moc_login.cpp
@@ -763,6 +829,8 @@ EWIEGA46WW/moc_viewcustomer.cpp
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_viewcustomer.cpp
 EWIEGA46WW/moc_viewproduct.cpp
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_viewproduct.cpp
+EWIEGA46WW/moc_viewsupplier.cpp
+/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_viewsupplier.cpp
 EWIEGA46WW/moc_viewuser.cpp
 /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/moc_viewuser.cpp
 
@@ -850,12 +918,6 @@ debugger.h
 databaseconnection.h
 /home/vee/pointOfSale/databaseconnection.h
 
-/home/vee/pointOfSale/producteditor.cpp
-producteditor.h
-/home/vee/pointOfSale/producteditor.h
-ui_producteditor.h
-/home/vee/pointOfSale/ui_producteditor.h
-
 /home/vee/pointOfSale/producteditor.h
 QDialog
 -
@@ -863,6 +925,8 @@ debugger.h
 /home/vee/pointOfSale/debugger.h
 databaseconnection.h
 /home/vee/pointOfSale/databaseconnection.h
+verifynewproduct.h
+/home/vee/pointOfSale/verifynewproduct.h
 
 /home/vee/pointOfSale/productrewardeditor.h
 QDialog
@@ -944,12 +1008,6 @@ debugger.h
 databaseconnection.h
 /home/vee/pointOfSale/databaseconnection.h
 
-/home/vee/pointOfSale/viewproduct.cpp
-viewproduct.h
-/home/vee/pointOfSale/viewproduct.h
-ui_viewproduct.h
-/home/vee/pointOfSale/ui_viewproduct.h
-
 /home/vee/pointOfSale/viewproduct.h
 QDialog
 -
@@ -963,6 +1021,20 @@ productdiscounteditor.h
 /home/vee/pointOfSale/productdiscounteditor.h
 productrewardeditor.h
 /home/vee/pointOfSale/productrewardeditor.h
+
+/home/vee/pointOfSale/viewsupplier.cpp
+viewsupplier.h
+/home/vee/pointOfSale/viewsupplier.h
+ui_viewsupplier.h
+/home/vee/pointOfSale/ui_viewsupplier.h
+
+/home/vee/pointOfSale/viewsupplier.h
+QDialog
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
 
 /home/vee/pointOfSale/viewuser.h
 QDialog
@@ -3306,10 +3378,6 @@ qapplication.h
 qbuttongroup.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QComboBox
-qcombobox.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h
-
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCompleter
 qcompleter.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcompleter.h
@@ -3898,31 +3966,7 @@ QtWidgets/QLineEdit
 QtWidgets/QPushButton
 -
 
-pointOfSale_autogen/include/ui_producteditor.h
-QtCore/QVariant
--
-QtWidgets/QAction
--
-QtWidgets/QApplication
--
-QtWidgets/QButtonGroup
--
-QtWidgets/QComboBox
--
-QtWidgets/QDialog
--
-QtWidgets/QGroupBox
--
-QtWidgets/QHeaderView
--
-QtWidgets/QLabel
--
-QtWidgets/QLineEdit
--
-QtWidgets/QPushButton
--
-
-pointOfSale_autogen/include/ui_viewproduct.h
+pointOfSale_autogen/include/ui_viewsupplier.h
 QtCore/QVariant
 -
 QtWidgets/QAction

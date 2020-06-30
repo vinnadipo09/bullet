@@ -80,6 +80,17 @@ struct productToDatabase{
     int modifiedBy;
     QDateTime modifiedAt;
 };
+struct supplierUser{
+    int supplierId;
+    QString name;
+    QString alias;
+    QString company;
+    QString phone;
+    QString email;
+    QString productsSupplied;
+    QDateTime  dateModified;
+    int modifyingUserId;
+};
 class Debugger
 {
 public:
