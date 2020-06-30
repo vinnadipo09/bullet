@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_AdminWindow_t {
-    QByteArrayData data[57];
-    char stringdata0[1434];
+    QByteArrayData data[58];
+    char stringdata0[1461];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -87,7 +87,8 @@ QT_MOC_LITERAL(52, 1298, 27), // "receiveEditCategoryComplete"
 QT_MOC_LITERAL(53, 1326, 33), // "receiveReloadProductWithNewVa..."
 QT_MOC_LITERAL(54, 1360, 19), // "receiveViewSupplier"
 QT_MOC_LITERAL(55, 1380, 27), // "receiveSupplierWorkComplete"
-QT_MOC_LITERAL(56, 1408, 25) // "on_btnAddSupplier_clicked"
+QT_MOC_LITERAL(56, 1408, 25), // "on_btnAddSupplier_clicked"
+QT_MOC_LITERAL(57, 1434, 26) // "on_btnAcquireStock_clicked"
 
     },
     "AdminWindow\0send_admin_logged_out\0\0"
@@ -131,7 +132,8 @@ QT_MOC_LITERAL(56, 1408, 25) // "on_btnAddSupplier_clicked"
     "receiveEditCategoryComplete\0"
     "receiveReloadProductWithNewValues\0"
     "receiveViewSupplier\0receiveSupplierWorkComplete\0"
-    "on_btnAddSupplier_clicked"
+    "on_btnAddSupplier_clicked\0"
+    "on_btnAcquireStock_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -141,7 +143,7 @@ static const uint qt_meta_data_AdminWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      50,   14, // methods
+      51,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -149,58 +151,59 @@ static const uint qt_meta_data_AdminWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,  264,    2, 0x06 /* Public */,
+       1,    0,  269,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,  265,    2, 0x08 /* Private */,
-       4,    0,  266,    2, 0x08 /* Private */,
-       5,    0,  267,    2, 0x08 /* Private */,
-       6,    0,  268,    2, 0x08 /* Private */,
-       7,    0,  269,    2, 0x08 /* Private */,
-       8,    0,  270,    2, 0x08 /* Private */,
-       9,    0,  271,    2, 0x08 /* Private */,
-      10,    0,  272,    2, 0x08 /* Private */,
-      11,    1,  273,    2, 0x08 /* Private */,
-      14,    1,  276,    2, 0x08 /* Private */,
-      16,    1,  279,    2, 0x08 /* Private */,
-      18,    1,  282,    2, 0x08 /* Private */,
-      20,    0,  285,    2, 0x08 /* Private */,
-      21,    0,  286,    2, 0x08 /* Private */,
-      22,    0,  287,    2, 0x08 /* Private */,
-      23,    0,  288,    2, 0x08 /* Private */,
-      24,    0,  289,    2, 0x08 /* Private */,
-      25,    0,  290,    2, 0x08 /* Private */,
-      26,    0,  291,    2, 0x08 /* Private */,
-      27,    0,  292,    2, 0x08 /* Private */,
-      28,    0,  293,    2, 0x08 /* Private */,
-      29,    0,  294,    2, 0x08 /* Private */,
-      30,    0,  295,    2, 0x08 /* Private */,
-      31,    0,  296,    2, 0x08 /* Private */,
-      32,    0,  297,    2, 0x08 /* Private */,
-      33,    0,  298,    2, 0x08 /* Private */,
-      34,    0,  299,    2, 0x08 /* Private */,
-      35,    0,  300,    2, 0x08 /* Private */,
-      36,    0,  301,    2, 0x08 /* Private */,
-      37,    0,  302,    2, 0x08 /* Private */,
-      38,    0,  303,    2, 0x08 /* Private */,
-      39,    0,  304,    2, 0x08 /* Private */,
-      40,    0,  305,    2, 0x08 /* Private */,
-      41,    0,  306,    2, 0x08 /* Private */,
-      42,    0,  307,    2, 0x08 /* Private */,
-      43,    0,  308,    2, 0x08 /* Private */,
-      44,    0,  309,    2, 0x08 /* Private */,
-      45,    0,  310,    2, 0x08 /* Private */,
-      46,    0,  311,    2, 0x08 /* Private */,
-      47,    0,  312,    2, 0x08 /* Private */,
-      48,    0,  313,    2, 0x08 /* Private */,
-      49,    0,  314,    2, 0x08 /* Private */,
-      50,    0,  315,    2, 0x08 /* Private */,
-      51,    0,  316,    2, 0x08 /* Private */,
-      52,    0,  317,    2, 0x08 /* Private */,
-      53,    1,  318,    2, 0x08 /* Private */,
-      54,    0,  321,    2, 0x08 /* Private */,
-      55,    0,  322,    2, 0x08 /* Private */,
-      56,    0,  323,    2, 0x08 /* Private */,
+       3,    0,  270,    2, 0x08 /* Private */,
+       4,    0,  271,    2, 0x08 /* Private */,
+       5,    0,  272,    2, 0x08 /* Private */,
+       6,    0,  273,    2, 0x08 /* Private */,
+       7,    0,  274,    2, 0x08 /* Private */,
+       8,    0,  275,    2, 0x08 /* Private */,
+       9,    0,  276,    2, 0x08 /* Private */,
+      10,    0,  277,    2, 0x08 /* Private */,
+      11,    1,  278,    2, 0x08 /* Private */,
+      14,    1,  281,    2, 0x08 /* Private */,
+      16,    1,  284,    2, 0x08 /* Private */,
+      18,    1,  287,    2, 0x08 /* Private */,
+      20,    0,  290,    2, 0x08 /* Private */,
+      21,    0,  291,    2, 0x08 /* Private */,
+      22,    0,  292,    2, 0x08 /* Private */,
+      23,    0,  293,    2, 0x08 /* Private */,
+      24,    0,  294,    2, 0x08 /* Private */,
+      25,    0,  295,    2, 0x08 /* Private */,
+      26,    0,  296,    2, 0x08 /* Private */,
+      27,    0,  297,    2, 0x08 /* Private */,
+      28,    0,  298,    2, 0x08 /* Private */,
+      29,    0,  299,    2, 0x08 /* Private */,
+      30,    0,  300,    2, 0x08 /* Private */,
+      31,    0,  301,    2, 0x08 /* Private */,
+      32,    0,  302,    2, 0x08 /* Private */,
+      33,    0,  303,    2, 0x08 /* Private */,
+      34,    0,  304,    2, 0x08 /* Private */,
+      35,    0,  305,    2, 0x08 /* Private */,
+      36,    0,  306,    2, 0x08 /* Private */,
+      37,    0,  307,    2, 0x08 /* Private */,
+      38,    0,  308,    2, 0x08 /* Private */,
+      39,    0,  309,    2, 0x08 /* Private */,
+      40,    0,  310,    2, 0x08 /* Private */,
+      41,    0,  311,    2, 0x08 /* Private */,
+      42,    0,  312,    2, 0x08 /* Private */,
+      43,    0,  313,    2, 0x08 /* Private */,
+      44,    0,  314,    2, 0x08 /* Private */,
+      45,    0,  315,    2, 0x08 /* Private */,
+      46,    0,  316,    2, 0x08 /* Private */,
+      47,    0,  317,    2, 0x08 /* Private */,
+      48,    0,  318,    2, 0x08 /* Private */,
+      49,    0,  319,    2, 0x08 /* Private */,
+      50,    0,  320,    2, 0x08 /* Private */,
+      51,    0,  321,    2, 0x08 /* Private */,
+      52,    0,  322,    2, 0x08 /* Private */,
+      53,    1,  323,    2, 0x08 /* Private */,
+      54,    0,  326,    2, 0x08 /* Private */,
+      55,    0,  327,    2, 0x08 /* Private */,
+      56,    0,  328,    2, 0x08 /* Private */,
+      57,    0,  329,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -252,6 +255,7 @@ static const uint qt_meta_data_AdminWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -315,6 +319,7 @@ void AdminWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 47: _t->receiveViewSupplier(); break;
         case 48: _t->receiveSupplierWorkComplete(); break;
         case 49: _t->on_btnAddSupplier_clicked(); break;
+        case 50: _t->on_btnAcquireStock_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -354,13 +359,13 @@ int AdminWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 50)
+        if (_id < 51)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 50;
+        _id -= 51;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 50)
+        if (_id < 51)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 50;
+        _id -= 51;
     }
     return _id;
 }

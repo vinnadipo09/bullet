@@ -120,7 +120,7 @@ color: rgb(239, 41, 41);
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="leName">
+   <widget class="QLineEdit" name="leQuantity">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -133,21 +133,6 @@ color: rgb(239, 41, 41);
      <string notr="true">border-radius: 4px;
 background-color: rgb(136, 138, 133);</string>
     </property>
-   </widget>
-   <widget class="QComboBox" name="cbProducts">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>120</y>
-      <width>241</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Select Product</string>
-     </property>
-    </item>
    </widget>
    <widget class="QLabel" name="lbl_date_2">
     <property name="geometry">
@@ -177,21 +162,6 @@ color: rgb(238, 238, 236);</string>
      <string>Product</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="cbSuppliers">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>160</y>
-      <width>241</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Add Supplier</string>
-     </property>
-    </item>
-   </widget>
    <widget class="QLabel" name="lbl_date_3">
     <property name="geometry">
      <rect>
@@ -220,7 +190,7 @@ color: rgb(238, 238, 236);</string>
      <string>Supplier</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnSix">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -237,7 +207,7 @@ background-color: rgb(136, 138, 133);</string>
      <string>6 pcs</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="btnTwelve">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -254,7 +224,7 @@ background-color: rgb(136, 138, 133);</string>
      <string>12 pcs</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="btnTwentyFour">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -271,7 +241,7 @@ background-color: rgb(136, 138, 133);</string>
      <string>24 pcs</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="btnSixty">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -288,7 +258,7 @@ background-color: rgb(136, 138, 133);</string>
      <string>60 pcs</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="btnThirtySix">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -305,7 +275,7 @@ background-color: rgb(136, 138, 133);</string>
      <string>36 pcs</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="btnFortyEight">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -350,7 +320,7 @@ color: rgb(238, 238, 236);</string>
      <string>Expected Payment Date</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="leName_2">
+   <widget class="QLineEdit" name="lePaymentDate">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -405,7 +375,7 @@ color: rgb(238, 238, 236);</string>
      <string>Amount</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="leName_3">
+   <widget class="QLineEdit" name="leAmount">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -461,6 +431,49 @@ color: rgb(238, 238, 236);</string>
       <string>Select Payment Method</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Cash</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Credit</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Credit+Cash</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="leSupplier">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>160</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 4px;
+background-color: rgb(136, 138, 133);</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="leProduct">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>120</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 4px;
+background-color: rgb(136, 138, 133);</string>
+    </property>
    </widget>
   </widget>
   <widget class="QLabel" name="label">

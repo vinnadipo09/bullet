@@ -132,7 +132,7 @@ public:
     QGridLayout *gridLayout_5;
     QVBoxLayout *verticalLayout_7;
     QFrame *frame_11;
-    QPushButton *pushButton_addNewUser_3;
+    QPushButton *btnAcquireStock;
     QPushButton *btn_loadUsers_3;
     QLabel *label_12;
     QFrame *frame_12;
@@ -1243,9 +1243,9 @@ public:
 "color: rgb(243, 243, 243);"));
         frame_11->setFrameShape(QFrame::StyledPanel);
         frame_11->setFrameShadow(QFrame::Raised);
-        pushButton_addNewUser_3 = new QPushButton(frame_11);
-        pushButton_addNewUser_3->setObjectName(QStringLiteral("pushButton_addNewUser_3"));
-        pushButton_addNewUser_3->setGeometry(QRect(10, 4, 80, 23));
+        btnAcquireStock = new QPushButton(frame_11);
+        btnAcquireStock->setObjectName(QStringLiteral("btnAcquireStock"));
+        btnAcquireStock->setGeometry(QRect(10, 4, 80, 23));
         btn_loadUsers_3 = new QPushButton(frame_11);
         btn_loadUsers_3->setObjectName(QStringLiteral("btn_loadUsers_3"));
         btn_loadUsers_3->setGeometry(QRect(100, 4, 80, 23));
@@ -3277,7 +3277,7 @@ public:
 
         retranslateUi(AdminWindow);
 
-        stackedWidget->setCurrentIndex(9);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(AdminWindow);
@@ -3517,8 +3517,8 @@ public:
         ___qtablewidgetitem87->setText(QApplication::translate("AdminWindow", "Avatar", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem88 = tableWidgetAdministrators_2->horizontalHeaderItem(9);
         ___qtablewidgetitem88->setText(QApplication::translate("AdminWindow", "View Record", Q_NULLPTR));
-        pushButton_addNewUser_3->setText(QApplication::translate("AdminWindow", "Add User", Q_NULLPTR));
-        btn_loadUsers_3->setText(QApplication::translate("AdminWindow", "Load Users", Q_NULLPTR));
+        btnAcquireStock->setText(QApplication::translate("AdminWindow", "Acquire Stock", Q_NULLPTR));
+        btn_loadUsers_3->setText(QApplication::translate("AdminWindow", "Load Stock", Q_NULLPTR));
         label_12->setText(QApplication::translate("AdminWindow", "STOCK  CENTRAL ADMIN PANEL", Q_NULLPTR));
         label_13->setText(QApplication::translate("AdminWindow", "CASHIERS", Q_NULLPTR));
         label_14->setText(QApplication::translate("AdminWindow", "SUPERVISORS", Q_NULLPTR));
