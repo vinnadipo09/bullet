@@ -26,7 +26,8 @@ void AddProductCategory::on_btnApply_clicked()
     addCategoryConnection->conn_open();
     checkIfAllFieldsCaptured();
     if(!allDataFilled){
-        QMessageBox::warning(this, "Missing Data!", "Some informaiton is missing!");
+        QMessageBox::warning(this, "Missing Data!", "Some information is missing!");
+        return;
     }else{
         checkForDuplicates();
         if(categoryAlreadyExists){
@@ -37,7 +38,6 @@ void AddProductCategory::on_btnApply_clicked()
             addCategory();
             if(categoryAdditionSuccessful){
                 QMessageBox::information(this, "Category Addition Successful!", "Category "+ *productCategory+" has been successfully added");
-                this->accept();
                 emit productCategoryOperationsComplete();
             }else{
                 QMessageBox::warning(this, "Entry Error!", "The process encountered error!");

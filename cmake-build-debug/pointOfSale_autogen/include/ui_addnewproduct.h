@@ -45,9 +45,11 @@ public:
     QLineEdit *leProductQuantity;
     QLineEdit *leWholeSalePrice;
     QLineEdit *leRetailPrice;
-    QPushButton *btnAvatar;
+    QPushButton *btnProductImage;
     QLabel *lbl_first_name_2;
     QComboBox *cbProductCategory;
+    QComboBox *cbProductZone;
+    QLabel *lbl_first_name_3;
     QLabel *label_2;
     QLabel *label;
 
@@ -71,7 +73,7 @@ public:
         lbl_first_name->setFrameShadow(QFrame::Raised);
         lbl_other_names = new QLabel(groupBox);
         lbl_other_names->setObjectName(QStringLiteral("lbl_other_names"));
-        lbl_other_names->setGeometry(QRect(70, 370, 201, 31));
+        lbl_other_names->setGeometry(QRect(70, 420, 201, 31));
         lbl_other_names->setFont(font);
         lbl_other_names->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
 "color: rgb(238, 238, 236);"));
@@ -79,7 +81,7 @@ public:
         lbl_other_names->setFrameShadow(QFrame::Sunken);
         lbl_email = new QLabel(groupBox);
         lbl_email->setObjectName(QStringLiteral("lbl_email"));
-        lbl_email->setGeometry(QRect(70, 410, 201, 31));
+        lbl_email->setGeometry(QRect(70, 460, 201, 31));
         lbl_email->setFont(font);
         lbl_email->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
 "color: rgb(238, 238, 236);"));
@@ -95,7 +97,7 @@ public:
         lbl_date->setFrameShadow(QFrame::Raised);
         lbl_username = new QLabel(groupBox);
         lbl_username->setObjectName(QStringLiteral("lbl_username"));
-        lbl_username->setGeometry(QRect(70, 490, 201, 31));
+        lbl_username->setGeometry(QRect(70, 540, 201, 31));
         QFont font1;
         font1.setFamily(QStringLiteral("Vemana2000"));
         font1.setPointSize(12);
@@ -106,7 +108,7 @@ public:
         lbl_username->setFrameShadow(QFrame::Raised);
         lbl_phone = new QLabel(groupBox);
         lbl_phone->setObjectName(QStringLiteral("lbl_phone"));
-        lbl_phone->setGeometry(QRect(70, 450, 201, 31));
+        lbl_phone->setGeometry(QRect(70, 500, 201, 31));
         lbl_phone->setFont(font);
         lbl_phone->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
 "color: rgb(238, 238, 236);"));
@@ -114,14 +116,14 @@ public:
         lbl_phone->setFrameShadow(QFrame::Sunken);
         btnOkay = new QPushButton(groupBox);
         btnOkay->setObjectName(QStringLiteral("btnOkay"));
-        btnOkay->setGeometry(QRect(130, 600, 141, 31));
+        btnOkay->setGeometry(QRect(130, 660, 141, 31));
         QIcon icon;
         icon.addFile(QStringLiteral(":/resources/icons/interface.png"), QSize(), QIcon::Normal, QIcon::Off);
         btnOkay->setIcon(icon);
         btnOkay->setIconSize(QSize(24, 24));
         btnCancel = new QPushButton(groupBox);
         btnCancel->setObjectName(QStringLiteral("btnCancel"));
-        btnCancel->setGeometry(QRect(290, 600, 141, 31));
+        btnCancel->setGeometry(QRect(290, 660, 141, 31));
         QIcon icon1;
         icon1.addFile(QStringLiteral(":/resources/icons/signs (2).png"), QSize(), QIcon::Normal, QIcon::Off);
         btnCancel->setIcon(icon1);
@@ -141,7 +143,7 @@ public:
         label_11->setAlignment(Qt::AlignCenter);
         lbl_username_2 = new QLabel(groupBox);
         lbl_username_2->setObjectName(QStringLiteral("lbl_username_2"));
-        lbl_username_2->setGeometry(QRect(70, 530, 201, 31));
+        lbl_username_2->setGeometry(QRect(70, 580, 201, 31));
         QFont font2;
         font2.setFamily(QStringLiteral("Umpush"));
         font2.setPointSize(12);
@@ -164,36 +166,36 @@ public:
 "background-color: rgb(136, 138, 133);"));
         leProductUniqueId = new QLineEdit(groupBox);
         leProductUniqueId->setObjectName(QStringLiteral("leProductUniqueId"));
-        leProductUniqueId->setGeometry(QRect(290, 370, 221, 31));
+        leProductUniqueId->setGeometry(QRect(290, 420, 221, 31));
         leProductUniqueId->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         leProductShortCode = new QLineEdit(groupBox);
         leProductShortCode->setObjectName(QStringLiteral("leProductShortCode"));
-        leProductShortCode->setGeometry(QRect(290, 410, 221, 31));
+        leProductShortCode->setGeometry(QRect(290, 460, 221, 31));
         leProductShortCode->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         leProductQuantity = new QLineEdit(groupBox);
         leProductQuantity->setObjectName(QStringLiteral("leProductQuantity"));
-        leProductQuantity->setGeometry(QRect(290, 450, 221, 31));
+        leProductQuantity->setGeometry(QRect(290, 500, 221, 31));
         leProductQuantity->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         leWholeSalePrice = new QLineEdit(groupBox);
         leWholeSalePrice->setObjectName(QStringLiteral("leWholeSalePrice"));
-        leWholeSalePrice->setGeometry(QRect(290, 490, 221, 31));
+        leWholeSalePrice->setGeometry(QRect(290, 540, 221, 31));
         leWholeSalePrice->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         leRetailPrice = new QLineEdit(groupBox);
         leRetailPrice->setObjectName(QStringLiteral("leRetailPrice"));
-        leRetailPrice->setGeometry(QRect(290, 530, 221, 31));
+        leRetailPrice->setGeometry(QRect(290, 580, 221, 31));
         leRetailPrice->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
-        btnAvatar = new QPushButton(groupBox);
-        btnAvatar->setObjectName(QStringLiteral("btnAvatar"));
-        btnAvatar->setGeometry(QRect(520, 250, 91, 31));
+        btnProductImage = new QPushButton(groupBox);
+        btnProductImage->setObjectName(QStringLiteral("btnProductImage"));
+        btnProductImage->setGeometry(QRect(520, 250, 91, 31));
         QIcon icon2;
         icon2.addFile(QStringLiteral(":/resources/newIcons/icons8-opened-folder-96.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btnAvatar->setIcon(icon2);
-        btnAvatar->setIconSize(QSize(24, 24));
+        btnProductImage->setIcon(icon2);
+        btnProductImage->setIconSize(QSize(24, 24));
         lbl_first_name_2 = new QLabel(groupBox);
         lbl_first_name_2->setObjectName(QStringLiteral("lbl_first_name_2"));
         lbl_first_name_2->setGeometry(QRect(70, 330, 201, 31));
@@ -205,6 +207,17 @@ public:
         cbProductCategory = new QComboBox(groupBox);
         cbProductCategory->setObjectName(QStringLiteral("cbProductCategory"));
         cbProductCategory->setGeometry(QRect(290, 330, 221, 31));
+        cbProductZone = new QComboBox(groupBox);
+        cbProductZone->setObjectName(QStringLiteral("cbProductZone"));
+        cbProductZone->setGeometry(QRect(290, 370, 221, 31));
+        lbl_first_name_3 = new QLabel(groupBox);
+        lbl_first_name_3->setObjectName(QStringLiteral("lbl_first_name_3"));
+        lbl_first_name_3->setGeometry(QRect(70, 370, 201, 31));
+        lbl_first_name_3->setFont(font);
+        lbl_first_name_3->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
+"color: rgb(238, 238, 236);"));
+        lbl_first_name_3->setFrameShape(QFrame::Panel);
+        lbl_first_name_3->setFrameShadow(QFrame::Raised);
         label_2 = new QLabel(AddNewProduct);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(20, -30, 1061, 781));
@@ -237,12 +250,17 @@ public:
         lbl_avatar->setText(QString());
         label_11->setText(QApplication::translate("AddNewProduct", "*Please take uttermost care before editing or deleting any information from the table*", Q_NULLPTR));
         lbl_username_2->setText(QApplication::translate("AddNewProduct", "Retail Price", Q_NULLPTR));
-        btnAvatar->setText(QApplication::translate("AddNewProduct", "Open...", Q_NULLPTR));
+        btnProductImage->setText(QApplication::translate("AddNewProduct", "Open...", Q_NULLPTR));
         lbl_first_name_2->setText(QApplication::translate("AddNewProduct", "Product Category", Q_NULLPTR));
         cbProductCategory->clear();
         cbProductCategory->insertItems(0, QStringList()
          << QApplication::translate("AddNewProduct", "Select Product Category", Q_NULLPTR)
         );
+        cbProductZone->clear();
+        cbProductZone->insertItems(0, QStringList()
+         << QApplication::translate("AddNewProduct", "Select Product Category", Q_NULLPTR)
+        );
+        lbl_first_name_3->setText(QApplication::translate("AddNewProduct", "Product Zone/Shelf", Q_NULLPTR));
         label_2->setText(QString());
         label->setText(QString());
     } // retranslateUi

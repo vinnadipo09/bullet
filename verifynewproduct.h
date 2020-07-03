@@ -34,6 +34,7 @@ private:
     void enterNewIntoDb();
     void enterDiscount();
     void enterRewards(int &);
+    void enterInitialStock(int &productId);
 
 private:
     bool productAdditionSuccessful = false;
@@ -41,6 +42,7 @@ private:
     bool rewardsAdditionSuccessful= false;
     int* productIdToDiscount;
     void addDiscountToDatabase();
+    bool initialStockAllocationSuccessful = false;
 signals:
     void productAdditionJobComplete();
     void editRequested();

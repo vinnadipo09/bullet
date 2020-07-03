@@ -24,6 +24,7 @@ AdminWindow::AdminWindow(QWidget *parent, loggedUser &currentLoggedInUser) :
     loadTransactionTypes();
     loadProductCategory();
     loadSuppliers();
+    loadZones();
 }
 
 AdminWindow::~AdminWindow()
@@ -463,12 +464,12 @@ void AdminWindow::loadAllProducts() {
                 numrowsAllProducts=queryOne.value(0).toInt();
                 ui->tableWidget_allProducts->setRowCount(numrowsAllProducts);
                 QSqlQuery query(QSqlDatabase::database("MyConnect"));
-                query.prepare(QString("SELECT  products.product_id, products.product_name, product_category.category, products.product_barcode, products.product_shortcode, products.product_quantity,"
-                                      " products.product_wsprice, products.product_rtprice,"
-                                      "products.product_image, productDiscounts.amount,  productRewards.reward_amount FROM (((products LEFT JOIN productDiscounts ON"
+                query.prepare(QString("SELECT  products.product_id, products.productName,products.productCategory, products.productZone,"
+                                      "products.productBarcode, products.productShortCode, products.productMeasurement,"
+                                      " products.productWSPrice, products.productRPrice,"
+                                      "products.productImage, productDiscounts.amount,  productRewards.reward_amount FROM ((products LEFT JOIN productDiscounts ON"
                                       " products.product_id = productDiscounts.product_id)LEFT JOIN productRewards ON"
-                                      " productRewards.product_id=products.product_id)LEFT JOIN product_category ON"
-                                      " product_category.category_id=products.product_category)"));
+                                      " productRewards.product_id=products.product_id)"));
                 if(!query.exec()){
                     QMessageBox::critical(this, "Database Error", query.lastError().text());
                     Debug(query.lastError());
@@ -522,7 +523,7 @@ void AdminWindow::grabAllProductsProductToView() {
             productToView = new productFromDb;
             productToView->product_id = query.value(0).toString();
             productToView->product_name = query.value(1).toString();
-            productToView->product_cat = query.value(2).toString();
+            productToView->product_category = query.value(2).toString();
             productToView->product_barcode = query.value(3).toString();
             productToView->product_shortcode = query.value(4).toString();
             productToView->product_quantity = query.value(5).toString();
@@ -577,11 +578,13 @@ void AdminWindow::receiveReloadProductWithNewValues(int productId) {
 }
 void AdminWindow::on_pb_addNewProducts_clicked()
 {
-    addNewProduct = new AddNewProduct(this, *adminUser);
-    addNewProduct->setModal(true);
-    addNewProduct->show();
-    QObject::connect(viewProduct, SIGNAL(productAdditionCompleted()), this, SLOT(receiveProdAdditionComplete()));
-
+    addProduct = new AddProduct(this, *adminUser);
+    addProduct->setModal(true);
+    addProduct->show();
+//    addNewProduct = new AddNewProduct(this, *adminUser);
+//    addNewProduct->setModal(true);
+//    addNewProduct->show();
+//    QObject::connect(viewProduct, SIGNAL(productAdditionCompleted()), this, SLOT(receiveProdAdditionComplete()));
 }
 
 
@@ -938,4 +941,158 @@ void AdminWindow::on_btnAcquireStock_clicked()
     acquireStock = new AcquireStock(this, *adminUser);
     acquireStock->setModal(true);
     acquireStock->show();
+}
+
+void AdminWindow::on_btnAddZone_clicked()
+{
+    addZone = new AddProductZone(this, *adminUser);
+    addZone->setModal(true);
+    addZone->show();
+
+    QObject::connect(addZone, SIGNAL(zoneAdditionComplete()), this, SLOT(receiveZoneWorkComplete()));
+
+}
+
+void AdminWindow::receiveZoneWorkComplete() {
+    loadZones();
+    addZone->close();
+}
+
+void AdminWindow::loadZones() {
+    ui->twProductZones->horizontalHeader()->setVisible(true);
+    ui->twProductZones->horizontalHeader()->setDefaultSectionSize(200);
+    ui->twProductZones->horizontalHeader()->setStretchLastSection(true);
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(zone_id) FROM product_zone"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else{
+            while (query.next()){
+                int num_transaction_type_rows = query.value(0).toInt();
+                ui->twProductZones->setRowCount(num_transaction_type_rows);
+                query.prepare("SELECT product_zone.zone_name, product_zone.zone_description, users.name FROM (product_zone "
+                              "INNER JOIN users ON product_zone.user_id = users.user_id)");
+                if(!query.exec()){
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                }else{
+
+                    for(rows=0, query.first(); query.isValid(); query.next(), rows++){
+                        for(columns=0; columns<5; columns++){
+                            if(columns==3){
+                                QPushButton* btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("Edit");
+                                ui->twProductZones->setCellWidget(rows, 3, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this, &AdminWindow::receiveEditProductZone);
+                            }else if(columns==4){
+                                QPushButton* btn_deleteProductCategory = new QPushButton;
+                                btn_deleteProductCategory->setText("Delete");
+                                ui->twProductZones->setCellWidget(rows, 4, btn_deleteProductCategory);
+                                QObject::connect(btn_deleteProductCategory, &QPushButton::clicked, this, &AdminWindow::receiveDeleteProductZone);
+                            }
+                            ui->twProductZones->setItem(rows, columns, new QTableWidgetItem(query.value(columns).toString()));
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+void AdminWindow::on_btn_ProductsCenter_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(16);
+}
+
+void AdminWindow::receiveEditProductZone() {
+    int row;
+    int col;
+    for(row=0; row<ui->twProductZones->rowCount(); row++){
+        for(col=0; col<ui->twProductZones->columnCount(); col++){
+            if(sender() == ui->twProductZones->cellWidget(row,col)){
+                QString currentProductZone = ui->twProductZones->item(row, 0)->text();
+                editProductZone(currentProductZone);
+            }
+        }
+    }
+}
+
+void AdminWindow::receiveDeleteProductZone() {
+    int row;
+    int col;
+    for(row=0; row<ui->twProductZones->rowCount(); row++){
+        for(col=0; col<ui->twProductZones->columnCount(); col++){
+            if(sender() == ui->twProductZones->cellWidget(row,col)){
+                QString currentProductZone = ui->twProductZones->item(row, 0)->text();
+                deleteProductZone(currentProductZone);
+            }
+        }
+    }
+    this->loadZones();
+}
+
+void AdminWindow::deleteProductZone(QString& productZone) {
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::warning(this, "Delete Zone", "This Process CANNOT be undone. Are you sure?",
+                                 QMessageBox::Yes | QMessageBox::Cancel);
+    if (reply == QMessageBox::Yes) {
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("DELETE FROM product_zone WHERE "
+                              "zone_name = :currentProductZone"));
+        query.bindValue(":currentProductZone", productZone);
+        if (!query.exec()) {
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        } else {
+            while (query.next()) {
+                QMessageBox::information(this, "Successfully Deleted!", "Product Zone Successfully Deleted!");
+
+            }
+        }
+    }else{
+        return;
+    }
+}
+
+void AdminWindow::editProductZone(QString& productZone) {
+    QSqlQuery query(QSqlDatabase::database("MyConnect"));
+    query.prepare(QString("SELECT zone_id, zone_name, zone_description FROM product_zone WHERE "
+                          "zone_name = :currentProductZone"));
+    query.bindValue(":currentProductZone", productZone);
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Database Error", query.lastError().text());
+        return;
+    } else {
+        while (query.next()) {
+
+
+
+            prodZone = new QString;
+            zoneDescription = new QString;
+            zoneId = new int;
+            *zoneId = query.value(0).toInt();
+            *prodZone = query.value(1).toString();
+            *zoneDescription = query.value(2).toString();
+            editProdZone = new EditProductZone(this, *adminUser,*prodZone, *zoneDescription, *zoneId);
+            editProdZone->setModal(true);
+            editProdZone->show();
+            QObject::connect(editProdZone, SIGNAL(editJobComplete()), this, SLOT(receiveZoneEditComplete()));
+        }
+    }
+}
+
+void AdminWindow::receiveZoneEditComplete() {
+    loadZones();
+    editProdZone->close();
+}
+
+void AdminWindow::on_btnAddProdcts_clicked()
+{
+    addNewProduct = new AddNewProduct(this, *adminUser);
+    addNewProduct->setModal(true);
+    addNewProduct->show();
+    QObject::connect(viewProduct, SIGNAL(productAdditionCompleted()), this, SLOT(receiveProdAdditionComplete()));
 }

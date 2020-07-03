@@ -266,11 +266,34 @@ padding: 1.5px;
 background-color: rgb(238, 238, 236);</string>
                  </property>
                  <property name="text">
-                  <string>Products</string>
+                  <string>Products Manager</string>
                  </property>
                  <property name="icon">
                   <iconset resource="resources.qrc">
                    <normaloff>:/resources/newIcons/icons8-package-100.png</normaloff>:/resources/newIcons/icons8-package-100.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>24</width>
+                   <height>24</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_ProductsCenter">
+                 <property name="styleSheet">
+                  <string notr="true">text-align:left;
+padding-left:2px;
+padding: 1.5px;
+background-color: rgb(238, 238, 236);</string>
+                 </property>
+                 <property name="text">
+                  <string>Products</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources.qrc">
+                   <normaloff>:/resources/new_icons_2/icons8-barcode-scanner-400.png</normaloff>:/resources/new_icons_2/icons8-barcode-scanner-400.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -415,19 +438,6 @@ background-color: rgb(238, 238, 236);</string>
                    <width>24</width>
                    <height>24</height>
                   </size>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_2">
-                 <property name="styleSheet">
-                  <string notr="true">text-align:left;
-padding-left:2px;
-padding: 1.5px;
-background-color: rgb(238, 238, 236);</string>
-                 </property>
-                 <property name="text">
-                  <string>PushButton</string>
                  </property>
                 </widget>
                </item>
@@ -682,7 +692,7 @@ background-color: rgb(238, 238, 236);</string>
              <string notr="true"/>
             </property>
             <property name="currentIndex">
-             <number>3</number>
+             <number>16</number>
             </property>
             <widget class="QWidget" name="page_dashboard">
              <widget class="QLabel" name="label_2">
@@ -1297,23 +1307,6 @@ background-color: rgb(238, 238, 236);</string>
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_4">
                   <item>
-                   <widget class="QPushButton" name="btnAddCategory">
-                    <property name="text">
-                     <string>Add Product Category</string>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="resources.qrc">
-                      <normaloff>:/resources/new_icons_2/icons8-plus-144.png</normaloff>:/resources/new_icons_2/icons8-plus-144.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>24</width>
-                      <height>24</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
                    <widget class="QPushButton" name="btnLoadCategories">
                     <property name="text">
                      <string>Load Categories</string>
@@ -1331,31 +1324,19 @@ background-color: rgb(238, 238, 236);</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pb_addNewProducts">
-                    <property name="minimumSize">
-                     <size>
-                      <width>110</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>120</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">text-align:left;
-padding-left:2px;
-padding: 1.5px;
-background-color: rgb(238, 238, 236);</string>
-                    </property>
+                   <widget class="QPushButton" name="btnAddCategory">
                     <property name="text">
-                     <string>Add Product</string>
+                     <string>Add Product Category</string>
                     </property>
                     <property name="icon">
                      <iconset resource="resources.qrc">
-                      <normaloff>:/resources/icons/rss-button.png</normaloff>:/resources/icons/rss-button.png</iconset>
+                      <normaloff>:/resources/new_icons_2/icons8-plus-144.png</normaloff>:/resources/new_icons_2/icons8-plus-144.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>24</width>
+                      <height>24</height>
+                     </size>
                     </property>
                    </widget>
                   </item>
@@ -1385,6 +1366,23 @@ background-color: rgb(238, 238, 236);</string>
                     <property name="icon">
                      <iconset resource="resources.qrc">
                       <normaloff>:/resources/icons/multimedia (1).png</normaloff>:/resources/icons/multimedia (1).png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnAddZone">
+                    <property name="text">
+                     <string>Add Zone/Shelf</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="resources.qrc">
+                      <normaloff>:/resources/new_icons_2/icons8-plus-96.png</normaloff>:/resources/new_icons_2/icons8-plus-96.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>24</width>
+                      <height>24</height>
+                     </size>
                     </property>
                    </widget>
                   </item>
@@ -1524,7 +1522,7 @@ background-color: rgb(238, 238, 236);</string>
                     <rect>
                      <x>420</x>
                      <y>10</y>
-                     <width>91</width>
+                     <width>201</width>
                      <height>16</height>
                     </rect>
                    </property>
@@ -1532,80 +1530,62 @@ background-color: rgb(238, 238, 236);</string>
                     <string notr="true">color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="text">
-                    <string>ALL PRODUCTS</string>
+                    <string>PRODUCT ZONES/SHELF MANAGER</string>
                    </property>
                   </widget>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QTableWidget" name="tableWidget_allProducts">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>300</height>
-                   </size>
-                  </property>
-                  <column>
-                   <property name="text">
-                    <string>Product DB Id</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Product Name</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Product Category</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Product Barcode</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Product ShortCode</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Product Quantity</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Wholesale Price</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Retail Price</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Product Image</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Product Discount</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Product Reward</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>View Product</string>
-                   </property>
-                  </column>
-                 </widget>
+                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                  <item>
+                   <widget class="QTableWidget" name="twProductZones">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>1200</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>Category</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Description</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Added By</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Edit</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Delete</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton_2">
+                    <property name="text">
+                     <string>PushButton</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                 <item>
                  <widget class="QFrame" name="frame_9">
@@ -6573,7 +6553,157 @@ color: rgb(243, 243, 243);</string>
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="page_14"/>
+            <widget class="QWidget" name="pageProductsCenter">
+             <layout class="QGridLayout" name="gridLayout_18">
+              <item row="0" column="0">
+               <widget class="QPushButton" name="btnAddProdcts">
+                <property name="text">
+                 <string>Get us Products</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>1181</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="2">
+               <widget class="QPushButton" name="pb_addNewProducts">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>120</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">text-align:left;
+padding-left:2px;
+padding: 1.5px;
+background-color: rgb(238, 238, 236);</string>
+                </property>
+                <property name="text">
+                 <string>Add Product</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/resources/icons/rss-button.png</normaloff>:/resources/icons/rss-button.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_66">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(239, 41, 41);</string>
+                </property>
+                <property name="text">
+                 <string>ALL PRODUCTS</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="3">
+               <widget class="QTableWidget" name="tableWidget_allProducts">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>300</height>
+                 </size>
+                </property>
+                <column>
+                 <property name="text">
+                  <string>DB Id</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Nsmr</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Category</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Zone/Shelf</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Barcode</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Shortcode</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Quantity/Measurement</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Wholesale Price</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Retail Price</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Image Source</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Discount</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Reward</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>View/Edit</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </widget>
             <widget class="QWidget" name="page_15"/>
             <widget class="QWidget" name="page_16"/>
             <widget class="QWidget" name="page_17"/>

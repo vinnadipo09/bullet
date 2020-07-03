@@ -6,30 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/vee/pointOfSale/acquirestock.cpp
-acquirestock.h
-/home/vee/pointOfSale/acquirestock.h
-ui_acquirestock.h
-/home/vee/pointOfSale/ui_acquirestock.h
-
-/home/vee/pointOfSale/acquirestock.h
-QDialog
--
-iostream
--
-iterator
--
-map
--
-QCompleter
--
-QCalendarWidget
--
-databaseconnection.h
-/home/vee/pointOfSale/databaseconnection.h
-debugger.h
-/home/vee/pointOfSale/debugger.h
-
 /home/vee/pointOfSale/databaseconnection.h
 QDialog
 -
@@ -57,6 +33,20 @@ QDateTime
 -
 QTimer
 -
+
+/home/vee/pointOfSale/verifynewproduct.cpp
+verifynewproduct.h
+/home/vee/pointOfSale/verifynewproduct.h
+ui_verifynewproduct.h
+/home/vee/pointOfSale/ui_verifynewproduct.h
+
+/home/vee/pointOfSale/verifynewproduct.h
+QDialog
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QDateTime
 qdatetime.h
@@ -2020,14 +2010,6 @@ QtGui/qcolor.h
 QtGui/qbrush.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qpen.h
-QtGui/qtguiglobal.h
--
-QtGui/qcolor.h
--
-QtGui/qbrush.h
--
-
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixelformat.h
 QtGui/qtguiglobal.h
 -
@@ -2082,46 +2064,6 @@ QtCore/qprocessordetection.h
 QtGui/qtguiglobal.h
 -
 QtCore/qprocessordetection.h
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h
-QtGui/qtguiglobal.h
--
-QtCore/qstring.h
--
-QtCore/qshareddata.h
--
-QtGui/qtextformat.h
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h
-QtGui/qtguiglobal.h
--
-QtGui/qcolor.h
--
-QtGui/qfont.h
--
-QtCore/qshareddata.h
--
-QtCore/qvector.h
--
-QtCore/qvariant.h
--
-QtGui/qpen.h
--
-QtGui/qbrush.h
--
-QtGui/qtextoption.h
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h
-QtGui/qtguiglobal.h
--
-QtCore/qnamespace.h
--
-QtCore/qchar.h
--
-QtCore/qmetatype.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h
@@ -2364,18 +2306,6 @@ qapplication.h
 qbuttongroup.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCalendarWidget
-qcalendarwidget.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcalendarwidget.h
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QComboBox
-qcombobox.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCompleter
-qcompleter.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcompleter.h
-
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog
 qdialog.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h
@@ -2395,10 +2325,6 @@ qheaderview.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLabel
 qlabel.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit
-qlineedit.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlineedit.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
 qmessagebox.h
@@ -2508,14 +2434,6 @@ QtWidgets/qtwidgetsglobal.h
 QtCore/qobject.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcalendarwidget.h
-QtWidgets/qtwidgetsglobal.h
--
-QtWidgets/qwidget.h
--
-QtCore/qdatetime.h
--
-
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h
 QtWidgets/qtwidgetsglobal.h
 -
@@ -2528,20 +2446,6 @@ QtCore/qabstractitemmodel.h
 QtCore/qvariant.h
 -
 QtGui/qvalidator.h
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcompleter.h
-QtWidgets/qtwidgetsglobal.h
--
-QtCore/qobject.h
--
-QtCore/qpoint.h
--
-QtCore/qstring.h
--
-QtCore/qabstractitemmodel.h
--
-QtCore/qrect.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h
@@ -2602,18 +2506,6 @@ QtCore/qvariant.h
 QtWidgets/qtwidgetsglobal.h
 -
 QtWidgets/qframe.h
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlineedit.h
-QtWidgets/qtwidgetsglobal.h
--
-QtWidgets/qframe.h
--
-QtGui/qtextcursor.h
--
-QtCore/qstring.h
--
-QtCore/qmargins.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlistview.h
@@ -2754,7 +2646,7 @@ QtGui/qkeysequence.h
 QtGui/qevent.h
 -
 
-pointOfSale_autogen/include/ui_acquirestock.h
+pointOfSale_autogen/include/ui_verifynewproduct.h
 QtCore/QVariant
 -
 QtWidgets/QAction
@@ -2763,8 +2655,6 @@ QtWidgets/QApplication
 -
 QtWidgets/QButtonGroup
 -
-QtWidgets/QComboBox
--
 QtWidgets/QDialog
 -
 QtWidgets/QGroupBox
@@ -2772,8 +2662,6 @@ QtWidgets/QGroupBox
 QtWidgets/QHeaderView
 -
 QtWidgets/QLabel
--
-QtWidgets/QLineEdit
 -
 QtWidgets/QPushButton
 -

@@ -36,11 +36,9 @@ private:
     void grabAllProductDetails();
     void checkIfAllFieldsCaptured();
     void checkForDuplicateProducts();
-    void resolveDatabaseValues();
     bool allValuesTyped = false;
     bool selectionFilled = false;
     bool productAlreadyExists= false;
-    int* resolvedCategory;
 
 private:
     VerifyNewProduct* verifyProduct;

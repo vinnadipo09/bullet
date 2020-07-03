@@ -244,6 +244,33 @@ addnewuser.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addnewuser.cpp.s
 .PHONY : addnewuser.cpp.s
 
+addproduct.o: addproduct.cpp.o
+
+.PHONY : addproduct.o
+
+# target to build an object file
+addproduct.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproduct.cpp.o
+.PHONY : addproduct.cpp.o
+
+addproduct.i: addproduct.cpp.i
+
+.PHONY : addproduct.i
+
+# target to preprocess a source file
+addproduct.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproduct.cpp.i
+.PHONY : addproduct.cpp.i
+
+addproduct.s: addproduct.cpp.s
+
+.PHONY : addproduct.s
+
+# target to generate assembly for a file
+addproduct.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproduct.cpp.s
+.PHONY : addproduct.cpp.s
+
 addproductcategory.o: addproductcategory.cpp.o
 
 .PHONY : addproductcategory.o
@@ -270,6 +297,33 @@ addproductcategory.s: addproductcategory.cpp.s
 addproductcategory.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproductcategory.cpp.s
 .PHONY : addproductcategory.cpp.s
+
+addproductzone.o: addproductzone.cpp.o
+
+.PHONY : addproductzone.o
+
+# target to build an object file
+addproductzone.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproductzone.cpp.o
+.PHONY : addproductzone.cpp.o
+
+addproductzone.i: addproductzone.cpp.i
+
+.PHONY : addproductzone.i
+
+# target to preprocess a source file
+addproductzone.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproductzone.cpp.i
+.PHONY : addproductzone.cpp.i
+
+addproductzone.s: addproductzone.cpp.s
+
+.PHONY : addproductzone.s
+
+# target to generate assembly for a file
+addproductzone.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addproductzone.cpp.s
+.PHONY : addproductzone.cpp.s
 
 addsupplier.o: addsupplier.cpp.o
 
@@ -675,6 +729,33 @@ editproductcategory.s: editproductcategory.cpp.s
 editproductcategory.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editproductcategory.cpp.s
 .PHONY : editproductcategory.cpp.s
+
+editproductzone.o: editproductzone.cpp.o
+
+.PHONY : editproductzone.o
+
+# target to build an object file
+editproductzone.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editproductzone.cpp.o
+.PHONY : editproductzone.cpp.o
+
+editproductzone.i: editproductzone.cpp.i
+
+.PHONY : editproductzone.i
+
+# target to preprocess a source file
+editproductzone.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editproductzone.cpp.i
+.PHONY : editproductzone.cpp.i
+
+editproductzone.s: editproductzone.cpp.s
+
+.PHONY : editproductzone.s
+
+# target to generate assembly for a file
+editproductzone.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/editproductzone.cpp.s
+.PHONY : editproductzone.cpp.s
 
 editsupplier.o: editsupplier.cpp.o
 
@@ -1265,9 +1346,15 @@ help:
 	@echo "... addnewuser.o"
 	@echo "... addnewuser.i"
 	@echo "... addnewuser.s"
+	@echo "... addproduct.o"
+	@echo "... addproduct.i"
+	@echo "... addproduct.s"
 	@echo "... addproductcategory.o"
 	@echo "... addproductcategory.i"
 	@echo "... addproductcategory.s"
+	@echo "... addproductzone.o"
+	@echo "... addproductzone.i"
+	@echo "... addproductzone.s"
 	@echo "... addsupplier.o"
 	@echo "... addsupplier.i"
 	@echo "... addsupplier.s"
@@ -1313,6 +1400,9 @@ help:
 	@echo "... editproductcategory.o"
 	@echo "... editproductcategory.i"
 	@echo "... editproductcategory.s"
+	@echo "... editproductzone.o"
+	@echo "... editproductzone.i"
+	@echo "... editproductzone.s"
 	@echo "... editsupplier.o"
 	@echo "... editsupplier.i"
 	@echo "... editsupplier.s"

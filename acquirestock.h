@@ -27,6 +27,18 @@ private slots:
     void on_btnCancel_clicked();
     void grabCurrentDate();
 
+    void on_btnClear_clicked();
+
+    void on_btnSix_clicked();
+
+    void on_btnTwelve_clicked();
+
+    void on_btnTwentyFour_clicked();
+
+    void on_btnThirtySix_clicked();
+
+    void on_btnFortyEight_clicked();
+
 private:
     Ui::AcquireStock *ui;
 private:
@@ -44,6 +56,24 @@ private:
     QString* product;
     QCompleter *SupplierCompleter;
     QCompleter *ProductCompleter;
+
+private:
+    void grabStockDetails();
+    void checkIfAllFieldsAreCaptured();
+    void resolveDatabaseValues();
+    bool allFieldsCaptured = false;
+    bool stockAdditionSuccessful = false;
+    void postPaymentToTable();
+private:
+    int* qtySupplied;
+    bool paymentSelected = false;
+    acquiredStock* newStock;
+    int* supplierId;
+    int* productId;
+
+
+private slots:
+    void paymentChanged(int);
 
 
 };

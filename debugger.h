@@ -51,8 +51,8 @@ struct Customer{
 struct productFromDb{
     QString product_id;
     QString product_name;
-    int product_category;
-    QString product_cat;
+    QString productZone;
+    QString product_category;
     QString product_barcode;
     QString product_shortcode;
     QString product_quantity;
@@ -67,11 +67,11 @@ struct productFromDb{
 struct productToDatabase{
     QString product_id;
     QString product_name;
-    int product_category;
-    QString product_cat;
     QString product_barcode;
     QString product_shortcode;
     QString product_quantity;
+    QString productZone;
+    QString product_category;
     double product_wsprice;
     double product_rtprice;
     double  product_discount;
@@ -90,6 +90,19 @@ struct supplierUser{
     QString productsSupplied;
     QDateTime  dateModified;
     int modifyingUserId;
+};
+struct acquiredStock{
+    int acquisitionId;
+    int acquisitionUserId;
+    int acquisitionSupplierId;
+    int acquisitionQuantity;
+    QString acquisitionPaymentMethod;
+    double acquisitionStockPrice;
+    double stockCash;
+    double stockCredit;
+    int acquisitionProductId;
+    QDate acquisitionPaymentDate;
+    QDateTime acquisitionDate;
 };
 class Debugger
 {

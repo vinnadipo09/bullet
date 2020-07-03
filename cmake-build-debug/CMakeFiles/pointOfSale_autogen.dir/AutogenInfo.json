@@ -28,9 +28,19 @@
 			"EWIEGA46WW/moc_addnewuser.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/addproduct.h",
+			"MU",
+			"EWIEGA46WW/moc_addproduct.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/addproductcategory.h",
 			"MU",
 			"EWIEGA46WW/moc_addproductcategory.cpp"
+		],
+		[
+			"/home/vee/pointOfSale/addproductzone.h",
+			"MU",
+			"EWIEGA46WW/moc_addproductzone.cpp"
 		],
 		[
 			"/home/vee/pointOfSale/addsupplier.h",
@@ -106,6 +116,11 @@
 			"/home/vee/pointOfSale/editproductcategory.h",
 			"MU",
 			"EWIEGA46WW/moc_editproductcategory.cpp"
+		],
+		[
+			"/home/vee/pointOfSale/editproductzone.h",
+			"MU",
+			"EWIEGA46WW/moc_editproductzone.cpp"
 		],
 		[
 			"/home/vee/pointOfSale/editsupplier.h",
@@ -252,7 +267,9 @@
 		[ "/home/vee/pointOfSale/addcustomer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addnewproduct.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addnewuser.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/addproduct.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addproductcategory.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/addproductzone.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addsupplier.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addtransactiontype.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/adminwindow.cpp", "MU" ],
@@ -268,6 +285,7 @@
 		[ "/home/vee/pointOfSale/debugger.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editcustomer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editproductcategory.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/editproductzone.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editsupplier.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/edituser.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/login.cpp", "MU" ],

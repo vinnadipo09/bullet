@@ -20,6 +20,9 @@
 #include "addsupplier.h"
 #include "viewsupplier.h"
 #include "acquirestock.h"
+#include "addproductzone.h"
+#include "editproductzone.h"
+#include "addproduct.h"
 namespace Ui {
 class AdminWindow;
 }
@@ -166,6 +169,8 @@ private slots:
 
     void on_btnAcquireStock_clicked();
 
+    void on_btnAddZone_clicked();
+
 private:
     AddSupplier* addNewSupplier;
 private:
@@ -174,6 +179,29 @@ private:
 private:
     ViewSupplier* viewSupplier;
     AcquireStock* acquireStock;
+
+private:
+    AddProductZone* addZone;
+    void loadZones();
+    void deleteProductZone(QString&);
+    void editProductZone(QString&);
+
+private slots:
+    void receiveZoneWorkComplete();
+    void on_btn_ProductsCenter_clicked();
+    void receiveEditProductZone();
+    void receiveDeleteProductZone();
+    void receiveZoneEditComplete();
+
+    void on_btnAddProdcts_clicked();
+
+private:
+    EditProductZone* editProdZone;
+    QString *prodZone;
+    QString* zoneDescription;
+    int* zoneId;
+private:
+    AddProduct* addProduct;
 };
 
 #endif // ADMINWINDOW_H

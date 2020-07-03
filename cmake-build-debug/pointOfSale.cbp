@@ -158,6 +158,15 @@
 		<Unit filename="/home/vee/pointOfSale/addnewuser.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproduct.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproduct.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproduct.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addproductcategory.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>
@@ -165,6 +174,15 @@
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addproductcategory.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductzone.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductzone.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductzone.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addsupplier.cpp">
@@ -303,6 +321,15 @@
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/editproductcategory.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductzone.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductzone.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductzone.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/editsupplier.cpp">

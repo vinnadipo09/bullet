@@ -190,10 +190,27 @@ color: rgb(238, 238, 236);</string>
      <string>Supplier</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnSix">
+   <widget class="QPushButton" name="btnClear">
     <property name="geometry">
      <rect>
       <x>280</x>
+      <y>240</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 4px;
+background-color: rgb(136, 138, 133);</string>
+    </property>
+    <property name="text">
+     <string>Clear</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSix">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
       <y>240</y>
       <width>80</width>
       <height>23</height>
@@ -210,7 +227,7 @@ background-color: rgb(136, 138, 133);</string>
    <widget class="QPushButton" name="btnTwelve">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>440</x>
       <y>240</y>
       <width>80</width>
       <height>23</height>
@@ -224,61 +241,10 @@ background-color: rgb(136, 138, 133);</string>
      <string>12 pcs</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnTwentyFour">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>240</y>
-      <width>80</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 4px;
-background-color: rgb(136, 138, 133);</string>
-    </property>
-    <property name="text">
-     <string>24 pcs</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnSixty">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>270</y>
-      <width>80</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 4px;
-background-color: rgb(136, 138, 133);</string>
-    </property>
-    <property name="text">
-     <string>60 pcs</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnThirtySix">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>270</y>
-      <width>80</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 4px;
-background-color: rgb(136, 138, 133);</string>
-    </property>
-    <property name="text">
-     <string>36 pcs</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnFortyEight">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>440</x>
       <y>270</y>
       <width>80</width>
       <height>23</height>
@@ -292,11 +258,45 @@ background-color: rgb(136, 138, 133);</string>
      <string>48 pcs</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnTwentyFour">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>270</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 4px;
+background-color: rgb(136, 138, 133);</string>
+    </property>
+    <property name="text">
+     <string>24 pcs</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnThirtySix">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>270</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 4px;
+background-color: rgb(136, 138, 133);</string>
+    </property>
+    <property name="text">
+     <string>36 pcs</string>
+    </property>
+   </widget>
    <widget class="QLabel" name="lbl_date_4">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>390</y>
+      <y>470</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -324,7 +324,7 @@ color: rgb(238, 238, 236);</string>
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>390</y>
+      <y>470</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -338,7 +338,7 @@ background-color: rgb(136, 138, 133);</string>
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>390</y>
+      <y>470</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -351,7 +351,7 @@ background-color: rgb(136, 138, 133);</string>
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>350</y>
+      <y>390</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -372,14 +372,14 @@ color: rgb(238, 238, 236);</string>
      <enum>QFrame::Raised</enum>
     </property>
     <property name="text">
-     <string>Amount</string>
+     <string>Cash Amount</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="leAmount">
+   <widget class="QLineEdit" name="leCashAmount">
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>350</y>
+      <y>390</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -393,7 +393,7 @@ background-color: rgb(136, 138, 133);</string>
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>310</y>
+      <y>350</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -421,7 +421,7 @@ color: rgb(238, 238, 236);</string>
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>310</y>
+      <y>350</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -466,6 +466,90 @@ background-color: rgb(136, 138, 133);</string>
      <rect>
       <x>280</x>
       <y>120</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 4px;
+background-color: rgb(136, 138, 133);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_date_7">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>430</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(238, 238, 236);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string>Credit Amount</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="leCreditAmount">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>430</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 4px;
+background-color: rgb(136, 138, 133);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_date_8">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>310</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(238, 238, 236);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="text">
+     <string>Stock Price</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="leStockPrice">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>310</y>
       <width>241</width>
       <height>31</height>
      </rect>

@@ -109,10 +109,6 @@ else()
     viewproduct.h
     viewproduct.ui
 
-    addnewproduct.cpp
-    addnewproduct.h
-    addnewproduct.ui
-
     verifynewproduct.cpp
     verifynewproduct.h
     verifynewproduct.ui
@@ -189,6 +185,18 @@ else()
     acquirestock.cpp
     acquirestock.h
     acquirestock.ui
+
+    addproductzone.cpp
+    addproductzone.h
+    addproductzone.ui
+
+    editproductzone.cpp
+    editproductzone.h
+    editproductzone.ui
+
+    addproduct.cpp
+    addproduct.h
+    addproduct.ui
   )
 endif()
 

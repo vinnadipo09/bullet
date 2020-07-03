@@ -14,7 +14,8 @@ ProductEditor::ProductEditor(QWidget *parent, loggedUser &currentLoggedInUser, p
     loadProductCategory();
     ui->leProductImage->setText(productEdit->product_image);
     ui->leProductName->setText(productEdit->product_name);
-    ui->cbProductCategory->setCurrentText(productEdit->product_cat);
+    ui->cbProductCategory->setCurrentText(productEdit->product_category);
+    ui->cbProductZone->setCurrentText(productEdit->productZone);
     ui->leProductUniqueId->setText(productEdit->product_barcode);
     ui->leProductShortCode->setText(productEdit->product_shortcode);
     ui->leProductQuantity->setText(productEdit->product_quantity);
@@ -23,7 +24,6 @@ ProductEditor::ProductEditor(QWidget *parent, loggedUser &currentLoggedInUser, p
     QPixmap viewPixmap(productEdit->product_image);
     ui->lbl_avatar->setPixmap(viewPixmap.scaled(ui->lbl_avatar->size(), Qt::KeepAspectRatio));
 
-    Debug(productEdit->product_cat);
 
 }
 
@@ -35,7 +35,6 @@ ProductEditor::~ProductEditor()
 void ProductEditor::on_btnUpdate_clicked()
 {
     grabAllProductDetails();
-    resolveDatabaseValues();
     checkIfAllFieldsCaptured();
     if(ui->leProductUniqueId->text()!=productEdit->product_barcode){
         checkForDuplicateProducts();
@@ -87,7 +86,7 @@ void ProductEditor::updateProduct() {
                               "product_image=:image, product_updatedby=:addingUser, product_updatedon=:addingDate WHERE product_id=:productId"));
         query.bindValue(":name", ui->leProductName->text());
         query.bindValue(":productId", productEdit->product_id.toInt());
-        query.bindValue(":category", *resolvedCategory);
+        query.bindValue(":category", ui->cbProductCategory->currentText());
         query.bindValue(":barcode", ui->leProductUniqueId->text());
         query.bindValue(":shortCode", ui->leProductShortCode->text());
         query.bindValue(":prodQty", ui->leProductQuantity->text());
@@ -125,7 +124,8 @@ void ProductEditor::loadProductCategory() {
 void ProductEditor::grabAllProductDetails() {
     productEdit->product_name = ui->leProductName->text();
     productEdit->product_image = ui->leProductImage->text();
-    productEdit->product_cat = ui->cbProductCategory->currentText();
+    productEdit->product_category = ui->cbProductCategory->currentText();
+    productEdit->productZone = ui->cbProductZone->currentText();
     productEdit->product_barcode = ui->leProductUniqueId->text();
     productEdit->product_shortcode = ui->leProductShortCode->text();
     productEdit->product_quantity = ui->leProductQuantity->text();
@@ -136,8 +136,7 @@ void ProductEditor::grabAllProductDetails() {
 }
 
 void ProductEditor::checkIfAllFieldsCaptured() {
-    if(productEdit->product_name.isEmpty()||productEdit->product_image.isEmpty() ||productEdit->product_category==
-                                                                                   NULL ||
+    if(productEdit->product_name.isEmpty()||productEdit->product_image.isEmpty() ||productEdit->product_category.isEmpty() ||
             productEdit->product_barcode.isEmpty() ||productEdit->product_shortcode.isEmpty() ||productEdit->product_quantity.isEmpty() ||
             productEdit->product_wsprice== NULL||productEdit->product_rtprice ==NULL ||productEdit->modifiedAt.isNull()||
             productEdit->modifiedBy==
@@ -155,22 +154,6 @@ void ProductEditor::checkIfAllFieldsCaptured() {
     }
 }
 
-void ProductEditor::resolveDatabaseValues() {
-    resolvedCategory = new int;
-    if(editProductConnection->conn_open()){
-        QSqlQuery query(QSqlDatabase::database("MyConnect"));
-        query.prepare(QString("SELECT category_id FROM product_category WHERE category = :categoryEntered"));
-        query.bindValue(":categoryEntered", productEdit->product_cat);
-        if(!query.exec()){
-            LOGx("DB not responding!");
-        }else{
-            query.exec();
-            while (query.next()){
-                *resolvedCategory = query.value(0).toInt();
-            }
-        }
-    }
-}
 
 void ProductEditor::checkForDuplicateProducts() {
     if(editProductConnection->conn_open()){

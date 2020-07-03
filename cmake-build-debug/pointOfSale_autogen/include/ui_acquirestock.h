@@ -34,21 +34,25 @@ public:
     QLineEdit *leQuantity;
     QLabel *lbl_date_2;
     QLabel *lbl_date_3;
+    QPushButton *btnClear;
     QPushButton *btnSix;
     QPushButton *btnTwelve;
-    QPushButton *btnTwentyFour;
-    QPushButton *btnSixty;
-    QPushButton *btnThirtySix;
     QPushButton *btnFortyEight;
+    QPushButton *btnTwentyFour;
+    QPushButton *btnThirtySix;
     QLabel *lbl_date_4;
     QLineEdit *lePaymentDate;
     QPushButton *btnCalender;
     QLabel *lbl_date_5;
-    QLineEdit *leAmount;
+    QLineEdit *leCashAmount;
     QLabel *lbl_date_6;
     QComboBox *cbPaymentMethod;
     QLineEdit *leSupplier;
     QLineEdit *leProduct;
+    QLabel *lbl_date_7;
+    QLineEdit *leCreditAmount;
+    QLabel *lbl_date_8;
+    QLineEdit *leStockPrice;
     QLabel *label;
     QLabel *label_2;
 
@@ -112,39 +116,39 @@ public:
 "color: rgb(238, 238, 236);"));
         lbl_date_3->setFrameShape(QFrame::Panel);
         lbl_date_3->setFrameShadow(QFrame::Raised);
+        btnClear = new QPushButton(groupBox);
+        btnClear->setObjectName(QStringLiteral("btnClear"));
+        btnClear->setGeometry(QRect(280, 240, 80, 23));
+        btnClear->setStyleSheet(QLatin1String("border-radius: 4px;\n"
+"background-color: rgb(136, 138, 133);"));
         btnSix = new QPushButton(groupBox);
         btnSix->setObjectName(QStringLiteral("btnSix"));
-        btnSix->setGeometry(QRect(280, 240, 80, 23));
+        btnSix->setGeometry(QRect(360, 240, 80, 23));
         btnSix->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         btnTwelve = new QPushButton(groupBox);
         btnTwelve->setObjectName(QStringLiteral("btnTwelve"));
-        btnTwelve->setGeometry(QRect(360, 240, 80, 23));
+        btnTwelve->setGeometry(QRect(440, 240, 80, 23));
         btnTwelve->setStyleSheet(QLatin1String("border-radius: 4px;\n"
-"background-color: rgb(136, 138, 133);"));
-        btnTwentyFour = new QPushButton(groupBox);
-        btnTwentyFour->setObjectName(QStringLiteral("btnTwentyFour"));
-        btnTwentyFour->setGeometry(QRect(440, 240, 80, 23));
-        btnTwentyFour->setStyleSheet(QLatin1String("border-radius: 4px;\n"
-"background-color: rgb(136, 138, 133);"));
-        btnSixty = new QPushButton(groupBox);
-        btnSixty->setObjectName(QStringLiteral("btnSixty"));
-        btnSixty->setGeometry(QRect(440, 270, 80, 23));
-        btnSixty->setStyleSheet(QLatin1String("border-radius: 4px;\n"
-"background-color: rgb(136, 138, 133);"));
-        btnThirtySix = new QPushButton(groupBox);
-        btnThirtySix->setObjectName(QStringLiteral("btnThirtySix"));
-        btnThirtySix->setGeometry(QRect(280, 270, 80, 23));
-        btnThirtySix->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         btnFortyEight = new QPushButton(groupBox);
         btnFortyEight->setObjectName(QStringLiteral("btnFortyEight"));
-        btnFortyEight->setGeometry(QRect(360, 270, 80, 23));
+        btnFortyEight->setGeometry(QRect(440, 270, 80, 23));
         btnFortyEight->setStyleSheet(QLatin1String("border-radius: 4px;\n"
+"background-color: rgb(136, 138, 133);"));
+        btnTwentyFour = new QPushButton(groupBox);
+        btnTwentyFour->setObjectName(QStringLiteral("btnTwentyFour"));
+        btnTwentyFour->setGeometry(QRect(280, 270, 80, 23));
+        btnTwentyFour->setStyleSheet(QLatin1String("border-radius: 4px;\n"
+"background-color: rgb(136, 138, 133);"));
+        btnThirtySix = new QPushButton(groupBox);
+        btnThirtySix->setObjectName(QStringLiteral("btnThirtySix"));
+        btnThirtySix->setGeometry(QRect(360, 270, 80, 23));
+        btnThirtySix->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         lbl_date_4 = new QLabel(groupBox);
         lbl_date_4->setObjectName(QStringLiteral("lbl_date_4"));
-        lbl_date_4->setGeometry(QRect(50, 390, 201, 31));
+        lbl_date_4->setGeometry(QRect(50, 470, 201, 31));
         lbl_date_4->setFont(font);
         lbl_date_4->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
 "color: rgb(238, 238, 236);"));
@@ -152,28 +156,28 @@ public:
         lbl_date_4->setFrameShadow(QFrame::Raised);
         lePaymentDate = new QLineEdit(groupBox);
         lePaymentDate->setObjectName(QStringLiteral("lePaymentDate"));
-        lePaymentDate->setGeometry(QRect(330, 390, 191, 31));
+        lePaymentDate->setGeometry(QRect(330, 470, 191, 31));
         lePaymentDate->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         btnCalender = new QPushButton(groupBox);
         btnCalender->setObjectName(QStringLiteral("btnCalender"));
-        btnCalender->setGeometry(QRect(280, 390, 41, 31));
+        btnCalender->setGeometry(QRect(280, 470, 41, 31));
         lbl_date_5 = new QLabel(groupBox);
         lbl_date_5->setObjectName(QStringLiteral("lbl_date_5"));
-        lbl_date_5->setGeometry(QRect(50, 350, 201, 31));
+        lbl_date_5->setGeometry(QRect(50, 390, 201, 31));
         lbl_date_5->setFont(font);
         lbl_date_5->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
 "color: rgb(238, 238, 236);"));
         lbl_date_5->setFrameShape(QFrame::Panel);
         lbl_date_5->setFrameShadow(QFrame::Raised);
-        leAmount = new QLineEdit(groupBox);
-        leAmount->setObjectName(QStringLiteral("leAmount"));
-        leAmount->setGeometry(QRect(280, 350, 241, 31));
-        leAmount->setStyleSheet(QLatin1String("border-radius: 4px;\n"
+        leCashAmount = new QLineEdit(groupBox);
+        leCashAmount->setObjectName(QStringLiteral("leCashAmount"));
+        leCashAmount->setGeometry(QRect(280, 390, 241, 31));
+        leCashAmount->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         lbl_date_6 = new QLabel(groupBox);
         lbl_date_6->setObjectName(QStringLiteral("lbl_date_6"));
-        lbl_date_6->setGeometry(QRect(50, 310, 201, 31));
+        lbl_date_6->setGeometry(QRect(50, 350, 201, 31));
         lbl_date_6->setFont(font);
         lbl_date_6->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
 "color: rgb(238, 238, 236);"));
@@ -181,7 +185,7 @@ public:
         lbl_date_6->setFrameShadow(QFrame::Raised);
         cbPaymentMethod = new QComboBox(groupBox);
         cbPaymentMethod->setObjectName(QStringLiteral("cbPaymentMethod"));
-        cbPaymentMethod->setGeometry(QRect(280, 310, 241, 31));
+        cbPaymentMethod->setGeometry(QRect(280, 350, 241, 31));
         leSupplier = new QLineEdit(groupBox);
         leSupplier->setObjectName(QStringLiteral("leSupplier"));
         leSupplier->setGeometry(QRect(280, 160, 241, 31));
@@ -191,6 +195,32 @@ public:
         leProduct->setObjectName(QStringLiteral("leProduct"));
         leProduct->setGeometry(QRect(280, 120, 241, 31));
         leProduct->setStyleSheet(QLatin1String("border-radius: 4px;\n"
+"background-color: rgb(136, 138, 133);"));
+        lbl_date_7 = new QLabel(groupBox);
+        lbl_date_7->setObjectName(QStringLiteral("lbl_date_7"));
+        lbl_date_7->setGeometry(QRect(50, 430, 201, 31));
+        lbl_date_7->setFont(font);
+        lbl_date_7->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
+"color: rgb(238, 238, 236);"));
+        lbl_date_7->setFrameShape(QFrame::Panel);
+        lbl_date_7->setFrameShadow(QFrame::Raised);
+        leCreditAmount = new QLineEdit(groupBox);
+        leCreditAmount->setObjectName(QStringLiteral("leCreditAmount"));
+        leCreditAmount->setGeometry(QRect(280, 430, 241, 31));
+        leCreditAmount->setStyleSheet(QLatin1String("border-radius: 4px;\n"
+"background-color: rgb(136, 138, 133);"));
+        lbl_date_8 = new QLabel(groupBox);
+        lbl_date_8->setObjectName(QStringLiteral("lbl_date_8"));
+        lbl_date_8->setGeometry(QRect(50, 310, 201, 31));
+        lbl_date_8->setFont(font);
+        lbl_date_8->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
+"color: rgb(238, 238, 236);"));
+        lbl_date_8->setFrameShape(QFrame::Panel);
+        lbl_date_8->setFrameShadow(QFrame::Raised);
+        leStockPrice = new QLineEdit(groupBox);
+        leStockPrice->setObjectName(QStringLiteral("leStockPrice"));
+        leStockPrice->setGeometry(QRect(280, 310, 241, 31));
+        leStockPrice->setStyleSheet(QLatin1String("border-radius: 4px;\n"
 "background-color: rgb(136, 138, 133);"));
         label = new QLabel(AcquireStock);
         label->setObjectName(QStringLiteral("label"));
@@ -219,15 +249,15 @@ public:
         label_11->setText(QApplication::translate("AcquireStock", "*Please take uttermost care before editing or deleting any information from the table*", Q_NULLPTR));
         lbl_date_2->setText(QApplication::translate("AcquireStock", "Product", Q_NULLPTR));
         lbl_date_3->setText(QApplication::translate("AcquireStock", "Supplier", Q_NULLPTR));
+        btnClear->setText(QApplication::translate("AcquireStock", "Clear", Q_NULLPTR));
         btnSix->setText(QApplication::translate("AcquireStock", "6 pcs", Q_NULLPTR));
         btnTwelve->setText(QApplication::translate("AcquireStock", "12 pcs", Q_NULLPTR));
-        btnTwentyFour->setText(QApplication::translate("AcquireStock", "24 pcs", Q_NULLPTR));
-        btnSixty->setText(QApplication::translate("AcquireStock", "60 pcs", Q_NULLPTR));
-        btnThirtySix->setText(QApplication::translate("AcquireStock", "36 pcs", Q_NULLPTR));
         btnFortyEight->setText(QApplication::translate("AcquireStock", "48 pcs", Q_NULLPTR));
+        btnTwentyFour->setText(QApplication::translate("AcquireStock", "24 pcs", Q_NULLPTR));
+        btnThirtySix->setText(QApplication::translate("AcquireStock", "36 pcs", Q_NULLPTR));
         lbl_date_4->setText(QApplication::translate("AcquireStock", "Expected Payment Date", Q_NULLPTR));
         btnCalender->setText(QApplication::translate("AcquireStock", "C", Q_NULLPTR));
-        lbl_date_5->setText(QApplication::translate("AcquireStock", "Amount", Q_NULLPTR));
+        lbl_date_5->setText(QApplication::translate("AcquireStock", "Cash Amount", Q_NULLPTR));
         lbl_date_6->setText(QApplication::translate("AcquireStock", "Payment Method", Q_NULLPTR));
         cbPaymentMethod->clear();
         cbPaymentMethod->insertItems(0, QStringList()
@@ -236,6 +266,8 @@ public:
          << QApplication::translate("AcquireStock", "Credit", Q_NULLPTR)
          << QApplication::translate("AcquireStock", "Credit+Cash", Q_NULLPTR)
         );
+        lbl_date_7->setText(QApplication::translate("AcquireStock", "Credit Amount", Q_NULLPTR));
+        lbl_date_8->setText(QApplication::translate("AcquireStock", "Stock Price", Q_NULLPTR));
         label->setText(QString());
         label_2->setText(QString());
     } // retranslateUi

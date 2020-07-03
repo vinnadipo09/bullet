@@ -14,7 +14,8 @@ VerifyNewProduct::VerifyNewProduct(QWidget *parent, loggedUser &currentLoggedInU
     productIdToDiscount = new int;
     ui->lblImage->setText(verifyProduct->product_image);
     ui->lblName->setText(verifyProduct->product_name);
-    ui->lblCategory->setText(verifyProduct->product_cat);
+    ui->lblCategory->setText(verifyProduct->product_category);
+    ui->lblZone->setText(verifyProduct->productZone);
     ui->lblBarCode->setText(verifyProduct->product_barcode);
     ui->lblShortCode->setText(verifyProduct->product_shortcode);
     ui->lblProdQty->setText(verifyProduct->product_quantity);
@@ -23,10 +24,8 @@ VerifyNewProduct::VerifyNewProduct(QWidget *parent, loggedUser &currentLoggedInU
     ui->lblDate->setText(verifyProduct->modifiedAt.date().toString());
     ui->lblTime->setText(verifyProduct->modifiedAt.time().toString());
     ui->lblUser->setText(currentUser->username);
-
-    QPixmap mypix(verifyProduct->product_image);
-    ui->lbl_avatar->setPixmap(mypix.scaled(ui->lbl_avatar->size(), Qt::KeepAspectRatio));
-
+    QPixmap productImage(verifyProduct->product_image);
+    ui->lbl_avatar->setPixmap(productImage.scaled(ui->lbl_avatar->size(), Qt::KeepAspectRatio));
 }
 
 VerifyNewProduct::~VerifyNewProduct()
@@ -47,8 +46,12 @@ void VerifyNewProduct::on_btnApply_clicked(){
                 QMessageBox::information(this, "Entry Error", "Errors encountered while entering REWARDS!");
 
             } else {
-                QMessageBox::information(this, "Product Addition Successful", "Product SuccessfullyAdded!");
-                emit productAdditionJobComplete();
+                if(!initialStockAllocationSuccessful){
+                    QMessageBox::information(this, "Entry Error", "Process failed at INITIAL STOCK ALLOCATION!");
+                }else{
+                    QMessageBox::information(this, "Product Addition Successful", "Product SuccessfullyAdded!");
+                    emit productAdditionJobComplete();
+                }
             }
         }
     }
@@ -72,17 +75,18 @@ void VerifyNewProduct::enterNewIntoDb() {
     productVerConnection->conn_open();
     if(productVerConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
-        query.prepare(QString("INSERT INTO products(product_name, product_category, product_barcode,"
-                              "product_shortcode, product_quantity, product_wsprice, product_rtprice, "
-                              "product_image, product_addedby, product_addedon, product_updatedby, product_updatedon) "
-                              "VALUES(:name, :category, :barcode, :shortCode, :prodQty"
+        query.prepare(QString("INSERT INTO products(productName, productCategory, productZone, productBarcode,"
+                              "productShortCode, productMeasurement, productWSPrice, productRPrice, "
+                              "productImage, productAddedById, productAddedOnDate, productUpdatedById, productUpdatedOnDate) "
+                              "VALUES(:name, :category, :zone, :barcode, :shortCode, :measurement"
                               ",:wsPrice, :rtPrice, :image, :addingUser, :addingDate,"
                               ":addingUser, :addingDate)"));
         query.bindValue(":name", verifyProduct->product_name);
         query.bindValue(":category", verifyProduct->product_category);
+        query.bindValue(":zone", verifyProduct->productZone);
         query.bindValue(":barcode", verifyProduct->product_barcode);
         query.bindValue(":shortCode", verifyProduct->product_shortcode);
-        query.bindValue(":prodQty", verifyProduct->product_quantity);
+        query.bindValue(":measurement", verifyProduct->product_quantity);
         query.bindValue(":wsPrice", verifyProduct->product_wsprice);
         query.bindValue(":rtPrice", verifyProduct->product_rtprice);
         query.bindValue(":image", verifyProduct->product_image);
@@ -100,7 +104,7 @@ void VerifyNewProduct::enterNewIntoDb() {
 void VerifyNewProduct::enterDiscount() {
     if(productVerConnection->conn_open()){
         QSqlQuery queryOne(QSqlDatabase::database("MyConnect"));
-        queryOne.prepare(QString("SELECT product_id FROM products WHERE product_barcode = :uniqueId"));
+        queryOne.prepare(QString("SELECT product_id FROM products WHERE productBarcode = :uniqueId"));
         queryOne.bindValue(":uniqueId", verifyProduct->product_barcode);
         LOGx(verifyProduct->product_barcode.toStdString());
         if(!queryOne.exec()){
@@ -132,6 +136,8 @@ void VerifyNewProduct::enterRewards(int &productId) {
             QMessageBox::critical(this, "Database Error", query.lastError().text());
         }else{
                 rewardsAdditionSuccessful = true;
+                enterInitialStock(*productIdToDiscount);
+                LOGxy("===================================", *productIdToDiscount);
             }
 
         }
@@ -162,4 +168,26 @@ void VerifyNewProduct::addDiscountToDatabase() {
 void VerifyNewProduct::on_editRecord_clicked()
 {
     emit editRequested();
+}
+
+void VerifyNewProduct::enterInitialStock(int &productId) {
+    QDateTime currentTime;
+    currentTime = QDateTime::currentDateTime();
+    if(productVerConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("INSERT INTO stock(quantity, manipulationType,  user_id, product_id, manipulatedOnDate) "
+                              "VALUES(:quantity, :manipulationType, :user_id, :product_id, :dateManipulated)"));
+        query.bindValue(":quantity", 0);
+        query.bindValue(":manipulationType", "Initial Allocation");
+        query.bindValue(":user_id", currentUser->user_id);
+        query.bindValue(":product_id", productId);
+        query.bindValue(":dateManipulated", currentTime);
+
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+        }else{
+            initialStockAllocationSuccessful = true;
+        }
+
+    }
 }
