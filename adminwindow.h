@@ -12,7 +12,6 @@
 #include"viewuser.h"
 #include "profileviewer.h"
 #include "viewproduct.h"
-#include "addnewproduct.h"
 #include "salesclient.h"
 #include "addtransactiontype.h"
 #include "addproductcategory.h"
@@ -23,6 +22,7 @@
 #include "addproductzone.h"
 #include "editproductzone.h"
 #include "addproduct.h"
+#include "addcash.h"
 namespace Ui {
 class AdminWindow;
 }
@@ -103,8 +103,6 @@ private:
     ViewProduct* viewProduct;
     ViewProduct* viewProduct2;
 //    Add new product
-private:
-    AddNewProduct* addNewProduct;
 private slots:
     void receiveProdAdditionComplete();
 private slots:
@@ -195,6 +193,8 @@ private slots:
 
     void on_btnAddProdcts_clicked();
 
+    void on_btnAddCash_clicked();
+
 private:
     EditProductZone* editProdZone;
     QString *prodZone;
@@ -202,6 +202,7 @@ private:
     int* zoneId;
 private:
     AddProduct* addProduct;
+    AddCash* addCashToBusiness;
 };
 
 #endif // ADMINWINDOW_H

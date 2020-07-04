@@ -157,6 +157,10 @@ public:
     QGroupBox *groupBox_2;
     QPushButton *pb_addTransactionTypes;
     QPushButton *pb_loadTransactionTypes;
+    QPushButton *btnAddCash;
+    QPushButton *pb_loadTransactionTypes_3;
+    QPushButton *pb_loadTransactionTypes_4;
+    QPushButton *pb_loadTransactionTypes_5;
     QVBoxLayout *verticalLayout_23;
     QLabel *label_62;
     QGroupBox *groupBox;
@@ -1411,6 +1415,42 @@ public:
         icon26.addFile(QStringLiteral(":/resources/new_icons_2/icons8-add-property-96.png"), QSize(), QIcon::Normal, QIcon::Off);
         pb_loadTransactionTypes->setIcon(icon26);
         pb_loadTransactionTypes->setIconSize(QSize(24, 24));
+        btnAddCash = new QPushButton(groupBox_2);
+        btnAddCash->setObjectName(QStringLiteral("btnAddCash"));
+        btnAddCash->setGeometry(QRect(10, 110, 201, 31));
+        btnAddCash->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding-left:2px;\n"
+"padding: 1.5px;\n"
+"background-color: rgb(238, 238, 236);"));
+        btnAddCash->setIcon(icon26);
+        btnAddCash->setIconSize(QSize(24, 24));
+        pb_loadTransactionTypes_3 = new QPushButton(groupBox_2);
+        pb_loadTransactionTypes_3->setObjectName(QStringLiteral("pb_loadTransactionTypes_3"));
+        pb_loadTransactionTypes_3->setGeometry(QRect(10, 150, 201, 31));
+        pb_loadTransactionTypes_3->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding-left:2px;\n"
+"padding: 1.5px;\n"
+"background-color: rgb(238, 238, 236);"));
+        pb_loadTransactionTypes_3->setIcon(icon26);
+        pb_loadTransactionTypes_3->setIconSize(QSize(24, 24));
+        pb_loadTransactionTypes_4 = new QPushButton(groupBox_2);
+        pb_loadTransactionTypes_4->setObjectName(QStringLiteral("pb_loadTransactionTypes_4"));
+        pb_loadTransactionTypes_4->setGeometry(QRect(10, 190, 201, 31));
+        pb_loadTransactionTypes_4->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding-left:2px;\n"
+"padding: 1.5px;\n"
+"background-color: rgb(238, 238, 236);"));
+        pb_loadTransactionTypes_4->setIcon(icon26);
+        pb_loadTransactionTypes_4->setIconSize(QSize(24, 24));
+        pb_loadTransactionTypes_5 = new QPushButton(groupBox_2);
+        pb_loadTransactionTypes_5->setObjectName(QStringLiteral("pb_loadTransactionTypes_5"));
+        pb_loadTransactionTypes_5->setGeometry(QRect(10, 230, 201, 31));
+        pb_loadTransactionTypes_5->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding-left:2px;\n"
+"padding: 1.5px;\n"
+"background-color: rgb(238, 238, 236);"));
+        pb_loadTransactionTypes_5->setIcon(icon26);
+        pb_loadTransactionTypes_5->setIconSize(QSize(24, 24));
 
         verticalLayout_24->addWidget(groupBox_2);
 
@@ -3349,7 +3389,7 @@ public:
 
         retranslateUi(AdminWindow);
 
-        stackedWidget->setCurrentIndex(16);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(AdminWindow);
@@ -3598,6 +3638,10 @@ public:
         groupBox_2->setTitle(QApplication::translate("AdminWindow", "GroupBox", Q_NULLPTR));
         pb_addTransactionTypes->setText(QApplication::translate("AdminWindow", "Add New Transaction Type", Q_NULLPTR));
         pb_loadTransactionTypes->setText(QApplication::translate("AdminWindow", "Load Transaction Types", Q_NULLPTR));
+        btnAddCash->setText(QApplication::translate("AdminWindow", "Add Cash", Q_NULLPTR));
+        pb_loadTransactionTypes_3->setText(QApplication::translate("AdminWindow", "Pay Supplier", Q_NULLPTR));
+        pb_loadTransactionTypes_4->setText(QApplication::translate("AdminWindow", "Pay Salaries", Q_NULLPTR));
+        pb_loadTransactionTypes_5->setText(QApplication::translate("AdminWindow", "Load Transaction Types", Q_NULLPTR));
         label_62->setText(QApplication::translate("AdminWindow", "SYSTEM QUICK GUID", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("AdminWindow", "GroupBox", Q_NULLPTR));
         label_60->setText(QApplication::translate("AdminWindow", "BUSINESS CASH MANAGER", Q_NULLPTR));

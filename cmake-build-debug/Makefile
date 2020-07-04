@@ -163,6 +163,33 @@ acquirestock.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/acquirestock.cpp.s
 .PHONY : acquirestock.cpp.s
 
+addcash.o: addcash.cpp.o
+
+.PHONY : addcash.o
+
+# target to build an object file
+addcash.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addcash.cpp.o
+.PHONY : addcash.cpp.o
+
+addcash.i: addcash.cpp.i
+
+.PHONY : addcash.i
+
+# target to preprocess a source file
+addcash.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addcash.cpp.i
+.PHONY : addcash.cpp.i
+
+addcash.s: addcash.cpp.s
+
+.PHONY : addcash.s
+
+# target to generate assembly for a file
+addcash.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addcash.cpp.s
+.PHONY : addcash.cpp.s
+
 addcustomer.o: addcustomer.cpp.o
 
 .PHONY : addcustomer.o
@@ -189,33 +216,6 @@ addcustomer.s: addcustomer.cpp.s
 addcustomer.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addcustomer.cpp.s
 .PHONY : addcustomer.cpp.s
-
-addnewproduct.o: addnewproduct.cpp.o
-
-.PHONY : addnewproduct.o
-
-# target to build an object file
-addnewproduct.cpp.o:
-	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o
-.PHONY : addnewproduct.cpp.o
-
-addnewproduct.i: addnewproduct.cpp.i
-
-.PHONY : addnewproduct.i
-
-# target to preprocess a source file
-addnewproduct.cpp.i:
-	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addnewproduct.cpp.i
-.PHONY : addnewproduct.cpp.i
-
-addnewproduct.s: addnewproduct.cpp.s
-
-.PHONY : addnewproduct.s
-
-# target to generate assembly for a file
-addnewproduct.cpp.s:
-	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addnewproduct.cpp.s
-.PHONY : addnewproduct.cpp.s
 
 addnewuser.o: addnewuser.cpp.o
 
@@ -1337,12 +1337,12 @@ help:
 	@echo "... acquirestock.o"
 	@echo "... acquirestock.i"
 	@echo "... acquirestock.s"
+	@echo "... addcash.o"
+	@echo "... addcash.i"
+	@echo "... addcash.s"
 	@echo "... addcustomer.o"
 	@echo "... addcustomer.i"
 	@echo "... addcustomer.s"
-	@echo "... addnewproduct.o"
-	@echo "... addnewproduct.i"
-	@echo "... addnewproduct.s"
 	@echo "... addnewuser.o"
 	@echo "... addnewuser.i"
 	@echo "... addnewuser.s"

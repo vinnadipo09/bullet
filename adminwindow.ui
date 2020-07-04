@@ -692,7 +692,7 @@ background-color: rgb(238, 238, 236);</string>
              <string notr="true"/>
             </property>
             <property name="currentIndex">
-             <number>16</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="page_dashboard">
              <widget class="QLabel" name="label_2">
@@ -2201,6 +2201,122 @@ background-color: rgb(238, 238, 236);</string>
                           <rect>
                            <x>10</x>
                            <y>70</y>
+                           <width>201</width>
+                           <height>31</height>
+                          </rect>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">text-align:left;
+padding-left:2px;
+padding: 1.5px;
+background-color: rgb(238, 238, 236);</string>
+                         </property>
+                         <property name="text">
+                          <string>Load Transaction Types</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="resources.qrc">
+                           <normaloff>:/resources/new_icons_2/icons8-add-property-96.png</normaloff>:/resources/new_icons_2/icons8-add-property-96.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>24</width>
+                           <height>24</height>
+                          </size>
+                         </property>
+                        </widget>
+                        <widget class="QPushButton" name="btnAddCash">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>110</y>
+                           <width>201</width>
+                           <height>31</height>
+                          </rect>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">text-align:left;
+padding-left:2px;
+padding: 1.5px;
+background-color: rgb(238, 238, 236);</string>
+                         </property>
+                         <property name="text">
+                          <string>Add Cash</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="resources.qrc">
+                           <normaloff>:/resources/new_icons_2/icons8-add-property-96.png</normaloff>:/resources/new_icons_2/icons8-add-property-96.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>24</width>
+                           <height>24</height>
+                          </size>
+                         </property>
+                        </widget>
+                        <widget class="QPushButton" name="pb_loadTransactionTypes_3">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>150</y>
+                           <width>201</width>
+                           <height>31</height>
+                          </rect>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">text-align:left;
+padding-left:2px;
+padding: 1.5px;
+background-color: rgb(238, 238, 236);</string>
+                         </property>
+                         <property name="text">
+                          <string>Pay Supplier</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="resources.qrc">
+                           <normaloff>:/resources/new_icons_2/icons8-add-property-96.png</normaloff>:/resources/new_icons_2/icons8-add-property-96.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>24</width>
+                           <height>24</height>
+                          </size>
+                         </property>
+                        </widget>
+                        <widget class="QPushButton" name="pb_loadTransactionTypes_4">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>190</y>
+                           <width>201</width>
+                           <height>31</height>
+                          </rect>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">text-align:left;
+padding-left:2px;
+padding: 1.5px;
+background-color: rgb(238, 238, 236);</string>
+                         </property>
+                         <property name="text">
+                          <string>Pay Salaries</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="resources.qrc">
+                           <normaloff>:/resources/new_icons_2/icons8-add-property-96.png</normaloff>:/resources/new_icons_2/icons8-add-property-96.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>24</width>
+                           <height>24</height>
+                          </size>
+                         </property>
+                        </widget>
+                        <widget class="QPushButton" name="pb_loadTransactionTypes_5">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>230</y>
                            <width>201</width>
                            <height>31</height>
                           </rect>

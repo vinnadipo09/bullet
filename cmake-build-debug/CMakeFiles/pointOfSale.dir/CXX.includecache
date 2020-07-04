@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/vee/pointOfSale/addcash.cpp
+addcash.h
+/home/vee/pointOfSale/addcash.h
+ui_addcash.h
+/home/vee/pointOfSale/ui_addcash.h
+
+/home/vee/pointOfSale/addcash.h
+QDialog
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
+
 /home/vee/pointOfSale/databaseconnection.h
 QDialog
 -
@@ -33,20 +47,6 @@ QDateTime
 -
 QTimer
 -
-
-/home/vee/pointOfSale/verifynewproduct.cpp
-verifynewproduct.h
-/home/vee/pointOfSale/verifynewproduct.h
-ui_verifynewproduct.h
-/home/vee/pointOfSale/ui_verifynewproduct.h
-
-/home/vee/pointOfSale/verifynewproduct.h
-QDialog
--
-debugger.h
-/home/vee/pointOfSale/debugger.h
-databaseconnection.h
-/home/vee/pointOfSale/databaseconnection.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QDateTime
 qdatetime.h
@@ -2010,6 +2010,14 @@ QtGui/qcolor.h
 QtGui/qbrush.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpen.h
+QtGui/qtguiglobal.h
+-
+QtGui/qcolor.h
+-
+QtGui/qbrush.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixelformat.h
 QtGui/qtguiglobal.h
 -
@@ -2064,6 +2072,46 @@ QtCore/qprocessordetection.h
 QtGui/qtguiglobal.h
 -
 QtCore/qprocessordetection.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h
+QtGui/qtguiglobal.h
+-
+QtCore/qstring.h
+-
+QtCore/qshareddata.h
+-
+QtGui/qtextformat.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h
+QtGui/qtguiglobal.h
+-
+QtGui/qcolor.h
+-
+QtGui/qfont.h
+-
+QtCore/qshareddata.h
+-
+QtCore/qvector.h
+-
+QtCore/qvariant.h
+-
+QtGui/qpen.h
+-
+QtGui/qbrush.h
+-
+QtGui/qtextoption.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h
+QtGui/qtguiglobal.h
+-
+QtCore/qnamespace.h
+-
+QtCore/qchar.h
+-
+QtCore/qmetatype.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h
@@ -2306,6 +2354,10 @@ qapplication.h
 qbuttongroup.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QComboBox
+qcombobox.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog
 qdialog.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h
@@ -2325,6 +2377,10 @@ qheaderview.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLabel
 qlabel.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit
+qlineedit.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlineedit.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
 qmessagebox.h
@@ -2508,6 +2564,18 @@ QtWidgets/qtwidgetsglobal.h
 QtWidgets/qframe.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlineedit.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qframe.h
+-
+QtGui/qtextcursor.h
+-
+QtCore/qstring.h
+-
+QtCore/qmargins.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlistview.h
 QtWidgets/qtwidgetsglobal.h
 -
@@ -2646,7 +2714,7 @@ QtGui/qkeysequence.h
 QtGui/qevent.h
 -
 
-pointOfSale_autogen/include/ui_verifynewproduct.h
+pointOfSale_autogen/include/ui_addcash.h
 QtCore/QVariant
 -
 QtWidgets/QAction
@@ -2655,6 +2723,8 @@ QtWidgets/QApplication
 -
 QtWidgets/QButtonGroup
 -
+QtWidgets/QComboBox
+-
 QtWidgets/QDialog
 -
 QtWidgets/QGroupBox
@@ -2662,6 +2732,8 @@ QtWidgets/QGroupBox
 QtWidgets/QHeaderView
 -
 QtWidgets/QLabel
+-
+QtWidgets/QLineEdit
 -
 QtWidgets/QPushButton
 -

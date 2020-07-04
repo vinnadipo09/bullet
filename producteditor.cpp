@@ -11,7 +11,8 @@ ProductEditor::ProductEditor(QWidget *parent, loggedUser &currentLoggedInUser, p
     editProductConnection = new databaseConnection;
     currentUser = new loggedUser;
     *currentUser = currentLoggedInUser;
-    loadProductCategory();
+    loadProductCategoryToComboBox();
+    loadProductZoneToComboBox();
     ui->leProductImage->setText(productEdit->product_image);
     ui->leProductName->setText(productEdit->product_name);
     ui->cbProductCategory->setCurrentText(productEdit->product_category);
@@ -81,12 +82,13 @@ void ProductEditor::updateProduct() {
     QDateTime updateTime = QDateTime::currentDateTime();
     if(editProductConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
-        query.prepare(QString("UPDATE products SET product_name=:name, product_category=:category, product_barcode=:barcode,"
-                              "product_shortcode=:shortCode, product_quantity=:prodQty, product_wsprice=:wsPrice, product_rtprice=:rtPrice, "
-                              "product_image=:image, product_updatedby=:addingUser, product_updatedon=:addingDate WHERE product_id=:productId"));
+        query.prepare(QString("UPDATE products SET productName=:name, productCategory=:category, productZone=:productZone, productBarcode=:barcode,"
+                              "productShortCode=:shortCode, productMeasurement=:prodQty, productWSPrice=:wsPrice, productRPrice=:rtPrice, "
+                              "productImage=:image, productUpdatedById=:addingUser, productUpdatedOnDate=:addingDate WHERE product_id=:productId"));
         query.bindValue(":name", ui->leProductName->text());
         query.bindValue(":productId", productEdit->product_id.toInt());
         query.bindValue(":category", ui->cbProductCategory->currentText());
+        query.bindValue(":productZone", ui->cbProductZone->currentText());
         query.bindValue(":barcode", ui->leProductUniqueId->text());
         query.bindValue(":shortCode", ui->leProductShortCode->text());
         query.bindValue(":prodQty", ui->leProductQuantity->text());
@@ -104,7 +106,7 @@ void ProductEditor::updateProduct() {
     }
 }
 
-void ProductEditor::loadProductCategory() {
+void ProductEditor::loadProductCategoryToComboBox() {
     editProductConnection->conn_open();
     if(editProductConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
@@ -177,4 +179,19 @@ void ProductEditor::checkForDuplicateProducts() {
         }
     }
 
+}
+
+void ProductEditor::loadProductZoneToComboBox() {
+    if(editProductConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT zone_name FROM product_zone"));
+        if(!query.exec()){
+            LOGx("DB not responding!");
+        }else{
+            while(query.next()){
+                QString zone_name = query.value(0).toString();
+                ui->cbProductZone->addItem(zone_name);
+            }
+        }
+    }
 }

@@ -70,12 +70,27 @@ private:
     acquiredStock* newStock;
     int* supplierId;
     int* productId;
+    void changePaymentValuesToDefault();
 
 
 private slots:
     void paymentChanged(int);
+    void resetPayment();
+    void setCredit();
+    void setCash();
 
-
+private:
+    double* stockAmount;
+    double* cashAmount;
+    double* creditAmount;
+    void resolveProduct();
+    void resolveSupplier();
+    bool productResolved = false;
+    bool supplierResolved = false;
+private:
+    void postCash();
+    void postCredit();
+    void postCashCredit();
 };
 
 #endif // ACQUIRESTOCK_H

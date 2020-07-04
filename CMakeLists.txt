@@ -197,6 +197,10 @@ else()
     addproduct.cpp
     addproduct.h
     addproduct.ui
+
+    addcash.cpp
+    addcash.h
+    addcash.ui
   )
 endif()
 

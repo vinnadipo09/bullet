@@ -488,22 +488,9 @@ CMakeFiles/pointOfSale.dir/viewproduct.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/viewproduct.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/viewproduct.cpp -o CMakeFiles/pointOfSale.dir/viewproduct.cpp.s
 
-CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
-CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o: ../addnewproduct.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o -c /home/vee/pointOfSale/addnewproduct.cpp
-
-CMakeFiles/pointOfSale.dir/addnewproduct.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/addnewproduct.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/addnewproduct.cpp > CMakeFiles/pointOfSale.dir/addnewproduct.cpp.i
-
-CMakeFiles/pointOfSale.dir/addnewproduct.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/addnewproduct.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/addnewproduct.cpp -o CMakeFiles/pointOfSale.dir/addnewproduct.cpp.s
-
 CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.o: ../verifynewproduct.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.o -c /home/vee/pointOfSale/verifynewproduct.cpp
 
 CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.i: cmake_force
@@ -516,7 +503,7 @@ CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/salesclient.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/salesclient.cpp.o: ../salesclient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/pointOfSale.dir/salesclient.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/pointOfSale.dir/salesclient.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/salesclient.cpp.o -c /home/vee/pointOfSale/salesclient.cpp
 
 CMakeFiles/pointOfSale.dir/salesclient.cpp.i: cmake_force
@@ -529,7 +516,7 @@ CMakeFiles/pointOfSale.dir/salesclient.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/completepaymentwindow.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/completepaymentwindow.cpp.o: ../completepaymentwindow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/pointOfSale.dir/completepaymentwindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/pointOfSale.dir/completepaymentwindow.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/completepaymentwindow.cpp.o -c /home/vee/pointOfSale/completepaymentwindow.cpp
 
 CMakeFiles/pointOfSale.dir/completepaymentwindow.cpp.i: cmake_force
@@ -542,7 +529,7 @@ CMakeFiles/pointOfSale.dir/completepaymentwindow.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/template.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/template.cpp.o: ../template.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/pointOfSale.dir/template.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/pointOfSale.dir/template.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/template.cpp.o -c /home/vee/pointOfSale/template.cpp
 
 CMakeFiles/pointOfSale.dir/template.cpp.i: cmake_force
@@ -555,7 +542,7 @@ CMakeFiles/pointOfSale.dir/template.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.o: ../addtransactiontype.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.o -c /home/vee/pointOfSale/addtransactiontype.cpp
 
 CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.i: cmake_force
@@ -568,7 +555,7 @@ CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/addcustomer.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/addcustomer.cpp.o: ../addcustomer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/pointOfSale.dir/addcustomer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/pointOfSale.dir/addcustomer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/addcustomer.cpp.o -c /home/vee/pointOfSale/addcustomer.cpp
 
 CMakeFiles/pointOfSale.dir/addcustomer.cpp.i: cmake_force
@@ -581,7 +568,7 @@ CMakeFiles/pointOfSale.dir/addcustomer.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/customerpaydebt.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/customerpaydebt.cpp.o: ../customerpaydebt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/pointOfSale.dir/customerpaydebt.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/pointOfSale.dir/customerpaydebt.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/customerpaydebt.cpp.o -c /home/vee/pointOfSale/customerpaydebt.cpp
 
 CMakeFiles/pointOfSale.dir/customerpaydebt.cpp.i: cmake_force
@@ -594,7 +581,7 @@ CMakeFiles/pointOfSale.dir/customerpaydebt.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/changedebtlimit.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/changedebtlimit.cpp.o: ../changedebtlimit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/pointOfSale.dir/changedebtlimit.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/pointOfSale.dir/changedebtlimit.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/changedebtlimit.cpp.o -c /home/vee/pointOfSale/changedebtlimit.cpp
 
 CMakeFiles/pointOfSale.dir/changedebtlimit.cpp.i: cmake_force
@@ -607,7 +594,7 @@ CMakeFiles/pointOfSale.dir/changedebtlimit.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/viewcustomer.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/viewcustomer.cpp.o: ../viewcustomer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/pointOfSale.dir/viewcustomer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/pointOfSale.dir/viewcustomer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/viewcustomer.cpp.o -c /home/vee/pointOfSale/viewcustomer.cpp
 
 CMakeFiles/pointOfSale.dir/viewcustomer.cpp.i: cmake_force
@@ -620,7 +607,7 @@ CMakeFiles/pointOfSale.dir/viewcustomer.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/editcustomer.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/editcustomer.cpp.o: ../editcustomer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/pointOfSale.dir/editcustomer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/pointOfSale.dir/editcustomer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/editcustomer.cpp.o -c /home/vee/pointOfSale/editcustomer.cpp
 
 CMakeFiles/pointOfSale.dir/editcustomer.cpp.i: cmake_force
@@ -633,7 +620,7 @@ CMakeFiles/pointOfSale.dir/editcustomer.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o: ../addproductcategory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o -c /home/vee/pointOfSale/addproductcategory.cpp
 
 CMakeFiles/pointOfSale.dir/addproductcategory.cpp.i: cmake_force
@@ -646,7 +633,7 @@ CMakeFiles/pointOfSale.dir/addproductcategory.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/editproductcategory.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/editproductcategory.cpp.o: ../editproductcategory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/pointOfSale.dir/editproductcategory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/pointOfSale.dir/editproductcategory.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/editproductcategory.cpp.o -c /home/vee/pointOfSale/editproductcategory.cpp
 
 CMakeFiles/pointOfSale.dir/editproductcategory.cpp.i: cmake_force
@@ -659,7 +646,7 @@ CMakeFiles/pointOfSale.dir/editproductcategory.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.o: ../productdiscounteditor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.o -c /home/vee/pointOfSale/productdiscounteditor.cpp
 
 CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.i: cmake_force
@@ -672,7 +659,7 @@ CMakeFiles/pointOfSale.dir/productdiscounteditor.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.o: ../productrewardeditor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.o -c /home/vee/pointOfSale/productrewardeditor.cpp
 
 CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.i: cmake_force
@@ -685,7 +672,7 @@ CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/producteditor.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/producteditor.cpp.o: ../producteditor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/pointOfSale.dir/producteditor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/pointOfSale.dir/producteditor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/producteditor.cpp.o -c /home/vee/pointOfSale/producteditor.cpp
 
 CMakeFiles/pointOfSale.dir/producteditor.cpp.i: cmake_force
@@ -698,7 +685,7 @@ CMakeFiles/pointOfSale.dir/producteditor.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/addsupplier.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/addsupplier.cpp.o: ../addsupplier.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/pointOfSale.dir/addsupplier.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/pointOfSale.dir/addsupplier.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/addsupplier.cpp.o -c /home/vee/pointOfSale/addsupplier.cpp
 
 CMakeFiles/pointOfSale.dir/addsupplier.cpp.i: cmake_force
@@ -711,7 +698,7 @@ CMakeFiles/pointOfSale.dir/addsupplier.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/editsupplier.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/editsupplier.cpp.o: ../editsupplier.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/pointOfSale.dir/editsupplier.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/pointOfSale.dir/editsupplier.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/editsupplier.cpp.o -c /home/vee/pointOfSale/editsupplier.cpp
 
 CMakeFiles/pointOfSale.dir/editsupplier.cpp.i: cmake_force
@@ -724,7 +711,7 @@ CMakeFiles/pointOfSale.dir/editsupplier.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/viewsupplier.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/viewsupplier.cpp.o: ../viewsupplier.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/pointOfSale.dir/viewsupplier.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/pointOfSale.dir/viewsupplier.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/viewsupplier.cpp.o -c /home/vee/pointOfSale/viewsupplier.cpp
 
 CMakeFiles/pointOfSale.dir/viewsupplier.cpp.i: cmake_force
@@ -737,7 +724,7 @@ CMakeFiles/pointOfSale.dir/viewsupplier.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/acquirestock.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/acquirestock.cpp.o: ../acquirestock.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/pointOfSale.dir/acquirestock.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/pointOfSale.dir/acquirestock.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/acquirestock.cpp.o -c /home/vee/pointOfSale/acquirestock.cpp
 
 CMakeFiles/pointOfSale.dir/acquirestock.cpp.i: cmake_force
@@ -750,7 +737,7 @@ CMakeFiles/pointOfSale.dir/acquirestock.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/addproductzone.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/addproductzone.cpp.o: ../addproductzone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/pointOfSale.dir/addproductzone.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/pointOfSale.dir/addproductzone.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/addproductzone.cpp.o -c /home/vee/pointOfSale/addproductzone.cpp
 
 CMakeFiles/pointOfSale.dir/addproductzone.cpp.i: cmake_force
@@ -763,7 +750,7 @@ CMakeFiles/pointOfSale.dir/addproductzone.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/editproductzone.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/editproductzone.cpp.o: ../editproductzone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/pointOfSale.dir/editproductzone.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/pointOfSale.dir/editproductzone.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/editproductzone.cpp.o -c /home/vee/pointOfSale/editproductzone.cpp
 
 CMakeFiles/pointOfSale.dir/editproductzone.cpp.i: cmake_force
@@ -776,7 +763,7 @@ CMakeFiles/pointOfSale.dir/editproductzone.cpp.s: cmake_force
 
 CMakeFiles/pointOfSale.dir/addproduct.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/addproduct.cpp.o: ../addproduct.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/pointOfSale.dir/addproduct.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/pointOfSale.dir/addproduct.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/addproduct.cpp.o -c /home/vee/pointOfSale/addproduct.cpp
 
 CMakeFiles/pointOfSale.dir/addproduct.cpp.i: cmake_force
@@ -786,6 +773,19 @@ CMakeFiles/pointOfSale.dir/addproduct.cpp.i: cmake_force
 CMakeFiles/pointOfSale.dir/addproduct.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/addproduct.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/addproduct.cpp -o CMakeFiles/pointOfSale.dir/addproduct.cpp.s
+
+CMakeFiles/pointOfSale.dir/addcash.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
+CMakeFiles/pointOfSale.dir/addcash.cpp.o: ../addcash.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/pointOfSale.dir/addcash.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/addcash.cpp.o -c /home/vee/pointOfSale/addcash.cpp
+
+CMakeFiles/pointOfSale.dir/addcash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/addcash.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/addcash.cpp > CMakeFiles/pointOfSale.dir/addcash.cpp.i
+
+CMakeFiles/pointOfSale.dir/addcash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/addcash.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/addcash.cpp -o CMakeFiles/pointOfSale.dir/addcash.cpp.s
 
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o: pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp
@@ -822,7 +822,6 @@ pointOfSale_OBJECTS = \
 "CMakeFiles/pointOfSale.dir/changephone.cpp.o" \
 "CMakeFiles/pointOfSale.dir/passwordconfirmation.cpp.o" \
 "CMakeFiles/pointOfSale.dir/viewproduct.cpp.o" \
-"CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o" \
 "CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.o" \
 "CMakeFiles/pointOfSale.dir/salesclient.cpp.o" \
 "CMakeFiles/pointOfSale.dir/completepaymentwindow.cpp.o" \
@@ -845,6 +844,7 @@ pointOfSale_OBJECTS = \
 "CMakeFiles/pointOfSale.dir/addproductzone.cpp.o" \
 "CMakeFiles/pointOfSale.dir/editproductzone.cpp.o" \
 "CMakeFiles/pointOfSale.dir/addproduct.cpp.o" \
+"CMakeFiles/pointOfSale.dir/addcash.cpp.o" \
 "CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 
 # External object files for target pointOfSale
@@ -870,7 +870,6 @@ pointOfSale: CMakeFiles/pointOfSale.dir/changepassword.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/changephone.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/passwordconfirmation.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/viewproduct.cpp.o
-pointOfSale: CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/salesclient.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/completepaymentwindow.cpp.o
@@ -893,6 +892,7 @@ pointOfSale: CMakeFiles/pointOfSale.dir/acquirestock.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/addproductzone.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/editproductzone.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/addproduct.cpp.o
+pointOfSale: CMakeFiles/pointOfSale.dir/addcash.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/build.make
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.9.5

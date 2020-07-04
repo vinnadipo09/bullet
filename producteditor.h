@@ -31,7 +31,8 @@ private:
     productFromDb* productEdit;
     loggedUser* currentUser;
     void updateProduct();
-    void loadProductCategory();
+    void loadProductCategoryToComboBox();
+    void loadProductZoneToComboBox();
     bool updateComplete = false;
     void grabAllProductDetails();
     void checkIfAllFieldsCaptured();

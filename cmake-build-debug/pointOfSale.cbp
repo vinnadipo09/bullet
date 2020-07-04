@@ -131,6 +131,15 @@
 		<Unit filename="/home/vee/pointOfSale/acquirestock.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addcash.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addcash.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addcash.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addcustomer.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>
@@ -138,15 +147,6 @@
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addcustomer.ui">
-			<Option target="pointOfSale"/>
-		</Unit>
-		<Unit filename="/home/vee/pointOfSale/addnewproduct.cpp">
-			<Option target="pointOfSale"/>
-		</Unit>
-		<Unit filename="/home/vee/pointOfSale/addnewproduct.h">
-			<Option target="pointOfSale"/>
-		</Unit>
-		<Unit filename="/home/vee/pointOfSale/addnewproduct.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/addnewuser.cpp">

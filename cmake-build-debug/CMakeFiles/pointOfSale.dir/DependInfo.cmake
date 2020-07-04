@@ -5,8 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vee/pointOfSale/acquirestock.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/acquirestock.cpp.o"
+  "/home/vee/pointOfSale/addcash.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addcash.cpp.o"
   "/home/vee/pointOfSale/addcustomer.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addcustomer.cpp.o"
-  "/home/vee/pointOfSale/addnewproduct.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addnewproduct.cpp.o"
   "/home/vee/pointOfSale/addnewuser.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addnewuser.cpp.o"
   "/home/vee/pointOfSale/addproduct.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addproduct.cpp.o"
   "/home/vee/pointOfSale/addproductcategory.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/addproductcategory.cpp.o"

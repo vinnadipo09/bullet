@@ -475,11 +475,11 @@ void AdminWindow::loadAllProducts() {
                     Debug(query.lastError());
                 }else{
                     for(allProductsRows=0, query.first(); query.isValid(); query.next(), allProductsRows++){
-                        for(allProductsColumns=0; allProductsColumns<12; allProductsColumns++){
-                            if(allProductsColumns==11){
+                        for(allProductsColumns=0; allProductsColumns<13; allProductsColumns++){
+                            if(allProductsColumns==12){
                                 QPushButton* btn_edit_allProducts = new QPushButton;
                                 btn_edit_allProducts->setText("View");
-                                ui->tableWidget_allProducts->setCellWidget(allProductsRows, 11, btn_edit_allProducts);
+                                ui->tableWidget_allProducts->setCellWidget(allProductsRows, 12, btn_edit_allProducts);
                                 QObject::connect(btn_edit_allProducts, &QPushButton::clicked, this, &AdminWindow::on_btn_viewFromAllProductsClicked);
                             }
                             ui->tableWidget_allProducts->setItem(allProductsRows, allProductsColumns, new QTableWidgetItem(query.value(allProductsColumns).toString()));
@@ -508,12 +508,12 @@ void AdminWindow::on_btn_viewFromAllProductsClicked() {
 }
 void AdminWindow::grabAllProductsProductToView() {
     QSqlQuery query(QSqlDatabase::database("MyConnect"));
-    query.prepare(QString("SELECT  products.product_id, products.product_name, product_category.category, products.product_barcode, products.product_shortcode, products.product_quantity,"
-                          " products.product_wsprice, products.product_rtprice,"
-                          "products.product_image, productDiscounts.amount,  productRewards.reward_amount, products.product_updatedby, products.product_updatedon FROM (((products LEFT JOIN productDiscounts ON"
+    query.prepare(QString("SELECT  products.product_id, products.productName, products.productCategory, products.productZone, "
+                          "products.productBarcode, products.productShortCode, products.productMeasurement,"
+                          " products.productWSPrice, products.productRPrice,"
+                          "products.productImage, productDiscounts.amount,  productRewards.reward_amount, products.productUpdatedById, products.productUpdatedOnDate FROM ((products LEFT JOIN productDiscounts ON"
                           " products.product_id = productDiscounts.product_id)LEFT JOIN productRewards ON"
-                          " productRewards.product_id=products.product_id)LEFT JOIN product_category ON"
-                          " product_category.category_id=products.product_category)  WHERE products.product_id = :productId"));
+                          " productRewards.product_id=products.product_id)  WHERE products.product_id = :productId"));
     query.bindValue(":productId", currentProductViewId);
     if(!query.exec()){
         QMessageBox::critical(this, "Database Error", query.lastError().text());
@@ -524,16 +524,17 @@ void AdminWindow::grabAllProductsProductToView() {
             productToView->product_id = query.value(0).toString();
             productToView->product_name = query.value(1).toString();
             productToView->product_category = query.value(2).toString();
-            productToView->product_barcode = query.value(3).toString();
-            productToView->product_shortcode = query.value(4).toString();
-            productToView->product_quantity = query.value(5).toString();
-            productToView->product_wsprice = query.value(6).toDouble();
-            productToView->product_rtprice = query.value(7).toDouble();
-            productToView->product_image = query.value(8).toString();
-            productToView->product_discount = query.value(9).toDouble();
-            productToView->product_rewards = query.value(10).toDouble();
-            productToView->modifiedBy = query.value(11).toInt();
-            productToView->modifiedAt = query.value(12).toDateTime();
+            productToView->productZone = query.value(3).toString();
+            productToView->product_barcode = query.value(4).toString();
+            productToView->product_shortcode = query.value(5).toString();
+            productToView->product_quantity = query.value(6).toString();
+            productToView->product_wsprice = query.value(7).toDouble();
+            productToView->product_rtprice = query.value(8).toDouble();
+            productToView->product_image = query.value(9).toString();
+            productToView->product_discount = query.value(10).toDouble();
+            productToView->product_rewards = query.value(11).toDouble();
+            productToView->modifiedBy = query.value(12).toInt();
+            productToView->modifiedAt = query.value(13).toDateTime();
             viewProduct = new ViewProduct(this, *adminUser, *productToView);
         }
     }
@@ -543,31 +544,32 @@ void AdminWindow::grabAllProductsProductToView() {
 void AdminWindow::receiveReloadProductWithNewValues(int productId) {
     loadAllProducts();
     QSqlQuery query(QSqlDatabase::database("MyConnect"));
-    query.prepare(QString("SELECT  products.product_id, products.product_name, products.product_barcode, products.product_shortcode, products.product_quantity,"
-                          " products.product_wsprice, products.product_rtprice,"
-                          "products.product_image, productDiscounts.amount,  productRewards.reward_amount, products.product_updatedby, products.product_updatedon FROM ((products LEFT JOIN productDiscounts ON"
+    query.prepare(QString("SELECT  products.product_id, products.productName, products.productCategory, products.productZone, "
+                          "products.productBarcode, products.productShortCode, products.productMeasurement,"
+                          " products.productWSPrice, products.productRPrice,"
+                          "products.productImage, productDiscounts.amount,  productRewards.reward_amount, products.productUpdatedById, products.productUpdatedOnDate FROM ((products LEFT JOIN productDiscounts ON"
                           " products.product_id = productDiscounts.product_id)LEFT JOIN productRewards ON"
-                          " productRewards.product_id=products.product_id) WHERE products.product_id = :productId"));
+                          " productRewards.product_id=products.product_id)  WHERE products.product_id = :productId"));
     query.bindValue(":productId", productId);
     if(!query.exec()){
         QMessageBox::critical(this, "Database Error", query.lastError().text());
         return;
     }else{
         while(query.next()){
-            productToView = new productFromDb;
             productToView->product_id = query.value(0).toString();
             productToView->product_name = query.value(1).toString();
-            productToView->product_barcode = query.value(2).toString();
-            productToView->product_shortcode = query.value(3).toString();
-            productToView->product_quantity = query.value(4).toString();
-            productToView->product_wsprice = query.value(5).toDouble();
-            productToView->product_rtprice = query.value(6).toDouble();
-            productToView->product_image = query.value(7).toString();
-            productToView->product_discount = query.value(8).toDouble();
-            productToView->product_rewards = query.value(9).toDouble();
-            productToView->modifiedBy = query.value(10).toInt();
-            productToView->modifiedAt = query.value(11).toDateTime();
-            Debug(productToView->product_name);
+            productToView->product_category = query.value(2).toString();
+            productToView->productZone = query.value(3).toString();
+            productToView->product_barcode = query.value(4).toString();
+            productToView->product_shortcode = query.value(5).toString();
+            productToView->product_quantity = query.value(6).toString();
+            productToView->product_wsprice = query.value(7).toDouble();
+            productToView->product_rtprice = query.value(8).toDouble();
+            productToView->product_image = query.value(9).toString();
+            productToView->product_discount = query.value(10).toDouble();
+            productToView->product_rewards = query.value(11).toDouble();
+            productToView->modifiedBy = query.value(12).toInt();
+            productToView->modifiedAt = query.value(13).toDateTime();
 
             viewProduct = new ViewProduct(this, *adminUser, *productToView);
             viewProduct->setModal(true);
@@ -584,7 +586,7 @@ void AdminWindow::on_pb_addNewProducts_clicked()
 //    addNewProduct = new AddNewProduct(this, *adminUser);
 //    addNewProduct->setModal(true);
 //    addNewProduct->show();
-//    QObject::connect(viewProduct, SIGNAL(productAdditionCompleted()), this, SLOT(receiveProdAdditionComplete()));
+    QObject::connect(addProduct, SIGNAL(productAdditionCompleted()), this, SLOT(receiveProdAdditionComplete()));
 }
 
 
@@ -870,7 +872,7 @@ void AdminWindow::receiveEditCategoryComplete() {
 
 void AdminWindow::receiveProdAdditionComplete() {
     loadAllProducts();
-    addNewProduct->close();
+    addProduct->close();
 
 }
 
@@ -1091,8 +1093,12 @@ void AdminWindow::receiveZoneEditComplete() {
 
 void AdminWindow::on_btnAddProdcts_clicked()
 {
-    addNewProduct = new AddNewProduct(this, *adminUser);
-    addNewProduct->setModal(true);
-    addNewProduct->show();
-    QObject::connect(viewProduct, SIGNAL(productAdditionCompleted()), this, SLOT(receiveProdAdditionComplete()));
+//REMEMBER TO DELETE
+}
+
+void AdminWindow::on_btnAddCash_clicked()
+{
+    addCashToBusiness = new AddCash(this, *adminUser);
+    addCashToBusiness->setModal(true);
+    addCashToBusiness->show();
 }
