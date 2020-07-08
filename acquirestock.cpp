@@ -22,11 +22,13 @@ AcquireStock::AcquireStock(QWidget *parent, loggedUser &currentLoggedInUser) :
     cashAmount = new double;
     creditAmount = new double;
     resetPayment();
-    *cashAmount = 0.00;
-    *creditAmount = 0.00;
+    *cashAmount = 0;
+    *creditAmount = 0;
     ui->leCreditAmount->setText(QString::number(*creditAmount));
     ui->leCashAmount->setText(QString::number(*cashAmount));
     newStock = new acquiredStock;
+    availableCash = new double;
+    totalCredit = new double;
     resetPayment();
 //    connect(ui->cbPaymentMethod, SIGNAL(currentIndexChanged(int)),
 //            this, SLOT(paymentChanged(int)));
@@ -34,36 +36,35 @@ AcquireStock::AcquireStock(QWidget *parent, loggedUser &currentLoggedInUser) :
             [=](int index){ /* ... */
         *stockAmount = ui->leStockPrice->text().toDouble();
         if(index==0){
-                    resetPayment();
-                }else if(index==1){
-                changePaymentValuesToDefault();
-                *creditAmount = 0.0;
-
+        resetPayment();
+        }else if(index==1){
+            changePaymentValuesToDefault();
+            *creditAmount = 0;
+            *cashAmount = *stockAmount;
             ui->leCashAmount->setText(ui->leStockPrice->text());
-                ui->btnCalender->setDisabled(true);
-                ui->leCreditAmount->setDisabled(true);
-            ui->leCreditAmount->setText(QString::number(0.00));
-
-
+            ui->btnCalender->setDisabled(true);
+            ui->leCreditAmount->setDisabled(true);
+            ui->leCreditAmount->setText(QString::number(0));
         }else if(index==2){
-                    *cashAmount = 0.0;
+            changePaymentValuesToDefault();
+            *cashAmount = 0;
+            *creditAmount = *stockAmount;
+            ui->leCashAmount->setText(QString::number(*cashAmount));
+            ui->leCashAmount->setDisabled(true);
+            ui->leCreditAmount->setText(ui->leStockPrice->text());
+            ui->leCashAmount->setText(QString::number(0));
+
+        }else if(index==3){
                     changePaymentValuesToDefault();
-                    ui->leCashAmount->setDisabled(true);
-                    ui->leCreditAmount->setText(ui->leStockPrice->text());
-                    ui->leCashAmount->setText(QString::number(0.00));
-                }else if(index==3){
-                    changePaymentValuesToDefault();
-                    *cashAmount = 0.0;
-                    *creditAmount = 0.0;
-
-
-
+                    *cashAmount = NULL;
+                    *creditAmount = NULL;
+//                    *cashAmount =  ui->leStockPrice->text().toDouble();
         }
-                QObject::connect(ui->leStockPrice, SIGNAL(textChanged(const QString &)),
+            QObject::connect(ui->leStockPrice, SIGNAL(textChanged(const QString &)),
                                  this, SLOT(resetPayment()));
-                QObject::connect(ui->leCashAmount, SIGNAL(textChanged(const QString &)),
+            QObject::connect(ui->leCashAmount, SIGNAL(textChanged(const QString &)),
                                  this, SLOT(setCredit()));
-                QObject::connect(ui->leCreditAmount, SIGNAL(textChanged(const QString &)),
+            QObject::connect(ui->leCreditAmount, SIGNAL(textChanged(const QString &)),
                                  this, SLOT(setCash()));
             });
 
@@ -88,6 +89,8 @@ void AcquireStock::on_btnApply_clicked()
 {
     grabStockDetails();
     checkIfAllFieldsAreCaptured();
+    fetchCashFromDatabase();
+    fetchCreditFromDatabase();
     if(!allFieldsCaptured){
         QMessageBox::warning(this, "Empty Cells Error!", "Please fill in all the required fields!");
         return;
@@ -101,13 +104,33 @@ void AcquireStock::on_btnApply_clicked()
             return;
         }else{
             if(ui->cbPaymentMethod->currentIndex()==1){
-                LOGx("posting cash");
+                if(*availableCash>= *stockAmount){
+                    LOGx("posting cash");
+
+                    QMessageBox::information(this, "Cash Purchase Successful!", "You have successfully completed the purchase!");
+                }else{
+
+                    QMessageBox::warning(this, "Insufficient Funds!", "You do not have enough funds to complete this transaction!");
+                    return;
+                }
             }else if(ui->cbPaymentMethod->currentIndex()==2){
                 LOGx("posting credit");
+                QMessageBox::information(this, "Credit Purchase Successful!", "You have successfully completed credit purchase!");
 
             }else if(ui->cbPaymentMethod->currentIndex()==3){
-                LOGx("posting cash and credit");
-
+                if(*cashAmount + *creditAmount == *stockAmount && *cashAmount<=*availableCash && *creditAmount>0 && *cashAmount>0){
+                    QMessageBox::information(this, "Partial Cash and Credit Purchase Successful!", "Go to cash and credit sections to see more information!");
+                    LOGx("posting cash and credit");
+                }else if(*cashAmount==0 || *creditAmount==0){
+                    QMessageBox::warning(this, "Credit or Cash Transaction Error!", "This can be a standalone credit/ cash transaction!");
+                    return;
+                }else if(*cashAmount>*availableCash){
+                    QMessageBox::warning(this, "Insufficient Funds!", "You do not have enough funds to complete this transaction!");
+                    return;
+                }else{
+                    QMessageBox::warning(this, "Insertion Error!", "There was a problem entering your record!");
+                    return;
+                }
             }else if(ui->cbPaymentMethod->currentIndex()==0){
 
             }
@@ -302,18 +325,23 @@ void AcquireStock::resetPayment() {
 void AcquireStock::setCredit() {
     *creditAmount = *stockAmount - *cashAmount;
     *cashAmount = ui->leCashAmount->text().toDouble();
-    if(*creditAmount>0){
+    if(*creditAmount>=0 && *creditAmount<=*stockAmount){
         ui->leCreditAmount->setText(QString::number(*creditAmount));
+    }else{
+        ui->leCreditAmount->setText(QString::number(0));
     }
     ui->leCashAmount->setText(QString::number(*cashAmount));
     ui->leCreditAmount->setText(QString::number(*creditAmount));
 }
 
 void AcquireStock::setCash() {
-    *cashAmount = *stockAmount - *creditAmount;
     *creditAmount = ui->leCreditAmount->text().toDouble();
-    if(*cashAmount>0){
+    *cashAmount = *stockAmount - *creditAmount;
+    if(*cashAmount>=0 && *cashAmount<=*stockAmount){
         ui->leCashAmount->setText(QString::number(*cashAmount));
+    }else{
+        ui->leCashAmount->setText(QString::number(0));
+
     }
     ui->leCashAmount->setText(QString::number(*cashAmount));
     ui->leCreditAmount->setText(QString::number(*creditAmount));
@@ -368,6 +396,37 @@ void AcquireStock::postCredit() {
 }
 
 void AcquireStock::postCashCredit() {
+
+}
+
+void AcquireStock::fetchCashFromDatabase() {
+    if(stockAcquisitionConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT total FROM cash ORDER BY transaction_id DESC LIMIT 1"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+        }else{
+
+            while(query.next()){
+                *availableCash = query.value(0).toDouble();
+            }
+        }
+    }
+}
+
+void AcquireStock::fetchCreditFromDatabase() {
+    if(stockAcquisitionConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT total FROM business_debts ORDER BY debt_id DESC LIMIT 1"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+        }else{
+
+            while(query.next()){
+                *totalCredit = query.value(0).toDouble();
+            }
+        }
+    }
 
 }
 

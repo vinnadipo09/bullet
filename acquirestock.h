@@ -91,6 +91,16 @@ private:
     void postCash();
     void postCredit();
     void postCashCredit();
+    void fetchCashFromDatabase();
+    void fetchCreditFromDatabase();
+
+private:
+    double* availableCash;
+    double* totalCredit;
+    bool cashSuffices = false;
+    bool cashPurchaseComplete = false;
+    bool creditPurchaseComplete = false;
+    bool cashCreditComplete = false;
 };
 
 #endif // ACQUIRESTOCK_H

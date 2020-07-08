@@ -54,6 +54,9 @@ private:
     double* currentInvestment;
     bool investmentAddedSuccessfully = false;
     bool cashUpdatedSuccessfully = false;
+    int* lastTransactionId;
+private:
+    QDateTime* transactionTime;
 
 };
 

@@ -6,19 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/vee/pointOfSale/addcash.cpp
-addcash.h
-/home/vee/pointOfSale/addcash.h
-ui_addcash.h
-/home/vee/pointOfSale/ui_addcash.h
+/home/vee/pointOfSale/acquirestock.cpp
+acquirestock.h
+/home/vee/pointOfSale/acquirestock.h
+ui_acquirestock.h
+/home/vee/pointOfSale/ui_acquirestock.h
 
-/home/vee/pointOfSale/addcash.h
+/home/vee/pointOfSale/acquirestock.h
 QDialog
 -
-debugger.h
-/home/vee/pointOfSale/debugger.h
+iostream
+-
+iterator
+-
+map
+-
+QCompleter
+-
+QCalendarWidget
+-
 databaseconnection.h
 /home/vee/pointOfSale/databaseconnection.h
+debugger.h
+/home/vee/pointOfSale/debugger.h
 
 /home/vee/pointOfSale/databaseconnection.h
 QDialog
@@ -2354,9 +2364,17 @@ qapplication.h
 qbuttongroup.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCalendarWidget
+qcalendarwidget.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcalendarwidget.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QComboBox
 qcombobox.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCompleter
+qcompleter.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcompleter.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog
 qdialog.h
@@ -2490,6 +2508,14 @@ QtWidgets/qtwidgetsglobal.h
 QtCore/qobject.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcalendarwidget.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qwidget.h
+-
+QtCore/qdatetime.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h
 QtWidgets/qtwidgetsglobal.h
 -
@@ -2502,6 +2528,20 @@ QtCore/qabstractitemmodel.h
 QtCore/qvariant.h
 -
 QtGui/qvalidator.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcompleter.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtCore/qobject.h
+-
+QtCore/qpoint.h
+-
+QtCore/qstring.h
+-
+QtCore/qabstractitemmodel.h
+-
+QtCore/qrect.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h
@@ -2714,7 +2754,7 @@ QtGui/qkeysequence.h
 QtGui/qevent.h
 -
 
-pointOfSale_autogen/include/ui_addcash.h
+pointOfSale_autogen/include/ui_acquirestock.h
 QtCore/QVariant
 -
 QtWidgets/QAction
