@@ -1,4 +1,0 @@
-/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir
-/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale_autogen.dir
