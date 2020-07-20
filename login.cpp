@@ -75,8 +75,10 @@ void Login::loginUser(QString& userName, QString& password)
                 user_usernameFromDB = new QString;
                 user_passwordFromDB = new QString;
                 user_userRoleFromDB = new QString;
+                user_nameFromDb = new QString;
                 user_avatar = new QString;
                 *user_id_FromDB = query.value(0).toString();
+                *user_nameFromDb = query.value(1).toString();
                 *user_usernameFromDB = query.value(4).toString();
                 *user_passwordFromDB = query.value(5).toString();
                 *user_userRoleFromDB = query.value(6).toString();
@@ -160,6 +162,7 @@ void Login::set_current_user() {
     currentUser->username=*user_usernameFromDB;
     currentUser->user_role = *user_userRoleFromDB;
     currentUser->user_avatar =*user_avatar;
+    currentUser->name =*user_nameFromDb;
     currentUser->timestamp=my_login_time;}
 void Login::destroy_user() {
     credentialsCorrect = false;

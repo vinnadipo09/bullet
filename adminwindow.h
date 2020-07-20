@@ -190,10 +190,16 @@ private slots:
     void receiveEditProductZone();
     void receiveDeleteProductZone();
     void receiveZoneEditComplete();
+    void receiveStockAcquisitionComplete();
+    void receiveCustomerAdditionComplete();
 
     void on_btnAddProdcts_clicked();
 
     void on_btnAddCash_clicked();
+
+    void on_btnLogsPrevious_clicked();
+
+    void on_btnLogsNext_clicked();
 
 private:
     EditProductZone* editProdZone;
@@ -203,6 +209,29 @@ private:
 private:
     AddProduct* addProduct;
     AddCash* addCashToBusiness;
+    void loadStockValues();
+    void loadGeneralStock();
+    void loadLowStock();
+    void loadHighStock();
+    void loadStockLogs();
+
+private:
+    int* stockLogsLimit;
+    int* stockLogsOffset;
+    int* totalLogsDisplayed;
+
+
+    void loadCashTransactions();
+
+private:
+    void loadAllCustomers();
+    void loadAllAgents();
+
+    void loadCustomersWithOverdueDebts();
+    void loadCustomersWithDebts();
+
+    void loadAgentsWithOverdueDebts();
+    void loadAgentsWithDebts();
 };
 
 #endif // ADMINWINDOW_H

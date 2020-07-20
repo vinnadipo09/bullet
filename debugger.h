@@ -34,6 +34,7 @@ struct posUser{
 };
 struct loggedUser{
     QString username;
+    QString name;
     QString user_id;
     QString password;
     QString user_role;
@@ -46,7 +47,15 @@ struct Customer{
     QString name;
     QString phone;
     QString customerType;
-    bool creditAllowed;
+    double creditAllowed;
+    double rewardsAvailable;
+    double cashOnBusiness;
+    double debtOwed;
+    float creditRating;
+    int pendingOrders;
+    int pendingDebts;
+    std::vector<int>debtIds;
+    std::vector<int>ordersId;
 };
 struct productFromDb{
     QString product_id;

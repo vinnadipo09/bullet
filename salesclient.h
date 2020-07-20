@@ -16,6 +16,10 @@
 #include "databaseconnection.h"
 #include "completepaymentwindow.h"
 #include "addcustomer.h"
+#include "customerviewall.h"
+#include "customerviewone.h"
+#include "customerviewchoice.h"
+
 namespace Ui {
 class SalesClient;
 }
@@ -51,6 +55,7 @@ private:
     void getScannedProductFromDB(QString barcodeScanned);
     QString uniqueID;
     QString *addedProductName;
+    QString *addedProductId;
     QString *productQuantity;
     QString* discountOnItem;
     QString* pointsOnItem;
@@ -60,7 +65,9 @@ private:
     int *productPrice;
     int productId;
     QString productName;
+    QString *customerPhone;
     QCompleter *completer;
+    QCompleter *customerCompleter;
     QStandardItemModel *model;
     QStandardItem *item;
     productFromDb* addedProduct;
@@ -76,11 +83,53 @@ private slots:
     void on_btnCompleteSales_clicked();
     void addCompleterProductToSales(std::map<QString, int>&);
     void on_btn_addNewCustomer_clicked();
+    void showTime();
+    void on_btn_viewCustomers_clicked();
+
+    void receiveCustomerAdditionComplete();
+    void receiveCustomerSingleViewComplete();
 
 private:
     void addProductToCart();
     loggedUser* currentUser;
     AddCustomer* addNewCustomer;
+
+    void addProductFromCompleter();
+    void grabBarcodeFromCompleter(QString&);
+    QString* barCodeFromName;
+    QString* processedProduct;
+    float* unitDiscount;
+    float* unitReward;
+    float* discountTotal;
+    float* rewardTotal;
+    float* unitSubTotal;
+
+private:
+    CustomerViewChoice* customerViewChoice;
+signals:
+    void customerAdditionViaSalesClientComplete();
+
+private:
+    void reduceQuantityAndUpdateValues();
+    void increaseQuantityAndUpdateValues();
+    void deleteQuantityAndUpdateValues();
+    bool rowDefined = false;
+    int* rowToEdit;
+    int* rowToEditFromSelection;
+    void modifyProductsInTableReduction(int &rowAffected, int &quantityValue);
+    void deleteProductFromCart(int &rowAffected, int &quantityValue);
+
+    void loadCustomersToCompleter();
+
+private slots:
+    void getRowToEdit();
+    void reducedQuantityPurchased();
+    void on_btnReduceQtyByOne_clicked();
+
+private:
+    void checkQuantityAndUpdateStock();
+    int* stockQuantityAvailable;
+    void updateStockAndStockLogs(QString &, int &);
 };
 
 #endif // SALESCLIENT_H

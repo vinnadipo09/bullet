@@ -240,17 +240,7 @@ color: rgb(238, 238, 236);</string>
     </property>
     <item>
      <property name="text">
-      <string>agent</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>wholesaler</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>customer</string>
+      <string>Select Customer Type</string>
      </property>
     </item>
    </widget>

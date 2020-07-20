@@ -201,6 +201,18 @@ else()
     addcash.cpp
     addcash.h
     addcash.ui
+
+    customerviewchoice.cpp
+    customerviewchoice.h
+    customerviewchoice.ui
+
+    customerviewone.cpp
+    customerviewone.h
+    customerviewone.ui
+
+    customerviewall.cpp
+    customerviewall.h
+    customerviewall.ui
   )
 endif()
 

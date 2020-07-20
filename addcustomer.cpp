@@ -10,6 +10,9 @@ AddCustomer::AddCustomer(QWidget *parent, loggedUser &currentLoggedInUser) :
     newCustomer = new Customer;
     loadCustomerTypesToCb();
     ui->leCreditAllowed->setText("0.00");
+    currentUser = new loggedUser;
+    *currentUser = currentLoggedInUser;
+    customerId = new int;
 }
 
 AddCustomer::~AddCustomer()
@@ -21,21 +24,22 @@ void AddCustomer::on_btnDiscard_clicked()
 {
 
 }
-
 void AddCustomer::on_btnOkay_clicked()
 {
     newCustomer->phone = ui->le_Phone->text();
     newCustomer->name = ui->le_Name->text();
     newCustomer->customerType = ui->cbCustomerType->currentText();
+    newCustomer->creditAllowed=0;
+    newCustomer->cashOnBusiness =0;
+    newCustomer->creditAllowed =0;
     checkForDuplicatePhones(newCustomer->phone);
     if(phoneExists){
         QMessageBox::warning(this, "Duplicate Phone Number!", "The phone number is already registered!");
         return;
     }else{
         checkForEmptyFields();
-        if(fieldEmpty){
+        if(!fieldEmpty){
             QMessageBox::warning(this, "Empty Fields!", "You have empty fields!");
-            fieldEmpty = false;
             return;
         }else if(noCustomerTypeDefinition){
             QMessageBox::warning(this, "Customer Type Error!", "Please define customer type!");
@@ -43,13 +47,20 @@ void AddCustomer::on_btnOkay_clicked()
             return;
         }else{
             addCustomerToDb();
+            if(!customerAdded){
+                QMessageBox::warning(this, "Customer Addition Error!", "There was a problem adding your customer!");
+                return;
+            }else{
+                createCustomerCredit();
+                if(!creditUpdated){
+
+                }else{
+                    QMessageBox::warning(this, "Customer Addition Success!", "Customer Added Successfully");
+                    emit customerAdditionTaskComplete();
+                }
+            }
         }
     }
-
-
-
-
-
 }
 
 void AddCustomer::checkForEmptyFields() {
@@ -85,19 +96,29 @@ void AddCustomer::checkForDuplicatePhones(QString &phoneNumber) {
                     phoneExists = true;
                 } else{
                     phoneExists= false;
-
                 }
             }
         }
-
     }
-
 }
 
 void AddCustomer::addCustomerToDb() {
-    LOGx("************************************************************************");
+    QDateTime currentTime = QDateTime::currentDateTime();
+    if(addNewCustomerConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("INSERT INTO customers (customer_name, customer_type, customer_phone, authorizing_user_id, authorized_on, modifying_user_id, modified_on) "
+                              "VALUES (:customerName, :customerType, :customerPhone, :authorizingUser, :authorizedDate, :authorizingUser, :authorizedDate)"));
+        query.bindValue(":customerName", newCustomer->name);
+        query.bindValue(":customerType", newCustomer->customerType);
+        query.bindValue(":customerPhone", newCustomer->phone);
+        query.bindValue(":authorizingUser", currentUser->user_id);
+        query.bindValue(":authorizedDate", currentTime);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+        }else{
+            customerAdded = true;        }
+    }
 }
-
 void AddCustomer::loadCustomerTypesToCb() {
     addNewCustomerConnection->conn_open();
     if(addNewCustomerConnection->conn_open()){
@@ -109,6 +130,33 @@ void AddCustomer::loadCustomerTypesToCb() {
             while(query.next()){
                 QString customerTypeItem = query.value(0).toString();
                 ui->cbCustomerType->addItem(customerTypeItem);
+            }
+        }
+    }
+}
+
+void AddCustomer::createCustomerCredit() {
+    QDateTime currentTime = QDateTime::currentDateTime();
+    double creditAllowed = 0;
+    if(addNewCustomerConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT customer_id FROM customers ORDER BY customer_id DESC LIMIT 1"));
+        if(!query.exec()){
+            query.prepare(QString("SELECT cusType FROM cusType"));
+        }else{
+            while(query.next()){
+                *customerId = query.value(0).toInt();
+                query.prepare(QString("INSERT INTO customerCredits (credit_allowed, customer_id, user_id, timeStamp) "
+                                      "VALUES (:creditAllowed, :customerId, :userId, :timeStamp)"));
+                query.bindValue(":creditAllowed", creditAllowed);
+                query.bindValue(":customerId", *customerId);
+                query.bindValue(":userId", currentUser->user_id);
+                query.bindValue(":timeStamp", currentTime);
+                if(!query.exec()){
+                    query.prepare(QString("SELECT cusType FROM cusType"));
+                } else{
+                    creditUpdated = true;
+                }
             }
         }
     }

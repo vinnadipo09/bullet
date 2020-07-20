@@ -46,6 +46,7 @@ private:
 private:
     QString* user_id_FromDB;
     QString* user_usernameFromDB;
+    QString* user_nameFromDb;
     QString* user_passwordFromDB;
     QString* user_userRoleFromDB;
     QString* user_avatar;

@@ -2,6 +2,7 @@
 #define ADDCASH_H
 
 #include <QDialog>
+#include <cmath>
 #include "debugger.h"
 #include "databaseconnection.h"
 

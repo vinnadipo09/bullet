@@ -19,12 +19,24 @@ AdminWindow::AdminWindow(QWidget *parent, loggedUser &currentLoggedInUser) :
     ui->lbl_current_avatar->setPixmap(mypix.scaled(ui->lbl_current_avatar->size(), Qt::KeepAspectRatio));
     ui->lbl_myavatar->setPixmap(mypix.scaled(ui->lbl_myavatar->size(), Qt::KeepAspectRatio));
     mainWindowConnection = new databaseConnection;
+    stockLogsLimit = new int;
+    stockLogsOffset = new int;
+    totalLogsDisplayed = new int;
+    *stockLogsOffset = 10;
+    *stockLogsLimit = 10;
+    *totalLogsDisplayed = 0;
+
+
     loadUsersDataFromDb();
     loadAllProducts();
     loadTransactionTypes();
     loadProductCategory();
     loadSuppliers();
     loadZones();
+    loadStockValues();
+    loadCashTransactions();
+    loadAllCustomers();
+    loadAllAgents();
 }
 
 AdminWindow::~AdminWindow()
@@ -67,7 +79,7 @@ void AdminWindow::on_pushButton_stock_clicked()
 
 void AdminWindow::on_pushButton_customers_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(5);
 }
 void AdminWindow::on_btn_transactions_clicked()
 {
@@ -76,17 +88,17 @@ void AdminWindow::on_btn_transactions_clicked()
 
 void AdminWindow::on_pushButton_agents_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(5);
+    ui->stackedWidget->setCurrentIndex(6);
 }
 
 void AdminWindow::on_pushButton_sales_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(6);
+    ui->stackedWidget->setCurrentIndex(7);
 }
 
 void AdminWindow::on_pushButton_orders_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(7);
+    ui->stackedWidget->setCurrentIndex(8);
 }
 
 void AdminWindow::on_pushButton_suppliers_clicked()
@@ -96,7 +108,7 @@ void AdminWindow::on_pushButton_suppliers_clicked()
 
 void AdminWindow::on_pushButton_openingClosing_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(9);
+    ui->stackedWidget->setCurrentIndex(10);
 }
 
 void AdminWindow::on_pushButton_profitsManager_clicked()
@@ -583,9 +595,6 @@ void AdminWindow::on_pb_addNewProducts_clicked()
     addProduct = new AddProduct(this, *adminUser);
     addProduct->setModal(true);
     addProduct->show();
-//    addNewProduct = new AddNewProduct(this, *adminUser);
-//    addNewProduct->setModal(true);
-//    addNewProduct->show();
     QObject::connect(addProduct, SIGNAL(productAdditionCompleted()), this, SLOT(receiveProdAdditionComplete()));
 }
 
@@ -597,6 +606,7 @@ void AdminWindow::on_pb_testButton_clicked()
     salesClient->showMaximized();
     this->hide();
     QObject::connect(salesClient, SIGNAL(send_salesClientClosed()), this, SLOT(receive_salesClientClosed()));
+    QObject::connect(salesClient, SIGNAL(customerAdditionViaSalesClientComplete()), this, SLOT(receiveCustomerAdditionComplete()));
 }
 
 void AdminWindow::receive_salesClientClosed() {
@@ -943,6 +953,9 @@ void AdminWindow::on_btnAcquireStock_clicked()
     acquireStock = new AcquireStock(this, *adminUser);
     acquireStock->setModal(true);
     acquireStock->show();
+
+    QObject::connect(acquireStock, SIGNAL(stockAcquisitionTaskComplete()), this, SLOT(receiveStockAcquisitionComplete()));
+
 }
 
 void AdminWindow::on_btnAddZone_clicked()
@@ -1067,6 +1080,7 @@ void AdminWindow::editProductZone(QString& productZone) {
     if (!query.exec()) {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
         return;
+        return;
     } else {
         while (query.next()) {
 
@@ -1101,4 +1115,395 @@ void AdminWindow::on_btnAddCash_clicked()
     addCashToBusiness = new AddCash(this, *adminUser);
     addCashToBusiness->setModal(true);
     addCashToBusiness->show();
+}
+
+void AdminWindow::receiveStockAcquisitionComplete() {
+    //Implement load stock and load stock logs
+    loadStockValues();
+    acquireStock->close();
+}
+
+void AdminWindow::loadStockValues() {
+    loadGeneralStock();
+    loadLowStock();
+    loadHighStock();
+    loadStockLogs();
+}
+
+void AdminWindow::loadGeneralStock() {
+    ui->twStockQuantity->horizontalHeader()->setVisible(true);
+    ui->twStockQuantity->horizontalHeader()->setDefaultSectionSize(200);
+    ui->twStockQuantity->horizontalHeader()->setStretchLastSection(true);
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(stock_id) FROM stock"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                int numStockRows = query.value(0).toInt();
+                ui->twStockQuantity->setRowCount(numStockRows);
+                query.prepare(
+                        "SELECT stock.stock_id, products.productName, stock.quantity, stock.manipulationType, users.name, stock.manipulatedOnDate FROM ((stock "
+                        "INNER JOIN users ON stock.user_id = users.user_id)INNER JOIN products ON stock.product_id = products.product_id)");
+                if (!query.exec()) {
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                } else {
+                        for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                            for (columns = 0; columns < 7; columns++) {
+                                if (columns == 6) {
+                                    QPushButton *btn_viewProductCategory = new QPushButton;
+                                    btn_viewProductCategory->setText("View");
+                                    ui->twStockQuantity->setCellWidget(rows, 6, btn_viewProductCategory);
+                                    QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                     &AdminWindow::receiveEditProductZone);
+                                }
+                                ui->twStockQuantity->setItem(rows, columns,
+                                                             new QTableWidgetItem(query.value(columns).toString()));
+                            }
+                        }
+
+
+                }
+            }
+        }
+
+    }
+}
+
+void AdminWindow::loadLowStock() {
+    ui->twLowStockQuantity->horizontalHeader()->setVisible(true);
+    ui->twLowStockQuantity->horizontalHeader()->setDefaultSectionSize(200);
+    ui->twLowStockQuantity->horizontalHeader()->setStretchLastSection(true);
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(stock_id) FROM stock WHERE quantity < 10"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                int numStockRows = query.value(0).toInt();
+                ui->twLowStockQuantity->setRowCount(numStockRows);
+                query.prepare(
+                        "SELECT stock.stock_id, products.productName, stock.quantity, stock.manipulationType, users.name, stock.manipulatedOnDate FROM ((stock "
+                        "INNER JOIN users ON stock.user_id = users.user_id)INNER JOIN products ON stock.product_id = products.product_id) WHERE stock.quantity < 10");
+                if (!query.exec()) {
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                } else {
+                    for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                        for (columns = 0; columns < 7; columns++) {
+                            if (columns == 6) {
+                                QPushButton *btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("View");
+                                ui->twLowStockQuantity->setCellWidget(rows, 6, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                 &AdminWindow::receiveEditProductZone);
+                            }
+                            ui->twLowStockQuantity->setItem(rows, columns,
+                                                         new QTableWidgetItem(query.value(columns).toString()));
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+    }
+}
+
+void AdminWindow::loadHighStock() {
+    ui->twHighStockQuantity->horizontalHeader()->setVisible(true);
+    ui->twHighStockQuantity->horizontalHeader()->setDefaultSectionSize(200);
+    ui->twHighStockQuantity->horizontalHeader()->setStretchLastSection(true);
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(stock_id) FROM stock WHERE quantity > 10"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                int numStockRows = query.value(0).toInt();
+                ui->twHighStockQuantity->setRowCount(numStockRows);
+                query.prepare(
+                        "SELECT stock.stock_id, products.productName, stock.quantity, stock.manipulationType, users.name, stock.manipulatedOnDate FROM ((stock "
+                        "INNER JOIN users ON stock.user_id = users.user_id)INNER JOIN products ON stock.product_id = products.product_id) WHERE stock.quantity > 10");
+                if (!query.exec()) {
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                } else {
+                    for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                        for (columns = 0; columns < 7; columns++) {
+                            if (columns == 6) {
+                                QPushButton *btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("View");
+                                ui->twHighStockQuantity->setCellWidget(rows, 6, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                 &AdminWindow::receiveEditProductZone);
+                            }
+                            ui->twHighStockQuantity->setItem(rows, columns,
+                                                            new QTableWidgetItem(query.value(columns).toString()));
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+    }
+}
+
+void AdminWindow::loadStockLogs() {
+    ui->twStockLogs->horizontalHeader()->setVisible(true);
+    ui->twStockLogs->horizontalHeader()->setDefaultSectionSize(200);
+    ui->twStockLogs->horizontalHeader()->setStretchLastSection(true);
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(stockLog_id) FROM stock_log"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                int numStockRows = query.value(0).toInt();
+                if(numStockRows>10){
+                    ui->twStockLogs->setRowCount(*stockLogsLimit);
+                    if(*stockLogsLimit<11){
+                        ui->btnLogsNext->setDisabled(true);
+                        ui->btnLogsPrevious->setDisabled(true);
+                    }else if(*stockLogsLimit>10){
+                        ui->btnLogsNext->setEnabled(true);
+                    }
+                    query.prepare(
+                            "SELECT stock_log.stockLog_id, products.productName, stock_log.manipulationType, stock_log.quantity, stock_log.total, stock_log.effect, users.name, stock_log.timeStamp FROM ((stock "
+                            "INNER JOIN users ON stock_log.user_id = users.user_id)INNER JOIN products ON stock_log.product_id = products.product_id)");
+                    query.bindValue(":myLimit", *stockLogsLimit);
+                    query.bindValue(":myOffset", *stockLogsOffset);
+                    if (!query.exec()) {
+                        QMessageBox::critical(this, "Database Error", query.lastError().text());
+                    } else {
+                        for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                            for (columns = 0; columns < 9; columns++) {
+                                if (columns == 8) {
+                                    QPushButton *btn_viewProductCategory = new QPushButton;
+                                    btn_viewProductCategory->setText("View");
+                                    ui->twStockLogs->setCellWidget(rows, 8, btn_viewProductCategory);
+                                    QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                     &AdminWindow::receiveEditProductZone);
+                                }
+                                ui->twStockLogs->setItem(rows, columns,
+                                                         new QTableWidgetItem(query.value(columns).toString()));
+                            }
+                        }
+                    }
+                }else{
+                    ui->twStockLogs->setRowCount(numStockRows);
+                    query.prepare(
+                            "SELECT stock_log.stockLog_id, products.productName, stock_log.manipulationType, stock_log.quantity, stock_log.total, "
+                            "stock_log.effect, users.name, stock_log.timeStamp FROM ((stock_log "
+                            "INNER JOIN users ON stock_log.user_id = users.user_id)INNER JOIN products ON stock_log.product_id = products.product_id)");
+                    query.bindValue(":myLimit", *stockLogsLimit);
+                    query.bindValue(":myOffset", *stockLogsOffset);
+                    if (!query.exec()) {
+                        QMessageBox::critical(this, "Database Error", query.lastError().text());
+                    } else {
+                        LOGx("///////////////////////////////////");
+                        for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                            for (columns = 0; columns < 9; columns++) {
+                                if (columns == 8) {
+                                    QPushButton *btn_viewProductCategory = new QPushButton;
+                                    btn_viewProductCategory->setText("View");
+                                    ui->twStockLogs->setCellWidget(rows, 8, btn_viewProductCategory);
+                                    QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                     &AdminWindow::receiveEditProductZone);
+                                }
+                                ui->twStockLogs->setItem(rows, columns,
+                                                         new QTableWidgetItem(query.value(columns).toString()));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+void AdminWindow::on_btnLogsPrevious_clicked()
+{
+}
+
+void AdminWindow::on_btnLogsNext_clicked()
+{
+
+}
+
+void AdminWindow::loadCashTransactions() {
+    ui->twCash->horizontalHeader()->setVisible(true);
+    ui->twCash->horizontalHeader()->setDefaultSectionSize(200);
+    ui->twCash->horizontalHeader()->setStretchLastSection(true);
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(transaction_id) FROM cash"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                int numCashRows = query.value(0).toInt();
+                ui->twCash->setRowCount(numCashRows);
+                query.prepare(
+                        "SELECT  cash.transaction_id, cash.transaction_type, cash.amount, cash.effect, cash.total, users.name, cash.transaction_timestamp FROM (cash "
+                        "INNER JOIN users ON cash.user_id = users.user_id) ");
+                if (!query.exec()) {
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                } else {
+                    for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                        for (columns = 0; columns < 8; columns++) {
+                            if (columns == 7) {
+                                QPushButton *btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("View");
+                                ui->twCash->setCellWidget(rows, 7, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                 &AdminWindow::receiveEditProductZone);
+                            }
+                            ui->twCash->setItem(rows, columns,
+                                                             new QTableWidgetItem(query.value(columns).toString()));
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+    }
+}
+
+void AdminWindow::receiveCustomerAdditionComplete() {
+    //DO NOT FORGET TO UPDATE THE CUSTOMER TABLE
+}
+
+void AdminWindow::loadAllCustomers() {
+    QString customerType = "Customer";
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(customer_id) FROM customers where customer_type = :customerType"));
+        query.bindValue(":customerType", customerType);
+
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                int numCashRows = query.value(0).toInt();
+                ui->twCustomersAll->setRowCount(numCashRows);
+                query.prepare(
+                        "SELECT customers.customer_id, customers.customer_name, customers.customer_type, customers.customer_phone, "
+                        "users.name, customers.modified_on,customerCash.total, customerCredits.credit_allowed, customerCredits.credit_remaining, "
+                        "customerCredits.credit_rating, customerRewards.total_rewards, (SELECT COUNT(IFNULL(customerDebt.debt_id, '0')) "
+                        "WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Active') as activeDebtCount, "
+                        "(SELECT SUM(IFNULL(customerDebt.amount, '0')) WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Active') "
+                        "as activeDebtTotal, (SELECT COUNT(IFNULL(customerDebt.debt_id, '0')) WHERE customerDebt.customer_id=customers.customer_id "
+                        "AND customerDebt.status='Overdue') as overdueDebtCount, (SELECT SUM(IFNULL(customerDebt.amount, '0')) "
+                        "WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Overdue') as overdueDebtTotal "
+                        "FROM customers  LEFT JOIN users ON users.user_id = customers.customer_id LEFT JOIN customerDebt ON "
+                        "customerDebt.customer_id = customers.customer_id LEFT JOIN  customerRewards ON customerRewards.customer_id = customers.customer_id "
+                        "LEFT JOIN customerCredits ON customerCredits.customer_id = customers.customer_id LEFT JOIN customerCash ON "
+                        "customerCash.customerCash_id = customers.customer_id WHERE customers.customer_type = :customerType GROUP BY customerDebt.customer_id, customers.customer_id, "
+                        "customerCash.customerCash_id, customerCredits.credit_remaining, customerRewards.customer_id, "
+                        "customerCredits.credit_allowed, customerRewards.total_rewards, customerDebt.status, customerCredits.credit_rating");
+                query.bindValue(":customerType", customerType);
+                if (!query.exec()) {
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                } else {
+                    for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                        for (columns = 0; columns < 16; columns++) {
+                            if (columns == 15) {
+                                QPushButton *btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("View");
+                                ui->twCustomersAll->setCellWidget(rows, 15, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                 &AdminWindow::receiveEditProductZone);
+                            }
+                            ui->twCustomersAll->setItem(rows, columns,
+                                                new QTableWidgetItem(query.value(columns).toString()));
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+}
+
+void AdminWindow::loadAllAgents() {
+    QString agentType = "Agent";
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(customer_id) FROM customers where customer_type = :customerType"));
+        query.bindValue(":customerType", agentType);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                int numCashRows = query.value(0).toInt();
+                ui->twAgentsAll->setRowCount(numCashRows);
+                query.prepare(
+                        "SELECT customers.customer_id, customers.customer_name, customers.customer_type, customers.customer_phone, "
+                        "users.name, customers.modified_on,customerCash.total, customerCredits.credit_allowed, customerCredits.credit_remaining, "
+                        "customerCredits.credit_rating, customerRewards.total_rewards, (SELECT COUNT(IFNULL(customerDebt.debt_id, '0')) "
+                        "WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Active') as activeDebtCount, "
+                        "(SELECT SUM(IFNULL(customerDebt.amount, '0')) WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Active') "
+                        "as activeDebtTotal, (SELECT COUNT(IFNULL(customerDebt.debt_id, '0')) WHERE customerDebt.customer_id=customers.customer_id "
+                        "AND customerDebt.status='Overdue') as overdueDebtCount, (SELECT SUM(IFNULL(customerDebt.amount, '0')) "
+                        "WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Overdue') as overdueDebtTotal "
+                        "FROM customers  LEFT JOIN users ON users.user_id = customers.customer_id LEFT JOIN customerDebt ON "
+                        "customerDebt.customer_id = customers.customer_id LEFT JOIN  customerRewards ON customerRewards.customer_id = customers.customer_id "
+                        "LEFT JOIN customerCredits ON customerCredits.customer_id = customers.customer_id LEFT JOIN customerCash ON "
+                        "customerCash.customerCash_id = customers.customer_id WHERE customers.customer_type = :customerType GROUP BY customerDebt.customer_id, customers.customer_id, "
+                        "customerCash.customerCash_id, customerCredits.credit_remaining, customerRewards.customer_id, "
+                        "customerCredits.credit_allowed, customerRewards.total_rewards, customerDebt.status, customerCredits.credit_rating");
+                query.bindValue(":customerType", agentType);
+                if (!query.exec()) {
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                } else {
+                    for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                        for (columns = 0; columns < 16; columns++) {
+                            if (columns == 15) {
+                                QPushButton *btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("View");
+                                ui->twAgentsAll->setCellWidget(rows, 15, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                 &AdminWindow::receiveEditProductZone);
+                            }
+                            ui->twAgentsAll->setItem(rows, columns,
+                                                        new QTableWidgetItem(query.value(columns).toString()));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void AdminWindow::loadCustomersWithOverdueDebts() {
+
+}
+
+void AdminWindow::loadAgentsWithOverdueDebts() {
+
+}
+
+void AdminWindow::loadAgentsWithDebts() {
+
+}
+
+void AdminWindow::loadCustomersWithDebts() {
+
 }

@@ -29,9 +29,20 @@ private:
     databaseConnection* addNewCustomerConnection;
     bool phoneExists = false;
     Customer* newCustomer;
-    bool fieldEmpty;
+    bool fieldEmpty = true;
     bool noCustomerTypeDefinition;
+    loggedUser* currentUser;
     void loadCustomerTypesToCb();
+
+private:
+    bool customerAdded = false;
+    bool creditUpdated = false;
+
+    void createCustomerCredit();
+
+    int* customerId;
+signals:
+    void customerAdditionTaskComplete();
 };
 
 #endif // ADDCUSTOMER_H

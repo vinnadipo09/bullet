@@ -28,15 +28,10 @@ private slots:
     void grabCurrentDate();
 
     void on_btnClear_clicked();
-
     void on_btnSix_clicked();
-
     void on_btnTwelve_clicked();
-
     void on_btnTwentyFour_clicked();
-
     void on_btnThirtySix_clicked();
-
     void on_btnFortyEight_clicked();
 
 private:
@@ -51,7 +46,6 @@ private:
     void loadProducts();
 
 private:
-    QString* supplierName;
     QString* phoneNumber;
     QString* product;
     QCompleter *SupplierCompleter;
@@ -60,13 +54,11 @@ private:
 private:
     void grabStockDetails();
     void checkIfAllFieldsAreCaptured();
-    void resolveDatabaseValues();
     bool allFieldsCaptured = false;
-    bool stockAdditionSuccessful = false;
-    void postPaymentToTable();
+
+
 private:
     int* qtySupplied;
-    bool paymentSelected = false;
     acquiredStock* newStock;
     int* supplierId;
     int* productId;
@@ -85,6 +77,8 @@ private:
     double* creditAmount;
     void resolveProduct();
     void resolveSupplier();
+    void resolveStock();
+    void updateStockQuantity();
     bool productResolved = false;
     bool supplierResolved = false;
 private:
@@ -97,10 +91,59 @@ private:
 private:
     double* availableCash;
     double* totalCredit;
+private:
+    void updateCashAcquisition();
+    void updateCreditAcquisition();
+    int* stockQuantityAvailable;
+    int* stockQuantityUpdated;
+    int* productIdToUpdateInStock;
+    int* acquisitionId;
+    double* newCashTotalAfterStockPurchase;
+    bool acquisitionIdObtained = false;
+    bool stockCashAcquisitionComplete = false;
+
+    void resolveAcquisition();
+
+    void reduceCash();
+    void increaseCredit();
+    void resolveDebt();
+    double* currentTotalDebt;
+    double* newTotalDebt;
+    bool debtSuccessfullyFetchedFromDb = false;
+
+    bool cashReductionAndStockPostSuccessful = false;
+    bool cashStockAcquisitionSuccessful = false;
+    bool creditStockAcquisitionSuccessful = false;
+    bool cashCreditStockAcquisitionSuccessful = false;
+    int* intResolvedProductId;
+    int* intResolvedSupplierId;
+    bool stockQuantityAcquired = false;
+    bool stockQuantitySuccessfullyUpdated = false;
+    void updateStockLogs();
+    bool stockLogUpdated = false;
+    bool cashCreditPostSuccessful = false;
+    bool cashPostSuccessful = false;
+    bool creditPostSuccessful = false;
+signals:
+    void stockAcquisitionTaskComplete();
+
+//NOT USED YET/ CLEAN UP
+private:
+    void updateCashCreditAcquisition();
+    void updateStock();
     bool cashSuffices = false;
     bool cashPurchaseComplete = false;
     bool creditPurchaseComplete = false;
     bool cashCreditComplete = false;
+    int* stockQuantityAdded;
+    bool cashSuccessfullyUpdated;
+    bool stockAdditionSuccessful = false;
+    void postPaymentToTable();
+    void resolveDatabaseValues();
+    bool paymentSelected = false;
+    QString* supplierName;
+
+
 };
 
 #endif // ACQUIRESTOCK_H

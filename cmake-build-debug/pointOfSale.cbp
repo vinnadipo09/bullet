@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="pointOfSale"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\usr\;CMake Files\..\..\..\usr\lib\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Sql\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/vee/pointOfSale/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/vee/pointOfSale/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/vee/pointOfSale/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pointOfSale">
+				<Option output="/home/vee/pointOfSale/cmake-build-debug/pointOfSale" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/vee/pointOfSale/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_SQL_LIB"/>
+					<Add directory="/home/vee/pointOfSale/cmake-build-debug"/>
+					<Add directory="/home/vee/pointOfSale"/>
+					<Add directory="/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/include"/>
+					<Add directory="/opt/lampp/lib"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtSql"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 pointOfSale"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pointOfSale/fast">
+				<Option output="/home/vee/pointOfSale/cmake-build-debug/pointOfSale" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/vee/pointOfSale/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_SQL_LIB"/>
+					<Add directory="/home/vee/pointOfSale/cmake-build-debug"/>
+					<Add directory="/home/vee/pointOfSale"/>
+					<Add directory="/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/include"/>
+					<Add directory="/opt/lampp/lib"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtSql"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 pointOfSale/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pointOfSale_autogen">
+				<Option working_dir="/home/vee/pointOfSale/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 pointOfSale_autogen"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/vee/pointOfSale/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/vee/pointOfSale/acquirestock.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/acquirestock.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/acquirestock.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addcash.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addcash.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addcash.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addcustomer.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addcustomer.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addcustomer.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addnewuser.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addnewuser.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addnewuser.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproduct.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproduct.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproduct.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductcategory.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductcategory.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductcategory.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductzone.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductzone.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addproductzone.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addsupplier.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addsupplier.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addsupplier.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addtransactiontype.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addtransactiontype.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/addtransactiontype.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/adminwindow.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/adminwindow.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/adminwindow.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/cashierwindow.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/cashierwindow.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/cashierwindow.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changeavatar.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changeavatar.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changeavatar.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changedebtlimit.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changedebtlimit.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changedebtlimit.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changepassword.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changepassword.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changepassword.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changephone.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changephone.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changephone.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changeusername.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changeusername.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/changeusername.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.rule">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/mocs_compilation.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/completepaymentwindow.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/completepaymentwindow.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/completepaymentwindow.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerpaydebt.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerpaydebt.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerpaydebt.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerviewall.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerviewall.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerviewall.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerviewchoice.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerviewchoice.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerviewchoice.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerviewone.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerviewone.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/customerviewone.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/databaseconnection.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/databaseconnection.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/debugger.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/debugger.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editcustomer.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editcustomer.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editcustomer.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductcategory.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductcategory.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductcategory.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductzone.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductzone.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editproductzone.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editsupplier.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editsupplier.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/editsupplier.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/edituser.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/edituser.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/edituser.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/login.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/login.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/login.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/main.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/passwordconfirmation.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/passwordconfirmation.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/passwordconfirmation.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productdiscounteditor.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productdiscounteditor.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productdiscounteditor.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/producteditor.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/producteditor.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/producteditor.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productrewardeditor.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productrewardeditor.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/productrewardeditor.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/profileviewer.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/profileviewer.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/profileviewer.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/resources.qrc">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/salesclient.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/salesclient.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/salesclient.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/supervisorwindow.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/supervisorwindow.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/supervisorwindow.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/template.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/template.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/template.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/verifynewproduct.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/verifynewproduct.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/verifynewproduct.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/verifynewuser.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/verifynewuser.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/verifynewuser.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viaddialog.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viaddialog.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viaddialog.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewcustomer.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewcustomer.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewcustomer.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewproduct.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewproduct.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewproduct.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewsupplier.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewsupplier.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewsupplier.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewuser.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewuser.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewuser.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/resources.qrc">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Sql/Qt5SqlConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Sql\"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Sql/Qt5SqlConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Sql\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
