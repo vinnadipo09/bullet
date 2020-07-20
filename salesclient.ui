@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1816</width>
+    <width>1818</width>
     <height>1200</height>
    </rect>
   </property>
@@ -50,7 +50,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_41">
+           <widget class="QLabel" name="lblDateHolder">
             <property name="minimumSize">
              <size>
               <width>30</width>
@@ -107,7 +107,7 @@ padding: 2px;</string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_43">
+           <widget class="QLabel" name="lblTimeHolder">
             <property name="minimumSize">
              <size>
               <width>50</width>
@@ -237,6 +237,13 @@ color: rgb(255, 255, 255);
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="btnOpenClose">
+            <property name="text">
+             <string>Open/Close</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="btnLogout">
             <property name="text">
              <string>Log Out</string>
@@ -264,7 +271,7 @@ color: rgb(255, 255, 255);
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
-           <widget class="QComboBox" name="comboBox">
+           <widget class="QComboBox" name="cbSalesType">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(78, 154, 6);</string>
             </property>
@@ -299,7 +306,7 @@ color: rgb(255, 255, 255);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_35">
+           <widget class="QLabel" name="lblClientNameHolder">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(78, 154, 6);
 padding: 2px;</string>
@@ -339,7 +346,7 @@ padding: 2px;</string>
            </spacer>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBoxApplyRewards">
+           <widget class="QCheckBox" name="checkBoxEnableRewardPayment">
             <property name="text">
              <string>Enable Rewards Payment</string>
             </property>
@@ -380,7 +387,7 @@ padding: 2px;</string>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QLabel" name="label_28">
+           <widget class="QLabel" name="lblBarCodeHolder">
             <property name="maximumSize">
              <size>
               <width>40</width>
@@ -412,7 +419,7 @@ padding: 2px;</string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_12">
+           <widget class="QLabel" name="lblSearchProductHolder">
             <property name="maximumSize">
              <size>
               <width>250</width>
@@ -776,7 +783,7 @@ text-align:center;</string>
                </spacer>
               </item>
               <item>
-               <widget class="QCheckBox" name="checkBox">
+               <widget class="QCheckBox" name="checkBoxClientRewardAuthorization">
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(78, 154, 6);</string>
                 </property>
@@ -1959,7 +1966,7 @@ padding: 4px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1816</width>
+     <width>1818</width>
      <height>20</height>
     </rect>
    </property>

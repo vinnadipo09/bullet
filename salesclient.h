@@ -19,7 +19,7 @@
 #include "customerviewall.h"
 #include "customerviewone.h"
 #include "customerviewchoice.h"
-
+#include "sessioncontrol.h"
 namespace Ui {
 class SalesClient;
 }
@@ -44,8 +44,8 @@ private:
     void loadItemsFromDbToCompleter();
 
 private:
-    void scannedProductManagement(QString& barcodeScanned);
-    std::map<QString, int>*itemsBought;
+    void scannedProductManagement(QString &, int& databaseId, int & stockAvailable);
+    std::map<int, int>*itemsBought;
     void modifyProductInRowCreated( int &rowAffected, int &quantityValue);
     int initial_quantity=1;
     void createRowsToAddProductPurchased(int& quantityValue);
@@ -55,7 +55,7 @@ private:
     void getScannedProductFromDB(QString barcodeScanned);
     QString uniqueID;
     QString *addedProductName;
-    QString *addedProductId;
+    int *addedProductId;
     QString *productQuantity;
     QString* discountOnItem;
     QString* pointsOnItem;
@@ -126,10 +126,31 @@ private slots:
     void reducedQuantityPurchased();
     void on_btnReduceQtyByOne_clicked();
 
+    void on_btnOpenClose_clicked();
+
 private:
-    void checkQuantityAndUpdateStock();
     int* stockQuantityAvailable;
-    void updateStockAndStockLogs(QString &, int &);
+    void updateStockAndStockLogs(QString &, int &, int &);
+    int* quantityToBeBought;
+private:
+    bool customerDefined = false;
+    bool discountsEnabled = false;
+    bool rewardsEnabled = false;
+    bool rewardsPaymentOptionEnabled = false;
+    bool wholesalePricesOption = false;
+    bool rewardsPaymentAuthorizedByCustomer = false;
+    bool thereIsOpenSession;
+
+private:
+    void disableSystems();
+    void enableSystems();
+    void checkLastSession();
+    session* ongoingSession;
+    session* newSession;
+    QString* executionType;
+
+private:
+    SessionControl* sessionControl;
 };
 
 #endif // SALESCLIENT_H

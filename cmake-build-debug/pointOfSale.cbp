@@ -446,6 +446,15 @@
 		<Unit filename="/home/vee/pointOfSale/salesclient.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/sessioncontrol.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/sessioncontrol.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/sessioncontrol.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/supervisorwindow.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>

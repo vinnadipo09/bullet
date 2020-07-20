@@ -8,6 +8,12 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     ui->setupUi(this);
     this->showMaximized();
     this->setMinimumSize(1024, 768);
+    disableSystems();
+
+
+
+
+
 
     salesConnection = new databaseConnection;
     currentUser = new loggedUser;
@@ -24,7 +30,7 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     addedProduct = new productFromDb;
     addedProductName = new QString;
     productQuantity = new QString;
-    addedProductId = new QString;
+    addedProductId = new int;
     discountOnItem= new QString;
     pointsOnItem= new QString;
     unitPrice = new QString;
@@ -35,16 +41,19 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     currentCashierUser = new loggedUser;
     barCodeFromName = new QString;
     processedProduct = new QString;
+    ongoingSession = new session;
+    newSession = new session;
 
     unitDiscount = new float ;
     unitReward = new float;
     unitSubTotal = new float;
     customerPhone = new QString;
+    executionType = new QString;
     *currentCashierUser = currentLoggedInUser;
 //    Debug(*currentCashierUser);
 
     *totalToPay = 0;
-    itemsBought = new std::map<QString, int>;
+    itemsBought = new std::map<int, int>;
 
     rewardTotal = new float ;
     discountTotal = new float ;
@@ -52,7 +61,7 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     loadItemsFromDbToCompleter();
     loadCustomersToCompleter();
     ui->le_barcodeEntry->setFocus();
-
+    quantityToBeBought = new int;
     QObject::connect(ui->le_barcodeEntry, SIGNAL(returnPressed()),
                      this, SLOT(grabBarcodeFromEntry()));
     QTimer *timer = new QTimer(this);
@@ -60,6 +69,18 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     timer->start();
     rowToEdit = new int;
     rowToEditFromSelection = new int;
+
+    checkLastSession();
+    if(!thereIsOpenSession){
+        disableSystems();
+        ui->btnOpenClose->setStyleSheet("background-color:rgb(78, 154, 6)");
+        ui->btnOpenClose->setText("Open Session");
+    }else{
+        enableSystems();
+        ui->btnOpenClose->setStyleSheet("background-color:red");
+        ui->btnOpenClose->setText("Close Session");
+    }
+
     QObject::connect(ui->tableWidget->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&,
                                                                        const QItemSelection&)), SLOT(getRowToEdit()));
 }
@@ -76,9 +97,9 @@ void SalesClient::grabBarcodeFromCompleter(QString& currentProduct) {
     if(salesConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
         query.prepare(QString("SELECT products.product_id, products.productName, products.productBarcode, products.productMeasurement, products.productWSPrice"
-                              ", products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount FROM products "
+                              ", products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount, stock.quantity FROM products "
                               "LEFT JOIN productDiscounts ON productDiscounts.product_id=products.product_id "
-                              "LEFT JOIN productRewards ON productRewards.product_id= products.product_id WHERE productName = :currentProduct"));
+                              "LEFT JOIN productRewards ON productRewards.product_id= products.product_id LEFT JOIN stock ON stock.product_id = products.product_id WHERE productName = :currentProduct"));
         query.bindValue(":currentProduct", currentProduct);
         if(!query.exec()){
             QMessageBox::critical(this, "Database Error", query.lastError().text());
@@ -95,14 +116,16 @@ void SalesClient::grabBarcodeFromCompleter(QString& currentProduct) {
                 addedProduct->product_image = query.value(6).toInt();
                 addedProduct->product_discount = query.value(7).toInt();
                 addedProduct->product_rewards = query.value(8).toInt();
+                addedProduct->stockQuantity = query.value(9).toInt();
                 *addedProductName = addedProduct->product_name;
                 *productQuantity = addedProduct->product_quantity;
                 *productPrice = addedProduct->product_rtprice;
                 *unitPrice = QString::number(*productPrice);
+                *stockQuantityAvailable = addedProduct->stockQuantity;
 
             }
             if(!addedProductName->isEmpty()){
-                scannedProductManagement(*barCodeFromName);
+//                scannedProductManagement(*barCodeFromName, *quantityToBeBought);
             }else{
 
             }
@@ -113,16 +136,16 @@ void SalesClient::getScannedProductFromDB(QString barcodeScanned) {
     barcodeScanned = ui->le_barcodeEntry->text();
     QSqlQuery query(QSqlDatabase::database("MyConnect"));
     query.prepare(QString("SELECT products.product_id, products.productName, products.productBarcode, products.productMeasurement, products.productWSPrice"
-                          " , products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount FROM products "
+                          " , products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount, stock.quantity  FROM products "
                           " LEFT JOIN productDiscounts ON productDiscounts.product_id=products.product_id "
-                          " LEFT JOIN productRewards ON productRewards.product_id= products.product_id WHERE productBarcode = :scannedBarcode"));
+                          " LEFT JOIN productRewards ON productRewards.product_id= products.product_id LEFT JOIN stock ON stock.product_id = products.product_id WHERE productBarcode = :scannedBarcode"));
     query.bindValue(":scannedBarcode", uniqueID);
     if(!query.exec()){
         QMessageBox::critical(this, "Database Error", query.lastError().text());
         return;
     }else{
         while (query.next()) {
-            addedProduct->product_id = query.value(0).toString();
+            addedProduct->product_id = query.value(0).toInt();
             addedProduct->product_name = query.value(1).toString();
             addedProduct->product_barcode = query.value(2).toString();
             addedProduct->product_quantity = query.value(3).toString();
@@ -131,17 +154,25 @@ void SalesClient::getScannedProductFromDB(QString barcodeScanned) {
             addedProduct->product_image = query.value(6).toInt();
             addedProduct->product_discount = query.value(7).toFloat();
             addedProduct->product_rewards = query.value(8).toFloat();
+            addedProduct->stockQuantity = query.value(9).toFloat();
 
-            *addedProductId = addedProduct->product_id;
+            *addedProductId = addedProduct->product_id.toInt();
             *addedProductName = addedProduct->product_name;
             *productQuantity = addedProduct->product_quantity;
             *productPrice = addedProduct->product_rtprice;
             *unitPrice = QString::number(*productPrice);
             *unitReward = addedProduct->product_rewards;
             *unitDiscount = addedProduct->product_discount;
+            *stockQuantityAvailable = addedProduct->stockQuantity;
+
         }
         if(!addedProductName->isEmpty()){
-            scannedProductManagement(barcodeScanned);
+            if(*stockQuantityAvailable>0){
+                scannedProductManagement(barcodeScanned, *addedProductId, *stockQuantityAvailable);
+            }else{
+                QMessageBox::critical(this, "Out of Stock Error!", "Manage your stock. You are trying to sell a product out of stock!");
+                return;
+            }
         }else{
 
         }
@@ -169,22 +200,27 @@ void SalesClient::closeEvent(QCloseEvent *event) {
             break;
     }
 }
-void SalesClient::scannedProductManagement(QString &barcodeScanned) {
-    std::map<QString, int>::iterator it;
-    it = itemsBought->find(barcodeScanned);
+void SalesClient::scannedProductManagement(QString& barcode, int & currentProductId, int & stockAvailable) {
+    std::map<int, int>::iterator it;
+    it = itemsBought->find(currentProductId);
     if(it!=itemsBought->end()){
-        it->second +=1;
+        if(it->second+1<= stockAvailable){
+            it->second +=1;
 
-        int rowsSearch = ui->tableWidget->rowCount();
-        for(int i = 0; i<rowsSearch; i++){
-            std::string currentItemScheduled = it->first.toStdString();
-            if(ui->tableWidget->item(i,1)->text().toStdString()==currentItemScheduled){
-                modifyProductInRowCreated(i, it->second);
+            int rowsSearch = ui->tableWidget->rowCount();
+            for(int i = 0; i<rowsSearch; i++){
+                std::string currentItemScheduled = barcode.toStdString();
+                if(ui->tableWidget->item(i,1)->text().toStdString()==currentItemScheduled){
+                    modifyProductInRowCreated(i, it->second);
+                }
             }
+        }else{
+            QMessageBox::critical(this, "Out of Stock Error!", "Manage your stock. The maximum available stock has been depleted!");
+            return;
         }
     }else{
 
-        itemsBought->insert(std::pair<QString, int>(barcodeScanned, initial_quantity));
+        itemsBought->insert(std::pair<int, int>(currentProductId, initial_quantity));
         createRowsToAddProductPurchased(initial_quantity);
     }
 }
@@ -231,8 +267,8 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
             if(!idEntry){
                 idEntry = new QTableWidgetItem;
                 ui->tableWidget->setItem(rowCreated, i, idEntry);
-            }if(!addedProductId->isEmpty()){
-                idEntry->setText(*addedProductId);
+            }if(!addedProductId==NULL){
+                idEntry->setText(QString::number(*addedProductId));
             }
         }else if(i==1){
             QTableWidgetItem* barCodeEntry = ui->tableWidget->item(rowCreated, i);
@@ -430,22 +466,22 @@ void SalesClient::reducedQuantityPurchased() {
     }
     barcodeToModify = ui->tableWidget->item(*rowToEdit, 1)->text();
 
-    std::map<QString, int>::iterator it;
-    it = itemsBought->find(barcodeToModify);
+    std::map<int, int>::iterator it;
+//    it = itemsBought->find(barcodeToModify);
     if(it!=itemsBought->end()){
         if(it->second >1){
             it->second -=1;
             int rowsSearch = ui->tableWidget->rowCount();
             for(int i = 0; i<rowsSearch; i++) {
-                std::string currentItemScheduled = it->first.toStdString();
-                if (ui->tableWidget->item(i, 1)->text().toStdString() == currentItemScheduled) {
-                    modifyProductsInTableReduction(i, it->second);
-                }
+//                std::string currentItemScheduled = it->first.toStdString();
+//                if (ui->tableWidget->item(i, 1)->text().toStdString() == currentItemScheduled) {
+//                    modifyProductsInTableReduction(i, it->second);
+//                }
             }
             //REDUCE VALUE
         }else if(it->second==1){
 //            deleteProductFromCart(i, );
-            itemsBought->erase(barcodeToModify);
+//            itemsBought->erase(barcodeToModify);
             ui->tableWidget->removeRow(*rowToEdit);
             //DELETE THE ROW
         }else{
@@ -559,41 +595,167 @@ void SalesClient::loadCustomersToCompleter() {
             });
 }
 
-void SalesClient::checkQuantityAndUpdateStock() {
-    std::map<QString, int>::iterator salesIt;
-    salesIt = itemsBought->begin();
-    while(salesIt != itemsBought->end()){
-        QString currentProduct = salesIt->first;
-        int currentProductQuantity = salesIt->second;
-        if (salesConnection->conn_open()){
-            QSqlQuery query(QSqlDatabase::database("salesWindowConnection"));
-            query.prepare(QString("SELECT IFNULL(quantity, 0) FROM stock WHERE product_barcode = :productBarcode"));
-            query.bindValue(":productBarcode", currentProduct);
-            if(!query.exec()){
-                QMessageBox::critical(this, "Database Error", query.lastError().text());
-                qDebug() << "Failed to connect to database: " + salesConnection->db.lastError().text();
-                return;
-            }else{
-                while(query.next()){
-                    *stockQuantityAvailable = query.value(0).toInt();
-                    if(*stockQuantityAvailable<salesIt->second){
-                        QMessageBox::information(this, "Stock Error!", "The Product "+ currentProduct +" is out of stock for "+ currentProductQuantity + "unit(s)");
-                    }else{
-//                        update stock and stock logs
-                    }
-//                    completionList<<productName;
-//                    LOGx(productName.toStdString());
-                }
-//                completer = new QCompleter(completionList,this);
-//                completer->setCaseSensitivity(Qt::CaseInsensitive);
-//                completer->setFilterMode(Qt::MatchContains);
-//                ui->le_SearchProduct->setCompleter(completer);
-            }
 
+void SalesClient::updateStockAndStockLogs(QString &currentBarCode, int &productPurchased, int &productAvailable) {
+    int remainingStock = productAvailable - productPurchased;
+    if (salesConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("salesWindowConnection"));
+        query.prepare(QString("UPDATE stock SET quantity = :remainingStock WHERE product_barcode = :currentBarCode"));
+        query.bindValue(":remainingStock", remainingStock);
+        query.bindValue(":currentBarCode", currentBarCode);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else{
+            while(query.next()){
+                query.prepare(QString("INSERT INTO stock_log (manipulationType, product_id, quantity, total, effect, acquisition_id, user_id, timeStamp)"
+                                      "VALUES(:manipulationType, :productId, :quantity, :total,:effect, :acquisitionId, :userId, :timeStamp)"));
+                *customerPhone = query.value(0).toString();
+//                completionList<<*customerPhone;
+            }
+//            customerCompleter = new QCompleter(completionList,this);
+            customerCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+            customerCompleter->setFilterMode(Qt::MatchContains);
+            ui->leClient->setCompleter(customerCompleter);
         }
+
+    } else{
+        qDebug() << "Failed to connect to database: " + salesConnection->db.lastError().text();
     }
 }
 
-void SalesClient::updateStockAndStockLogs(QString &, int &) {
+void SalesClient::on_btnOpenClose_clicked()
+{
+    thereIsOpenSession = !thereIsOpenSession;
+    if(thereIsOpenSession){
+        *executionType = "Closing";
+        disableSystems();
+        ui->btnOpenClose->setStyleSheet("background-color:rgb(78, 154, 6)");
+        ui->btnOpenClose->setText("Open Session");
 
+        sessionControl = new SessionControl(this, *currentUser, *executionType);
+        sessionControl->setModal(true);
+        sessionControl->show();
+    }else{
+        *executionType = "Opening";
+        enableSystems();
+        ui->btnOpenClose->setStyleSheet("background-color:red");
+        ui->btnOpenClose->setText("Close Session");
+        sessionControl = new SessionControl(this, *currentUser, *executionType);
+        sessionControl->setModal(true);
+        sessionControl->show();
+    }
+}
+
+void SalesClient::disableSystems() {
+    LOGx("disabled");
+    ui->lblTime->setStyleSheet("background-color:red");
+    ui->lblTimeHolder->setStyleSheet("background-color:red");
+    ui->lblDateHolder->setStyleSheet("background-color:red");
+    ui->lblDate->setStyleSheet("background-color:red");
+    ui->lblClientNameHolder->setStyleSheet("background-color:red");
+    ui->lblUserName->setStyleSheet("background-color:red");
+    ui->lblUserAvatar->setStyleSheet("background-color:red");
+    ui->lblBarCodeHolder->setStyleSheet("background-color:red");
+    ui->lblSearchProductHolder->setStyleSheet("background-color:red");
+    ui->cbSalesType->setStyleSheet("background-color:red");
+    ui->cbSalesType->setDisabled(true);
+    ui->checkBoxEnableDiscount->setDisabled(true);
+    ui->checkBoxEnableRewards->setDisabled(true);
+    ui->checkBoxEnableRewardPayment->setDisabled(true);
+    ui->le_barcodeEntry->setDisabled(true);
+    ui->leClient->setDisabled(true);
+    ui->le_SearchProduct->setDisabled(true);
+}
+
+void SalesClient::enableSystems() {
+    LOGx("enabled");
+    ui->lblTime->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->lblTimeHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->lblDateHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->lblDate->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->lblClientNameHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->lblUserName->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->lblUserAvatar->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->lblBarCodeHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->lblSearchProductHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->cbSalesType->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->cbSalesType->setEnabled(true);
+    ui->checkBoxEnableDiscount->setEnabled(true);
+    ui->checkBoxEnableRewards->setEnabled(true);
+    ui->checkBoxEnableRewardPayment->setEnabled(true);
+    ui->le_barcodeEntry->setEnabled(true);
+    ui->leClient->setEnabled(true);
+    ui->le_SearchProduct->setEnabled(true);
+
+
+//    background-color: rgb(78, 154, 6);
+}
+
+void SalesClient::checkLastSession() {
+    LOGx("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+    if(salesConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT salesSessionManager.session_type , salesSessionManager.session_time, users.name FROM salesSessionManager LEFT JOIN users ON users.user_id = salesSessionManager.user_id ORDER "
+                                                                                                       "BY salesSessionManager.session_id DESC LIMIT 1"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else{
+            LOGx("entering query");
+            while (query.next()) {
+                LOGx("query executed");
+
+                ongoingSession->sessionType = query.value(0).toString();
+                ongoingSession->sessionTime = query.value(1).toDateTime();
+                ongoingSession->userName = query.value(2).toString();
+
+                if((ongoingSession->sessionType=="Continued" || ongoingSession->sessionType=="Opened" ) && ongoingSession->userName==currentUser->name){
+                    LOGx("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq   1");
+
+                    QMessageBox::StandardButton reply;
+                    reply = QMessageBox::question(this, "Active Session", "You have an active session. Do you wish to continue?",
+                                                  QMessageBox::Yes|QMessageBox::No);
+                    if (reply == QMessageBox::Yes) {
+                        thereIsOpenSession = true;
+                        close();
+                    } else {
+//                        CLOSE
+                        *executionType = "Closing";
+                        sessionControl = new SessionControl(this, *currentUser, *executionType);
+                        sessionControl->setModal(true);
+                        sessionControl->show();
+                        //close current and open a new one
+                    }
+                }else if((ongoingSession->sessionType=="Continued" || ongoingSession->sessionType=="Opened" ) && ongoingSession->userName!=currentUser->name){
+                    LOGx("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq   2");
+
+                    QMessageBox::critical(this, "Unattended Session", "There is an active session that must be closed before continuing!");
+                    *executionType = "Closing";
+//                    SYSTEM CLOSE AND THEN OPEN
+                    sessionControl = new SessionControl(this, *currentUser, *executionType);
+                    sessionControl->setModal(true);
+                    sessionControl->show();
+                    thereIsOpenSession = false;
+                }else if(ongoingSession->sessionType=="Closed"||ongoingSession->sessionType.isEmpty()){
+                    LOGx("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq   3");
+
+                    QMessageBox::critical(this, "Open a session to continue", "Please Open a session to continue!");
+                    thereIsOpenSession = false;
+                    *executionType = "Opening";
+
+                    //session opener
+                    sessionControl = new SessionControl(this, *currentUser, *executionType);
+                    sessionControl->setModal(true);
+                    sessionControl->show();
+                }else{
+                    LOGxy("ongoing session ", ongoingSession->sessionType.toStdString());
+                    LOGxy("ongoing session ", ongoingSession->userName.toStdString());
+                    LOGxy("current user ", currentUser->name.toStdString());
+//                    WE NEVER GET HERE
+                }
+
+            }
+        }
+    }
 }

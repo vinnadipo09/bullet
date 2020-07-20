@@ -49,30 +49,31 @@ public:
     QVBoxLayout *verticalLayout_8;
     QHBoxLayout *horizontalLayout_10;
     QLabel *label_40;
-    QLabel *label_41;
+    QLabel *lblDateHolder;
     QLabel *lblDate;
-    QLabel *label_43;
+    QLabel *lblTimeHolder;
     QLabel *lblTime;
     QSpacerItem *horizontalSpacer_14;
     QLabel *lblUserAvatar;
     QLabel *lblUserName;
     QPushButton *btnExitClient;
+    QPushButton *btnOpenClose;
     QPushButton *btnLogout;
     QLabel *label_21;
     QHBoxLayout *horizontalLayout_9;
-    QComboBox *comboBox;
+    QComboBox *cbSalesType;
     QSpacerItem *horizontalSpacer_5;
-    QLabel *label_35;
+    QLabel *lblClientNameHolder;
     QLineEdit *leClient;
     QSpacerItem *horizontalSpacer_3;
-    QCheckBox *checkBoxApplyRewards;
+    QCheckBox *checkBoxEnableRewardPayment;
     QCheckBox *checkBoxEnableDiscount;
     QCheckBox *checkBoxEnableRewards;
     QLabel *label_10;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_28;
+    QLabel *lblBarCodeHolder;
     QLineEdit *le_barcodeEntry;
-    QLabel *label_12;
+    QLabel *lblSearchProductHolder;
     QLineEdit *le_SearchProduct;
     QSpacerItem *horizontalSpacer_2;
     QLabel *label_15;
@@ -100,7 +101,7 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QPushButton *pushButton;
     QSpacerItem *horizontalSpacer_4;
-    QCheckBox *checkBox;
+    QCheckBox *checkBoxClientRewardAuthorization;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_18;
@@ -186,7 +187,7 @@ public:
     {
         if (SalesClient->objectName().isEmpty())
             SalesClient->setObjectName(QStringLiteral("SalesClient"));
-        SalesClient->resize(1816, 1200);
+        SalesClient->resize(1818, 1200);
         actionOne = new QAction(SalesClient);
         actionOne->setObjectName(QStringLiteral("actionOne"));
         actionTwo = new QAction(SalesClient);
@@ -217,16 +218,16 @@ public:
 
         horizontalLayout_10->addWidget(label_40);
 
-        label_41 = new QLabel(centralwidget);
-        label_41->setObjectName(QStringLiteral("label_41"));
-        label_41->setMinimumSize(QSize(30, 30));
-        label_41->setMaximumSize(QSize(40, 40));
-        label_41->setStyleSheet(QLatin1String("background-color: rgb(78, 154, 6);\n"
+        lblDateHolder = new QLabel(centralwidget);
+        lblDateHolder->setObjectName(QStringLiteral("lblDateHolder"));
+        lblDateHolder->setMinimumSize(QSize(30, 30));
+        lblDateHolder->setMaximumSize(QSize(40, 40));
+        lblDateHolder->setStyleSheet(QLatin1String("background-color: rgb(78, 154, 6);\n"
 "padding: 2px;"));
-        label_41->setFrameShape(QFrame::Panel);
-        label_41->setFrameShadow(QFrame::Raised);
+        lblDateHolder->setFrameShape(QFrame::Panel);
+        lblDateHolder->setFrameShadow(QFrame::Raised);
 
-        horizontalLayout_10->addWidget(label_41);
+        horizontalLayout_10->addWidget(lblDateHolder);
 
         lblDate = new QLabel(centralwidget);
         lblDate->setObjectName(QStringLiteral("lblDate"));
@@ -238,16 +239,16 @@ public:
 
         horizontalLayout_10->addWidget(lblDate);
 
-        label_43 = new QLabel(centralwidget);
-        label_43->setObjectName(QStringLiteral("label_43"));
-        label_43->setMinimumSize(QSize(50, 40));
-        label_43->setMaximumSize(QSize(50, 40));
-        label_43->setStyleSheet(QLatin1String("background-color: rgb(78, 154, 6);\n"
+        lblTimeHolder = new QLabel(centralwidget);
+        lblTimeHolder->setObjectName(QStringLiteral("lblTimeHolder"));
+        lblTimeHolder->setMinimumSize(QSize(50, 40));
+        lblTimeHolder->setMaximumSize(QSize(50, 40));
+        lblTimeHolder->setStyleSheet(QLatin1String("background-color: rgb(78, 154, 6);\n"
 "padding: 2px;"));
-        label_43->setFrameShape(QFrame::Panel);
-        label_43->setFrameShadow(QFrame::Raised);
+        lblTimeHolder->setFrameShape(QFrame::Panel);
+        lblTimeHolder->setFrameShadow(QFrame::Raised);
 
-        horizontalLayout_10->addWidget(label_43);
+        horizontalLayout_10->addWidget(lblTimeHolder);
 
         lblTime = new QLabel(centralwidget);
         lblTime->setObjectName(QStringLiteral("lblTime"));
@@ -289,6 +290,11 @@ public:
 
         horizontalLayout_10->addWidget(btnExitClient);
 
+        btnOpenClose = new QPushButton(centralwidget);
+        btnOpenClose->setObjectName(QStringLiteral("btnOpenClose"));
+
+        horizontalLayout_10->addWidget(btnOpenClose);
+
         btnLogout = new QPushButton(centralwidget);
         btnLogout->setObjectName(QStringLiteral("btnLogout"));
 
@@ -307,24 +313,24 @@ public:
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        comboBox = new QComboBox(centralwidget);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setStyleSheet(QStringLiteral("background-color: rgb(78, 154, 6);"));
+        cbSalesType = new QComboBox(centralwidget);
+        cbSalesType->setObjectName(QStringLiteral("cbSalesType"));
+        cbSalesType->setStyleSheet(QStringLiteral("background-color: rgb(78, 154, 6);"));
 
-        horizontalLayout_9->addWidget(comboBox);
+        horizontalLayout_9->addWidget(cbSalesType);
 
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_9->addItem(horizontalSpacer_5);
 
-        label_35 = new QLabel(centralwidget);
-        label_35->setObjectName(QStringLiteral("label_35"));
-        label_35->setStyleSheet(QLatin1String("background-color: rgb(78, 154, 6);\n"
+        lblClientNameHolder = new QLabel(centralwidget);
+        lblClientNameHolder->setObjectName(QStringLiteral("lblClientNameHolder"));
+        lblClientNameHolder->setStyleSheet(QLatin1String("background-color: rgb(78, 154, 6);\n"
 "padding: 2px;"));
-        label_35->setFrameShape(QFrame::Panel);
-        label_35->setFrameShadow(QFrame::Raised);
+        lblClientNameHolder->setFrameShape(QFrame::Panel);
+        lblClientNameHolder->setFrameShadow(QFrame::Raised);
 
-        horizontalLayout_9->addWidget(label_35);
+        horizontalLayout_9->addWidget(lblClientNameHolder);
 
         leClient = new QLineEdit(centralwidget);
         leClient->setObjectName(QStringLiteral("leClient"));
@@ -336,10 +342,10 @@ public:
 
         horizontalLayout_9->addItem(horizontalSpacer_3);
 
-        checkBoxApplyRewards = new QCheckBox(centralwidget);
-        checkBoxApplyRewards->setObjectName(QStringLiteral("checkBoxApplyRewards"));
+        checkBoxEnableRewardPayment = new QCheckBox(centralwidget);
+        checkBoxEnableRewardPayment->setObjectName(QStringLiteral("checkBoxEnableRewardPayment"));
 
-        horizontalLayout_9->addWidget(checkBoxApplyRewards);
+        horizontalLayout_9->addWidget(checkBoxEnableRewardPayment);
 
         checkBoxEnableDiscount = new QCheckBox(centralwidget);
         checkBoxEnableDiscount->setObjectName(QStringLiteral("checkBoxEnableDiscount"));
@@ -364,14 +370,14 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_28 = new QLabel(centralwidget);
-        label_28->setObjectName(QStringLiteral("label_28"));
-        label_28->setMaximumSize(QSize(40, 40));
-        label_28->setStyleSheet(QStringLiteral("background-color: rgb(78, 154, 6);"));
-        label_28->setFrameShape(QFrame::Panel);
-        label_28->setFrameShadow(QFrame::Raised);
+        lblBarCodeHolder = new QLabel(centralwidget);
+        lblBarCodeHolder->setObjectName(QStringLiteral("lblBarCodeHolder"));
+        lblBarCodeHolder->setMaximumSize(QSize(40, 40));
+        lblBarCodeHolder->setStyleSheet(QStringLiteral("background-color: rgb(78, 154, 6);"));
+        lblBarCodeHolder->setFrameShape(QFrame::Panel);
+        lblBarCodeHolder->setFrameShadow(QFrame::Raised);
 
-        horizontalLayout_2->addWidget(label_28);
+        horizontalLayout_2->addWidget(lblBarCodeHolder);
 
         le_barcodeEntry = new QLineEdit(centralwidget);
         le_barcodeEntry->setObjectName(QStringLiteral("le_barcodeEntry"));
@@ -379,14 +385,14 @@ public:
 
         horizontalLayout_2->addWidget(le_barcodeEntry);
 
-        label_12 = new QLabel(centralwidget);
-        label_12->setObjectName(QStringLiteral("label_12"));
-        label_12->setMaximumSize(QSize(250, 16777215));
-        label_12->setStyleSheet(QStringLiteral("background-color: rgb(78, 154, 6);"));
-        label_12->setFrameShape(QFrame::Panel);
-        label_12->setFrameShadow(QFrame::Raised);
+        lblSearchProductHolder = new QLabel(centralwidget);
+        lblSearchProductHolder->setObjectName(QStringLiteral("lblSearchProductHolder"));
+        lblSearchProductHolder->setMaximumSize(QSize(250, 16777215));
+        lblSearchProductHolder->setStyleSheet(QStringLiteral("background-color: rgb(78, 154, 6);"));
+        lblSearchProductHolder->setFrameShape(QFrame::Panel);
+        lblSearchProductHolder->setFrameShadow(QFrame::Raised);
 
-        horizontalLayout_2->addWidget(label_12);
+        horizontalLayout_2->addWidget(lblSearchProductHolder);
 
         le_SearchProduct = new QLineEdit(centralwidget);
         le_SearchProduct->setObjectName(QStringLiteral("le_SearchProduct"));
@@ -588,11 +594,11 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_4);
 
-        checkBox = new QCheckBox(centralwidget);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setStyleSheet(QStringLiteral("background-color: rgb(78, 154, 6);"));
+        checkBoxClientRewardAuthorization = new QCheckBox(centralwidget);
+        checkBoxClientRewardAuthorization->setObjectName(QStringLiteral("checkBoxClientRewardAuthorization"));
+        checkBoxClientRewardAuthorization->setStyleSheet(QStringLiteral("background-color: rgb(78, 154, 6);"));
 
-        horizontalLayout_4->addWidget(checkBox);
+        horizontalLayout_4->addWidget(checkBoxClientRewardAuthorization);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
@@ -1226,7 +1232,7 @@ public:
         SalesClient->setCentralWidget(centralwidget);
         menubar = new QMenuBar(SalesClient);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1816, 20));
+        menubar->setGeometry(QRect(0, 0, 1818, 20));
         menuHome = new QMenu(menubar);
         menuHome->setObjectName(QStringLiteral("menuHome"));
         menuSales = new QMenu(menubar);
@@ -1275,28 +1281,29 @@ public:
         actionOne_2->setText(QApplication::translate("SalesClient", "One", Q_NULLPTR));
         actionTwo_2->setText(QApplication::translate("SalesClient", "Two", Q_NULLPTR));
         label_40->setText(QString());
-        label_41->setText(QApplication::translate("SalesClient", "Date:", Q_NULLPTR));
+        lblDateHolder->setText(QApplication::translate("SalesClient", "Date:", Q_NULLPTR));
         lblDate->setText(QString());
-        label_43->setText(QApplication::translate("SalesClient", "Time:", Q_NULLPTR));
+        lblTimeHolder->setText(QApplication::translate("SalesClient", "Time:", Q_NULLPTR));
         lblTime->setText(QString());
         lblUserAvatar->setText(QString());
         lblUserName->setText(QString());
         btnExitClient->setText(QApplication::translate("SalesClient", "Exit Client", Q_NULLPTR));
+        btnOpenClose->setText(QApplication::translate("SalesClient", "Open/Close", Q_NULLPTR));
         btnLogout->setText(QApplication::translate("SalesClient", "Log Out", Q_NULLPTR));
         label_21->setText(QString());
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
+        cbSalesType->clear();
+        cbSalesType->insertItems(0, QStringList()
          << QApplication::translate("SalesClient", "Select Sale Type", Q_NULLPTR)
          << QApplication::translate("SalesClient", "Retail", Q_NULLPTR)
          << QApplication::translate("SalesClient", "Wholesale", Q_NULLPTR)
         );
-        label_35->setText(QApplication::translate("SalesClient", "Enter Client Phone:", Q_NULLPTR));
-        checkBoxApplyRewards->setText(QApplication::translate("SalesClient", "Enable Rewards Payment", Q_NULLPTR));
+        lblClientNameHolder->setText(QApplication::translate("SalesClient", "Enter Client Phone:", Q_NULLPTR));
+        checkBoxEnableRewardPayment->setText(QApplication::translate("SalesClient", "Enable Rewards Payment", Q_NULLPTR));
         checkBoxEnableDiscount->setText(QApplication::translate("SalesClient", "Enable Discount", Q_NULLPTR));
         checkBoxEnableRewards->setText(QApplication::translate("SalesClient", "Enable Rewards", Q_NULLPTR));
         label_10->setText(QString());
-        label_28->setText(QApplication::translate("SalesClient", "#", Q_NULLPTR));
-        label_12->setText(QApplication::translate("SalesClient", "Search Product:", Q_NULLPTR));
+        lblBarCodeHolder->setText(QApplication::translate("SalesClient", "#", Q_NULLPTR));
+        lblSearchProductHolder->setText(QApplication::translate("SalesClient", "Search Product:", Q_NULLPTR));
         label_15->setText(QString());
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("SalesClient", "Product Id", Q_NULLPTR));
@@ -1327,7 +1334,7 @@ public:
         label_13->setText(QApplication::translate("SalesClient", "Outstanding Debt:", Q_NULLPTR));
         lblOutstandingDebt->setText(QString());
         pushButton->setText(QApplication::translate("SalesClient", "View This Customer", Q_NULLPTR));
-        checkBox->setText(QApplication::translate("SalesClient", "Authorize rewards Payment", Q_NULLPTR));
+        checkBoxClientRewardAuthorization->setText(QApplication::translate("SalesClient", "Authorize rewards Payment", Q_NULLPTR));
         label_7->setText(QApplication::translate("SalesClient", "Sale Value:", Q_NULLPTR));
         lblSaleValue->setText(QApplication::translate("SalesClient", "00.00", Q_NULLPTR));
         label_8->setText(QApplication::translate("SalesClient", "Sale Tax(16%):", Q_NULLPTR));

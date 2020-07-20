@@ -175,6 +175,11 @@
 			"EWIEGA46WW/moc_salesclient.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/sessioncontrol.h",
+			"MU",
+			"EWIEGA46WW/moc_sessioncontrol.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/supervisorwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_supervisorwindow.cpp"
@@ -310,6 +315,7 @@
 		[ "/home/vee/pointOfSale/productrewardeditor.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/profileviewer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/salesclient.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/sessioncontrol.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/supervisorwindow.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/template.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/verifynewproduct.cpp", "MU" ],

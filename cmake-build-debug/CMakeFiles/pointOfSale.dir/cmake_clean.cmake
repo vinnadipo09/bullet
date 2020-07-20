@@ -40,6 +40,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.o"
   "CMakeFiles/pointOfSale.dir/profileviewer.cpp.o"
   "CMakeFiles/pointOfSale.dir/salesclient.cpp.o"
+  "CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.o"
   "CMakeFiles/pointOfSale.dir/supervisorwindow.cpp.o"
   "CMakeFiles/pointOfSale.dir/template.cpp.o"
   "CMakeFiles/pointOfSale.dir/verifynewproduct.cpp.o"

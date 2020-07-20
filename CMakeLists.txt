@@ -213,6 +213,10 @@ else()
     customerviewall.cpp
     customerviewall.h
     customerviewall.ui
+
+    sessioncontrol.cpp
+    sessioncontrol.h
+    sessioncontrol.ui
   )
 endif()
 

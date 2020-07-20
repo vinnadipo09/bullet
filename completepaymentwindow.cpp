@@ -2,7 +2,7 @@
 #include "ui_completepaymentwindow.h"
 
 CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser,
-        std::map<QString, int>&productsBought, int& totalToPay) :
+        std::map<int, int>&productsBought, int& totalToPay) :
     QDialog(parent),
     ui(new Ui::CompletePaymentWindow)
 {
@@ -14,7 +14,7 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     balanceForClient = new int;
     *amountPaid = 0;
 
-    *productToDatabasaeSales = productsBought;
+//    *productToDatabasaeSales = productsBought;
     *userOnCashier = currentLoggedInUser;
     *amountToBePayed = totalToPay;
     ui->cb_paymentMethod->setCurrentIndex(1);

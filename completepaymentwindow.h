@@ -14,7 +14,7 @@ class CompletePaymentWindow : public QDialog
 
 public:
     explicit CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser,
-            std::map<QString, int>&productsBought, int& totalToPay);
+            std::map<int, int>&productsBought, int& totalToPay);
     ~CompletePaymentWindow();
 
 private slots:

@@ -1162,6 +1162,33 @@ salesclient.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/salesclient.cpp.s
 .PHONY : salesclient.cpp.s
 
+sessioncontrol.o: sessioncontrol.cpp.o
+
+.PHONY : sessioncontrol.o
+
+# target to build an object file
+sessioncontrol.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.o
+.PHONY : sessioncontrol.cpp.o
+
+sessioncontrol.i: sessioncontrol.cpp.i
+
+.PHONY : sessioncontrol.i
+
+# target to preprocess a source file
+sessioncontrol.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.i
+.PHONY : sessioncontrol.cpp.i
+
+sessioncontrol.s: sessioncontrol.cpp.s
+
+.PHONY : sessioncontrol.s
+
+# target to generate assembly for a file
+sessioncontrol.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.s
+.PHONY : sessioncontrol.cpp.s
+
 supervisorwindow.o: supervisorwindow.cpp.o
 
 .PHONY : supervisorwindow.o
@@ -1529,6 +1556,9 @@ help:
 	@echo "... salesclient.o"
 	@echo "... salesclient.i"
 	@echo "... salesclient.s"
+	@echo "... sessioncontrol.o"
+	@echo "... sessioncontrol.i"
+	@echo "... sessioncontrol.s"
 	@echo "... supervisorwindow.o"
 	@echo "... supervisorwindow.i"
 	@echo "... supervisorwindow.s"
