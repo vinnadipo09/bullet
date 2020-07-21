@@ -71,18 +71,11 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     rowToEditFromSelection = new int;
 
     checkLastSession();
-    if(!thereIsOpenSession){
-        disableSystems();
-        ui->btnOpenClose->setStyleSheet("background-color:rgb(78, 154, 6)");
-        ui->btnOpenClose->setText("Open Session");
-    }else{
-        enableSystems();
-        ui->btnOpenClose->setStyleSheet("background-color:red");
-        ui->btnOpenClose->setText("Close Session");
-    }
+
 
     QObject::connect(ui->tableWidget->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&,
                                                                        const QItemSelection&)), SLOT(getRowToEdit()));
+    QObject::connect(this, SIGNAL(enableSystemsSent()), this, SLOT(enableSystemsCalled()));
 }
 
 SalesClient::~SalesClient()
@@ -368,7 +361,6 @@ void SalesClient::loadItemsFromDbToCompleter() {
             while(query.next()){
                 productName = query.value(0).toString();
                 completionList<<productName;
-                LOGx(productName.toStdString());
             }
             completer = new QCompleter(completionList,this);
             completer->setCaseSensitivity(Qt::CaseInsensitive);
@@ -398,7 +390,6 @@ void SalesClient::on_btnCompleteSales_clicked()
 }
 
 void SalesClient::addCompleterProductToSales(std::map<QString, int>&) {
-    LOGx("ssssssssssssssssssssssssssssssssssssssss");
 }
 
 void SalesClient::addProductToCart() {
@@ -442,8 +433,6 @@ void SalesClient::receiveCustomerAdditionComplete() {
 }
 
 void SalesClient::receiveCustomerSingleViewComplete() {
-    LOGx("signal three received");
-
     customerViewChoice->close();
     this->show();
 }
@@ -460,7 +449,6 @@ void SalesClient::reducedQuantityPurchased() {
     QString barcodeToModify;
     if(rowDefined){
         *rowToEdit = *rowToEditFromSelection;
-        LOGx("++++++++++++++===========================++++++++++++++++++++");
     }else{
         *rowToEdit = ui->tableWidget->rowCount()-1;
     }
@@ -626,21 +614,13 @@ void SalesClient::updateStockAndStockLogs(QString &currentBarCode, int &productP
 
 void SalesClient::on_btnOpenClose_clicked()
 {
-    thereIsOpenSession = !thereIsOpenSession;
     if(thereIsOpenSession){
         *executionType = "Closing";
-        disableSystems();
-        ui->btnOpenClose->setStyleSheet("background-color:rgb(78, 154, 6)");
-        ui->btnOpenClose->setText("Open Session");
-
         sessionControl = new SessionControl(this, *currentUser, *executionType);
         sessionControl->setModal(true);
         sessionControl->show();
     }else{
         *executionType = "Opening";
-        enableSystems();
-        ui->btnOpenClose->setStyleSheet("background-color:red");
-        ui->btnOpenClose->setText("Close Session");
         sessionControl = new SessionControl(this, *currentUser, *executionType);
         sessionControl->setModal(true);
         sessionControl->show();
@@ -648,17 +628,6 @@ void SalesClient::on_btnOpenClose_clicked()
 }
 
 void SalesClient::disableSystems() {
-    LOGx("disabled");
-    ui->lblTime->setStyleSheet("background-color:red");
-    ui->lblTimeHolder->setStyleSheet("background-color:red");
-    ui->lblDateHolder->setStyleSheet("background-color:red");
-    ui->lblDate->setStyleSheet("background-color:red");
-    ui->lblClientNameHolder->setStyleSheet("background-color:red");
-    ui->lblUserName->setStyleSheet("background-color:red");
-    ui->lblUserAvatar->setStyleSheet("background-color:red");
-    ui->lblBarCodeHolder->setStyleSheet("background-color:red");
-    ui->lblSearchProductHolder->setStyleSheet("background-color:red");
-    ui->cbSalesType->setStyleSheet("background-color:red");
     ui->cbSalesType->setDisabled(true);
     ui->checkBoxEnableDiscount->setDisabled(true);
     ui->checkBoxEnableRewards->setDisabled(true);
@@ -666,20 +635,10 @@ void SalesClient::disableSystems() {
     ui->le_barcodeEntry->setDisabled(true);
     ui->leClient->setDisabled(true);
     ui->le_SearchProduct->setDisabled(true);
+
 }
 
 void SalesClient::enableSystems() {
-    LOGx("enabled");
-    ui->lblTime->setStyleSheet("background-color:rgb(78, 154, 6)");
-    ui->lblTimeHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
-    ui->lblDateHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
-    ui->lblDate->setStyleSheet("background-color:rgb(78, 154, 6)");
-    ui->lblClientNameHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
-    ui->lblUserName->setStyleSheet("background-color:rgb(78, 154, 6)");
-    ui->lblUserAvatar->setStyleSheet("background-color:rgb(78, 154, 6)");
-    ui->lblBarCodeHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
-    ui->lblSearchProductHolder->setStyleSheet("background-color:rgb(78, 154, 6)");
-    ui->cbSalesType->setStyleSheet("background-color:rgb(78, 154, 6)");
     ui->cbSalesType->setEnabled(true);
     ui->checkBoxEnableDiscount->setEnabled(true);
     ui->checkBoxEnableRewards->setEnabled(true);
@@ -689,11 +648,11 @@ void SalesClient::enableSystems() {
     ui->le_SearchProduct->setEnabled(true);
 
 
+
 //    background-color: rgb(78, 154, 6);
 }
 
 void SalesClient::checkLastSession() {
-    LOGx("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
     if(salesConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
         query.prepare(QString("SELECT salesSessionManager.session_type , salesSessionManager.session_time, users.name FROM salesSessionManager LEFT JOIN users ON users.user_id = salesSessionManager.user_id ORDER "
@@ -702,33 +661,32 @@ void SalesClient::checkLastSession() {
             QMessageBox::critical(this, "Database Error", query.lastError().text());
             return;
         }else{
-            LOGx("entering query");
             while (query.next()) {
-                LOGx("query executed");
 
                 ongoingSession->sessionType = query.value(0).toString();
                 ongoingSession->sessionTime = query.value(1).toDateTime();
                 ongoingSession->userName = query.value(2).toString();
 
-                if((ongoingSession->sessionType=="Continued" || ongoingSession->sessionType=="Opened" ) && ongoingSession->userName==currentUser->name){
-                    LOGx("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq   1");
+                if((ongoingSession->sessionType=="Opened" ) && ongoingSession->userName==currentUser->name){
+                    thereIsOpenSession = true;
 
                     QMessageBox::StandardButton reply;
-                    reply = QMessageBox::question(this, "Active Session", "You have an active session. Do you wish to continue?",
-                                                  QMessageBox::Yes|QMessageBox::No);
-                    if (reply == QMessageBox::Yes) {
-                        thereIsOpenSession = true;
-                        close();
-                    } else {
-//                        CLOSE
+                    reply = QMessageBox::warning(this
+                            , "You have an active session"
+                            , "Do you want to continue?"
+                            , QMessageBox::Yes | QMessageBox::No);
+                    if(reply==QMessageBox::Yes){
+                        continue;
+                    }else if(reply==QMessageBox::No){
                         *executionType = "Closing";
                         sessionControl = new SessionControl(this, *currentUser, *executionType);
                         sessionControl->setModal(true);
                         sessionControl->show();
-                        //close current and open a new one
+                    }else{
+                        disableSystems();
                     }
-                }else if((ongoingSession->sessionType=="Continued" || ongoingSession->sessionType=="Opened" ) && ongoingSession->userName!=currentUser->name){
-                    LOGx("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq   2");
+
+                }else if(( ongoingSession->sessionType=="Opened" ) && ongoingSession->userName!=currentUser->name){
 
                     QMessageBox::critical(this, "Unattended Session", "There is an active session that must be closed before continuing!");
                     *executionType = "Closing";
@@ -737,13 +695,10 @@ void SalesClient::checkLastSession() {
                     sessionControl->setModal(true);
                     sessionControl->show();
                     thereIsOpenSession = false;
-                }else if(ongoingSession->sessionType=="Closed"||ongoingSession->sessionType.isEmpty()){
-                    LOGx("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq   3");
-
+                }else if(ongoingSession->sessionType=="Closed"){
                     QMessageBox::critical(this, "Open a session to continue", "Please Open a session to continue!");
                     thereIsOpenSession = false;
                     *executionType = "Opening";
-
                     //session opener
                     sessionControl = new SessionControl(this, *currentUser, *executionType);
                     sessionControl->setModal(true);
@@ -758,4 +713,39 @@ void SalesClient::checkLastSession() {
             }
         }
     }
+    if(!thereIsOpenSession){
+        disableSystems();
+        ui->btnOpenClose->setStyleSheet("background-color:rgb(78, 154, 6)");
+        ui->btnOpenClose->setText("Open Session");
+    }else{
+//        emit enableSystemsSent();
+        enableSystems();
+        ui->btnOpenClose->setStyleSheet("background-color:red");
+        ui->btnOpenClose->setText("Close Session");
+
+    }
+
+    QObject::connect(sessionControl, SIGNAL(sendOpeningComplete()), this, SLOT(receiveOpeningComplete()));
+    QObject::connect(sessionControl, SIGNAL(sendClosingComplete()), this, SLOT(receiveClosingComplete()));
+}
+
+void SalesClient::enableSystemsCalled() {
+    LOGx("enable systems called");
+    enableSystems();
+    ui->le_barcodeEntry->setFocus();
+    ui->btnOpenClose->setStyleSheet("background-color:red");
+    ui->btnOpenClose->setText("Close Session");
+}
+
+void SalesClient::receiveClosingComplete() {
+    disableSystems();
+    thereIsOpenSession = false;
+    emit openingClosingDataChanged();
+}
+
+void SalesClient::receiveOpeningComplete() {
+    enableSystems();
+    thereIsOpenSession = true;
+    emit openingClosingDataChanged();
+
 }

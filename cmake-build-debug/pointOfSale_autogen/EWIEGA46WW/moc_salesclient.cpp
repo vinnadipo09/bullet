@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SalesClient_t {
-    QByteArrayData data[17];
-    char stringdata0[399];
+    QByteArrayData data[22];
+    char stringdata0[509];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,23 +35,29 @@ QT_MOC_LITERAL(0, 0, 11), // "SalesClient"
 QT_MOC_LITERAL(1, 12, 22), // "send_salesClientClosed"
 QT_MOC_LITERAL(2, 35, 0), // ""
 QT_MOC_LITERAL(3, 36, 38), // "customerAdditionViaSalesClien..."
-QT_MOC_LITERAL(4, 75, 20), // "grabBarcodeFromEntry"
-QT_MOC_LITERAL(5, 96, 27), // "on_btnCompleteSales_clicked"
-QT_MOC_LITERAL(6, 124, 26), // "addCompleterProductToSales"
-QT_MOC_LITERAL(7, 151, 22), // "std::map<QString,int>&"
-QT_MOC_LITERAL(8, 174, 29), // "on_btn_addNewCustomer_clicked"
-QT_MOC_LITERAL(9, 204, 8), // "showTime"
-QT_MOC_LITERAL(10, 213, 28), // "on_btn_viewCustomers_clicked"
-QT_MOC_LITERAL(11, 242, 31), // "receiveCustomerAdditionComplete"
-QT_MOC_LITERAL(12, 274, 33), // "receiveCustomerSingleViewComp..."
-QT_MOC_LITERAL(13, 308, 12), // "getRowToEdit"
-QT_MOC_LITERAL(14, 321, 24), // "reducedQuantityPurchased"
-QT_MOC_LITERAL(15, 346, 28), // "on_btnReduceQtyByOne_clicked"
-QT_MOC_LITERAL(16, 375, 23) // "on_btnOpenClose_clicked"
+QT_MOC_LITERAL(4, 75, 17), // "enableSystemsSent"
+QT_MOC_LITERAL(5, 93, 25), // "openingClosingDataChanged"
+QT_MOC_LITERAL(6, 119, 20), // "grabBarcodeFromEntry"
+QT_MOC_LITERAL(7, 140, 27), // "on_btnCompleteSales_clicked"
+QT_MOC_LITERAL(8, 168, 26), // "addCompleterProductToSales"
+QT_MOC_LITERAL(9, 195, 22), // "std::map<QString,int>&"
+QT_MOC_LITERAL(10, 218, 29), // "on_btn_addNewCustomer_clicked"
+QT_MOC_LITERAL(11, 248, 8), // "showTime"
+QT_MOC_LITERAL(12, 257, 28), // "on_btn_viewCustomers_clicked"
+QT_MOC_LITERAL(13, 286, 31), // "receiveCustomerAdditionComplete"
+QT_MOC_LITERAL(14, 318, 33), // "receiveCustomerSingleViewComp..."
+QT_MOC_LITERAL(15, 352, 12), // "getRowToEdit"
+QT_MOC_LITERAL(16, 365, 24), // "reducedQuantityPurchased"
+QT_MOC_LITERAL(17, 390, 28), // "on_btnReduceQtyByOne_clicked"
+QT_MOC_LITERAL(18, 419, 23), // "on_btnOpenClose_clicked"
+QT_MOC_LITERAL(19, 443, 19), // "enableSystemsCalled"
+QT_MOC_LITERAL(20, 463, 22), // "receiveClosingComplete"
+QT_MOC_LITERAL(21, 486, 22) // "receiveOpeningComplete"
 
     },
     "SalesClient\0send_salesClientClosed\0\0"
     "customerAdditionViaSalesClientComplete\0"
+    "enableSystemsSent\0openingClosingDataChanged\0"
     "grabBarcodeFromEntry\0on_btnCompleteSales_clicked\0"
     "addCompleterProductToSales\0"
     "std::map<QString,int>&\0"
@@ -61,7 +67,8 @@ QT_MOC_LITERAL(16, 375, 23) // "on_btnOpenClose_clicked"
     "receiveCustomerSingleViewComplete\0"
     "getRowToEdit\0reducedQuantityPurchased\0"
     "on_btnReduceQtyByOne_clicked\0"
-    "on_btnOpenClose_clicked"
+    "on_btnOpenClose_clicked\0enableSystemsCalled\0"
+    "receiveClosingComplete\0receiveOpeningComplete"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,39 +78,49 @@ static const uint qt_meta_data_SalesClient[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   84,    2, 0x06 /* Public */,
-       3,    0,   85,    2, 0x06 /* Public */,
+       1,    0,  109,    2, 0x06 /* Public */,
+       3,    0,  110,    2, 0x06 /* Public */,
+       4,    0,  111,    2, 0x06 /* Public */,
+       5,    0,  112,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   86,    2, 0x08 /* Private */,
-       5,    0,   87,    2, 0x08 /* Private */,
-       6,    1,   88,    2, 0x08 /* Private */,
-       8,    0,   91,    2, 0x08 /* Private */,
-       9,    0,   92,    2, 0x08 /* Private */,
-      10,    0,   93,    2, 0x08 /* Private */,
-      11,    0,   94,    2, 0x08 /* Private */,
-      12,    0,   95,    2, 0x08 /* Private */,
-      13,    0,   96,    2, 0x08 /* Private */,
-      14,    0,   97,    2, 0x08 /* Private */,
-      15,    0,   98,    2, 0x08 /* Private */,
-      16,    0,   99,    2, 0x08 /* Private */,
+       6,    0,  113,    2, 0x08 /* Private */,
+       7,    0,  114,    2, 0x08 /* Private */,
+       8,    1,  115,    2, 0x08 /* Private */,
+      10,    0,  118,    2, 0x08 /* Private */,
+      11,    0,  119,    2, 0x08 /* Private */,
+      12,    0,  120,    2, 0x08 /* Private */,
+      13,    0,  121,    2, 0x08 /* Private */,
+      14,    0,  122,    2, 0x08 /* Private */,
+      15,    0,  123,    2, 0x08 /* Private */,
+      16,    0,  124,    2, 0x08 /* Private */,
+      17,    0,  125,    2, 0x08 /* Private */,
+      18,    0,  126,    2, 0x08 /* Private */,
+      19,    0,  127,    2, 0x08 /* Private */,
+      20,    0,  128,    2, 0x08 /* Private */,
+      21,    0,  129,    2, 0x08 /* Private */,
 
  // signals: parameters
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 7,    2,
+    QMetaType::Void, 0x80000000 | 9,    2,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -125,18 +142,23 @@ void SalesClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         switch (_id) {
         case 0: _t->send_salesClientClosed(); break;
         case 1: _t->customerAdditionViaSalesClientComplete(); break;
-        case 2: _t->grabBarcodeFromEntry(); break;
-        case 3: _t->on_btnCompleteSales_clicked(); break;
-        case 4: _t->addCompleterProductToSales((*reinterpret_cast< std::map<QString,int>(*)>(_a[1]))); break;
-        case 5: _t->on_btn_addNewCustomer_clicked(); break;
-        case 6: _t->showTime(); break;
-        case 7: _t->on_btn_viewCustomers_clicked(); break;
-        case 8: _t->receiveCustomerAdditionComplete(); break;
-        case 9: _t->receiveCustomerSingleViewComplete(); break;
-        case 10: _t->getRowToEdit(); break;
-        case 11: _t->reducedQuantityPurchased(); break;
-        case 12: _t->on_btnReduceQtyByOne_clicked(); break;
-        case 13: _t->on_btnOpenClose_clicked(); break;
+        case 2: _t->enableSystemsSent(); break;
+        case 3: _t->openingClosingDataChanged(); break;
+        case 4: _t->grabBarcodeFromEntry(); break;
+        case 5: _t->on_btnCompleteSales_clicked(); break;
+        case 6: _t->addCompleterProductToSales((*reinterpret_cast< std::map<QString,int>(*)>(_a[1]))); break;
+        case 7: _t->on_btn_addNewCustomer_clicked(); break;
+        case 8: _t->showTime(); break;
+        case 9: _t->on_btn_viewCustomers_clicked(); break;
+        case 10: _t->receiveCustomerAdditionComplete(); break;
+        case 11: _t->receiveCustomerSingleViewComplete(); break;
+        case 12: _t->getRowToEdit(); break;
+        case 13: _t->reducedQuantityPurchased(); break;
+        case 14: _t->on_btnReduceQtyByOne_clicked(); break;
+        case 15: _t->on_btnOpenClose_clicked(); break;
+        case 16: _t->enableSystemsCalled(); break;
+        case 17: _t->receiveClosingComplete(); break;
+        case 18: _t->receiveOpeningComplete(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -152,6 +174,20 @@ void SalesClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             typedef void (SalesClient::*_t)();
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SalesClient::customerAdditionViaSalesClientComplete)) {
                 *result = 1;
+                return;
+            }
+        }
+        {
+            typedef void (SalesClient::*_t)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SalesClient::enableSystemsSent)) {
+                *result = 2;
+                return;
+            }
+        }
+        {
+            typedef void (SalesClient::*_t)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SalesClient::openingClosingDataChanged)) {
+                *result = 3;
                 return;
             }
         }
@@ -183,13 +219,13 @@ int SalesClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 19)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 14;
+        _id -= 19;
     }
     return _id;
 }
@@ -204,6 +240,18 @@ void SalesClient::send_salesClientClosed()
 void SalesClient::customerAdditionViaSalesClientComplete()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void SalesClient::enableSystemsSent()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void SalesClient::openingClosingDataChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

@@ -640,7 +640,7 @@ background-color: rgb(238, 238, 236);</string>
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>6</number>
+         <number>10</number>
         </property>
         <widget class="QWidget" name="page_dashboard">
          <widget class="QLabel" name="label_2">
@@ -5150,23 +5150,23 @@ color: rgb(243, 243, 243);</string>
               <widget class="QLabel" name="label_37">
                <property name="geometry">
                 <rect>
-                 <x>420</x>
-                 <y>10</y>
-                 <width>71</width>
-                 <height>16</height>
+                 <x>390</x>
+                 <y>6</y>
+                 <width>211</width>
+                 <height>20</height>
                 </rect>
                </property>
                <property name="styleSheet">
                 <string notr="true">color: rgb(255, 255, 255);</string>
                </property>
                <property name="text">
-                <string>CASHIERS</string>
+                <string>ALL OPENINGS AND CLOSINGS</string>
                </property>
               </widget>
              </widget>
             </item>
             <item>
-             <widget class="QTableWidget" name="tableWidgetCashiers_9">
+             <widget class="QTableWidget" name="twallOpeningsAndClosings">
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
@@ -5175,47 +5175,52 @@ color: rgb(243, 243, 243);</string>
               </property>
               <column>
                <property name="text">
-                <string>User ID</string>
+                <string>Session Id</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>First Name</string>
+                <string>Session Type</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Other Names</string>
+                <string>Session Date</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Email</string>
+                <string>Drawer Cash</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Phone Number</string>
+                <string>System Cash</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Username</string>
+                <string>Discrepancy</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>User Role</string>
+                <string>Effect</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Avatar</string>
+                <string>Resolved</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>View User</string>
+                <string>User</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>View Record</string>
                </property>
               </column>
              </widget>
@@ -5246,23 +5251,23 @@ color: rgb(243, 243, 243);</string>
               <widget class="QLabel" name="label_38">
                <property name="geometry">
                 <rect>
-                 <x>420</x>
+                 <x>240</x>
                  <y>10</y>
-                 <width>81</width>
-                 <height>16</height>
+                 <width>311</width>
+                 <height>20</height>
                 </rect>
                </property>
                <property name="styleSheet">
                 <string notr="true">color: rgb(255, 255, 255);</string>
                </property>
                <property name="text">
-                <string>SUPERVISORS</string>
+                <string>OPENINGS AND CLOSINGS WITH CASH DISCREPANCIES</string>
                </property>
               </widget>
              </widget>
             </item>
             <item>
-             <widget class="QTableWidget" name="tableWidgetSupervisors_9">
+             <widget class="QTableWidget" name="twDiscrepancies">
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
@@ -5271,47 +5276,47 @@ color: rgb(243, 243, 243);</string>
               </property>
               <column>
                <property name="text">
-                <string>User ID</string>
+                <string>Session Id</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>First Name</string>
+                <string>Session Type</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>New Column</string>
+                <string>Session Date</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Other Names</string>
+                <string>Drawer Cash</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Email</string>
+                <string>System Cash</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Phone Number</string>
+                <string>Discrepancy</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Username</string>
+                <string>Effect</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>User Role</string>
+                <string>Resolved</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Avatar</string>
+                <string>User</string>
                </property>
               </column>
               <column>
@@ -5349,7 +5354,7 @@ color: rgb(243, 243, 243);</string>
                 <rect>
                  <x>420</x>
                  <y>10</y>
-                 <width>111</width>
+                 <width>231</width>
                  <height>16</height>
                 </rect>
                </property>
@@ -5357,13 +5362,13 @@ color: rgb(243, 243, 243);</string>
                 <string notr="true">color: rgb(255, 255, 255);</string>
                </property>
                <property name="text">
-                <string>ADMINISTRATORS</string>
+                <string>RESOLVED OPENINGS AND CLOSINGS</string>
                </property>
               </widget>
              </widget>
             </item>
             <item>
-             <widget class="QTableWidget" name="tableWidgetAdministrators_9">
+             <widget class="QTableWidget" name="twResolvedDiscrepancies">
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
@@ -5372,47 +5377,47 @@ color: rgb(243, 243, 243);</string>
               </property>
               <column>
                <property name="text">
-                <string>User ID</string>
+                <string>Session Id</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>First Name</string>
+                <string>Session Type</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>New Column</string>
+                <string>Session Date</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Other Names</string>
+                <string>Drawer Cash</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Email</string>
+                <string>System Cash</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Phone Number</string>
+                <string>Discrepancy</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Username</string>
+                <string>Effect</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>User Role</string>
+                <string>Resolved</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Avatar</string>
+                <string>User</string>
                </property>
               </column>
               <column>

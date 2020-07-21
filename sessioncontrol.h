@@ -30,6 +30,9 @@ private:
     void getCashInSystem();
     int* cashInSystem;
     QString* currentExecutionType;
+signals:
+    void sendOpeningComplete();
+    void sendClosingComplete();
 };
 
 #endif // SESSIONCONTROL_H

@@ -232,6 +232,15 @@ private:
 
     void loadAgentsWithOverdueDebts();
     void loadAgentsWithDebts();
+
+private:
+    void loadOpeningsAndClosings();
+    void loadAllOpeningsAndClosings();
+    void loadDiscrepancyOpeningsAndClosings();
+    void loadResolvedOpeningsAndClosings();
+
+private slots:
+    void receiveOpeningClosingChanged();
 };
 
 #endif // ADMINWINDOW_H

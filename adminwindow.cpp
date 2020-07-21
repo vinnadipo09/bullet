@@ -37,6 +37,7 @@ AdminWindow::AdminWindow(QWidget *parent, loggedUser &currentLoggedInUser) :
     loadCashTransactions();
     loadAllCustomers();
     loadAllAgents();
+    loadOpeningsAndClosings();
 }
 
 AdminWindow::~AdminWindow()
@@ -607,6 +608,7 @@ void AdminWindow::on_pb_testButton_clicked()
     this->hide();
     QObject::connect(salesClient, SIGNAL(send_salesClientClosed()), this, SLOT(receive_salesClientClosed()));
     QObject::connect(salesClient, SIGNAL(customerAdditionViaSalesClientComplete()), this, SLOT(receiveCustomerAdditionComplete()));
+    QObject::connect(salesClient, SIGNAL(openingClosingDataChanged()()), this, SLOT(receiveOpeningClosingChanged()));
 }
 
 void AdminWindow::receive_salesClientClosed() {
@@ -1506,4 +1508,151 @@ void AdminWindow::loadAgentsWithDebts() {
 
 void AdminWindow::loadCustomersWithDebts() {
 
+}
+//LOAD OPENINGS AND CLOSINGS
+void AdminWindow::loadOpeningsAndClosings() {
+    loadAllOpeningsAndClosings();
+    loadDiscrepancyOpeningsAndClosings();
+    loadResolvedOpeningsAndClosings();
+}
+
+void AdminWindow::loadAllOpeningsAndClosings() {
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(session_id) FROM salesSessionManager"));;
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                QDate sessionDate;
+                QTime sessionTime;
+                int numCashRows = query.value(0).toInt();
+                ui->twallOpeningsAndClosings->setRowCount(numCashRows);
+                query.prepare("SELECT salesSessionManager.session_id, salesSessionManager.session_type, salesSessionManager.session_time, "
+                              "salesSessionManager.drawer_cash, salesSessionManager.system_cash, salesSessionManager.discrepancy, "
+                              "salesSessionManager.effect, salesSessionManager.resolved, users.name FROM salesSessionManager "
+                              "LEFT JOIN users on users.user_id = salesSessionManager.user_id ORDER BY salesSessionManager.session_id DESC");
+                if (!query.exec()) {
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                } else {
+//                    while(query.next()){
+                         sessionDate = query.value(2).toDate();
+                        sessionTime = query.value(2).toTime();
+                        int sessionId = query.value(0).toInt();
+                        QString sessionType = query.value(1).toString();
+                        int drawerCash = query.value(3).toInt();
+                        int systemCash = query.value(4).toInt();
+                        int cashDiscrepancy = query.value(5).toInt();
+                        QString discrepancyEffect = query.value(6).toString();
+                        QString resolutionStatus = query.value(7).toString();
+//                    }
+
+                    for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                        for (columns = 0; columns < 10; columns++) {
+                             if(columns==9){
+                                QPushButton *btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("View");
+                                ui->twallOpeningsAndClosings->setCellWidget(rows, 9, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                 &AdminWindow::receiveEditProductZone);
+                            }
+                            ui->twallOpeningsAndClosings->setItem(rows, columns,
+                                                                  new QTableWidgetItem(query.value(columns).toString()));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void AdminWindow::loadDiscrepancyOpeningsAndClosings() {
+    QString discrepancyStatus = "No";
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(session_id) FROM salesSessionManager WHERE resolved = :resolvedStatus"));
+        query.bindValue(":resolvedStatus", discrepancyStatus);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                int numCashRows = query.value(0).toInt();
+                ui->twDiscrepancies->setRowCount(numCashRows);
+                query.prepare("SELECT salesSessionManager.session_id, salesSessionManager.session_type, salesSessionManager.session_time, "
+                              "salesSessionManager.drawer_cash, salesSessionManager.system_cash, salesSessionManager.discrepancy, "
+                              "salesSessionManager.effect, salesSessionManager.resolved, users.name FROM salesSessionManager "
+                              "LEFT JOIN users on users.user_id = salesSessionManager.user_id WHERE salesSessionManager.resolved = :resolvedStatus "
+                              "ORDER BY salesSessionManager.session_id DESC");
+                query.bindValue(":resolvedStatus", discrepancyStatus);
+                if (!query.exec()) {
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                } else {
+                    for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                        for (columns = 0; columns < 10; columns++) {
+                            if (columns == 9) {
+                                QPushButton *btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("View");
+                                ui->twDiscrepancies->setCellWidget(rows, 9, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                 &AdminWindow::receiveEditProductZone);
+                            }
+                            ui->twDiscrepancies->setItem(rows, columns,
+                                                                  new QTableWidgetItem(query.value(columns).toString()));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void AdminWindow::loadResolvedOpeningsAndClosings() {
+    QString statusOne = "Yes";
+    QString statusTwo = "None";
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(session_id) FROM salesSessionManager WHERE resolved = :statusOne OR resolved = :statusTwo"));
+        query.bindValue(":statusOne", statusOne);
+        query.bindValue(":statusTwo", statusTwo);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()) {
+                int numCashRows = query.value(0).toInt();
+                ui->twResolvedDiscrepancies->setRowCount(numCashRows);
+                query.prepare("SELECT salesSessionManager.session_id, salesSessionManager.session_type, salesSessionManager.session_time, "
+                              "salesSessionManager.drawer_cash, salesSessionManager.system_cash, salesSessionManager.discrepancy, "
+                              "salesSessionManager.effect, salesSessionManager.resolved, users.name FROM salesSessionManager "
+                              "LEFT JOIN users on users.user_id = salesSessionManager.user_id WHERE "
+                              "salesSessionManager.resolved = :statusOne OR salesSessionManager.resolved = :statusTwo "
+                              "ORDER BY salesSessionManager.session_id DESC");
+                query.bindValue(":statusOne", statusOne);
+                query.bindValue(":statusTwo", statusTwo);
+                if (!query.exec()) {
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                } else {
+                    for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
+                        for (columns = 0; columns < 10; columns++) {
+                            if (columns == 9) {
+                                QPushButton *btn_viewProductCategory = new QPushButton;
+                                btn_viewProductCategory->setText("View");
+                                ui->twResolvedDiscrepancies->setCellWidget(rows, 9, btn_viewProductCategory);
+                                QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
+                                                 &AdminWindow::receiveEditProductZone);
+                            }
+                            ui->twResolvedDiscrepancies->setItem(rows, columns,
+                                                                  new QTableWidgetItem(query.value(columns).toString()));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void AdminWindow::receiveOpeningClosingChanged() {
+    loadOpeningsAndClosings();
 }

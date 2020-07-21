@@ -151,6 +151,16 @@ private:
 
 private:
     SessionControl* sessionControl;
+    QMessageBox * sessionStarter;
+
+private slots:
+    void enableSystemsCalled();
+    void receiveClosingComplete();
+    void receiveOpeningComplete();
+
+signals:
+    void enableSystemsSent();
+    void openingClosingDataChanged();
 };
 
 #endif // SALESCLIENT_H

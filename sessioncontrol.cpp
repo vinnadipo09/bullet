@@ -25,12 +25,12 @@ void SessionControl::getCashInSystem() {
     sessionConnection->conn_open();
     if(sessionConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
-        query.prepare(QString("SELECT total FROM cash ORDER BY debt_id DESC LIMIT 1"));
+        query.prepare(QString("SELECT total FROM cash ORDER BY transaction_id DESC LIMIT 1"));
         if(!query.exec()){
             QMessageBox::critical(this, "Database Error", query.lastError().text());
         }else{
             while(query.next()){
-                *cashInSystem = query.value(0).toInt();
+                *cashInSystem = (int)query.value(0).toDouble();
             }
         }
     }
@@ -38,6 +38,7 @@ void SessionControl::getCashInSystem() {
 
 void SessionControl::on_btnApply_clicked()
 {
+    getCashInSystem();
     QDateTime currentTime = QDateTime::currentDateTime();
     int cashByUser = ui->leCashInDrawer->text().toInt();
     QString cashEffect;
@@ -53,6 +54,13 @@ void SessionControl::on_btnApply_clicked()
         cashDiscrepancy = 0;
         cashEffect = "None";
     }
+
+
+
+
+
+
+
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Confirm Cash", "KSHS. "+ QString::number(cashByUser)+" . This Value CANNOT BE EDITED. Do you wish to proceed?",
                                   QMessageBox::Yes|QMessageBox::No);
@@ -61,7 +69,7 @@ void SessionControl::on_btnApply_clicked()
             QString sessionType = "Opened";
             if(sessionConnection->conn_open()){
                 QSqlQuery query(QSqlDatabase::database("MyConnect"));
-                query.prepare(QString("INSERT INTO salesSessionManager session_type, session_time, drawer_cash, system_cash, discrepancy, effect, user_id, resolved VALUES("
+                query.prepare(QString("INSERT INTO salesSessionManager (session_type, session_time, drawer_cash, system_cash, discrepancy, effect, user_id, resolved) VALUES("
                                       ":sessionType, :sessionTime, :drawerCash, :systemCash, :discrepancy, :effect, :userId, :resolved)"));
                 query.bindValue(":sessionType", sessionType);
                 query.bindValue(":sessionTime", currentTime);
@@ -76,14 +84,15 @@ void SessionControl::on_btnApply_clicked()
                 }else{
                     QMessageBox::critical(this, "Opening Successful", "You have successfully opened a new session!");
                 }
-
+                    emit sendOpeningComplete();
+                    this->close();
                 }
             }else if(*currentExecutionType=="Closing"){
             QString sessionType = "Closed";
             if(sessionConnection->conn_open()){
                 QSqlQuery query(QSqlDatabase::database("MyConnect"));
-                query.prepare(QString("INSERT INTO salesSessionManager session_type, session_time, drawer_cash, system_cash, discrepancy, effect, user_id, resolved VALUES("
-                                      ":sessionType, :sessionTime, :drawerCash, :systemCash, :discrepancy, :effect, :userId, :resolved)"));
+                query.prepare(QString("INSERT INTO salesSessionManager (session_type, session_time, drawer_cash, system_cash, discrepancy, effect, user_id, resolved) VALUES("
+                                      "                                      :sessionType, :sessionTime, :drawerCash, :systemCash, :discrepancy, :effect, :userId, :resolved)"));
                 query.bindValue(":sessionType", sessionType);
                 query.bindValue(":sessionTime", currentTime);
                 query.bindValue(":drawerCash", cashByUser);
@@ -97,10 +106,10 @@ void SessionControl::on_btnApply_clicked()
                 }else{
                     QMessageBox::critical(this, "Closing Successful", "You have successfully closed your current session!");
                 }
-
+                emit sendClosingComplete();
+                this->close();
             }
         }
-        close();
 
     }else {
         return;
@@ -109,8 +118,7 @@ void SessionControl::on_btnApply_clicked()
     }
 
 //        send signal and disable sales client
-    }
-}
+
 }
 
 
