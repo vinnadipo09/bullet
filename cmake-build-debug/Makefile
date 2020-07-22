@@ -757,6 +757,33 @@ debugger.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/debugger.cpp.s
 .PHONY : debugger.cpp.s
 
+donutbreakdownchart.o: donutbreakdownchart.cpp.o
+
+.PHONY : donutbreakdownchart.o
+
+# target to build an object file
+donutbreakdownchart.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.o
+.PHONY : donutbreakdownchart.cpp.o
+
+donutbreakdownchart.i: donutbreakdownchart.cpp.i
+
+.PHONY : donutbreakdownchart.i
+
+# target to preprocess a source file
+donutbreakdownchart.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.i
+.PHONY : donutbreakdownchart.cpp.i
+
+donutbreakdownchart.s: donutbreakdownchart.cpp.s
+
+.PHONY : donutbreakdownchart.s
+
+# target to generate assembly for a file
+donutbreakdownchart.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.s
+.PHONY : donutbreakdownchart.cpp.s
+
 editcustomer.o: editcustomer.cpp.o
 
 .PHONY : editcustomer.o
@@ -946,6 +973,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mainslice.o: mainslice.cpp.o
+
+.PHONY : mainslice.o
+
+# target to build an object file
+mainslice.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/mainslice.cpp.o
+.PHONY : mainslice.cpp.o
+
+mainslice.i: mainslice.cpp.i
+
+.PHONY : mainslice.i
+
+# target to preprocess a source file
+mainslice.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/mainslice.cpp.i
+.PHONY : mainslice.cpp.i
+
+mainslice.s: mainslice.cpp.s
+
+.PHONY : mainslice.s
+
+# target to generate assembly for a file
+mainslice.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/mainslice.cpp.s
+.PHONY : mainslice.cpp.s
+
 passwordconfirmation.o: passwordconfirmation.cpp.o
 
 .PHONY : passwordconfirmation.o
@@ -1134,6 +1188,33 @@ profileviewer.s: profileviewer.cpp.s
 profileviewer.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/profileviewer.cpp.s
 .PHONY : profileviewer.cpp.s
+
+qcustomplot.o: qcustomplot.cpp.o
+
+.PHONY : qcustomplot.o
+
+# target to build an object file
+qcustomplot.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/qcustomplot.cpp.o
+.PHONY : qcustomplot.cpp.o
+
+qcustomplot.i: qcustomplot.cpp.i
+
+.PHONY : qcustomplot.i
+
+# target to preprocess a source file
+qcustomplot.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/qcustomplot.cpp.i
+.PHONY : qcustomplot.cpp.i
+
+qcustomplot.s: qcustomplot.cpp.s
+
+.PHONY : qcustomplot.s
+
+# target to generate assembly for a file
+qcustomplot.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/qcustomplot.cpp.s
+.PHONY : qcustomplot.cpp.s
 
 salesclient.o: salesclient.cpp.o
 
@@ -1511,6 +1592,9 @@ help:
 	@echo "... debugger.o"
 	@echo "... debugger.i"
 	@echo "... debugger.s"
+	@echo "... donutbreakdownchart.o"
+	@echo "... donutbreakdownchart.i"
+	@echo "... donutbreakdownchart.s"
 	@echo "... editcustomer.o"
 	@echo "... editcustomer.i"
 	@echo "... editcustomer.s"
@@ -1532,6 +1616,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mainslice.o"
+	@echo "... mainslice.i"
+	@echo "... mainslice.s"
 	@echo "... passwordconfirmation.o"
 	@echo "... passwordconfirmation.i"
 	@echo "... passwordconfirmation.s"
@@ -1553,6 +1640,9 @@ help:
 	@echo "... profileviewer.o"
 	@echo "... profileviewer.i"
 	@echo "... profileviewer.s"
+	@echo "... qcustomplot.o"
+	@echo "... qcustomplot.i"
+	@echo "... qcustomplot.s"
 	@echo "... salesclient.o"
 	@echo "... salesclient.i"
 	@echo "... salesclient.s"

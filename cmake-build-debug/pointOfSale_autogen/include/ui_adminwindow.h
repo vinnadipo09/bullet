@@ -794,10 +794,10 @@ public:
         page_dashboard->setObjectName(QStringLiteral("page_dashboard"));
         label_2 = new QLabel(page_dashboard);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(220, 150, 181, 51));
-        QFont font;
-        font.setPointSize(21);
-        label_2->setFont(font);
+        label_2->setGeometry(QRect(240, 140, 491, 71));
+        label_2->setStyleSheet(QStringLiteral("background-color: rgb(204, 0, 0);"));
+        label_2->setFrameShape(QFrame::Box);
+        label_2->setFrameShadow(QFrame::Raised);
         stackedWidget->addWidget(page_dashboard);
         page_users = new QWidget();
         page_users->setObjectName(QStringLiteral("page_users"));
@@ -819,9 +819,9 @@ public:
         label_3 = new QLabel(frame_3);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(540, 10, 261, 16));
-        QFont font1;
-        font1.setPointSize(13);
-        label_3->setFont(font1);
+        QFont font;
+        font.setPointSize(13);
+        label_3->setFont(font);
         label_3->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         gridLayout->addWidget(frame_3, 0, 0, 1, 1);
@@ -1035,7 +1035,7 @@ public:
         label_4 = new QLabel(frame_7);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(540, 10, 291, 16));
-        label_4->setFont(font1);
+        label_4->setFont(font);
         label_4->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_6->addWidget(frame_7);
@@ -1287,7 +1287,7 @@ public:
         label_12 = new QLabel(frame_11);
         label_12->setObjectName(QStringLiteral("label_12"));
         label_12->setGeometry(QRect(460, 10, 341, 20));
-        label_12->setFont(font1);
+        label_12->setFont(font);
         label_12->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_7->addWidget(frame_11);
@@ -1381,7 +1381,7 @@ public:
         label_13 = new QLabel(frame_12);
         label_13->setObjectName(QStringLiteral("label_13"));
         label_13->setGeometry(QRect(460, 10, 171, 20));
-        label_13->setFont(font1);
+        label_13->setFont(font);
         label_13->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_7->addWidget(frame_12);
@@ -1655,12 +1655,12 @@ public:
         label->setObjectName(QStringLiteral("label"));
         label->setMinimumSize(QSize(0, 30));
         label->setMaximumSize(QSize(16777215, 30));
-        QFont font2;
-        font2.setFamily(QStringLiteral("Waree"));
-        font2.setPointSize(12);
-        font2.setBold(true);
-        font2.setWeight(75);
-        label->setFont(font2);
+        QFont font1;
+        font1.setFamily(QStringLiteral("Waree"));
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setWeight(75);
+        label->setFont(font1);
         label->setStyleSheet(QLatin1String("background-color: rgb(204, 0, 0);\n"
 "color: rgb(243, 243, 243);"));
         label->setFrameShape(QFrame::Panel);
@@ -1677,7 +1677,7 @@ public:
         label_61->setObjectName(QStringLiteral("label_61"));
         label_61->setMinimumSize(QSize(0, 30));
         label_61->setMaximumSize(QSize(16777215, 30));
-        label_61->setFont(font2);
+        label_61->setFont(font1);
         label_61->setStyleSheet(QLatin1String("background-color: rgb(204, 0, 0);\n"
 "color: rgb(243, 243, 243);"));
         label_61->setFrameShape(QFrame::Panel);
@@ -1712,7 +1712,7 @@ public:
         label_63->setObjectName(QStringLiteral("label_63"));
         label_63->setMinimumSize(QSize(0, 30));
         label_63->setMaximumSize(QSize(16777215, 30));
-        label_63->setFont(font2);
+        label_63->setFont(font1);
         label_63->setStyleSheet(QLatin1String("background-color: rgb(204, 0, 0);\n"
 "color: rgb(243, 243, 243);"));
         label_63->setFrameShape(QFrame::Panel);
@@ -1793,7 +1793,7 @@ public:
         label_62->setObjectName(QStringLiteral("label_62"));
         label_62->setMinimumSize(QSize(0, 30));
         label_62->setMaximumSize(QSize(16777215, 30));
-        label_62->setFont(font2);
+        label_62->setFont(font1);
         label_62->setStyleSheet(QLatin1String("background-color: rgb(204, 0, 0);\n"
 "color: rgb(243, 243, 243);"));
         label_62->setFrameShape(QFrame::Panel);
@@ -1819,7 +1819,7 @@ public:
         label_60->setObjectName(QStringLiteral("label_60"));
         label_60->setMinimumSize(QSize(0, 30));
         label_60->setMaximumSize(QSize(16777215, 30));
-        label_60->setFont(font2);
+        label_60->setFont(font1);
         label_60->setStyleSheet(QLatin1String("background-color: rgb(204, 0, 0);\n"
 "color: rgb(243, 243, 243);"));
         label_60->setFrameShape(QFrame::Panel);
@@ -1881,7 +1881,7 @@ public:
         label_16 = new QLabel(frame_15);
         label_16->setObjectName(QStringLiteral("label_16"));
         label_16->setGeometry(QRect(540, 10, 301, 16));
-        label_16->setFont(font1);
+        label_16->setFont(font);
         label_16->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         gridLayout_6->addWidget(frame_15, 0, 0, 1, 1);
@@ -2069,7 +2069,7 @@ public:
         label_20 = new QLabel(frame_19);
         label_20->setObjectName(QStringLiteral("label_20"));
         label_20->setGeometry(QRect(540, 10, 261, 16));
-        label_20->setFont(font1);
+        label_20->setFont(font);
         label_20->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         gridLayout_7->addWidget(frame_19, 0, 0, 1, 1);
@@ -2259,7 +2259,7 @@ public:
         label_24 = new QLabel(frame_23);
         label_24->setObjectName(QStringLiteral("label_24"));
         label_24->setGeometry(QRect(540, 10, 261, 16));
-        label_24->setFont(font1);
+        label_24->setFont(font);
         label_24->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_10->addWidget(frame_23);
@@ -2414,7 +2414,7 @@ public:
         label_28 = new QLabel(frame_27);
         label_28->setObjectName(QStringLiteral("label_28"));
         label_28->setGeometry(QRect(540, 10, 261, 16));
-        label_28->setFont(font1);
+        label_28->setFont(font);
         label_28->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_11->addWidget(frame_27);
@@ -2572,7 +2572,7 @@ public:
         label_32 = new QLabel(frame_31);
         label_32->setObjectName(QStringLiteral("label_32"));
         label_32->setGeometry(QRect(540, 10, 261, 16));
-        label_32->setFont(font1);
+        label_32->setFont(font);
         label_32->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_12->addWidget(frame_31);
@@ -2731,7 +2731,7 @@ public:
         label_36 = new QLabel(frame_35);
         label_36->setObjectName(QStringLiteral("label_36"));
         label_36->setGeometry(QRect(540, 10, 361, 16));
-        label_36->setFont(font1);
+        label_36->setFont(font);
         label_36->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_13->addWidget(frame_35);
@@ -2888,7 +2888,7 @@ public:
         label_40 = new QLabel(frame_39);
         label_40->setObjectName(QStringLiteral("label_40"));
         label_40->setGeometry(QRect(540, 10, 361, 16));
-        label_40->setFont(font1);
+        label_40->setFont(font);
         label_40->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_14->addWidget(frame_39);
@@ -3043,7 +3043,7 @@ public:
         label_44 = new QLabel(frame_43);
         label_44->setObjectName(QStringLiteral("label_44"));
         label_44->setGeometry(QRect(540, 10, 351, 16));
-        label_44->setFont(font1);
+        label_44->setFont(font);
         label_44->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_15->addWidget(frame_43);
@@ -3198,7 +3198,7 @@ public:
         label_48 = new QLabel(frame_47);
         label_48->setObjectName(QStringLiteral("label_48"));
         label_48->setGeometry(QRect(540, 10, 391, 16));
-        label_48->setFont(font1);
+        label_48->setFont(font);
         label_48->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_16->addWidget(frame_47);
@@ -3353,7 +3353,7 @@ public:
         label_52 = new QLabel(frame_51);
         label_52->setObjectName(QStringLiteral("label_52"));
         label_52->setGeometry(QRect(540, 10, 261, 16));
-        label_52->setFont(font1);
+        label_52->setFont(font);
         label_52->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_17->addWidget(frame_51);
@@ -3508,7 +3508,7 @@ public:
         label_56 = new QLabel(frame_55);
         label_56->setObjectName(QStringLiteral("label_56"));
         label_56->setGeometry(QRect(540, 10, 341, 16));
-        label_56->setFont(font1);
+        label_56->setFont(font);
         label_56->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         verticalLayout_18->addWidget(frame_55);
@@ -3783,7 +3783,7 @@ public:
 
         retranslateUi(AdminWindow);
 
-        stackedWidget->setCurrentIndex(10);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(AdminWindow);
@@ -3827,7 +3827,7 @@ public:
         pushButton_creditManager->setText(QApplication::translate("AdminWindow", "Credit Manager", Q_NULLPTR));
         pushButton_orders->setText(QApplication::translate("AdminWindow", "Orders", Q_NULLPTR));
         btn_ProductsCenter->setText(QApplication::translate("AdminWindow", "Products", Q_NULLPTR));
-        label_2->setText(QApplication::translate("AdminWindow", "WELCOME HOME", Q_NULLPTR));
+        label_2->setText(QApplication::translate("AdminWindow", "TextLabel", Q_NULLPTR));
         pushButton_addNewUser->setText(QApplication::translate("AdminWindow", "Add User", Q_NULLPTR));
         btn_loadUsers->setText(QApplication::translate("AdminWindow", "Load Users", Q_NULLPTR));
         label_3->setText(QApplication::translate("AdminWindow", "USERS  CENTRAL ADMIN PANEL", Q_NULLPTR));

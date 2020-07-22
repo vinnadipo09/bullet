@@ -119,6 +119,11 @@
 			"EWIEGA46WW/moc_debugger.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/donutbreakdownchart.h",
+			"MU",
+			"EWIEGA46WW/moc_donutbreakdownchart.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/editcustomer.h",
 			"MU",
 			"EWIEGA46WW/moc_editcustomer.cpp"
@@ -145,6 +150,11 @@
 		],
 		[ "/home/vee/pointOfSale/login.h", "MU", "EWIEGA46WW/moc_login.cpp" ],
 		[
+			"/home/vee/pointOfSale/mainslice.h",
+			"MU",
+			"EWIEGA46WW/moc_mainslice.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/passwordconfirmation.h",
 			"MU",
 			"EWIEGA46WW/moc_passwordconfirmation.cpp"
@@ -168,6 +178,11 @@
 			"/home/vee/pointOfSale/profileviewer.h",
 			"MU",
 			"EWIEGA46WW/moc_profileviewer.cpp"
+		],
+		[
+			"/home/vee/pointOfSale/qcustomplot.h",
+			"MU",
+			"EWIEGA46WW/moc_qcustomplot.cpp"
 		],
 		[
 			"/home/vee/pointOfSale/salesclient.h",
@@ -228,7 +243,15 @@
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/include",
 	"MOC_COMPILATION_FILE" : "/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/mocs_compilation.cpp",
-	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_SQL_LIB", "QT_WIDGETS_LIB" ],
+	"MOC_DEFINITIONS" : 
+	[
+		"QT_CHARTS_LIB",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_PRINTSUPPORT_LIB",
+		"QT_SQL_LIB",
+		"QT_WIDGETS_LIB"
+	],
 	"MOC_DEPEND_FILTERS" : 
 	[
 		[
@@ -247,6 +270,8 @@
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
 		"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
 		"/usr/include/x86_64-linux-gnu/qt5/QtSql",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCharts",
+		"/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport",
 		"/usr/include",
 		"/usr/include/c++/7",
 		"/usr/include/x86_64-linux-gnu/c++/7",
@@ -302,6 +327,7 @@
 		[ "/home/vee/pointOfSale/customerviewone.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/databaseconnection.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/debugger.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/donutbreakdownchart.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editcustomer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editproductcategory.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editproductzone.cpp", "MU" ],
@@ -309,11 +335,13 @@
 		[ "/home/vee/pointOfSale/edituser.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/login.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/main.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/mainslice.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/passwordconfirmation.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/productdiscounteditor.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/producteditor.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/productrewardeditor.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/profileviewer.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/qcustomplot.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/salesclient.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/sessioncontrol.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/supervisorwindow.cpp", "MU" ],

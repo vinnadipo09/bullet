@@ -839,9 +839,48 @@ CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/sessioncontrol.cpp -o CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.s
 
+CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
+CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.o: ../donutbreakdownchart.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.o -c /home/vee/pointOfSale/donutbreakdownchart.cpp
+
+CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/donutbreakdownchart.cpp > CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.i
+
+CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/donutbreakdownchart.cpp -o CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.s
+
+CMakeFiles/pointOfSale.dir/mainslice.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
+CMakeFiles/pointOfSale.dir/mainslice.cpp.o: ../mainslice.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/pointOfSale.dir/mainslice.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/mainslice.cpp.o -c /home/vee/pointOfSale/mainslice.cpp
+
+CMakeFiles/pointOfSale.dir/mainslice.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/mainslice.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/mainslice.cpp > CMakeFiles/pointOfSale.dir/mainslice.cpp.i
+
+CMakeFiles/pointOfSale.dir/mainslice.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/mainslice.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/mainslice.cpp -o CMakeFiles/pointOfSale.dir/mainslice.cpp.s
+
+CMakeFiles/pointOfSale.dir/qcustomplot.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
+CMakeFiles/pointOfSale.dir/qcustomplot.cpp.o: ../qcustomplot.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/pointOfSale.dir/qcustomplot.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/qcustomplot.cpp.o -c /home/vee/pointOfSale/qcustomplot.cpp
+
+CMakeFiles/pointOfSale.dir/qcustomplot.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/qcustomplot.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/qcustomplot.cpp > CMakeFiles/pointOfSale.dir/qcustomplot.cpp.i
+
+CMakeFiles/pointOfSale.dir/qcustomplot.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/qcustomplot.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/qcustomplot.cpp -o CMakeFiles/pointOfSale.dir/qcustomplot.cpp.s
+
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o: pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp
 
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.i: cmake_force
@@ -901,6 +940,9 @@ pointOfSale_OBJECTS = \
 "CMakeFiles/pointOfSale.dir/customerviewone.cpp.o" \
 "CMakeFiles/pointOfSale.dir/customerviewall.cpp.o" \
 "CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.o" \
+"CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.o" \
+"CMakeFiles/pointOfSale.dir/mainslice.cpp.o" \
+"CMakeFiles/pointOfSale.dir/qcustomplot.cpp.o" \
 "CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 
 # External object files for target pointOfSale
@@ -953,14 +995,19 @@ pointOfSale: CMakeFiles/pointOfSale.dir/customerviewchoice.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/customerviewone.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/customerviewall.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.o
+pointOfSale: CMakeFiles/pointOfSale.dir/donutbreakdownchart.cpp.o
+pointOfSale: CMakeFiles/pointOfSale.dir/mainslice.cpp.o
+pointOfSale: CMakeFiles/pointOfSale.dir/qcustomplot.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/build.make
-pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.9.5
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.9.5
+pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Charts.so.5.9.5
+pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5PrintSupport.so.5.9.5
+pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.9.5
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.9.5
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
 pointOfSale: CMakeFiles/pointOfSale.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Linking CXX executable pointOfSale"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Linking CXX executable pointOfSale"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pointOfSale.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

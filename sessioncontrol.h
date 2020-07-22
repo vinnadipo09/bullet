@@ -33,6 +33,11 @@ private:
 signals:
     void sendOpeningComplete();
     void sendClosingComplete();
+    void sendSalesClientCloseRequest();
+
+private:
+    void openNewSession();
+    void closeExistingSession();
 };
 
 #endif // SESSIONCONTROL_H

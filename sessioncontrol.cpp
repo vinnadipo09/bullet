@@ -85,7 +85,9 @@ void SessionControl::on_btnApply_clicked()
                     QMessageBox::critical(this, "Opening Successful", "You have successfully opened a new session!");
                 }
                     emit sendOpeningComplete();
-                    this->close();
+                LOGx("OPEN SIGNAL EMITTED");
+
+                this->close();
                 }
             }else if(*currentExecutionType=="Closing"){
             QString sessionType = "Closed";
@@ -104,11 +106,14 @@ void SessionControl::on_btnApply_clicked()
                 if(!query.exec()){
                     QMessageBox::critical(this, "Database Error", query.lastError().text());
                 }else{
+                    emit sendClosingComplete();
+
                     QMessageBox::critical(this, "Closing Successful", "You have successfully closed your current session!");
                 }
-                emit sendClosingComplete();
+                LOGx("CLOSE SIGNAL EMITTED");
                 this->close();
             }
+
         }
 
     }else {
@@ -125,4 +130,12 @@ void SessionControl::on_btnApply_clicked()
 void SessionControl::on_btnCancel_clicked()
 {
     this->close();
+}
+
+void SessionControl::openNewSession() {
+
+}
+
+void SessionControl::closeExistingSession() {
+
 }

@@ -26,6 +26,8 @@ include_directories(${CMAKE_BINARY_DIR})
 #endif()
 
 find_package(Qt5 COMPONENTS Widgets Sql REQUIRED)
+find_package(Qt5Charts REQUIRED)
+find_package(Qt5PrintSupport REQUIRED)
 
 if(ANDROID)
   add_library(pointOfSale SHARED
@@ -217,7 +219,16 @@ else()
     sessioncontrol.cpp
     sessioncontrol.h
     sessioncontrol.ui
+
+    donutbreakdownchart.cpp
+    donutbreakdownchart.h
+
+    mainslice.cpp
+    mainslice.h
+
+    qcustomplot.cpp
+    qcustomplot.h
   )
 endif()
 
-target_link_libraries(pointOfSale PRIVATE Qt5::Widgets Qt5::Sql libmysqlclient.so)
+target_link_libraries(pointOfSale PRIVATE Qt5::Widgets Qt5::Sql Qt5::Charts Qt5::PrintSupport libmysqlclient.so)

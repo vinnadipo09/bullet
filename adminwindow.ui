@@ -640,25 +640,29 @@ background-color: rgb(238, 238, 236);</string>
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>10</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_dashboard">
          <widget class="QLabel" name="label_2">
           <property name="geometry">
            <rect>
-            <x>220</x>
-            <y>150</y>
-            <width>181</width>
-            <height>51</height>
+            <x>240</x>
+            <y>140</y>
+            <width>491</width>
+            <height>71</height>
            </rect>
           </property>
-          <property name="font">
-           <font>
-            <pointsize>21</pointsize>
-           </font>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(204, 0, 0);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
           </property>
           <property name="text">
-           <string>WELCOME HOME</string>
+           <string>TextLabel</string>
           </property>
          </widget>
         </widget>

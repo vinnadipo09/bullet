@@ -6,6 +6,13 @@
 #include <QDateTime>
 #include <QTimer>
 #include <QHeaderView>
+
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QStatusBar>
+#include <QtCharts/QChartView>
+#include "donutbreakdownchart.h"
+#include <QPainter>
 #include"debugger.h"
 #include"addnewuser.h"
 #include"databaseconnection.h"
@@ -241,6 +248,9 @@ private:
 
 private slots:
     void receiveOpeningClosingChanged();
+
+private:
+    void loadCharts();
 };
 
 #endif // ADMINWINDOW_H

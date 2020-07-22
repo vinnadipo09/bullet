@@ -98,6 +98,7 @@
 #define __STDC_ISO_10646__ 201706L
 #define __UINT16_C(c) c
 #define __PTRDIFF_WIDTH__ 64
+#define QT_CHARTS_LIB 1
 #define __DECIMAL_DIG__ 21
 #define __FLT64_EPSILON__ 2.22044604925031308084726333618164062e-16F64
 #define __gnu_linux__ 1
@@ -387,6 +388,7 @@
 #define __FLT_DECIMAL_DIG__ 9
 #define __UINT_FAST16_MAX__ 0xffffffffffffffffUL
 #define __GCC_ATOMIC_SHORT_LOCK_FREE 2
+#define QT_PRINTSUPPORT_LIB 1
 #define __INT_LEAST64_WIDTH__ 64
 #define __UINT_FAST8_TYPE__ unsigned char
 #define _GNU_SOURCE 1

@@ -75,7 +75,18 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
 
     QObject::connect(ui->tableWidget->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&,
                                                                        const QItemSelection&)), SLOT(getRowToEdit()));
+    ui->cbSalesType->setCurrentIndex(1);
     QObject::connect(this, SIGNAL(enableSystemsSent()), this, SLOT(enableSystemsCalled()));
+    connect(ui->cbSalesType, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            [=](int index){ /* ... */
+    if(index==0){
+
+    }else if(index==1){
+        ui->cbSalesType->setStyleSheet("{background-color:green; color:black}");
+    }else if(index==2){
+        ui->cbSalesType->setStyleSheet("background-color:blue");
+    }
+    });
 }
 
 SalesClient::~SalesClient()
@@ -635,7 +646,8 @@ void SalesClient::disableSystems() {
     ui->le_barcodeEntry->setDisabled(true);
     ui->leClient->setDisabled(true);
     ui->le_SearchProduct->setDisabled(true);
-
+    ui->btnOpenClose->setStyleSheet("background-color:rgb(78, 154, 6)");
+    ui->btnOpenClose->setText("Open Session");
 }
 
 void SalesClient::enableSystems() {
@@ -646,48 +658,45 @@ void SalesClient::enableSystems() {
     ui->le_barcodeEntry->setEnabled(true);
     ui->leClient->setEnabled(true);
     ui->le_SearchProduct->setEnabled(true);
-
-
-
-//    background-color: rgb(78, 154, 6);
+    ui->btnOpenClose->setStyleSheet("background-color:red");
+    ui->btnOpenClose->setText("Close Session");
 }
 
 void SalesClient::checkLastSession() {
     if(salesConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
-        query.prepare(QString("SELECT salesSessionManager.session_type , salesSessionManager.session_time, users.name FROM salesSessionManager LEFT JOIN users ON users.user_id = salesSessionManager.user_id ORDER "
+        query.prepare(QString("SELECT salesSessionManager.session_id, salesSessionManager.session_type , salesSessionManager.session_time, users.name FROM salesSessionManager LEFT JOIN users ON users.user_id = salesSessionManager.user_id ORDER "
                                                                                                        "BY salesSessionManager.session_id DESC LIMIT 1"));
         if(!query.exec()){
             QMessageBox::critical(this, "Database Error", query.lastError().text());
             return;
         }else{
             while (query.next()) {
-
-                ongoingSession->sessionType = query.value(0).toString();
-                ongoingSession->sessionTime = query.value(1).toDateTime();
-                ongoingSession->userName = query.value(2).toString();
-
+                ongoingSession->sessionType = query.value(1).toString();
+                ongoingSession->sessionTime = query.value(2).toDateTime();
+                ongoingSession->userName = query.value(3).toString();
                 if((ongoingSession->sessionType=="Opened" ) && ongoingSession->userName==currentUser->name){
                     thereIsOpenSession = true;
+                    QMessageBox msgBox;
+                    msgBox.setWindowTitle("Active Session for "+currentUser->name);
+                    msgBox.setText("You have an active session. Do you wish to continue?");
+                    QPushButton *connectButton = msgBox.addButton(tr("Continue Session"), QMessageBox::ActionRole);
+                    QPushButton *connectButton2 = msgBox.addButton(tr("Continue Session"), QMessageBox::ActionRole);
+                    QPushButton *abortButton = msgBox.addButton( QMessageBox::Abort);
 
-                    QMessageBox::StandardButton reply;
-                    reply = QMessageBox::warning(this
-                            , "You have an active session"
-                            , "Do you want to continue?"
-                            , QMessageBox::Yes | QMessageBox::No);
-                    if(reply==QMessageBox::Yes){
-                        continue;
-                    }else if(reply==QMessageBox::No){
-                        *executionType = "Closing";
-                        sessionControl = new SessionControl(this, *currentUser, *executionType);
-                        sessionControl->setModal(true);
-                        sessionControl->show();
-                    }else{
-                        disableSystems();
+                    msgBox.exec();
+
+                    if (msgBox.clickedButton() == connectButton) {
+                        // connect
+                        LOGx("connect");
+                    } else if (msgBox.clickedButton() == abortButton) {
+                        // abort
+                        LOGx("haiya");
+                    }else if (msgBox.clickedButton() == connectButton2) {
+                        // abort
+                        LOGx("haiya");
                     }
-
                 }else if(( ongoingSession->sessionType=="Opened" ) && ongoingSession->userName!=currentUser->name){
-
                     QMessageBox::critical(this, "Unattended Session", "There is an active session that must be closed before continuing!");
                     *executionType = "Closing";
 //                    SYSTEM CLOSE AND THEN OPEN
@@ -713,20 +722,17 @@ void SalesClient::checkLastSession() {
             }
         }
     }
-    if(!thereIsOpenSession){
-        disableSystems();
-        ui->btnOpenClose->setStyleSheet("background-color:rgb(78, 154, 6)");
-        ui->btnOpenClose->setText("Open Session");
-    }else{
-//        emit enableSystemsSent();
-        enableSystems();
-        ui->btnOpenClose->setStyleSheet("background-color:red");
-        ui->btnOpenClose->setText("Close Session");
-
-    }
-
-    QObject::connect(sessionControl, SIGNAL(sendOpeningComplete()), this, SLOT(receiveOpeningComplete()));
+//    if(!thereIsOpenSession){
+//        disableSystems();
+//
+//    }else{
+////        emit enableSystemsSent();
+//        enableSystems();
+//
+//
+//    }
     QObject::connect(sessionControl, SIGNAL(sendClosingComplete()), this, SLOT(receiveClosingComplete()));
+//    QObject::connect(sessionControl, SIGNAL(sendOpeningComplete()), this, SLOT(receiveOpeningComplete()));
 }
 
 void SalesClient::enableSystemsCalled() {
@@ -738,14 +744,15 @@ void SalesClient::enableSystemsCalled() {
 }
 
 void SalesClient::receiveClosingComplete() {
-    disableSystems();
+    LOGx("CLOSE SIGNAL RECEIVED");
     thereIsOpenSession = false;
+    disableSystems();
     emit openingClosingDataChanged();
 }
 
 void SalesClient::receiveOpeningComplete() {
-    enableSystems();
+    LOGx("OPEN SIGNAL RECEIVED");
     thereIsOpenSession = true;
+    enableSystems();
     emit openingClosingDataChanged();
-
 }

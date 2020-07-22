@@ -38,6 +38,8 @@ AdminWindow::AdminWindow(QWidget *parent, loggedUser &currentLoggedInUser) :
     loadAllCustomers();
     loadAllAgents();
     loadOpeningsAndClosings();
+//    ui->stackedWidget->setCurrentIndex(0);
+//    loadCharts();
 }
 
 AdminWindow::~AdminWindow()
@@ -608,7 +610,7 @@ void AdminWindow::on_pb_testButton_clicked()
     this->hide();
     QObject::connect(salesClient, SIGNAL(send_salesClientClosed()), this, SLOT(receive_salesClientClosed()));
     QObject::connect(salesClient, SIGNAL(customerAdditionViaSalesClientComplete()), this, SLOT(receiveCustomerAdditionComplete()));
-    QObject::connect(salesClient, SIGNAL(openingClosingDataChanged()()), this, SLOT(receiveOpeningClosingChanged()));
+    QObject::connect(salesClient, SIGNAL(openingClosingDataChanged()), this, SLOT(receiveOpeningClosingChanged()));
 }
 
 void AdminWindow::receive_salesClientClosed() {
@@ -1655,4 +1657,53 @@ void AdminWindow::loadResolvedOpeningsAndClosings() {
 
 void AdminWindow::receiveOpeningClosingChanged() {
     loadOpeningsAndClosings();
+}
+
+void AdminWindow::loadCharts() {
+    LOGx("starter");
+    QPieSeries *series1 = new QPieSeries();
+    series1->setName("Fossil fuels");
+    series1->append("Oil", 353295);
+    series1->append("Coal", 188500);
+    series1->append("Natural gas", 148680);
+    series1->append("Peat", 94545);
+
+    QPieSeries *series2 = new QPieSeries();
+    series2->setName("Renewables");
+    series2->append("Wood fuels", 319663);
+    series2->append("Hydro power", 45875);
+    series2->append("Wind power", 1060);
+
+    QPieSeries *series3 = new QPieSeries();
+    series3->setName("Others");
+    series3->append("Nuclear energy", 238789);
+    series3->append("Import energy", 37802);
+    series3->append("Other", 32441);
+    //![1]
+
+    //![2]
+    DonutBreakdownChart *donutBreakdown = new DonutBreakdownChart();
+    donutBreakdown->setAnimationOptions(QChart::AllAnimations);
+    donutBreakdown->setTitle("Total consumption of energy in Finland 2010");
+    donutBreakdown->legend()->setAlignment(Qt::AlignRight);
+    donutBreakdown->addBreakdownSeries(series1, Qt::red);
+    donutBreakdown->addBreakdownSeries(series2, Qt::darkGreen);
+    donutBreakdown->addBreakdownSeries(series3, Qt::darkBlue);
+
+    QChartView *chartView = new QChartView(donutBreakdown);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    ui->stackedWidget->addWidget(chartView);
+    ui->stackedWidget->setCurrentIndex(0);
+
+
+//    ui->stackedWidget->setCurrentIndex(0);
+//    ui->stackedWidget->setCurrentWidget(chartView);
+//    ui->stackedWidget->currentWidget();
+//    ui->gv01->setCornerWidget(chartView);
+//    ui->dashboard001->
+//    ui->stackedWidget->currentIndex(setCentralWidget(QWidget::Chartview));
+//    ui->stackedWidget->
+//    LOGx("finisher");
+//    this->setCentralWidget(chartView);
+//    this->show();
 }
