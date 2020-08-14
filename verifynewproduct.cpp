@@ -137,10 +137,8 @@ void VerifyNewProduct::enterRewards(int &productId) {
         }else{
                 rewardsAdditionSuccessful = true;
                 enterInitialStock(*productIdToDiscount);
-                LOGxy("===================================", *productIdToDiscount);
-            }
-
         }
+    }
 }
 
 void VerifyNewProduct::addDiscountToDatabase() {
@@ -188,6 +186,5 @@ void VerifyNewProduct::enterInitialStock(int &productId) {
         }else{
             initialStockAllocationSuccessful = true;
         }
-
     }
 }

@@ -51,15 +51,15 @@ void AddCustomer::on_btnOkay_clicked()
                 QMessageBox::warning(this, "Customer Addition Error!", "There was a problem adding your customer!");
                 return;
             }else{
-                createCustomerCredit();
+                addCustomerInitialCredit();
                 if(!creditUpdated){
-                    LOGx("encountered a problem...");
+                    QMessageBox::warning(this, "Customer Credit Update Error!", "Could Not Update Credit Value!");
+                    return;
                 }else{
-                    LOGx("everything was successful...");
-
                     QMessageBox::warning(this, "Customer Addition Success!", "Customer Added Successfully");
                     emit customerAdditionTaskComplete();
                 }
+
             }
         }
     }
@@ -138,30 +138,36 @@ void AddCustomer::loadCustomerTypesToCb() {
     }
 }
 
-void AddCustomer::createCustomerCredit() {
+void AddCustomer::addCustomerInitialCredit() {
+    float initialCredit = ui->leCreditAllowed->text().toFloat();
     QDateTime currentTime = QDateTime::currentDateTime();
-    double creditAllowed = 0;
-    if(addNewCustomerConnection->conn_open()){
-        QSqlQuery query(QSqlDatabase::database("MyConnect"));
-        query.prepare(QString("SELECT customer_id FROM customers ORDER BY customer_id DESC LIMIT 1"));
-        if(!query.exec()){
-            query.prepare(QString("SELECT cusType FROM cusType"));
-        }else{
-            while(query.next()){
-                *customerId = query.value(0).toInt();
-                query.prepare(QString("INSERT INTO customerCredits (credit_allowed, customer_id, user_id, timeStamp) "
-                                      "VALUES (:creditAllowed, :customerId, :userId, :timeStamp)"));
-                query.bindValue(":creditAllowed", creditAllowed);
-                query.bindValue(":customerId", *customerId);
-                query.bindValue(":userId", currentUser->user_id);
-                query.bindValue(":timeStamp", currentTime);
-                if(!query.exec()){
-                    LOGx("encountered an error updating credit");
-                    query.prepare(QString("SELECT cusType FROM cusType"));
-                } else{
-                    creditUpdated = true;
+    float creditRating = 1;
+    if(customerAdded){
+        if(addNewCustomerConnection->conn_open()){
+            QSqlQuery query(QSqlDatabase::database("MyConnect"));
+            query.prepare(QString("SELECT customer_id FROM customers ORDER BY customer_id DESC LIMIT 1"));
+            if(!query.exec()){
+                LOGx("we failed at one");
+                QMessageBox::critical(this, "Database Error", query.lastError().text());
+            }else{
+                while(query.next()){
+                    *customerId = query.value(0).toInt();
+                    query.prepare(QString("INSERT INTO customerCredits (credit_allowed, credit_remaining, credit_rating, customer_id, user_id, timeStamp) "
+                                          "VALUES (:creditAllowed, :creditRemaining, :creditRating, :customerId, :userId, :timeStamp)"));
+                    query.bindValue(":creditAllowed", initialCredit);
+                    query.bindValue(":creditRemaining", initialCredit);
+                    query.bindValue(":creditRating", creditRating);
+                    query.bindValue(":customerId", *customerId);
+                    query.bindValue(":userId", currentUser->user_id);
+                    query.bindValue(":timeStamp", currentTime);
+                    if(!query.exec()){
+                        QMessageBox::critical(this, "Database Error", query.lastError().text());
+                    } else{
+                        creditUpdated = true;
+                    }
                 }
             }
         }
     }
+
 }

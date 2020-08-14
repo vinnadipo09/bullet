@@ -37,10 +37,8 @@ private:
 private:
     bool customerAdded = false;
     bool creditUpdated = false;
-
-    void createCustomerCredit();
-
     int* customerId;
+    void addCustomerInitialCredit();
 signals:
     void customerAdditionTaskComplete();
 };

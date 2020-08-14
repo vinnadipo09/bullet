@@ -14,7 +14,7 @@ class CompletePaymentWindow : public QDialog
 
 public:
     explicit CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser,
-            std::map<int, int>&productsBought, int& totalToPay);
+            std::map<int, purchasedItem>&productsBought,   Customer&, int& totalToPay);
     ~CompletePaymentWindow();
 
 private slots:
@@ -26,10 +26,7 @@ private slots:
     void on_btn_oneHundred_clicked();
 private slots:
     void getCashComputeBalance();
-
-
     void on_le_amountPaid_textChanged(const QString &arg1);
-
 private:
     Ui::CompletePaymentWindow *ui;
 private:
@@ -37,13 +34,17 @@ private:
     loggedUser* userOnCashier;
     int* amountToBePayed;
     void setPaymentLabel();
-
 private:
     int* amountPaid;
     int* balanceForClient;
     bool isPaidAmountSufficient = false;
 private:
     void postSaleToDb(loggedUser &, std::map<QString, int>&, int &);
+
+private:
+    loggedUser* currentUser;
+    Customer* servingCustomer;
+    std::map<int, purchasedItem>* productsToBill;
 };
 
 #endif // COMPLETEPAYMENTWINDOW_H

@@ -53,7 +53,7 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
 //    Debug(*currentCashierUser);
 
     *totalToPay = 0;
-    itemsBought = new std::map<int, int>;
+    itemsBought = new std::map<int, purchasedItem>;
 
     rewardTotal = new float ;
     discountTotal = new float ;
@@ -213,16 +213,15 @@ void SalesClient::closeEvent(QCloseEvent *event) {
 //    }
 }
 void SalesClient::scannedProductManagement(QString& barcode, int & currentProductId, int & stockAvailable) {
-    std::map<int, int>::iterator it;
+    std::map<int, purchasedItem>::iterator it;
     it = itemsBought->find(currentProductId);
     if(it!=itemsBought->end()){
-        if(it->second+1<= stockAvailable){
-            it->second +=1;
+        if(it->second.quantity_purchased+1<= stockAvailable){
+            it->second.quantity_purchased +=1;
             int rowsSearch = ui->tableWidget->rowCount();
             for(int i = 0; i<rowsSearch; i++){
                 if(ui->tableWidget->item(i,0)->text().toInt()==currentProductId){
-                    LOGxy("row and column value", currentProductId);
-                    modifyProductInRowCreated(i, it->second);
+                    modifyProductInRowCreated(i, it->second.quantity_purchased);
                 }
             }
             ui->le_barcodeEntry->clear();
@@ -234,7 +233,23 @@ void SalesClient::scannedProductManagement(QString& barcode, int & currentProduc
             return;
         }
     }else{
-        itemsBought->insert(std::pair<int, int>(currentProductId, initial_quantity));
+        purchasedItem myItem;
+        if (enableDiscounts || addedProduct->discounted){
+            myItem.prod_discounted = true;
+            myItem.discount_amount = addedProduct->product_discount;
+        }else{
+            myItem.prod_discounted = false;
+            myItem.discount_amount = 0;
+        }
+        if(enableRewards || addedProduct->rewarded){
+            myItem.prod_discounted = true;
+            myItem.reward_amount = addedProduct->product_discount;
+        }else{
+            myItem.prod_rewarded = false;
+            myItem.reward_amount = 0;
+        }
+        myItem.quantity_purchased = initial_quantity;
+        itemsBought->insert(std::pair<int, purchasedItem>(currentProductId, myItem));
         createRowsToAddProductPurchased(initial_quantity);
         ui->le_barcodeEntry->clear();
         ui->le_barcodeEntry->setFocus();
@@ -244,8 +259,8 @@ void SalesClient::modifyProductInRowCreated(int &rowAffected, int &quantityValue
     float singleItemDiscount = 0;
     float singleItemReward = 0;
     int columnsToModifyProducts = 9;
-    float singleItemDiscountTotal;
-    float singleItemRewardsTotal;
+    float singleItemDiscountTotal =0;
+    float singleItemRewardsTotal =0;
     for(int i =0; i<columnsToModifyProducts; i++){
         if(i==5){
             ui->tableWidget->item(rowAffected, i)->setText(QString::number(quantityValue));
@@ -256,7 +271,7 @@ void SalesClient::modifyProductInRowCreated(int &rowAffected, int &quantityValue
                 *discountTotal = *discountTotal+singleItemDiscount;
                 ui->lblPossibleDiscounts->setText(QString::number(*discountTotal));
             } else{
-                *discountTotal = singleItemDiscount*quantityValue;
+                *discountTotal = 0;
             }
             ui->tableWidget->item(rowAffected, i)->setText(QString::number(singleItemDiscountTotal));
         }else if(i==7){
@@ -267,7 +282,8 @@ void SalesClient::modifyProductInRowCreated(int &rowAffected, int &quantityValue
                 ui->lblPossibleRewards->setText(QString::number(*rewardTotal));
 
             }else{
-                *rewardTotal = singleItemReward*quantityValue;
+//                *rewardTotal = singleItemReward*quantityValue;
+                *rewardTotal = 0;
             }
             ui->tableWidget->item(rowAffected, i)->setText(QString::number(*rewardTotal));
         }else if(i==8){
@@ -575,12 +591,16 @@ void SalesClient::loadItemsFromDbToCompleter() {
 
 }
 void SalesClient::goToPaymentAndCompleteSale() {
-    completePayment = new CompletePaymentWindow(this, *currentCashierUser, *itemsBought, *totalToPay);
+    //come back to me for complete payment
+    completePayment = new CompletePaymentWindow(this, *currentCashierUser,
+            *itemsBought,*currentServingCustomer, *totalToPay);
     completePayment->setModal(true);
     completePayment->show();
 }
 void SalesClient::on_btnCompleteSales_clicked()
 {
+//    std::map<int, purchasedItem>::iterator it;
+
     if(!isCurrentCustomerDefined){
         LOGx("false not defined");
         QMessageBox::StandardButton defineCustomer;
@@ -639,9 +659,14 @@ void SalesClient::on_btn_viewCustomers_clicked()
 }
 
 void SalesClient::receiveCustomerAdditionComplete() {
+    if(addNewCustomerAtPurchase){
+        LOGx("am back to set");
+        selectLastCustomerAdded();
+    }else{
+        LOGx("am back but passing by");
+        emit customerAdditionViaSalesClientComplete();
+    }
     addNewCustomer->close();
-    LOGx("customer was added and I was called");
-    emit customerAdditionViaSalesClientComplete();
 }
 
 void SalesClient::receiveCustomerSingleViewComplete() {
@@ -666,11 +691,11 @@ void SalesClient::reducedQuantityPurchased() {
     }
     barcodeToModify = ui->tableWidget->item(*rowToEdit, 1)->text();
 
-    std::map<int, int>::iterator it;
+    std::map<int, purchasedItem>::iterator it;
 //    it = itemsBought->find(barcodeToModify);
     if(it!=itemsBought->end()){
-        if(it->second >1){
-            it->second -=1;
+        if(it->second.quantity_purchased >1){
+            it->second.quantity_purchased -=1;
             int rowsSearch = ui->tableWidget->rowCount();
             for(int i = 0; i<rowsSearch; i++) {
 //                std::string currentItemScheduled = it->first.toStdString();
@@ -679,7 +704,7 @@ void SalesClient::reducedQuantityPurchased() {
 //                }
             }
             //REDUCE VALUE
-        }else if(it->second==1){
+        }else if(it->second.quantity_purchased==1){
 //            deleteProductFromCart(i, );
 //            itemsBought->erase(barcodeToModify);
             ui->tableWidget->removeRow(*rowToEdit);
@@ -1028,16 +1053,7 @@ void SalesClient::on_checkBoxEnableRewards_toggled(bool checked)
 
 void SalesClient::loadCustomerAgentFromCompleter(QString &customerPhone) {
     loadSingleCustomerFromDb(customerPhone);
-    ui->lblCustomerPhone->setText(currentServingCustomer->phone);
-    ui->lblServing->setText(currentServingCustomer->name +" :: "+
-    currentServingCustomer->phone);
-    ui->lblAvailableRewards->setText(QString::number(currentServingCustomer->rewardsAvailable));
-    ui->lblAvailableCredit->setText(QString::number(currentServingCustomer->creditRemaining));
-    ui->lblCashOnBusiness->setText(QString::number(currentServingCustomer->cashOnBusiness));
-    ui->lblDebt->setText(QString::number(currentServingCustomer->badDebts)+" / "+
-    QString::number(currentServingCustomer->totalBadDebts)+" :: "+
-                                 QString::number(currentServingCustomer->activeDebts)+" / "+
-                                 QString::number(currentServingCustomer->totalActiveDebts));
+    loadLabelsWithCustomerData();
     isCurrentCustomerDefined = true;
     ui->leClient->clear();
     ui->le_barcodeEntry->setFocus();
@@ -1161,7 +1177,7 @@ void SalesClient::grabBarcodeFromCompleter(QString& currentProduct) {
     if(salesConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
         query.prepare(QString("SELECT products.product_id, products.productName, products.productBarcode, products.productMeasurement, products.productWSPrice"
-                              ", products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount, stock.quantity FROM products "
+                              ", products.productRPrice, products.productImage, IFNULL(productDiscounts.amount, 0), IFNULL(productRewards.reward_amount, 0), stock.quantity FROM products "
                               "LEFT JOIN productDiscounts ON productDiscounts.product_id=products.product_id "
                               "LEFT JOIN productRewards ON productRewards.product_id= products.product_id LEFT JOIN stock ON stock.product_id = products.product_id WHERE productName = :currentProduct"));
         query.bindValue(":currentProduct", currentProduct);
@@ -1202,7 +1218,7 @@ void SalesClient::getScannedProductFromDB(QString barcodeScanned) {
     barcodeScanned = ui->le_barcodeEntry->text();
     QSqlQuery query(QSqlDatabase::database("MyConnect"));
     query.prepare(QString("SELECT products.product_id, products.productName, products.productBarcode, products.productMeasurement, products.productWSPrice"
-                          " , products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount, stock.quantity  FROM products "
+                          " , products.productRPrice, products.productImage, IFNULL(productDiscounts.amount, 0), IFNULL(productRewards.reward_amount, 0), stock.quantity  FROM products "
                           " LEFT JOIN productDiscounts ON productDiscounts.product_id=products.product_id "
                           " LEFT JOIN productRewards ON productRewards.product_id= products.product_id LEFT JOIN stock ON stock.product_id = products.product_id WHERE productBarcode = :scannedBarcode"));
     query.bindValue(":scannedBarcode", uniqueID);
@@ -1247,11 +1263,12 @@ void SalesClient::getScannedProductFromDB(QString barcodeScanned) {
 }
 
 void SalesClient::addCustomerAndDefineClient() {
+    addNewCustomerAtPurchase = true;
     addNewCustomerToDatabase();
-    selectLastCustomerAdded();
 }
 
 void SalesClient::selectLastCustomerAdded() {
+    LOGx("we are getting you your last added customer");
     if(salesConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
         query.prepare(QString("SELECT customers.customer_id, customers.customer_name, customers.customer_type, customers.customer_phone, "
@@ -1289,7 +1306,11 @@ void SalesClient::selectLastCustomerAdded() {
                 currentServingCustomer->badDebts = query.value(12).toInt();
                 currentServingCustomer->totalBadDebts = query.value(13).toDouble();
 
-                LOGx("customer successfully added");
+                loadLabelsWithCustomerData();
+                isCurrentCustomerDefined = true;
+                ui->leClient->clear();
+                ui->le_barcodeEntry->setFocus();
+                //call complete sales with the data added to the db
             }
         }
     }
@@ -1300,4 +1321,17 @@ void SalesClient::addNewCustomerToDatabase() {
     addNewCustomer->setModal(true);
     addNewCustomer->show();
     QObject::connect(addNewCustomer, SIGNAL(customerAdditionTaskComplete()), this, SLOT(receiveCustomerAdditionComplete()));
+}
+
+void SalesClient::loadLabelsWithCustomerData() {
+    ui->lblCustomerPhone->setText(currentServingCustomer->phone);
+    ui->lblServing->setText(currentServingCustomer->name +" :: "+
+                            currentServingCustomer->phone);
+    ui->lblAvailableRewards->setText(QString::number(currentServingCustomer->rewardsAvailable));
+    ui->lblAvailableCredit->setText(QString::number(currentServingCustomer->creditRemaining));
+    ui->lblCashOnBusiness->setText(QString::number(currentServingCustomer->cashOnBusiness));
+    ui->lblDebt->setText(QString::number(currentServingCustomer->badDebts)+" / "+
+                         QString::number(currentServingCustomer->totalBadDebts)+" :: "+
+                         QString::number(currentServingCustomer->activeDebts)+" / "+
+                         QString::number(currentServingCustomer->totalActiveDebts));
 }

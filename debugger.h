@@ -79,6 +79,8 @@ struct productFromDb{
     QString product_image;
     int modifiedBy;
     int stockQuantity;
+    bool discounted;
+    bool rewarded;
     QDateTime modifiedAt;
 };
 struct productToDatabase{
@@ -132,6 +134,13 @@ struct session{
     int userId;
     QString resolved;
     QString userName;
+};
+struct purchasedItem{
+    int quantity_purchased;
+    bool prod_discounted;
+    int discount_amount;
+    bool prod_rewarded;
+    int reward_amount;
 };
 class Debugger
 {

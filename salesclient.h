@@ -48,7 +48,7 @@ private:
 
 private:
     void scannedProductManagement(QString &, int& databaseId, int & stockAvailable);
-    std::map<int, int>*itemsBought;
+    std::map<int, purchasedItem>*itemsBought;
     void modifyProductInRowCreated( int &rowAffected, int &quantityValue);
     int initial_quantity=1;
     void createRowsToAddProductPurchased(int& quantityValue);
@@ -205,6 +205,8 @@ private:
     void addCustomerAndDefineClient();
     void selectLastCustomerAdded();
     void addNewCustomerToDatabase();
+    bool addNewCustomerAtPurchase = false;
+    void loadLabelsWithCustomerData();
 };
 
 

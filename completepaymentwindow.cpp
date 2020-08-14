@@ -1,8 +1,7 @@
 #include "completepaymentwindow.h"
 #include "ui_completepaymentwindow.h"
-
 CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser,
-        std::map<int, int>&productsBought, int& totalToPay) :
+        std::map<int, purchasedItem>&productsBought,   Customer& currentServingCustomer, int& totalToPay) :
     QDialog(parent),
     ui(new Ui::CompletePaymentWindow)
 {
@@ -27,6 +26,34 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     QObject::connect(ui->le_amountPaid, SIGNAL(returnPressed()),
                      this, SLOT(getCashComputeBalance()));
 //ui->le_amountPaid->textChanged()
+
+
+
+
+
+
+    currentUser = new loggedUser;
+    servingCustomer = new Customer;
+    productsToBill = new std::map<int, purchasedItem>;
+
+    *currentUser = currentLoggedInUser;
+    *servingCustomer = currentServingCustomer;
+    *productsToBill = productsBought;
+
+    for(auto& it: productsBought){
+
+        LOGx("=====================================================");
+        LOGxy("purchased", it.first);
+        LOGxy("purchased", it.second.quantity_purchased);
+        LOGxy("bool dis", it.second.prod_discounted);
+        LOGxy("dis amount", it.second.discount_amount);
+        LOGxy("bool reward", it.second.prod_rewarded);
+        LOGxy("rew amount", it.second.reward_amount);
+        LOGx("=====================================================");
+
+    }
+    LOGx(currentServingCustomer.phone.toStdString());
+    LOGx(currentUser->user_id.toInt());
 }
 
 CompletePaymentWindow::~CompletePaymentWindow()
