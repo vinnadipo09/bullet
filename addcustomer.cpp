@@ -53,8 +53,10 @@ void AddCustomer::on_btnOkay_clicked()
             }else{
                 createCustomerCredit();
                 if(!creditUpdated){
-
+                    LOGx("encountered a problem...");
                 }else{
+                    LOGx("everything was successful...");
+
                     QMessageBox::warning(this, "Customer Addition Success!", "Customer Added Successfully");
                     emit customerAdditionTaskComplete();
                 }
@@ -116,7 +118,8 @@ void AddCustomer::addCustomerToDb() {
         if(!query.exec()){
             QMessageBox::critical(this, "Database Error", query.lastError().text());
         }else{
-            customerAdded = true;        }
+            customerAdded = true;
+        }
     }
 }
 void AddCustomer::loadCustomerTypesToCb() {
@@ -153,6 +156,7 @@ void AddCustomer::createCustomerCredit() {
                 query.bindValue(":userId", currentUser->user_id);
                 query.bindValue(":timeStamp", currentTime);
                 if(!query.exec()){
+                    LOGx("encountered an error updating credit");
                     query.prepare(QString("SELECT cusType FROM cusType"));
                 } else{
                     creditUpdated = true;

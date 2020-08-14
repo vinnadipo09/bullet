@@ -33,6 +33,7 @@ public:
     QLabel *lbl_first_name_2;
     QLabel *lblName;
     QLineEdit *leCashInDrawer;
+    QLabel *lblSession;
     QLabel *label_2;
 
     void setupUi(QDialog *SessionControl)
@@ -49,7 +50,7 @@ public:
         groupBox->setGeometry(QRect(120, 60, 461, 291));
         lbl_first_name = new QLabel(groupBox);
         lbl_first_name->setObjectName(QStringLiteral("lbl_first_name"));
-        lbl_first_name->setGeometry(QRect(10, 50, 191, 31));
+        lbl_first_name->setGeometry(QRect(10, 100, 191, 31));
         QFont font;
         font.setPointSize(12);
         lbl_first_name->setFont(font);
@@ -59,21 +60,21 @@ public:
         lbl_first_name->setFrameShadow(QFrame::Raised);
         btnApply = new QPushButton(groupBox);
         btnApply->setObjectName(QStringLiteral("btnApply"));
-        btnApply->setGeometry(QRect(70, 190, 114, 30));
+        btnApply->setGeometry(QRect(70, 240, 114, 30));
         QIcon icon;
         icon.addFile(QStringLiteral(":/resources/icons/signs (3).png"), QSize(), QIcon::Normal, QIcon::Off);
         btnApply->setIcon(icon);
         btnApply->setIconSize(QSize(24, 24));
         btnCancel = new QPushButton(groupBox);
         btnCancel->setObjectName(QStringLiteral("btnCancel"));
-        btnCancel->setGeometry(QRect(210, 190, 101, 30));
+        btnCancel->setGeometry(QRect(210, 240, 101, 30));
         QIcon icon1;
         icon1.addFile(QStringLiteral(":/resources/icons/icons8-delete-bin-96.png"), QSize(), QIcon::Normal, QIcon::Off);
         btnCancel->setIcon(icon1);
         btnCancel->setIconSize(QSize(24, 24));
         lbl_first_name_2 = new QLabel(groupBox);
         lbl_first_name_2->setObjectName(QStringLiteral("lbl_first_name_2"));
-        lbl_first_name_2->setGeometry(QRect(10, 100, 191, 31));
+        lbl_first_name_2->setGeometry(QRect(10, 150, 191, 31));
         lbl_first_name_2->setFont(font);
         lbl_first_name_2->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
 "color: rgb(238, 238, 236);"));
@@ -81,7 +82,7 @@ public:
         lbl_first_name_2->setFrameShadow(QFrame::Raised);
         lblName = new QLabel(groupBox);
         lblName->setObjectName(QStringLiteral("lblName"));
-        lblName->setGeometry(QRect(220, 50, 191, 31));
+        lblName->setGeometry(QRect(220, 100, 191, 31));
         lblName->setFont(font);
         lblName->setStyleSheet(QLatin1String("background-color: rgb(85, 87, 83);\n"
 "color: rgb(238, 238, 236);"));
@@ -89,7 +90,17 @@ public:
         lblName->setFrameShadow(QFrame::Raised);
         leCashInDrawer = new QLineEdit(groupBox);
         leCashInDrawer->setObjectName(QStringLiteral("leCashInDrawer"));
-        leCashInDrawer->setGeometry(QRect(220, 100, 191, 31));
+        leCashInDrawer->setGeometry(QRect(220, 150, 191, 31));
+        lblSession = new QLabel(groupBox);
+        lblSession->setObjectName(QStringLiteral("lblSession"));
+        lblSession->setGeometry(QRect(50, 40, 351, 31));
+        lblSession->setFont(font);
+        lblSession->setStyleSheet(QLatin1String("color: rgb(0, 0, 0);\n"
+"color: rgb(255, 255, 255);\n"
+"border-color: rgb(239, 41, 41);\n"
+"background-color: rgb(0, 0, 0);"));
+        lblSession->setFrameShape(QFrame::Panel);
+        lblSession->setFrameShadow(QFrame::Raised);
         label_2 = new QLabel(SessionControl);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(0, 0, 651, 411));
@@ -114,6 +125,7 @@ public:
         lbl_first_name_2->setText(QApplication::translate("SessionControl", "Cash in Drawer:", Q_NULLPTR));
         lblName->setText(QString());
         leCashInDrawer->setPlaceholderText(QApplication::translate("SessionControl", "Enter Cash in Drawer", Q_NULLPTR));
+        lblSession->setText(QString());
         label_2->setText(QString());
     } // retranslateUi
 

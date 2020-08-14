@@ -48,17 +48,24 @@ struct Customer{
     QString phone;
     QString customerType;
     double creditAllowed;
+    double creditRemaining;
     double rewardsAvailable;
     double cashOnBusiness;
     double debtOwed;
     float creditRating;
+    int activeDebts;
+    double totalActiveDebts;
+    int badDebts;
+    double totalBadDebts;
+    QString authorizingUser;
+    QDateTime lastModified;
     int pendingOrders;
     int pendingDebts;
     std::vector<int>debtIds;
     std::vector<int>ordersId;
 };
 struct productFromDb{
-    QString product_id;
+    int product_id;
     QString product_name;
     QString productZone;
     QString product_category;
@@ -75,7 +82,7 @@ struct productFromDb{
     QDateTime modifiedAt;
 };
 struct productToDatabase{
-    QString product_id;
+    int product_id;
     QString product_name;
     QString product_barcode;
     QString product_shortcode;

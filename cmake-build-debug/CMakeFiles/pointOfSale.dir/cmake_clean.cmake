@@ -31,6 +31,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pointOfSale.dir/editproductzone.cpp.o"
   "CMakeFiles/pointOfSale.dir/editsupplier.cpp.o"
   "CMakeFiles/pointOfSale.dir/edituser.cpp.o"
+  "CMakeFiles/pointOfSale.dir/existingsessionverifier.cpp.o"
   "CMakeFiles/pointOfSale.dir/login.cpp.o"
   "CMakeFiles/pointOfSale.dir/main.cpp.o"
   "CMakeFiles/pointOfSale.dir/mainslice.cpp.o"

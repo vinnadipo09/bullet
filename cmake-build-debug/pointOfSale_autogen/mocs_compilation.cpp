@@ -25,6 +25,7 @@
 #include "EWIEGA46WW/moc_editproductzone.cpp"
 #include "EWIEGA46WW/moc_editsupplier.cpp"
 #include "EWIEGA46WW/moc_edituser.cpp"
+#include "EWIEGA46WW/moc_existingsessionverifier.cpp"
 #include "EWIEGA46WW/moc_login.cpp"
 #include "EWIEGA46WW/moc_passwordconfirmation.cpp"
 #include "EWIEGA46WW/moc_productdiscounteditor.cpp"

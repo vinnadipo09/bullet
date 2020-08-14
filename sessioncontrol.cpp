@@ -14,6 +14,7 @@ SessionControl::SessionControl(QWidget *parent, loggedUser &currentLoggedInUser,
     cashInSystem = new int;
     currentExecutionType = new QString;
     *currentExecutionType = executionType;
+    setLabelExecution();
 }
 
 SessionControl::~SessionControl()
@@ -38,82 +39,15 @@ void SessionControl::getCashInSystem() {
 
 void SessionControl::on_btnApply_clicked()
 {
-    getCashInSystem();
-    QDateTime currentTime = QDateTime::currentDateTime();
     int cashByUser = ui->leCashInDrawer->text().toInt();
-    QString cashEffect;
-    QString resolved = "No";
-    int cashDiscrepancy;
-    if(*cashInSystem > cashByUser){
-        cashDiscrepancy = *cashInSystem - cashByUser;
-        cashEffect = "Low";
-    }else if(cashByUser> *cashInSystem){
-        cashDiscrepancy = cashByUser - *cashInSystem;
-        cashEffect = "High";
-    }else{
-        cashDiscrepancy = 0;
-        cashEffect = "None";
-    }
-
-
-
-
-
-
-
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Confirm Cash", "KSHS. "+ QString::number(cashByUser)+" . This Value CANNOT BE EDITED. Do you wish to proceed?",
                                   QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
         if(*currentExecutionType == "Opening"){
-            QString sessionType = "Opened";
-            if(sessionConnection->conn_open()){
-                QSqlQuery query(QSqlDatabase::database("MyConnect"));
-                query.prepare(QString("INSERT INTO salesSessionManager (session_type, session_time, drawer_cash, system_cash, discrepancy, effect, user_id, resolved) VALUES("
-                                      ":sessionType, :sessionTime, :drawerCash, :systemCash, :discrepancy, :effect, :userId, :resolved)"));
-                query.bindValue(":sessionType", sessionType);
-                query.bindValue(":sessionTime", currentTime);
-                query.bindValue(":drawerCash", cashByUser);
-                query.bindValue(":systemCash", *cashInSystem);
-                query.bindValue(":discrepancy", cashDiscrepancy);
-                query.bindValue(":effect", cashEffect);
-                query.bindValue(":userId", currentUser->user_id);
-                query.bindValue(":resolved", resolved);
-                if(!query.exec()){
-                    QMessageBox::critical(this, "Database Error", query.lastError().text());
-                }else{
-                    QMessageBox::critical(this, "Opening Successful", "You have successfully opened a new session!");
-                }
-                    emit sendOpeningComplete();
-                LOGx("OPEN SIGNAL EMITTED");
-
-                this->close();
-                }
+            openNewSession();
             }else if(*currentExecutionType=="Closing"){
-            QString sessionType = "Closed";
-            if(sessionConnection->conn_open()){
-                QSqlQuery query(QSqlDatabase::database("MyConnect"));
-                query.prepare(QString("INSERT INTO salesSessionManager (session_type, session_time, drawer_cash, system_cash, discrepancy, effect, user_id, resolved) VALUES("
-                                      "                                      :sessionType, :sessionTime, :drawerCash, :systemCash, :discrepancy, :effect, :userId, :resolved)"));
-                query.bindValue(":sessionType", sessionType);
-                query.bindValue(":sessionTime", currentTime);
-                query.bindValue(":drawerCash", cashByUser);
-                query.bindValue(":systemCash", *cashInSystem);
-                query.bindValue(":discrepancy", cashDiscrepancy);
-                query.bindValue(":effect", cashEffect);
-                query.bindValue(":userId", currentUser->user_id);
-                query.bindValue(":resolved", resolved);
-                if(!query.exec()){
-                    QMessageBox::critical(this, "Database Error", query.lastError().text());
-                }else{
-                    emit sendClosingComplete();
-
-                    QMessageBox::critical(this, "Closing Successful", "You have successfully closed your current session!");
-                }
-                LOGx("CLOSE SIGNAL EMITTED");
-                this->close();
-            }
-
+            closeExistingSession();
         }
 
     }else {
@@ -133,9 +67,96 @@ void SessionControl::on_btnCancel_clicked()
 }
 
 void SessionControl::openNewSession() {
+    getCashInSystem();
+    QDateTime currentTime = QDateTime::currentDateTime();
+    int cashByUser = ui->leCashInDrawer->text().toInt();
+    QString cashEffect;
+    QString resolved = "No";
+    int cashDiscrepancy;
+    if(*cashInSystem > cashByUser){
+        cashDiscrepancy = *cashInSystem - cashByUser;
+        cashEffect = "Low";
+    }else if(cashByUser> *cashInSystem){
+        cashDiscrepancy = cashByUser - *cashInSystem;
+        cashEffect = "High";
+    }else{
+        cashDiscrepancy = 0;
+        cashEffect = "None";
+    }
+    QString sessionType = "Opened";
 
+    if(sessionConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("INSERT INTO salesSessionManager (session_type, session_time, drawer_cash, system_cash, discrepancy, effect, user_id, resolved) VALUES("
+                              ":sessionType, :sessionTime, :drawerCash, :systemCash, :discrepancy, :effect, :userId, :resolved)"));
+        query.bindValue(":sessionType", sessionType);
+        query.bindValue(":sessionTime", currentTime);
+        query.bindValue(":drawerCash", cashByUser);
+        query.bindValue(":systemCash", *cashInSystem);
+        query.bindValue(":discrepancy", cashDiscrepancy);
+        query.bindValue(":effect", cashEffect);
+        query.bindValue(":userId", currentUser->user_id);
+        query.bindValue(":resolved", resolved);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+        }else{
+            QMessageBox::critical(this, "Opening Successful", "You have successfully opened a new session!");
+        }
+        emit sendOpeningComplete();
+        LOGx("OPEN SIGNAL EMITTED");
+
+        this->close();
+    }
 }
 
 void SessionControl::closeExistingSession() {
+    getCashInSystem();
+    QDateTime currentTime = QDateTime::currentDateTime();
+    int cashByUser = ui->leCashInDrawer->text().toInt();
+    QString cashEffect;
+    QString resolved = "No";
+    int cashDiscrepancy;
+    if(*cashInSystem > cashByUser){
+        cashDiscrepancy = *cashInSystem - cashByUser;
+        cashEffect = "Low";
+    }else if(cashByUser> *cashInSystem){
+        cashDiscrepancy = cashByUser - *cashInSystem;
+        cashEffect = "High";
+    }else{
+        cashDiscrepancy = 0;
+        cashEffect = "None";
+    }
+    QString sessionType = "Closed";
+    if(sessionConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("INSERT INTO salesSessionManager (session_type, session_time, drawer_cash, system_cash, discrepancy, effect, user_id, resolved) VALUES("
+                              "                                      :sessionType, :sessionTime, :drawerCash, :systemCash, :discrepancy, :effect, :userId, :resolved)"));
+        query.bindValue(":sessionType", sessionType);
+        query.bindValue(":sessionTime", currentTime);
+        query.bindValue(":drawerCash", cashByUser);
+        query.bindValue(":systemCash", *cashInSystem);
+        query.bindValue(":discrepancy", cashDiscrepancy);
+        query.bindValue(":effect", cashEffect);
+        query.bindValue(":userId", currentUser->user_id);
+        query.bindValue(":resolved", resolved);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+        }else{
 
+            QMessageBox::critical(this, "Closing Successful", "You have successfully closed your current session!");
+            emit sendClosingComplete();
+
+        }
+        LOGx("CLOSE SIGNAL EMITTED");
+        this->close();
+    }
+
+}
+
+void SessionControl::setLabelExecution() {
+    if (*currentExecutionType == "Opening"){
+        ui->lblSession->setText("Open a Session to Continue");
+    }else if(*currentExecutionType == "Closing"){
+        ui->lblSession->setText("Close a Session to Continue");
+    }
 }

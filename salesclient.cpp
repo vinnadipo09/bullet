@@ -6,15 +6,10 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     ui(new Ui::SalesClient)
 {
     ui->setupUi(this);
-    this->showMaximized();
     this->setMinimumSize(1024, 768);
-    disableSystems();
-
-
-
-
-
-
+    this->showMaximized();
+//    TURN ME ON LATER
+//    disableSystems();
     salesConnection = new databaseConnection;
     currentUser = new loggedUser;
     *currentUser = currentLoggedInUser;
@@ -41,15 +36,20 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     currentCashierUser = new loggedUser;
     barCodeFromName = new QString;
     processedProduct = new QString;
+    customerAgentToServe = new QString;
     ongoingSession = new session;
     newSession = new session;
-
+    currentSaleId = new QString;
     unitDiscount = new float ;
     unitReward = new float;
     unitSubTotal = new float;
     customerPhone = new QString;
     executionType = new QString;
+    saleType = new QString;
+    lastId = new int;
+    totalTax = new float;
     *currentCashierUser = currentLoggedInUser;
+    currentServingCustomer = new Customer;
 //    Debug(*currentCashierUser);
 
     *totalToPay = 0;
@@ -70,139 +70,147 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     rowToEdit = new int;
     rowToEditFromSelection = new int;
 
-    checkLastSession();
-
+    enableRewards = false;
+    enableDiscounts = false;
+    isCurrentCustomerDefined = false;
+    clientAuthorizedPaymentByRewards;
+    businessAuthorizedPaymentByRewards;
 
     QObject::connect(ui->tableWidget->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&,
                                                                        const QItemSelection&)), SLOT(getRowToEdit()));
-    ui->cbSalesType->setCurrentIndex(1);
+    ui->cbSalesType->setCurrentIndex(0);
+    *saleType = "Retail";
     QObject::connect(this, SIGNAL(enableSystemsSent()), this, SLOT(enableSystemsCalled()));
     connect(ui->cbSalesType, QOverload<int>::of(&QComboBox::currentIndexChanged),
             [=](int index){ /* ... */
-    if(index==0){
+    if(index==0) {
+//    if(index==0 && ui->cbSalesType->currentIndex()!=0) {
+        QMessageBox::StandardButton changeToRetail;
 
+        changeToRetail = QMessageBox::warning(this, "Changing to Retail",
+                                              "This change will clear all your data. Do you want to continue?",
+                                              QMessageBox::Yes | QMessageBox::No);
+        if (changeToRetail == QMessageBox::Yes) {
+            *saleType = "Retail";
+            ui->lblSaleType->setStyleSheet("background-color:green");
+            ui->lblSaleType->setText("Retail");
+            int numberOfRowsEntered = ui->tableWidget->rowCount();
+            for(int i=0; i<numberOfRowsEntered+1; i++){
+                ui->tableWidget->removeRow(i);
+            }
+            resetCashierRecords();
+            setFocusForSales();
+    }else{
+            ui->cbSalesType->setCurrentIndex(1);
+
+        }
+//    }else if(index==1 && ui->cbSalesType->currentIndex()!=1){
     }else if(index==1){
-        ui->cbSalesType->setStyleSheet("{background-color:green; color:black}");
-    }else if(index==2){
-        ui->cbSalesType->setStyleSheet("background-color:blue");
+        QMessageBox::StandardButton changeToRetail;
+
+        changeToRetail = QMessageBox::warning(this, "Changing to Wholesale",
+                                              "This change will clear all your data. Do you want to continue?",
+                                              QMessageBox::Yes | QMessageBox::No);
+        if (changeToRetail == QMessageBox::Yes) {
+            *saleType = "Wholesale";
+            ui->lblSaleType->setStyleSheet("background-color:blue");
+            ui->lblSaleType->setText("Wholesale");
+            establishWholesaleSale();
+            int numberOfRowsEntered = ui->tableWidget->rowCount();
+            for(int i=0; i<numberOfRowsEntered+1; i++){
+                ui->tableWidget->removeRow(i);
+            }
+            resetCashierRecords();
+            setFocusForSales();
+        }else{
+            ui->cbSalesType->setCurrentIndex(0);
+
+        }
     }
     });
+//    TURN ME ON LATER
+//    sessionStartControl();
+    ui->checkBoxClientRewardAuthorization->setDisabled(true);
+    setCurrentSaleId();
+    if (*lastId==0){
+        *currentSaleId = QString::number(*lastId);
+    }else{
+        *currentSaleId = QString::number(*lastId+1);
+    }
+    ui->lblOrderId->setText(*currentSaleId);
+    *rewardTotal = 0;
+    *discountTotal = 0;
+
+
 }
 
 SalesClient::~SalesClient()
 {
     delete ui;
 }
-void SalesClient::grabBarcodeFromEntry() {
-    uniqueID = ui->le_barcodeEntry->text();
-    getScannedProductFromDB(uniqueID);
-}
-void SalesClient::grabBarcodeFromCompleter(QString& currentProduct) {
-    if(salesConnection->conn_open()){
-        QSqlQuery query(QSqlDatabase::database("MyConnect"));
-        query.prepare(QString("SELECT products.product_id, products.productName, products.productBarcode, products.productMeasurement, products.productWSPrice"
-                              ", products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount, stock.quantity FROM products "
-                              "LEFT JOIN productDiscounts ON productDiscounts.product_id=products.product_id "
-                              "LEFT JOIN productRewards ON productRewards.product_id= products.product_id LEFT JOIN stock ON stock.product_id = products.product_id WHERE productName = :currentProduct"));
-        query.bindValue(":currentProduct", currentProduct);
-        if(!query.exec()){
-            QMessageBox::critical(this, "Database Error", query.lastError().text());
-            return;
-        }else{
-            while (query.next()) {
-                *barCodeFromName = query.value(4).toString();
-                addedProduct->product_barcode = *barCodeFromName;
-                addedProduct->product_id = query.value(0).toInt();
-                addedProduct->product_name = query.value(1).toString();
-                addedProduct->product_quantity = query.value(3).toString();
-                addedProduct->product_wsprice = query.value(4).toInt();
-                addedProduct->product_rtprice = query.value(5).toInt();
-                addedProduct->product_image = query.value(6).toInt();
-                addedProduct->product_discount = query.value(7).toInt();
-                addedProduct->product_rewards = query.value(8).toInt();
-                addedProduct->stockQuantity = query.value(9).toInt();
-                *addedProductName = addedProduct->product_name;
-                *productQuantity = addedProduct->product_quantity;
-                *productPrice = addedProduct->product_rtprice;
-                *unitPrice = QString::number(*productPrice);
-                *stockQuantityAvailable = addedProduct->stockQuantity;
 
-            }
-            if(!addedProductName->isEmpty()){
-//                scannedProductManagement(*barCodeFromName, *quantityToBeBought);
-            }else{
-
-            }
-        }
-    }
-}
-void SalesClient::getScannedProductFromDB(QString barcodeScanned) {
-    barcodeScanned = ui->le_barcodeEntry->text();
-    QSqlQuery query(QSqlDatabase::database("MyConnect"));
-    query.prepare(QString("SELECT products.product_id, products.productName, products.productBarcode, products.productMeasurement, products.productWSPrice"
-                          " , products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount, stock.quantity  FROM products "
-                          " LEFT JOIN productDiscounts ON productDiscounts.product_id=products.product_id "
-                          " LEFT JOIN productRewards ON productRewards.product_id= products.product_id LEFT JOIN stock ON stock.product_id = products.product_id WHERE productBarcode = :scannedBarcode"));
-    query.bindValue(":scannedBarcode", uniqueID);
-    if(!query.exec()){
-        QMessageBox::critical(this, "Database Error", query.lastError().text());
-        return;
-    }else{
-        while (query.next()) {
-            addedProduct->product_id = query.value(0).toInt();
-            addedProduct->product_name = query.value(1).toString();
-            addedProduct->product_barcode = query.value(2).toString();
-            addedProduct->product_quantity = query.value(3).toString();
-            addedProduct->product_wsprice = query.value(4).toInt();
-            addedProduct->product_rtprice = query.value(5).toInt();
-            addedProduct->product_image = query.value(6).toInt();
-            addedProduct->product_discount = query.value(7).toFloat();
-            addedProduct->product_rewards = query.value(8).toFloat();
-            addedProduct->stockQuantity = query.value(9).toFloat();
-
-            *addedProductId = addedProduct->product_id.toInt();
-            *addedProductName = addedProduct->product_name;
-            *productQuantity = addedProduct->product_quantity;
-            *productPrice = addedProduct->product_rtprice;
-            *unitPrice = QString::number(*productPrice);
-            *unitReward = addedProduct->product_rewards;
-            *unitDiscount = addedProduct->product_discount;
-            *stockQuantityAvailable = addedProduct->stockQuantity;
-
-        }
-        if(!addedProductName->isEmpty()){
-            if(*stockQuantityAvailable>0){
-                scannedProductManagement(barcodeScanned, *addedProductId, *stockQuantityAvailable);
-            }else{
-                QMessageBox::critical(this, "Out of Stock Error!", "Manage your stock. You are trying to sell a product out of stock!");
-                return;
-            }
-        }else{
-
-        }
-    }
-}
 void SalesClient::closeEvent(QCloseEvent *event) {
-    QMessageBox msgBox;
-    msgBox.setText("Closing Sales Window will discard all  your unsaved data!");
-    msgBox.setInformativeText("Do you want to close the window anyway?");
-    msgBox.setStandardButtons(QMessageBox::Close | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Cancel);
-    int ret = msgBox.exec();
-    switch (ret) {
-        case QMessageBox::Close:
+    if(thereIsOpenSession){
+        QMessageBox::StandardButton reply;
+
+        reply = QMessageBox::warning(this
+                , "Active Session Warning!"
+                , "You have an active session for "+currentUser->username+" . Do you wish to close without ending the session?"
+                , QMessageBox::Yes | QMessageBox::No|QMessageBox::Cancel);
+        if(reply==QMessageBox::Yes){
             event->accept();
-            emit send_salesClientClosed();
-            break;
-        case QMessageBox::Cancel:
+            send_salesClientClosed();
+        }else if(reply==QMessageBox::No){
+            *executionType = "Closing";
+            sessionControl = new SessionControl(this, *currentUser, *executionType);
+            sessionControl->setModal(true);
+            sessionControl->show();
+            thereIsOpenSession = false;
+        }else{
+            return;
+        }
+    }else{
+        QMessageBox::StandardButton close;
+
+        close = QMessageBox::warning(this
+                , "Cashier Window Closing!"
+                , "Do you wish to close Cashier Window?"
+                , QMessageBox::Yes | QMessageBox::Cancel);
+        if(close==QMessageBox::Yes){
+            event->accept();
+            send_salesClientClosed();
+        }else{
             event->ignore();
-//            return;
-            break;
-        default:
-            LOGx("Program broken");
-            // should never be reached
-            break;
+
+        }
     }
+
+
+
+
+
+
+
+//    QMessageBox msgBox;
+//    msgBox.setText("Closing Sales Window will discard all  your unsaved data!");
+//    msgBox.setInformativeText("Do you want to close the window anyway?");
+//    msgBox.setStandardButtons(QMessageBox::Close | QMessageBox::Cancel);
+//    msgBox.setDefaultButton(QMessageBox::Cancel);
+//    int ret = msgBox.exec();
+//    switch (ret) {
+//        case QMessageBox::Close:
+//            event->accept();
+//            emit send_salesClientClosed();
+//            break;
+//        case QMessageBox::Cancel:
+//            event->ignore();
+////            return;
+//            break;
+//        default:
+//            LOGx("Program broken");
+//            // should never be reached
+//            break;
+//    }
 }
 void SalesClient::scannedProductManagement(QString& barcode, int & currentProductId, int & stockAvailable) {
     std::map<int, int>::iterator it;
@@ -210,48 +218,76 @@ void SalesClient::scannedProductManagement(QString& barcode, int & currentProduc
     if(it!=itemsBought->end()){
         if(it->second+1<= stockAvailable){
             it->second +=1;
-
             int rowsSearch = ui->tableWidget->rowCount();
             for(int i = 0; i<rowsSearch; i++){
-                std::string currentItemScheduled = barcode.toStdString();
-                if(ui->tableWidget->item(i,1)->text().toStdString()==currentItemScheduled){
+                if(ui->tableWidget->item(i,0)->text().toInt()==currentProductId){
+                    LOGxy("row and column value", currentProductId);
                     modifyProductInRowCreated(i, it->second);
                 }
             }
+            ui->le_barcodeEntry->clear();
+            ui->le_barcodeEntry->setFocus();
         }else{
             QMessageBox::critical(this, "Out of Stock Error!", "Manage your stock. The maximum available stock has been depleted!");
+            ui->le_barcodeEntry->clear();
+            ui->le_barcodeEntry->setFocus();
             return;
         }
     }else{
-
         itemsBought->insert(std::pair<int, int>(currentProductId, initial_quantity));
         createRowsToAddProductPurchased(initial_quantity);
+        ui->le_barcodeEntry->clear();
+        ui->le_barcodeEntry->setFocus();
     }
 }
 void SalesClient::modifyProductInRowCreated(int &rowAffected, int &quantityValue) {
+    float singleItemDiscount = 0;
+    float singleItemReward = 0;
     int columnsToModifyProducts = 9;
+    float singleItemDiscountTotal;
+    float singleItemRewardsTotal;
     for(int i =0; i<columnsToModifyProducts; i++){
         if(i==5){
             ui->tableWidget->item(rowAffected, i)->setText(QString::number(quantityValue));
         }else if(i==6){
-//            float singleItemDiscount = ui->tableWidget->item(rowAffected, 6)->text().toFloat();
-            float singleItemDiscount = addedProduct->product_discount;
-            *discountTotal = singleItemDiscount*quantityValue;
-            ui->tableWidget->item(rowAffected, i)->setText(QString::number(*discountTotal));
-//            *totalToPay = *totalToPay + ui->tableWidget->item(rowAffected, 5)->text().toInt();
-//            ui->lblComputedTotal->setText(QString::number(*totalToPay));
+            if(enableDiscounts){
+                singleItemDiscount = addedProduct->product_discount;
+                singleItemDiscountTotal= singleItemDiscount*quantityValue;
+                *discountTotal = *discountTotal+singleItemDiscount;
+                ui->lblPossibleDiscounts->setText(QString::number(*discountTotal));
+            } else{
+                *discountTotal = singleItemDiscount*quantityValue;
+            }
+            ui->tableWidget->item(rowAffected, i)->setText(QString::number(singleItemDiscountTotal));
         }else if(i==7){
-            float singleItemReward = addedProduct->product_rewards;
-            *rewardTotal = singleItemReward*quantityValue;
+            if (enableRewards){
+                singleItemReward = addedProduct->product_rewards;
+                singleItemRewardsTotal = singleItemReward*quantityValue;
+                *rewardTotal = *rewardTotal+singleItemReward;
+                ui->lblPossibleRewards->setText(QString::number(*rewardTotal));
+
+            }else{
+                *rewardTotal = singleItemReward*quantityValue;
+            }
             ui->tableWidget->item(rowAffected, i)->setText(QString::number(*rewardTotal));
-//            *totalToPay = *totalToPay + ui->tableWidget->item(rowAffected, 5)->text().toInt();
-//            ui->lblComputedTotal->setText(QString::number(*totalToPay));
         }else if(i==8){
             int unitPrice = ui->tableWidget->item(rowAffected, 4)->text().toInt();
-            *unitSubTotal = unitPrice*quantityValue;
+            if(enableDiscounts){
+                *unitSubTotal = (unitPrice-singleItemDiscount)*quantityValue;
+            } else{
+                *unitSubTotal = unitPrice*quantityValue;
+            }
             ui->tableWidget->item(rowAffected, i)->setText(QString::number(*unitSubTotal));
             *totalToPay = *totalToPay + ui->tableWidget->item(rowAffected, 4)->text().toInt();
+            float tax = 0.16*(*totalToPay);
+            float sale_value = *totalToPay - tax;
+
+            QString tempTax = QString::number(tax, 'f', 2);
+            QString tempSales = QString::number(sale_value, 'f', 2);
             ui->lblComputedTotal->setText(QString::number(*totalToPay)+".00");
+            ui->lblSaleValue->setText(tempSales);
+            ui->lblSaleTax->setText(tempTax);
+            ui->lblThisSaleTotal->setText(QString::number(*totalToPay)+".00");
         }
     }
 }
@@ -260,101 +296,249 @@ void SalesClient::createRowsToAddProductPurchased(int &quantityValue) {
     ui->tableWidget->insertRow(ui->tableWidget->rowCount());
     addProductInRowCreated(currentRowBeingInserted, quantityValue);
     *totalToPay = *totalToPay + ui->tableWidget->item(currentRowBeingInserted, 4)->text().toInt();
+    *rewardTotal = *rewardTotal+addedProduct->product_rewards;
+    *discountTotal = *discountTotal+addedProduct->product_discount;
     ui->lblComputedTotal->setText(QString::number(*totalToPay)+".00");
+
+
+    float tax = 0.16*(*totalToPay);
+    float sale_value = *totalToPay - tax;
+
+    QString tempTax = QString::number(tax, 'f', 2);
+    QString tempSales = QString::number(sale_value, 'f', 2);
+    ui->lblComputedTotal->setText(QString::number(*totalToPay)+".00");
+    ui->lblSaleValue->setText(tempSales);
+    ui->lblSaleTax->setText(tempTax);
+    ui->lblThisSaleTotal->setText(QString::number(*totalToPay)+".00");
+    if(enableRewards){
+        ui->lblPossibleRewards->setText(QString::number(*rewardTotal));
+    }
+    if (enableDiscounts){
+        ui->lblPossibleDiscounts->setText(QString::number(*discountTotal));
+    }
 }
 
 void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased) {
     int columnsToAddProducts = 9;
     for(int i =0; i<columnsToAddProducts; i++){
-        if(i==0){
-            QTableWidgetItem* idEntry = ui->tableWidget->item(rowCreated, i);
-            if(!idEntry){
-                idEntry = new QTableWidgetItem;
-                ui->tableWidget->setItem(rowCreated, i, idEntry);
-            }if(!addedProductId==NULL){
-                idEntry->setText(QString::number(*addedProductId));
+
+        if (*saleType=="Retail"){
+            if(i==0){
+                QTableWidgetItem* idEntry = ui->tableWidget->item(rowCreated, i);
+                if(!idEntry){
+                    idEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, idEntry);
+                }if(!addedProductId==NULL){
+                    idEntry->setText(QString::number(*addedProductId));
+                }
+            }else if(i==1){
+                QTableWidgetItem* barCodeEntry = ui->tableWidget->item(rowCreated, i);
+                if(!barCodeEntry){
+                    barCodeEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, barCodeEntry);
+                }if(!addedProduct->product_barcode.isEmpty()){
+                    barCodeEntry->setText(addedProduct->product_barcode);
+                }
+            }else if(i==2) {
+                QTableWidgetItem* descriptionEntry = ui->tableWidget->item(rowCreated, i);
+                if(!descriptionEntry){
+                    descriptionEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, descriptionEntry);
+                }if(!addedProduct->product_name.isEmpty()){
+                    descriptionEntry->setText(addedProduct->product_name);
+                }
+            }else if(i==3){
+                QTableWidgetItem *measurementEntry = ui->tableWidget->item(rowCreated, i);
+                if (!measurementEntry) {
+                    measurementEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, measurementEntry);
+                }
+                if (!addedProduct->product_quantity.isEmpty()) {
+                    measurementEntry->setText(addedProduct->product_quantity);
+                }
+            }else if(i==4) {
+                QTableWidgetItem *unitPriceEntry = ui->tableWidget->item(rowCreated, i);
+                if (!unitPriceEntry) {
+                    unitPriceEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, unitPriceEntry);
+                }
+                if (!unitPrice->isEmpty()) {
+                    unitPriceEntry->setText(QString::number(addedProduct->product_rtprice));
+                }
+            }else if(i==5) {
+                QTableWidgetItem *itemQtyPurchased = ui->tableWidget->item(rowCreated, i);
+                if(!itemQtyPurchased){
+                    itemQtyPurchased = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, itemQtyPurchased);
+                }
+                int total = quantityPurchased*(*productPrice);
+                QString tempQuantityPurchased = QString::number(quantityPurchased);
+                *itemQuantityPurchased = tempQuantityPurchased;
+                if(!itemQuantityPurchased->isEmpty()){
+                    itemQtyPurchased->setText(*itemQuantityPurchased);
+                }
+            }else if(i==6) {
+                QTableWidgetItem *discountEntry = ui->tableWidget->item(rowCreated, i);
+                if(!discountEntry){
+                    discountEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, discountEntry);
+                }
+                if (enableDiscounts){
+                    QString tempDiscount = QString::number(*unitDiscount);
+                    *discountOnItem = tempDiscount;
+                }else{
+                    QString tempDiscount = QString::number(0);
+                    *discountOnItem = tempDiscount;
+                }
+                if(!discountOnItem->isEmpty()){
+                    discountEntry->setText(*discountOnItem);
+                }
+            }else if(i==7) {
+                QTableWidgetItem *rewardEntry = ui->tableWidget->item(rowCreated, i);
+                if (!rewardEntry) {
+                    rewardEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, rewardEntry);
+                }
+                if(enableRewards){
+                    QString tempPoints = QString::number(*unitReward);
+                    *pointsOnItem = tempPoints;
+                }else{
+                    QString tempPoints = QString::number(0);
+                    *pointsOnItem = tempPoints;
+                }
+                if (!pointsOnItem->isEmpty()) {
+                    rewardEntry->setText(*pointsOnItem);
+                }
+            }else if(i==8) {
+                QTableWidgetItem *unitSubTotalEntry = ui->tableWidget->item(rowCreated, i);
+                if(!unitSubTotalEntry){
+                    unitSubTotalEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, unitSubTotalEntry);
+                }
+                if(enableDiscounts){
+                    int total = quantityPurchased*(*productPrice-*unitDiscount);
+                    *itemTotalPrice = QString::number(total);
+                }else{
+                    int total = quantityPurchased*(*productPrice);
+                    *itemTotalPrice = QString::number(total);
+                }
+
+                if(!itemTotalPrice->isEmpty()){
+                    unitSubTotalEntry->setText(*itemTotalPrice);
+                }
+            }else{
+
             }
-        }else if(i==1){
-            QTableWidgetItem* barCodeEntry = ui->tableWidget->item(rowCreated, i);
-            if(!barCodeEntry){
-                barCodeEntry = new QTableWidgetItem;
-                ui->tableWidget->setItem(rowCreated, i, barCodeEntry);
-            }if(!addedProduct->product_barcode.isEmpty()){
-                barCodeEntry->setText(addedProduct->product_barcode);
-            }
-        }else if(i==2) {
-            QTableWidgetItem* descriptionEntry = ui->tableWidget->item(rowCreated, i);
-            if(!descriptionEntry){
-                descriptionEntry = new QTableWidgetItem;
-                ui->tableWidget->setItem(rowCreated, i, descriptionEntry);
-            }if(!addedProduct->product_name.isEmpty()){
-                descriptionEntry->setText(addedProduct->product_name);
-            }
-        }else if(i==3){
-            QTableWidgetItem *measurementEntry = ui->tableWidget->item(rowCreated, i);
-            if (!measurementEntry) {
-                measurementEntry = new QTableWidgetItem;
-                ui->tableWidget->setItem(rowCreated, i, measurementEntry);
-            }
-            if (!addedProduct->product_quantity.isEmpty()) {
-                measurementEntry->setText(addedProduct->product_quantity);
-            }
-        }else if(i==4) {
-            QTableWidgetItem *unitPriceEntry = ui->tableWidget->item(rowCreated, i);
-            if (!unitPriceEntry) {
-                unitPriceEntry = new QTableWidgetItem;
-                ui->tableWidget->setItem(rowCreated, i, unitPriceEntry);
-            }
-            if (!unitPrice->isEmpty()) {
-                unitPriceEntry->setText(QString::number(addedProduct->product_rtprice));
-            }
-        }else if(i==5) {
-            QTableWidgetItem *itemQtyPurchased = ui->tableWidget->item(rowCreated, i);
-            if(!itemQtyPurchased){
-                itemQtyPurchased = new QTableWidgetItem;
-                ui->tableWidget->setItem(rowCreated, i, itemQtyPurchased);
-            }
-            int total = quantityPurchased*(*productPrice);
-            QString tempQuantityPurchased = QString::number(quantityPurchased);
-            *itemQuantityPurchased = tempQuantityPurchased;
-            if(!itemQuantityPurchased->isEmpty()){
-                itemQtyPurchased->setText(*itemQuantityPurchased);
-            }
-        }else if(i==6) {
-            QTableWidgetItem *discountEntry = ui->tableWidget->item(rowCreated, i);
-            if(!discountEntry){
-                discountEntry = new QTableWidgetItem;
-                ui->tableWidget->setItem(rowCreated, i, discountEntry);
-            }
-            QString tempDiscount = QString::number(*unitDiscount);
-            *discountOnItem = tempDiscount;
-            if(!discountOnItem->isEmpty()){
-                discountEntry->setText(*discountOnItem);
-            }
-        }else if(i==7) {
-            QTableWidgetItem *rewardEntry = ui->tableWidget->item(rowCreated, i);
-            if (!rewardEntry) {
-                rewardEntry = new QTableWidgetItem;
-                ui->tableWidget->setItem(rowCreated, i, rewardEntry);
-            }
-            QString tempPoints = QString::number(*unitReward);
-            *pointsOnItem = tempPoints;
-            if (!pointsOnItem->isEmpty()) {
-                rewardEntry->setText(*pointsOnItem);
-            }
-        }else if(i==8) {
-            QTableWidgetItem *unitSubTotalEntry = ui->tableWidget->item(rowCreated, i);
-            if(!unitSubTotalEntry){
-                unitSubTotalEntry = new QTableWidgetItem;
-                ui->tableWidget->setItem(rowCreated, i, unitSubTotalEntry);
-            }
-            int total = quantityPurchased*(*productPrice);
-            *itemTotalPrice = QString::number(total);
-            if(!itemTotalPrice->isEmpty()){
-                unitSubTotalEntry->setText(*itemTotalPrice);
+        }else if(*saleType=="Wholesale"){
+            if(i==0){
+                QTableWidgetItem* idEntry = ui->tableWidget->item(rowCreated, i);
+                if(!idEntry){
+                    idEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, idEntry);
+                }if(!addedProductId==NULL){
+                    idEntry->setText(QString::number(*addedProductId));
+                }
+            }else if(i==1){
+                QTableWidgetItem* barCodeEntry = ui->tableWidget->item(rowCreated, i);
+                if(!barCodeEntry){
+                    barCodeEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, barCodeEntry);
+                }if(!addedProduct->product_barcode.isEmpty()){
+                    barCodeEntry->setText(addedProduct->product_barcode);
+                }
+            }else if(i==2) {
+                QTableWidgetItem* descriptionEntry = ui->tableWidget->item(rowCreated, i);
+                if(!descriptionEntry){
+                    descriptionEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, descriptionEntry);
+                }if(!addedProduct->product_name.isEmpty()){
+                    descriptionEntry->setText(addedProduct->product_name);
+                }
+            }else if(i==3){
+                QTableWidgetItem *measurementEntry = ui->tableWidget->item(rowCreated, i);
+                if (!measurementEntry) {
+                    measurementEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, measurementEntry);
+                }
+                if (!addedProduct->product_quantity.isEmpty()) {
+                    measurementEntry->setText(addedProduct->product_quantity);
+                }
+            }else if(i==4) {
+                QTableWidgetItem *unitPriceEntry = ui->tableWidget->item(rowCreated, i);
+                if (!unitPriceEntry) {
+                    unitPriceEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, unitPriceEntry);
+                }
+                if (!unitPrice->isEmpty()) {
+                    unitPriceEntry->setText(QString::number(addedProduct->product_wsprice));
+                }
+            }else if(i==5) {
+                QTableWidgetItem *itemQtyPurchased = ui->tableWidget->item(rowCreated, i);
+                if(!itemQtyPurchased){
+                    itemQtyPurchased = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, itemQtyPurchased);
+                }
+                int total = quantityPurchased*(*productPrice);
+                QString tempQuantityPurchased = QString::number(quantityPurchased);
+                *itemQuantityPurchased = tempQuantityPurchased;
+                if(!itemQuantityPurchased->isEmpty()){
+                    itemQtyPurchased->setText(*itemQuantityPurchased);
+                }
+            }else if(i==6) {
+                QTableWidgetItem *discountEntry = ui->tableWidget->item(rowCreated, i);
+                if(!discountEntry){
+                    discountEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, discountEntry);
+                }
+                if (enableDiscounts){
+                    QString tempDiscount = QString::number(*unitDiscount);
+                    *discountOnItem = tempDiscount;
+                }else{
+                    QString tempDiscount = QString::number(0);
+                    *discountOnItem = tempDiscount;
+                }
+                if(!discountOnItem->isEmpty()){
+                    discountEntry->setText(*discountOnItem);
+                }
+            }else if(i==7) {
+                QTableWidgetItem *rewardEntry = ui->tableWidget->item(rowCreated, i);
+                if (!rewardEntry) {
+                    rewardEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, rewardEntry);
+                }
+                if(enableRewards){
+                    QString tempPoints = QString::number(*unitReward);
+                    *pointsOnItem = tempPoints;
+                }else{
+                    QString tempPoints = QString::number(0);
+                    *pointsOnItem = tempPoints;
+                }
+                if (!pointsOnItem->isEmpty()) {
+                    rewardEntry->setText(*pointsOnItem);
+                }
+            }else if(i==8) {
+                QTableWidgetItem *unitSubTotalEntry = ui->tableWidget->item(rowCreated, i);
+                if(!unitSubTotalEntry){
+                    unitSubTotalEntry = new QTableWidgetItem;
+                    ui->tableWidget->setItem(rowCreated, i, unitSubTotalEntry);
+                }
+                if(enableDiscounts){
+                    int total = quantityPurchased*(*productPrice-*unitDiscount);
+                    *itemTotalPrice = QString::number(total);
+                }else{
+                    int total = quantityPurchased*(*productPrice);
+                    *itemTotalPrice = QString::number(total);
+                }
+
+                if(!itemTotalPrice->isEmpty()){
+                    unitSubTotalEntry->setText(*itemTotalPrice);
+                }
+            }else{
+
             }
         }else{
-
+            QMessageBox::critical(this, "Sale Type Error", "You haven't selected the sale type(Retail/ Wholesale)");
+//                should never get here
         }
     }
 }
@@ -397,7 +581,26 @@ void SalesClient::goToPaymentAndCompleteSale() {
 }
 void SalesClient::on_btnCompleteSales_clicked()
 {
-    goToPaymentAndCompleteSale();
+    if(!isCurrentCustomerDefined){
+        LOGx("false not defined");
+        QMessageBox::StandardButton defineCustomer;
+
+        defineCustomer = QMessageBox::information(this
+                , "Customer/ Agent not defined"
+                , "It is advisable to get as many customers as possible into the database. Continue anyway?"
+                , QMessageBox::Yes | QMessageBox::No);
+        if(defineCustomer==QMessageBox::Yes){
+            LOGx("fala");
+        }else{
+            addCustomerAndDefineClient();
+            LOGx("ps4");
+        }
+    }else{
+        LOGx("true customer is defined");
+
+        goToPaymentAndCompleteSale();
+
+    }
 }
 
 void SalesClient::addCompleterProductToSales(std::map<QString, int>&) {
@@ -409,10 +612,7 @@ void SalesClient::addProductToCart() {
 
 void SalesClient::on_btn_addNewCustomer_clicked()
 {
-    addNewCustomer = new AddCustomer(this, *currentUser);
-    addNewCustomer->setModal(true);
-    addNewCustomer->show();
-    QObject::connect(addNewCustomer, SIGNAL(customerAdditionTaskComplete()), this, SLOT(receiveCustomerAdditionComplete()));
+    addNewCustomerToDatabase();
 }
 
 void SalesClient::showTime() {
@@ -440,6 +640,7 @@ void SalesClient::on_btn_viewCustomers_clicked()
 
 void SalesClient::receiveCustomerAdditionComplete() {
     addNewCustomer->close();
+    LOGx("customer was added and I was called");
     emit customerAdditionViaSalesClientComplete();
 }
 
@@ -587,10 +788,10 @@ void SalesClient::loadCustomersToCompleter() {
         qDebug() << "Failed to connect to database: " + salesConnection->db.lastError().text();
     }
 
-    connect(completer, static_cast<void(QCompleter::*)(const QString &)>(&QCompleter::activated),
+    connect(customerCompleter, static_cast<void(QCompleter::*)(const QString &)>(&QCompleter::activated),
             [=](const QString &text){
-                *processedProduct = text;
-                grabBarcodeFromCompleter(*processedProduct);
+                *customerAgentToServe = text;
+                loadCustomerAgentFromCompleter(*customerAgentToServe);
             });
 }
 
@@ -625,17 +826,19 @@ void SalesClient::updateStockAndStockLogs(QString &currentBarCode, int &productP
 
 void SalesClient::on_btnOpenClose_clicked()
 {
-    if(thereIsOpenSession){
-        *executionType = "Closing";
-        sessionControl = new SessionControl(this, *currentUser, *executionType);
-        sessionControl->setModal(true);
-        sessionControl->show();
-    }else{
-        *executionType = "Opening";
-        sessionControl = new SessionControl(this, *currentUser, *executionType);
-        sessionControl->setModal(true);
-        sessionControl->show();
-    }
+    openNewSession();
+    //    checkLastSession();
+//    if(thereIsOpenSession){
+//        *executionType = "Closing";
+//        sessionControl = new SessionControl(this, *currentUser, *executionType);
+//        sessionControl->setModal(true);
+//        sessionControl->show();
+//    }else{
+//        *executionType = "Opening";
+//        sessionControl = new SessionControl(this, *currentUser, *executionType);
+//        sessionControl->setModal(true);
+//        sessionControl->show();
+//    }
 }
 
 void SalesClient::disableSystems() {
@@ -663,80 +866,12 @@ void SalesClient::enableSystems() {
 }
 
 void SalesClient::checkLastSession() {
-    if(salesConnection->conn_open()){
-        QSqlQuery query(QSqlDatabase::database("MyConnect"));
-        query.prepare(QString("SELECT salesSessionManager.session_id, salesSessionManager.session_type , salesSessionManager.session_time, users.name FROM salesSessionManager LEFT JOIN users ON users.user_id = salesSessionManager.user_id ORDER "
-                                                                                                       "BY salesSessionManager.session_id DESC LIMIT 1"));
-        if(!query.exec()){
-            QMessageBox::critical(this, "Database Error", query.lastError().text());
-            return;
-        }else{
-            while (query.next()) {
-                ongoingSession->sessionType = query.value(1).toString();
-                ongoingSession->sessionTime = query.value(2).toDateTime();
-                ongoingSession->userName = query.value(3).toString();
-                if((ongoingSession->sessionType=="Opened" ) && ongoingSession->userName==currentUser->name){
-                    thereIsOpenSession = true;
-                    QMessageBox msgBox;
-                    msgBox.setWindowTitle("Active Session for "+currentUser->name);
-                    msgBox.setText("You have an active session. Do you wish to continue?");
-                    QPushButton *connectButton = msgBox.addButton(tr("Continue Session"), QMessageBox::ActionRole);
-                    QPushButton *connectButton2 = msgBox.addButton(tr("Continue Session"), QMessageBox::ActionRole);
-                    QPushButton *abortButton = msgBox.addButton( QMessageBox::Abort);
 
-                    msgBox.exec();
-
-                    if (msgBox.clickedButton() == connectButton) {
-                        // connect
-                        LOGx("connect");
-                    } else if (msgBox.clickedButton() == abortButton) {
-                        // abort
-                        LOGx("haiya");
-                    }else if (msgBox.clickedButton() == connectButton2) {
-                        // abort
-                        LOGx("haiya");
-                    }
-                }else if(( ongoingSession->sessionType=="Opened" ) && ongoingSession->userName!=currentUser->name){
-                    QMessageBox::critical(this, "Unattended Session", "There is an active session that must be closed before continuing!");
-                    *executionType = "Closing";
-//                    SYSTEM CLOSE AND THEN OPEN
-                    sessionControl = new SessionControl(this, *currentUser, *executionType);
-                    sessionControl->setModal(true);
-                    sessionControl->show();
-                    thereIsOpenSession = false;
-                }else if(ongoingSession->sessionType=="Closed"){
-                    QMessageBox::critical(this, "Open a session to continue", "Please Open a session to continue!");
-                    thereIsOpenSession = false;
-                    *executionType = "Opening";
-                    //session opener
-                    sessionControl = new SessionControl(this, *currentUser, *executionType);
-                    sessionControl->setModal(true);
-                    sessionControl->show();
-                }else{
-                    LOGxy("ongoing session ", ongoingSession->sessionType.toStdString());
-                    LOGxy("ongoing session ", ongoingSession->userName.toStdString());
-                    LOGxy("current user ", currentUser->name.toStdString());
-//                    WE NEVER GET HERE
-                }
-
-            }
-        }
-    }
-//    if(!thereIsOpenSession){
-//        disableSystems();
-//
-//    }else{
-////        emit enableSystemsSent();
-//        enableSystems();
-//
-//
-//    }
-    QObject::connect(sessionControl, SIGNAL(sendClosingComplete()), this, SLOT(receiveClosingComplete()));
-//    QObject::connect(sessionControl, SIGNAL(sendOpeningComplete()), this, SLOT(receiveOpeningComplete()));
 }
 
 void SalesClient::enableSystemsCalled() {
     LOGx("enable systems called");
+//    thereIsOpenSession = true;
     enableSystems();
     ui->le_barcodeEntry->setFocus();
     ui->btnOpenClose->setStyleSheet("background-color:red");
@@ -755,4 +890,414 @@ void SalesClient::receiveOpeningComplete() {
     thereIsOpenSession = true;
     enableSystems();
     emit openingClosingDataChanged();
+}
+
+void SalesClient::openNewSession() {
+    if(salesConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT salesSessionManager.session_id, salesSessionManager.session_type , salesSessionManager.session_time, users.name,salesSessionManager.drawer_cash  FROM salesSessionManager LEFT JOIN users ON users.user_id = salesSessionManager.user_id ORDER "
+                              "BY salesSessionManager.session_id DESC LIMIT 1"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else{
+            while (query.next()) {
+                ongoingSession->sessionType = query.value(1).toString();
+                ongoingSession->sessionTime = query.value(2).toDateTime();
+                ongoingSession->userName = query.value(3).toString();
+                ongoingSession->drawerCash = query.value(4).toInt();
+                if((ongoingSession->sessionType=="Opened" ) && ongoingSession->userName==currentUser->name){
+                    thereIsOpenSession = true;
+                    LOGx("mitini");
+                    QMessageBox msgBox;
+                    msgBox.setWindowTitle("Active Session for "+currentUser->name);
+                    msgBox.setText("You have an active session. Do you wish to continue?");
+                    QPushButton *connectButton = msgBox.addButton(tr("Continue Session"), QMessageBox::ActionRole);
+                    QPushButton *connectButton2 = msgBox.addButton(tr("Continue Session"), QMessageBox::ActionRole);
+                    QPushButton *abortButton = msgBox.addButton( QMessageBox::Abort);
+
+                    QMessageBox::StandardButton reply;
+
+                    reply = QMessageBox::warning(this
+                            , "You have an active session"
+                            , "Do you wish to continue?"
+                            , QMessageBox::Yes | QMessageBox::No);
+                    if(reply==QMessageBox::Yes){
+                        QString openSessionType = ongoingSession->sessionType;
+                        QString openingDrawerCash = QString::number(ongoingSession->drawerCash);
+                        QString cash="popo";
+                        QDateTime openingTime = ongoingSession->sessionTime;
+                        verifySession = new ExistingSessionVerifier(this, *currentUser, ongoingSession->sessionType,
+                                ongoingSession->drawerCash, ongoingSession->sessionTime);
+                        verifySession->setModal(true);
+                        verifySession->show();
+//                        enableSystemsCalled();
+//                        emit openingClosingDataChanged();
+//                        this->show();
+                    }else{
+                        *executionType = "Closing";
+//                    SYSTEM CLOSE AND THEN OPEN
+                        sessionControl = new SessionControl(this, *currentUser, *executionType);
+                        sessionControl->setModal(true);
+                        sessionControl->show();
+                        thereIsOpenSession = false;
+
+                    }
+                }else if(( ongoingSession->sessionType=="Opened" ) && ongoingSession->userName!=currentUser->name){
+//                    QMessageBox::critical(this, "Unattended Session", "There is an active session that must be closed before continuing!");
+                    *executionType = "Closing";
+//                    SYSTEM CLOSE AND THEN OPEN
+                    sessionControl = new SessionControl(this, *currentUser, *executionType);
+                    sessionControl->setModal(true);
+                    sessionControl->show();
+                    thereIsOpenSession = false;
+                }else if(ongoingSession->sessionType=="Closed"){
+//                    QMessageBox::critical(this, "Open a session to continue", "Please Open a session to continue!");
+                    thereIsOpenSession = false;
+                    *executionType = "Opening";
+                    //session opener
+                    sessionControl = new SessionControl(this, *currentUser, *executionType);
+                    sessionControl->setModal(true);
+                    sessionControl->show();
+                }else{
+                    LOGxy("ongoing session ", ongoingSession->sessionType.toStdString());
+                    LOGxy("ongoing session ", ongoingSession->userName.toStdString());
+                    LOGxy("current user ", currentUser->name.toStdString());
+//                    WE NEVER GET HERE
+                }
+
+            }
+        }
+    }
+    QObject::connect(sessionControl, SIGNAL(sendClosingComplete()), this, SLOT(disableSystemsCalled()));
+    QObject::connect(sessionControl, SIGNAL(sendOpeningComplete()), this, SLOT(receiveOpeningComplete()));
+
+}
+
+void SalesClient::sessionStartControl() {
+    QMessageBox::information(this, "Session Security", "You must open a session to continue. Click Open Session to Proceed!");
+}
+
+void SalesClient::disableSystemsCalled() {
+    thereIsOpenSession = false;
+    LOGx("disable systems called");
+    disableSystems();
+    ui->le_barcodeEntry->setFocus();
+    ui->btnOpenClose->setStyleSheet("background-color:green");
+    ui->btnOpenClose->setText("Open Session");
+}
+
+void SalesClient::on_checkBoxEnableRewardPayment_toggled(bool checked)
+{
+    if(checked){
+        businessAuthorizedPaymentByRewards = true;
+        ui->checkBoxClientRewardAuthorization->setEnabled(true);
+    }else{
+        businessAuthorizedPaymentByRewards = false;
+        ui->checkBoxClientRewardAuthorization->setDisabled(true);
+
+    }
+}
+
+void SalesClient::on_checkBoxClientRewardAuthorization_toggled(bool checked)
+{
+    if(checked){
+        clientAuthorizedPaymentByRewards = true;
+    }else{
+        clientAuthorizedPaymentByRewards = false;
+    }
+}
+
+void SalesClient::on_checkBoxEnableDiscount_toggled(bool checked)
+{
+    if(checked){
+        enableDiscounts = true;
+    }else{
+        enableDiscounts = false;
+    }
+}
+
+void SalesClient::on_checkBoxEnableRewards_toggled(bool checked)
+{
+    if(checked){
+        enableRewards = true;
+    }else{
+        enableRewards = false;
+    }
+}
+
+void SalesClient::loadCustomerAgentFromCompleter(QString &customerPhone) {
+    loadSingleCustomerFromDb(customerPhone);
+    ui->lblCustomerPhone->setText(currentServingCustomer->phone);
+    ui->lblServing->setText(currentServingCustomer->name +" :: "+
+    currentServingCustomer->phone);
+    ui->lblAvailableRewards->setText(QString::number(currentServingCustomer->rewardsAvailable));
+    ui->lblAvailableCredit->setText(QString::number(currentServingCustomer->creditRemaining));
+    ui->lblCashOnBusiness->setText(QString::number(currentServingCustomer->cashOnBusiness));
+    ui->lblDebt->setText(QString::number(currentServingCustomer->badDebts)+" / "+
+    QString::number(currentServingCustomer->totalBadDebts)+" :: "+
+                                 QString::number(currentServingCustomer->activeDebts)+" / "+
+                                 QString::number(currentServingCustomer->totalActiveDebts));
+    isCurrentCustomerDefined = true;
+    ui->leClient->clear();
+    ui->le_barcodeEntry->setFocus();
+}
+
+void SalesClient::loadSingleCustomerFromDb(QString &customerPhone) {
+    if(salesConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT customers.customer_id, customers.customer_name, customers.customer_type, customers.customer_phone, "
+                              "users.name, customers.modified_on,customerCash.total, customerCredits.credit_allowed, customerCredits.credit_remaining, "
+                              "customerCredits.credit_rating, customerRewards.total_rewards, (SELECT COUNT(IFNULL(customerDebt.debt_id, '0')) "
+                              "WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Active') as activeDebtCount, "
+                              "(SELECT SUM(IFNULL(customerDebt.amount, '0')) WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Active') "
+                              "as activeDebtTotal, (SELECT COUNT(IFNULL(customerDebt.debt_id, '0')) WHERE customerDebt.customer_id=customers.customer_id "
+                              "AND customerDebt.status='Overdue') as overdueDebtCount, (SELECT SUM(IFNULL(customerDebt.amount, '0')) "
+                              "WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Overdue') as overdueDebtTotal "
+                              "FROM customers  LEFT JOIN users ON users.user_id = customers.customer_id LEFT JOIN customerDebt ON "
+                              "customerDebt.customer_id = customers.customer_id LEFT JOIN  customerRewards ON customerRewards.customer_id = customers.customer_id "
+                              "LEFT JOIN customerCredits ON customerCredits.customer_id = customers.customer_id LEFT JOIN customerCash ON "
+                              "customerCash.customerCash_id = customers.customer_id WHERE customers.customer_phone = :customerPhone GROUP BY customerDebt.customer_id, customers.customer_id, "
+                              "customerCash.customerCash_id, customerCredits.credit_remaining, customerRewards.customer_id, "
+                              "customerCredits.credit_allowed, customerRewards.total_rewards, customerDebt.status, customerCredits.credit_rating"));
+        query.bindValue(":customerPhone", customerPhone);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()){
+                currentServingCustomer->customer_id = query.value(0).toInt();
+                currentServingCustomer->name = query.value(1).toString();
+                currentServingCustomer->customerType = query.value(2).toString();
+                currentServingCustomer->phone = query.value(3).toString();
+                currentServingCustomer->authorizingUser = query.value(4).toString();
+                currentServingCustomer->lastModified = query.value(5).toDateTime();
+                currentServingCustomer->cashOnBusiness = query.value(6).toDouble();
+                currentServingCustomer->creditAllowed = query.value(7).toDouble();
+                currentServingCustomer->creditRemaining = query.value(8).toDouble();
+                currentServingCustomer->rewardsAvailable = query.value(9).toDouble();
+                currentServingCustomer->activeDebts = query.value(10).toInt();
+                currentServingCustomer->totalActiveDebts = query.value(11).toDouble();
+                currentServingCustomer->badDebts = query.value(12).toInt();
+                currentServingCustomer->totalBadDebts = query.value(13).toDouble();
+            }
+        }
+    }
+}
+
+void SalesClient::setCurrentSaleId() {
+    if(salesConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT  IFNULL(sales.sale_id, 0 ) FROM sales ORDER BY sales.sale_id DESC LIMIT 1"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+                *lastId = query.value(0).toInt();
+        }
+    }
+}
+
+void SalesClient::establishWholesaleSale() {
+    enableRewards = false;
+    enableDiscounts = false;
+    ui->checkBoxEnableRewardPayment->setDisabled(true);
+    ui->checkBoxClientRewardAuthorization->setDisabled(true);
+    ui->checkBoxEnableRewards->setDisabled(true);
+    ui->checkBoxEnableDiscount->setDisabled(true);
+}
+
+void SalesClient::resetCashierRecords() {
+    if(customerDefined){
+        clearCustomerDetails();
+    }
+    clearSalesData();
+    setDefaultSalesValue();
+}
+
+void SalesClient::clearCustomerDetails() {
+    isCurrentCustomerDefined = false;
+    ui->lblCustomerPhone->clear();
+    ui->lblServing->clear();
+    ui->lblAvailableRewards->clear();
+    ui->lblAvailableCredit->clear();
+    ui->lblCashOnBusiness->clear();
+    ui->lblDebt->clear();
+    ui->leClient->clear();
+    ui->le_barcodeEntry->setFocus();
+
+}
+
+void SalesClient::clearSalesData() {
+    itemsBought->clear();
+
+}
+
+void SalesClient::setDefaultSalesValue() {
+    ui->lblComputedTotal->setText("0.00");
+    ui->lblSaleValue->setText("0.00");
+    ui->lblSaleTax->setText("0.00");
+    ui->lblThisSaleTotal->setText("0.00");
+    *totalToPay = 0;
+}
+
+void SalesClient::setFocusForSales() {
+    ui->le_barcodeEntry->clear();
+    ui->leClient->clear();
+    ui->le_SearchProduct->clear();
+    ui->le_barcodeEntry->setFocus();
+}
+//PRODUCT MANAGEMENT
+void SalesClient::grabBarcodeFromEntry() {
+    if (ui->le_barcodeEntry->text().isEmpty()){
+        QMessageBox::critical(this, "Barcode Empty Cell Error!", "No barcode entered. Please enter a valid barcode!");
+    }else{
+        uniqueID = ui->le_barcodeEntry->text();
+        getScannedProductFromDB(uniqueID);
+    }
+
+}
+void SalesClient::grabBarcodeFromCompleter(QString& currentProduct) {
+    if(salesConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT products.product_id, products.productName, products.productBarcode, products.productMeasurement, products.productWSPrice"
+                              ", products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount, stock.quantity FROM products "
+                              "LEFT JOIN productDiscounts ON productDiscounts.product_id=products.product_id "
+                              "LEFT JOIN productRewards ON productRewards.product_id= products.product_id LEFT JOIN stock ON stock.product_id = products.product_id WHERE productName = :currentProduct"));
+        query.bindValue(":currentProduct", currentProduct);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else{
+            while (query.next()) {
+                *barCodeFromName = query.value(4).toString();
+                addedProduct->product_barcode = *barCodeFromName;
+                addedProduct->product_id = query.value(0).toInt();
+                addedProduct->product_name = query.value(1).toString();
+                addedProduct->product_quantity = query.value(3).toString();
+                addedProduct->product_wsprice = query.value(4).toInt();
+                addedProduct->product_rtprice = query.value(5).toInt();
+                addedProduct->product_image = query.value(6).toInt();
+                addedProduct->product_discount = query.value(7).toInt();
+                addedProduct->product_rewards = query.value(8).toInt();
+                addedProduct->stockQuantity = query.value(9).toInt();
+                *addedProductName = addedProduct->product_name;
+                *productQuantity = addedProduct->product_quantity;
+                *productPrice = addedProduct->product_rtprice;
+                *unitPrice = QString::number(*productPrice);
+                *stockQuantityAvailable = addedProduct->stockQuantity;
+
+            }
+            if(!addedProductName->isEmpty()){
+//                scannedProductManagement(*barCodeFromName, *quantityToBeBought);
+            }else{
+
+            }
+        }
+    }
+}
+
+//SCANNED PRODUCT FROM DATABASE
+void SalesClient::getScannedProductFromDB(QString barcodeScanned) {
+    barcodeScanned = ui->le_barcodeEntry->text();
+    QSqlQuery query(QSqlDatabase::database("MyConnect"));
+    query.prepare(QString("SELECT products.product_id, products.productName, products.productBarcode, products.productMeasurement, products.productWSPrice"
+                          " , products.productRPrice, products.productImage, productDiscounts.amount, productRewards.reward_amount, stock.quantity  FROM products "
+                          " LEFT JOIN productDiscounts ON productDiscounts.product_id=products.product_id "
+                          " LEFT JOIN productRewards ON productRewards.product_id= products.product_id LEFT JOIN stock ON stock.product_id = products.product_id WHERE productBarcode = :scannedBarcode"));
+    query.bindValue(":scannedBarcode", uniqueID);
+    if(!query.exec()){
+        QMessageBox::critical(this, "Database Error", query.lastError().text());
+        return;
+    }else{
+        while (query.next()) {
+            addedProduct->product_id = query.value(0).toInt();
+//            LOGxy("we grabbed", addedProduct->product_id.toInt());
+            addedProduct->product_name = query.value(1).toString();
+            addedProduct->product_barcode = query.value(2).toString();
+            addedProduct->product_quantity = query.value(3).toString();
+            addedProduct->product_wsprice = query.value(4).toInt();
+            addedProduct->product_rtprice = query.value(5).toInt();
+            addedProduct->product_image = query.value(6).toInt();
+            addedProduct->product_discount = query.value(7).toFloat();
+            addedProduct->product_rewards = query.value(8).toFloat();
+            addedProduct->stockQuantity = query.value(9).toFloat();
+
+            *addedProductId = addedProduct->product_id;
+            *addedProductName = addedProduct->product_name;
+            *productQuantity = addedProduct->product_quantity;
+            *productPrice = addedProduct->product_rtprice;
+            *unitPrice = QString::number(*productPrice);
+            *unitReward = addedProduct->product_rewards;
+            *unitDiscount = addedProduct->product_discount;
+            *stockQuantityAvailable = addedProduct->stockQuantity;
+
+        }
+        if(!addedProductName->isEmpty()){
+            if(*stockQuantityAvailable>0){
+                scannedProductManagement(barcodeScanned, *addedProductId, *stockQuantityAvailable);
+            }else{
+                QMessageBox::critical(this, "Out of Stock Error!", "Manage your stock. You are trying to sell a product out of stock!");
+                return;
+            }
+        }else{
+
+        }
+    }
+}
+
+void SalesClient::addCustomerAndDefineClient() {
+    addNewCustomerToDatabase();
+    selectLastCustomerAdded();
+}
+
+void SalesClient::selectLastCustomerAdded() {
+    if(salesConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT customers.customer_id, customers.customer_name, customers.customer_type, customers.customer_phone, "
+                              "users.name, customers.modified_on,customerCash.total, customerCredits.credit_allowed, customerCredits.credit_remaining, "
+                              "customerCredits.credit_rating, customerRewards.total_rewards, (SELECT COUNT(IFNULL(customerDebt.debt_id, '0')) "
+                              "WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Active') as activeDebtCount, "
+                              "(SELECT SUM(IFNULL(customerDebt.amount, '0')) WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Active') "
+                              "as activeDebtTotal, (SELECT COUNT(IFNULL(customerDebt.debt_id, '0')) WHERE customerDebt.customer_id=customers.customer_id "
+                              "AND customerDebt.status='Overdue') as overdueDebtCount, (SELECT SUM(IFNULL(customerDebt.amount, '0')) "
+                              "WHERE customerDebt.customer_id=customers.customer_id AND customerDebt.status='Overdue') as overdueDebtTotal "
+                              "FROM customers  LEFT JOIN users ON users.user_id = customers.customer_id LEFT JOIN customerDebt ON "
+                              "customerDebt.customer_id = customers.customer_id LEFT JOIN  customerRewards ON customerRewards.customer_id = customers.customer_id "
+                              "LEFT JOIN customerCredits ON customerCredits.customer_id = customers.customer_id LEFT JOIN customerCash ON "
+                              "customerCash.customerCash_id = customers.customer_id GROUP BY customerDebt.customer_id, customers.customer_id, "
+                              "customerCash.customerCash_id, customerCredits.credit_remaining, customerRewards.customer_id, "
+                              "customerCredits.credit_allowed, customerRewards.total_rewards, customerDebt.status, "
+                              "customerCredits.credit_rating ORDER BY customers.customer_id DESC LIMIT 1"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            while (query.next()){
+                currentServingCustomer->customer_id = query.value(0).toInt();
+                currentServingCustomer->name = query.value(1).toString();
+                currentServingCustomer->customerType = query.value(2).toString();
+                currentServingCustomer->phone = query.value(3).toString();
+                currentServingCustomer->authorizingUser = query.value(4).toString();
+                currentServingCustomer->lastModified = query.value(5).toDateTime();
+                currentServingCustomer->cashOnBusiness = query.value(6).toDouble();
+                currentServingCustomer->creditAllowed = query.value(7).toDouble();
+                currentServingCustomer->creditRemaining = query.value(8).toDouble();
+                currentServingCustomer->rewardsAvailable = query.value(9).toDouble();
+                currentServingCustomer->activeDebts = query.value(10).toInt();
+                currentServingCustomer->totalActiveDebts = query.value(11).toDouble();
+                currentServingCustomer->badDebts = query.value(12).toInt();
+                currentServingCustomer->totalBadDebts = query.value(13).toDouble();
+
+                LOGx("customer successfully added");
+            }
+        }
+    }
+}
+
+void SalesClient::addNewCustomerToDatabase() {
+    addNewCustomer = new AddCustomer(this, *currentUser);
+    addNewCustomer->setModal(true);
+    addNewCustomer->show();
+    QObject::connect(addNewCustomer, SIGNAL(customerAdditionTaskComplete()), this, SLOT(receiveCustomerAdditionComplete()));
 }

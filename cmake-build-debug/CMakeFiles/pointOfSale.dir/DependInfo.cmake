@@ -33,6 +33,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vee/pointOfSale/editproductzone.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/editproductzone.cpp.o"
   "/home/vee/pointOfSale/editsupplier.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/editsupplier.cpp.o"
   "/home/vee/pointOfSale/edituser.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/edituser.cpp.o"
+  "/home/vee/pointOfSale/existingsessionverifier.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/existingsessionverifier.cpp.o"
   "/home/vee/pointOfSale/login.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/login.cpp.o"
   "/home/vee/pointOfSale/main.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/main.cpp.o"
   "/home/vee/pointOfSale/mainslice.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/mainslice.cpp.o"

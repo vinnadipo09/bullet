@@ -919,6 +919,33 @@ edituser.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/edituser.cpp.s
 .PHONY : edituser.cpp.s
 
+existingsessionverifier.o: existingsessionverifier.cpp.o
+
+.PHONY : existingsessionverifier.o
+
+# target to build an object file
+existingsessionverifier.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/existingsessionverifier.cpp.o
+.PHONY : existingsessionverifier.cpp.o
+
+existingsessionverifier.i: existingsessionverifier.cpp.i
+
+.PHONY : existingsessionverifier.i
+
+# target to preprocess a source file
+existingsessionverifier.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/existingsessionverifier.cpp.i
+.PHONY : existingsessionverifier.cpp.i
+
+existingsessionverifier.s: existingsessionverifier.cpp.s
+
+.PHONY : existingsessionverifier.s
+
+# target to generate assembly for a file
+existingsessionverifier.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/existingsessionverifier.cpp.s
+.PHONY : existingsessionverifier.cpp.s
+
 login.o: login.cpp.o
 
 .PHONY : login.o
@@ -1610,6 +1637,9 @@ help:
 	@echo "... edituser.o"
 	@echo "... edituser.i"
 	@echo "... edituser.s"
+	@echo "... existingsessionverifier.o"
+	@echo "... existingsessionverifier.i"
+	@echo "... existingsessionverifier.s"
 	@echo "... login.o"
 	@echo "... login.i"
 	@echo "... login.s"

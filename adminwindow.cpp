@@ -536,7 +536,7 @@ void AdminWindow::grabAllProductsProductToView() {
     }else{
         while(query.next()){;
             productToView = new productFromDb;
-            productToView->product_id = query.value(0).toString();
+            productToView->product_id = query.value(0).toInt();
             productToView->product_name = query.value(1).toString();
             productToView->product_category = query.value(2).toString();
             productToView->productZone = query.value(3).toString();
@@ -571,7 +571,7 @@ void AdminWindow::receiveReloadProductWithNewValues(int productId) {
         return;
     }else{
         while(query.next()){
-            productToView->product_id = query.value(0).toString();
+            productToView->product_id = query.value(0).toInt();
             productToView->product_name = query.value(1).toString();
             productToView->product_category = query.value(2).toString();
             productToView->productZone = query.value(3).toString();
@@ -605,7 +605,9 @@ void AdminWindow::on_pb_addNewProducts_clicked()
 void AdminWindow::on_pb_testButton_clicked()
 {
     salesClient = new SalesClient(this, *adminUser);
+//    salesClient->setModal(true);
     salesClient->show();
+//    salesClient->setModal(true);
     salesClient->showMaximized();
     this->hide();
     QObject::connect(salesClient, SIGNAL(send_salesClientClosed()), this, SLOT(receive_salesClientClosed()));

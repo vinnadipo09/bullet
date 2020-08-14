@@ -7,7 +7,9 @@
 #include <QStandardItemModel>
 #include <QHeaderView>
 #include <QCloseEvent>
+#include <QAbstractButton>
 #include <QTableWidget>
+#include <QMessageBox>
 #include <iostream>
 #include <iterator>
 #include <map>
@@ -20,6 +22,7 @@
 #include "customerviewone.h"
 #include "customerviewchoice.h"
 #include "sessioncontrol.h"
+#include "existingsessionverifier.h"
 namespace Ui {
 class SalesClient;
 }
@@ -103,6 +106,7 @@ private:
     float* discountTotal;
     float* rewardTotal;
     float* unitSubTotal;
+    float* totalTax;
 
 private:
     CustomerViewChoice* customerViewChoice;
@@ -155,12 +159,53 @@ private:
 
 private slots:
     void enableSystemsCalled();
+    void disableSystemsCalled();
     void receiveClosingComplete();
     void receiveOpeningComplete();
+
+    void on_checkBoxEnableRewardPayment_toggled(bool checked);
+
+    void on_checkBoxClientRewardAuthorization_toggled(bool checked);
+
+    void on_checkBoxEnableDiscount_toggled(bool checked);
+
+    void on_checkBoxEnableRewards_toggled(bool checked);
 
 signals:
     void enableSystemsSent();
     void openingClosingDataChanged();
+
+private:
+    void openNewSession();
+    void sessionStartControl();
+    ExistingSessionVerifier* verifySession;
+//SALES EXECUTION
+private:
+    QString *saleType;
+    bool enableRewards;
+    bool enableDiscounts;
+    bool isCurrentCustomerDefined;
+    bool clientAuthorizedPaymentByRewards;
+    bool businessAuthorizedPaymentByRewards;
+    void loadCustomerAgentFromCompleter(QString&);
+    QString *customerAgentToServe;
+    Customer* currentServingCustomer;
+    void loadSingleCustomerFromDb(QString &customerPhone);
+    QString* currentSaleId;
+    void setCurrentSaleId();
+    int* lastId;
+    void establishWholesaleSale();
+    void resetCashierRecords();
+    void clearCustomerDetails();
+    void clearSalesData();
+    void setDefaultSalesValue();
+    void setFocusForSales();
+
+private:
+    void addCustomerAndDefineClient();
+    void selectLastCustomerAdded();
+    void addNewCustomerToDatabase();
 };
+
 
 #endif // SALESCLIENT_H

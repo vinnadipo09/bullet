@@ -19,7 +19,6 @@
 #include"viewuser.h"
 #include "profileviewer.h"
 #include "viewproduct.h"
-#include "salesclient.h"
 #include "addtransactiontype.h"
 #include "addproductcategory.h"
 #include "editproductcategory.h"
@@ -30,6 +29,7 @@
 #include "editproductzone.h"
 #include "addproduct.h"
 #include "addcash.h"
+#include <salesclient.h>
 namespace Ui {
 class AdminWindow;
 }

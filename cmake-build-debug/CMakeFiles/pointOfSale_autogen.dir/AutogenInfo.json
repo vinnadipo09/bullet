@@ -148,6 +148,11 @@
 			"MU",
 			"EWIEGA46WW/moc_edituser.cpp"
 		],
+		[
+			"/home/vee/pointOfSale/existingsessionverifier.h",
+			"MU",
+			"EWIEGA46WW/moc_existingsessionverifier.cpp"
+		],
 		[ "/home/vee/pointOfSale/login.h", "MU", "EWIEGA46WW/moc_login.cpp" ],
 		[
 			"/home/vee/pointOfSale/mainslice.h",
@@ -333,6 +338,7 @@
 		[ "/home/vee/pointOfSale/editproductzone.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/editsupplier.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/edituser.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/existingsessionverifier.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/login.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/main.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/mainslice.cpp", "MU" ],

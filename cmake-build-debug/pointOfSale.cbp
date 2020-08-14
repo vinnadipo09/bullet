@@ -391,6 +391,15 @@
 		<Unit filename="/home/vee/pointOfSale/edituser.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/existingsessionverifier.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/existingsessionverifier.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/existingsessionverifier.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/login.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>

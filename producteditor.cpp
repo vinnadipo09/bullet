@@ -86,7 +86,7 @@ void ProductEditor::updateProduct() {
                               "productShortCode=:shortCode, productMeasurement=:prodQty, productWSPrice=:wsPrice, productRPrice=:rtPrice, "
                               "productImage=:image, productUpdatedById=:addingUser, productUpdatedOnDate=:addingDate WHERE product_id=:productId"));
         query.bindValue(":name", ui->leProductName->text());
-        query.bindValue(":productId", productEdit->product_id.toInt());
+        query.bindValue(":productId", productEdit->product_id);
         query.bindValue(":category", ui->cbProductCategory->currentText());
         query.bindValue(":productZone", ui->cbProductZone->currentText());
         query.bindValue(":barcode", ui->leProductUniqueId->text());

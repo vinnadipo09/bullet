@@ -65,7 +65,7 @@ void ViewProduct::on_btnDelete_clicked()
 }
 
 void ViewProduct::receiveEditWorkComplete() {
-    int id = productToView->product_id.toInt();
+    int id = productToView->product_id;
     editProduct->close();
     this->close();
     emit reloadProductWithNewValues(id);
@@ -79,14 +79,14 @@ void ViewProduct::hideButtons() {
 }
 
 void ViewProduct::receiveDiscountWorkComplete() {
-    int id = productToView->product_id.toInt();
+    int id = productToView->product_id;
     editDiscount->close();
     this->close();
     emit reloadProductWithNewValues(id);
 }
 
 void ViewProduct::receiveRewardWorkComplete() {
-    int id = productToView->product_id.toInt();
+    int id = productToView->product_id;
     editReward->close();
     this->close();
     emit reloadProductWithNewValues(id);

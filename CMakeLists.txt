@@ -115,11 +115,6 @@ else()
     verifynewproduct.h
     verifynewproduct.ui
 
-
-    salesclient.cpp
-    salesclient.h
-    salesclient.ui
-
     completepaymentwindow.cpp
     completepaymentwindow.h
     completepaymentwindow.ui
@@ -228,6 +223,14 @@ else()
 
     qcustomplot.cpp
     qcustomplot.h
+
+    salesclient.cpp
+          salesclient.h
+          salesclient.ui
+
+    existingsessionverifier.cpp
+    existingsessionverifier.h
+    existingsessionverifier.ui
   )
 endif()
 

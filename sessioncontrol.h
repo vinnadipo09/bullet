@@ -38,6 +38,7 @@ signals:
 private:
     void openNewSession();
     void closeExistingSession();
+    void setLabelExecution();
 };
 
 #endif // SESSIONCONTROL_H
