@@ -231,6 +231,10 @@ else()
     existingsessionverifier.cpp
     existingsessionverifier.h
     existingsessionverifier.ui
+
+    ordersclient.cpp
+    ordersclient.h
+    ordersclient.ui
   )
 endif()
 

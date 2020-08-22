@@ -39,7 +39,7 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     customerAgentToServe = new QString;
     ongoingSession = new session;
     newSession = new session;
-    currentSaleId = new QString;
+    currentSaleId = new int;
     unitDiscount = new float ;
     unitReward = new float;
     unitSubTotal = new float;
@@ -49,6 +49,7 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     lastId = new int;
     totalTax = new float;
     *currentCashierUser = currentLoggedInUser;
+    businessAuthorizedPaymentByRewards = new bool;
     currentServingCustomer = new Customer;
 //    Debug(*currentCashierUser);
 
@@ -70,8 +71,10 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     rowToEdit = new int;
     rowToEditFromSelection = new int;
 
-    enableRewards = false;
-    enableDiscounts = false;
+    enableRewards = new bool;
+    enableDiscounts = new bool;
+    *enableRewards = false;
+    *enableDiscounts = false;
     isCurrentCustomerDefined = false;
     clientAuthorizedPaymentByRewards;
     businessAuthorizedPaymentByRewards;
@@ -131,13 +134,14 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
 //    TURN ME ON LATER
 //    sessionStartControl();
     ui->checkBoxClientRewardAuthorization->setDisabled(true);
+//    if (*lastId==0){
+//        *currentSaleId = QString::number(*lastId);
+//    }else{
+//        *currentSaleId = QString::number(*lastId+1);
+//    }
     setCurrentSaleId();
-    if (*lastId==0){
-        *currentSaleId = QString::number(*lastId);
-    }else{
-        *currentSaleId = QString::number(*lastId+1);
-    }
-    ui->lblOrderId->setText(*currentSaleId);
+
+    ui->lblOrderId->setText(QString::number(*currentSaleId));
     *rewardTotal = 0;
     *discountTotal = 0;
 
@@ -234,16 +238,18 @@ void SalesClient::scannedProductManagement(QString& barcode, int & currentProduc
         }
     }else{
         purchasedItem myItem;
-        if (enableDiscounts || addedProduct->discounted){
+        if (*enableDiscounts && addedProduct->discounted){
             myItem.prod_discounted = true;
             myItem.discount_amount = addedProduct->product_discount;
+            myItem.salePrice = addedProduct->product_rtprice - addedProduct->product_discount;
         }else{
             myItem.prod_discounted = false;
             myItem.discount_amount = 0;
+            myItem.salePrice = addedProduct->product_rtprice;
         }
-        if(enableRewards || addedProduct->rewarded){
-            myItem.prod_discounted = true;
-            myItem.reward_amount = addedProduct->product_discount;
+        if(*enableRewards && addedProduct->rewarded){
+            myItem.prod_rewarded = true;
+            myItem.reward_amount = addedProduct->product_rewards;
         }else{
             myItem.prod_rewarded = false;
             myItem.reward_amount = 0;
@@ -265,7 +271,7 @@ void SalesClient::modifyProductInRowCreated(int &rowAffected, int &quantityValue
         if(i==5){
             ui->tableWidget->item(rowAffected, i)->setText(QString::number(quantityValue));
         }else if(i==6){
-            if(enableDiscounts){
+            if(*enableDiscounts){
                 singleItemDiscount = addedProduct->product_discount;
                 singleItemDiscountTotal= singleItemDiscount*quantityValue;
                 *discountTotal = *discountTotal+singleItemDiscount;
@@ -275,7 +281,7 @@ void SalesClient::modifyProductInRowCreated(int &rowAffected, int &quantityValue
             }
             ui->tableWidget->item(rowAffected, i)->setText(QString::number(singleItemDiscountTotal));
         }else if(i==7){
-            if (enableRewards){
+            if (*enableRewards){
                 singleItemReward = addedProduct->product_rewards;
                 singleItemRewardsTotal = singleItemReward*quantityValue;
                 *rewardTotal = *rewardTotal+singleItemReward;
@@ -285,10 +291,10 @@ void SalesClient::modifyProductInRowCreated(int &rowAffected, int &quantityValue
 //                *rewardTotal = singleItemReward*quantityValue;
                 *rewardTotal = 0;
             }
-            ui->tableWidget->item(rowAffected, i)->setText(QString::number(*rewardTotal));
+            ui->tableWidget->item(rowAffected, i)->setText(QString::number(singleItemRewardsTotal));
         }else if(i==8){
             int unitPrice = ui->tableWidget->item(rowAffected, 4)->text().toInt();
-            if(enableDiscounts){
+            if(*enableDiscounts){
                 *unitSubTotal = (unitPrice-singleItemDiscount)*quantityValue;
             } else{
                 *unitSubTotal = unitPrice*quantityValue;
@@ -326,10 +332,10 @@ void SalesClient::createRowsToAddProductPurchased(int &quantityValue) {
     ui->lblSaleValue->setText(tempSales);
     ui->lblSaleTax->setText(tempTax);
     ui->lblThisSaleTotal->setText(QString::number(*totalToPay)+".00");
-    if(enableRewards){
+    if(*enableRewards){
         ui->lblPossibleRewards->setText(QString::number(*rewardTotal));
     }
-    if (enableDiscounts){
+    if (*enableDiscounts){
         ui->lblPossibleDiscounts->setText(QString::number(*discountTotal));
     }
 }
@@ -399,7 +405,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     discountEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, discountEntry);
                 }
-                if (enableDiscounts){
+                if (*enableDiscounts){
                     QString tempDiscount = QString::number(*unitDiscount);
                     *discountOnItem = tempDiscount;
                 }else{
@@ -415,7 +421,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     rewardEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, rewardEntry);
                 }
-                if(enableRewards){
+                if(*enableRewards){
                     QString tempPoints = QString::number(*unitReward);
                     *pointsOnItem = tempPoints;
                 }else{
@@ -431,7 +437,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     unitSubTotalEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, unitSubTotalEntry);
                 }
-                if(enableDiscounts){
+                if(*enableDiscounts){
                     int total = quantityPurchased*(*productPrice-*unitDiscount);
                     *itemTotalPrice = QString::number(total);
                 }else{
@@ -506,7 +512,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     discountEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, discountEntry);
                 }
-                if (enableDiscounts){
+                if (*enableDiscounts){
                     QString tempDiscount = QString::number(*unitDiscount);
                     *discountOnItem = tempDiscount;
                 }else{
@@ -522,7 +528,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     rewardEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, rewardEntry);
                 }
-                if(enableRewards){
+                if(*enableRewards){
                     QString tempPoints = QString::number(*unitReward);
                     *pointsOnItem = tempPoints;
                 }else{
@@ -538,7 +544,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     unitSubTotalEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, unitSubTotalEntry);
                 }
-                if(enableDiscounts){
+                if(*enableDiscounts){
                     int total = quantityPurchased*(*productPrice-*unitDiscount);
                     *itemTotalPrice = QString::number(total);
                 }else{
@@ -592,8 +598,10 @@ void SalesClient::loadItemsFromDbToCompleter() {
 }
 void SalesClient::goToPaymentAndCompleteSale() {
     //come back to me for complete payment
-    completePayment = new CompletePaymentWindow(this, *currentCashierUser,
-            *itemsBought,*currentServingCustomer, *totalToPay);
+    int sale_id = *currentSaleId;
+    completePayment = new CompletePaymentWindow(this, *currentCashierUser,sale_id,
+                                                *itemsBought, *enableRewards, *rewardTotal,
+                                                *enableDiscounts, *discountTotal, *currentServingCustomer, *totalToPay);
     completePayment->setModal(true);
     completePayment->show();
 }
@@ -1015,10 +1023,10 @@ void SalesClient::disableSystemsCalled() {
 void SalesClient::on_checkBoxEnableRewardPayment_toggled(bool checked)
 {
     if(checked){
-        businessAuthorizedPaymentByRewards = true;
+        *businessAuthorizedPaymentByRewards = true;
         ui->checkBoxClientRewardAuthorization->setEnabled(true);
     }else{
-        businessAuthorizedPaymentByRewards = false;
+        *businessAuthorizedPaymentByRewards = false;
         ui->checkBoxClientRewardAuthorization->setDisabled(true);
 
     }
@@ -1036,18 +1044,18 @@ void SalesClient::on_checkBoxClientRewardAuthorization_toggled(bool checked)
 void SalesClient::on_checkBoxEnableDiscount_toggled(bool checked)
 {
     if(checked){
-        enableDiscounts = true;
+        *enableDiscounts = true;
     }else{
-        enableDiscounts = false;
+        *enableDiscounts = false;
     }
 }
 
 void SalesClient::on_checkBoxEnableRewards_toggled(bool checked)
 {
     if(checked){
-        enableRewards = true;
+        *enableRewards = true;
     }else{
-        enableRewards = false;
+        *enableRewards = false;
     }
 }
 
@@ -1102,21 +1110,33 @@ void SalesClient::loadSingleCustomerFromDb(QString &customerPhone) {
 }
 
 void SalesClient::setCurrentSaleId() {
+    LOGx("setting your id");
     if(salesConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
-        query.prepare(QString("SELECT  IFNULL(sales.sale_id, 0 ) FROM sales ORDER BY sales.sale_id DESC LIMIT 1"));
+        query.prepare(QString("SELECT  IFNULL(sales.sale_id, 0) FROM sales ORDER BY sales.sale_id DESC LIMIT 1"));
         if(!query.exec()){
             QMessageBox::critical(this, "Database Error", query.lastError().text());
             return;
         }else {
+            *lastId = query.value(0).toInt();
+            LOGxy("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", *lastId);
+
+            *currentSaleId = *lastId+1;
+            LOGxy("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", *currentSaleId);
+            while (query.next()){
                 *lastId = query.value(0).toInt();
+                LOGxy("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", *lastId);
+
+                *currentSaleId = *lastId+1;
+                LOGxy("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", *currentSaleId);
+            }
         }
     }
 }
 
 void SalesClient::establishWholesaleSale() {
-    enableRewards = false;
-    enableDiscounts = false;
+    *enableRewards = false;
+    *enableDiscounts = false;
     ui->checkBoxEnableRewardPayment->setDisabled(true);
     ui->checkBoxClientRewardAuthorization->setDisabled(true);
     ui->checkBoxEnableRewards->setDisabled(true);
@@ -1197,6 +1217,8 @@ void SalesClient::grabBarcodeFromCompleter(QString& currentProduct) {
                 addedProduct->product_discount = query.value(7).toInt();
                 addedProduct->product_rewards = query.value(8).toInt();
                 addedProduct->stockQuantity = query.value(9).toInt();
+                addedProduct->discounted = true;
+                addedProduct->rewarded = true;
                 *addedProductName = addedProduct->product_name;
                 *productQuantity = addedProduct->product_quantity;
                 *productPrice = addedProduct->product_rtprice;
@@ -1334,4 +1356,24 @@ void SalesClient::loadLabelsWithCustomerData() {
                          QString::number(currentServingCustomer->totalBadDebts)+" :: "+
                          QString::number(currentServingCustomer->activeDebts)+" / "+
                          QString::number(currentServingCustomer->totalActiveDebts));
+}
+
+void SalesClient::on_btnPlaceOrder_clicked()
+{
+
+}
+
+void SalesClient::on_btnViewPlacedOrders_clicked()
+{
+
+}
+
+void SalesClient::on_btnViewProcessedOrders_clicked()
+{
+
+}
+
+void SalesClient::on_btnViewDeliveredOrders_clicked()
+{
+
 }

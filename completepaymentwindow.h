@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "debugger.h"
 #include <map>
+#include "databaseconnection.h"
 namespace Ui {
 class CompletePaymentWindow;
 }
@@ -14,7 +15,8 @@ class CompletePaymentWindow : public QDialog
 
 public:
     explicit CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser,
-            std::map<int, purchasedItem>&productsBought,   Customer&, int& totalToPay);
+            int& currentSaleId, std::map<int, purchasedItem>&productsBought, bool &rewards, float rewardTotal,
+            bool &discounts, float discountTotal, Customer&, int& totalToPay);
     ~CompletePaymentWindow();
 
 private slots:
@@ -27,6 +29,8 @@ private slots:
 private slots:
     void getCashComputeBalance();
     void on_le_amountPaid_textChanged(const QString &arg1);
+    void on_btnCompleteSale_clicked();
+
 private:
     Ui::CompletePaymentWindow *ui;
 private:
@@ -45,6 +49,40 @@ private:
     loggedUser* currentUser;
     Customer* servingCustomer;
     std::map<int, purchasedItem>* productsToBill;
+    int* currentTransactionId;
+    void updateSaleData();
+    void updateStock();
+    void updateStockLogs(int& product_id, QString& manipulationType, int&quantity_purchased, bool& discounted,
+                         float & discountTotal, bool&productRewarded, float& productRewardAmount, QString &effect);
+    void updateCash();
+    void updateCustomerSaleData();
+    void updateSaleRecord(QDateTime& transactionTime);
+    bool saleUpdated;
+    bool stockUpdated = false;
+    void increaseCash(float &cashAvailable);
+    bool cashSuccessfullyUpdated = false;
+private:
+    float* totalDiscount;
+    float* totalRewards;
+    float* single_product_discTotal;
+    float* single_product_rewTotal;
+    int* remainingStock;
+    QDateTime *updateTime;
+    bool *productRewardsEnabled;
+    bool *productDiscountsEnabled;
+signals:
+//    void sendSaleComplete();
+
+private:
+    databaseConnection* paymentConnection;
+    bool stockLogUpdated;
+    bool stockQuantityAndLogsUpdated;
+    QString* paymentMethod;
+    void updatePayment();
+    void updateRewards();
+    float* customerAvailableRewards;
+    bool customerRewardsUpdateComplete = false;
+    bool paymentSuccessfullyUpdated = false;
 };
 
 #endif // COMPLETEPAYMENTWINDOW_H

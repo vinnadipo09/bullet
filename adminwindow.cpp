@@ -1151,17 +1151,17 @@ void AdminWindow::loadGeneralStock() {
                 int numStockRows = query.value(0).toInt();
                 ui->twStockQuantity->setRowCount(numStockRows);
                 query.prepare(
-                        "SELECT stock.stock_id, products.productName, stock.quantity, stock.manipulationType, users.name, stock.manipulatedOnDate FROM ((stock "
+                        "SELECT stock.stock_id, products.productName, stock.quantity, stock.manipulatedOnDate FROM ((stock "
                         "INNER JOIN users ON stock.user_id = users.user_id)INNER JOIN products ON stock.product_id = products.product_id)");
                 if (!query.exec()) {
                     QMessageBox::critical(this, "Database Error", query.lastError().text());
                 } else {
                         for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
-                            for (columns = 0; columns < 7; columns++) {
-                                if (columns == 6) {
+                            for (columns = 0; columns < 6; columns++) {
+                                if (columns == 5) {
                                     QPushButton *btn_viewProductCategory = new QPushButton;
                                     btn_viewProductCategory->setText("View");
-                                    ui->twStockQuantity->setCellWidget(rows, 6, btn_viewProductCategory);
+                                    ui->twStockQuantity->setCellWidget(rows, 5, btn_viewProductCategory);
                                     QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
                                                      &AdminWindow::receiveEditProductZone);
                                 }
@@ -1193,17 +1193,19 @@ void AdminWindow::loadLowStock() {
                 int numStockRows = query.value(0).toInt();
                 ui->twLowStockQuantity->setRowCount(numStockRows);
                 query.prepare(
-                        "SELECT stock.stock_id, products.productName, stock.quantity, stock.manipulationType, users.name, stock.manipulatedOnDate FROM ((stock "
+                        "SELECT stock.stock_id, products.productName, stock.quantity, stock.manipulatedOnDate FROM ((stock "
                         "INNER JOIN users ON stock.user_id = users.user_id)INNER JOIN products ON stock.product_id = products.product_id) WHERE stock.quantity < 10");
                 if (!query.exec()) {
                     QMessageBox::critical(this, "Database Error", query.lastError().text());
+
+
                 } else {
                     for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
-                        for (columns = 0; columns < 7; columns++) {
-                            if (columns == 6) {
+                        for (columns = 0; columns < 6; columns++) {
+                            if (columns == 5) {
                                 QPushButton *btn_viewProductCategory = new QPushButton;
                                 btn_viewProductCategory->setText("View");
-                                ui->twLowStockQuantity->setCellWidget(rows, 6, btn_viewProductCategory);
+                                ui->twLowStockQuantity->setCellWidget(rows, 5, btn_viewProductCategory);
                                 QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
                                                  &AdminWindow::receiveEditProductZone);
                             }
@@ -1235,17 +1237,17 @@ void AdminWindow::loadHighStock() {
                 int numStockRows = query.value(0).toInt();
                 ui->twHighStockQuantity->setRowCount(numStockRows);
                 query.prepare(
-                        "SELECT stock.stock_id, products.productName, stock.quantity, stock.manipulationType, users.name, stock.manipulatedOnDate FROM ((stock "
+                        "SELECT stock.stock_id, products.productName, stock.quantity, stock.manipulatedOnDate FROM ((stock "
                         "INNER JOIN users ON stock.user_id = users.user_id)INNER JOIN products ON stock.product_id = products.product_id) WHERE stock.quantity > 10");
                 if (!query.exec()) {
                     QMessageBox::critical(this, "Database Error", query.lastError().text());
                 } else {
                     for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
-                        for (columns = 0; columns < 7; columns++) {
-                            if (columns == 6) {
+                        for (columns = 0; columns < 6; columns++) {
+                            if (columns == 5) {
                                 QPushButton *btn_viewProductCategory = new QPushButton;
                                 btn_viewProductCategory->setText("View");
-                                ui->twHighStockQuantity->setCellWidget(rows, 6, btn_viewProductCategory);
+                                ui->twHighStockQuantity->setCellWidget(rows, 5, btn_viewProductCategory);
                                 QObject::connect(btn_viewProductCategory, &QPushButton::clicked, this,
                                                  &AdminWindow::receiveEditProductZone);
                             }
@@ -1284,7 +1286,8 @@ void AdminWindow::loadStockLogs() {
                         ui->btnLogsNext->setEnabled(true);
                     }
                     query.prepare(
-                            "SELECT stock_log.stockLog_id, products.productName, stock_log.manipulationType, stock_log.quantity, stock_log.total, stock_log.effect, users.name, stock_log.timeStamp FROM ((stock "
+                            "SELECT stock_log.stockLog_id, products.productName, stock_log.manipulationType, stock_log.quantity, stock_log.total, "
+                            "stock_log.discounted, stock_log.discount_amount, stock_log.rewarded, stock_log.reward_amount, stock_log.effect, users.name, stock_log.timeStamp FROM ((stock "
                             "INNER JOIN users ON stock_log.user_id = users.user_id)INNER JOIN products ON stock_log.product_id = products.product_id)");
                     query.bindValue(":myLimit", *stockLogsLimit);
                     query.bindValue(":myOffset", *stockLogsOffset);
@@ -1316,7 +1319,6 @@ void AdminWindow::loadStockLogs() {
                     if (!query.exec()) {
                         QMessageBox::critical(this, "Database Error", query.lastError().text());
                     } else {
-                        LOGx("///////////////////////////////////");
                         for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
                             for (columns = 0; columns < 9; columns++) {
                                 if (columns == 8) {

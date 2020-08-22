@@ -220,13 +220,11 @@ public:
         label_3->setText(QApplication::translate("CompletePaymentWindow", "Total Amount:", Q_NULLPTR));
         cb_paymentMethod->clear();
         cb_paymentMethod->insertItems(0, QStringList()
-         << QApplication::translate("CompletePaymentWindow", "Payment Method", Q_NULLPTR)
          << QApplication::translate("CompletePaymentWindow", "Cash", Q_NULLPTR)
-         << QApplication::translate("CompletePaymentWindow", "M-Pesa", Q_NULLPTR)
-         << QApplication::translate("CompletePaymentWindow", "Debit Card", Q_NULLPTR)
          << QApplication::translate("CompletePaymentWindow", "Credit", Q_NULLPTR)
-         << QApplication::translate("CompletePaymentWindow", "Points", Q_NULLPTR)
-         << QApplication::translate("CompletePaymentWindow", "Points+Cash", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "Cash+Credit", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "Cash+Rewards", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "Rewards", Q_NULLPTR)
         );
         label_4->setText(QApplication::translate("CompletePaymentWindow", "Amount Paid:", Q_NULLPTR));
         label_5->setText(QApplication::translate("CompletePaymentWindow", "Balance", Q_NULLPTR));

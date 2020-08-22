@@ -120,22 +120,7 @@ color: rgb(78, 154, 6);
    </property>
    <item>
     <property name="text">
-     <string>Payment Method</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
      <string>Cash</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>M-Pesa</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Debit Card</string>
     </property>
    </item>
    <item>
@@ -145,12 +130,17 @@ color: rgb(78, 154, 6);
    </item>
    <item>
     <property name="text">
-     <string>Points</string>
+     <string>Cash+Credit</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Points+Cash</string>
+     <string>Cash+Rewards</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Rewards</string>
     </property>
    </item>
   </widget>

@@ -199,6 +199,8 @@ debugger.h
 ../debugger.h
 map
 -
+databaseconnection.h
+../databaseconnection.h
 
 ../customerpaydebt.h
 QDialog
@@ -1215,6 +1217,8 @@ debugger.h
 /home/vee/pointOfSale/debugger.h
 map
 -
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
 
 /home/vee/pointOfSale/customerviewall.h
 QDialog

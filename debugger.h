@@ -141,6 +141,7 @@ struct purchasedItem{
     int discount_amount;
     bool prod_rewarded;
     int reward_amount;
+    float salePrice;
 };
 class Debugger
 {

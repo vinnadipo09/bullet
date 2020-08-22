@@ -156,7 +156,6 @@ public:
     QSpacerItem *horizontalSpacer_9;
     QHBoxLayout *horizontalLayout_14;
     QTableWidget *twStockLogs;
-    QSpacerItem *horizontalSpacer_10;
     QGroupBox *groupBox_6;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *btnLogsPrevious;
@@ -1435,10 +1434,6 @@ public:
         twStockLogs->setObjectName(QStringLiteral("twStockLogs"));
 
         horizontalLayout_14->addWidget(twStockLogs);
-
-        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_14->addItem(horizontalSpacer_10);
 
         groupBox_6 = new QGroupBox(page_stock);
         groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
@@ -3783,7 +3778,7 @@ public:
 
         retranslateUi(AdminWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(AdminWindow);

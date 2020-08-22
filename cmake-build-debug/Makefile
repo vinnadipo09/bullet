@@ -1027,6 +1027,33 @@ mainslice.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/mainslice.cpp.s
 .PHONY : mainslice.cpp.s
 
+ordersclient.o: ordersclient.cpp.o
+
+.PHONY : ordersclient.o
+
+# target to build an object file
+ordersclient.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/ordersclient.cpp.o
+.PHONY : ordersclient.cpp.o
+
+ordersclient.i: ordersclient.cpp.i
+
+.PHONY : ordersclient.i
+
+# target to preprocess a source file
+ordersclient.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/ordersclient.cpp.i
+.PHONY : ordersclient.cpp.i
+
+ordersclient.s: ordersclient.cpp.s
+
+.PHONY : ordersclient.s
+
+# target to generate assembly for a file
+ordersclient.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/ordersclient.cpp.s
+.PHONY : ordersclient.cpp.s
+
 passwordconfirmation.o: passwordconfirmation.cpp.o
 
 .PHONY : passwordconfirmation.o
@@ -1649,6 +1676,9 @@ help:
 	@echo "... mainslice.o"
 	@echo "... mainslice.i"
 	@echo "... mainslice.s"
+	@echo "... ordersclient.o"
+	@echo "... ordersclient.i"
+	@echo "... ordersclient.s"
 	@echo "... passwordconfirmation.o"
 	@echo "... passwordconfirmation.i"
 	@echo "... passwordconfirmation.s"

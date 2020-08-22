@@ -35,6 +35,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pointOfSale.dir/login.cpp.o"
   "CMakeFiles/pointOfSale.dir/main.cpp.o"
   "CMakeFiles/pointOfSale.dir/mainslice.cpp.o"
+  "CMakeFiles/pointOfSale.dir/ordersclient.cpp.o"
   "CMakeFiles/pointOfSale.dir/passwordconfirmation.cpp.o"
   "CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
   "CMakeFiles/pointOfSale.dir/pointOfSale_autogen/mocs_compilation.cpp.o"

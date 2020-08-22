@@ -171,6 +171,14 @@ private slots:
 
     void on_checkBoxEnableRewards_toggled(bool checked);
 
+    void on_btnPlaceOrder_clicked();
+
+    void on_btnViewPlacedOrders_clicked();
+
+    void on_btnViewProcessedOrders_clicked();
+
+    void on_btnViewDeliveredOrders_clicked();
+
 signals:
     void enableSystemsSent();
     void openingClosingDataChanged();
@@ -182,16 +190,16 @@ private:
 //SALES EXECUTION
 private:
     QString *saleType;
-    bool enableRewards;
-    bool enableDiscounts;
+    bool *enableRewards;
+    bool *enableDiscounts;
     bool isCurrentCustomerDefined;
     bool clientAuthorizedPaymentByRewards;
-    bool businessAuthorizedPaymentByRewards;
+    bool *businessAuthorizedPaymentByRewards;
     void loadCustomerAgentFromCompleter(QString&);
     QString *customerAgentToServe;
     Customer* currentServingCustomer;
     void loadSingleCustomerFromDb(QString &customerPhone);
-    QString* currentSaleId;
+    int* currentSaleId;
     void setCurrentSaleId();
     int* lastId;
     void establishWholesaleSale();

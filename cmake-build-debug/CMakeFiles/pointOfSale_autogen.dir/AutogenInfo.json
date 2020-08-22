@@ -160,6 +160,11 @@
 			"EWIEGA46WW/moc_mainslice.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/ordersclient.h",
+			"MU",
+			"EWIEGA46WW/moc_ordersclient.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/passwordconfirmation.h",
 			"MU",
 			"EWIEGA46WW/moc_passwordconfirmation.cpp"
@@ -342,6 +347,7 @@
 		[ "/home/vee/pointOfSale/login.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/main.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/mainslice.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/ordersclient.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/passwordconfirmation.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/productdiscounteditor.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/producteditor.cpp", "MU" ],

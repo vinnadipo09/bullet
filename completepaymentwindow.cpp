@@ -1,7 +1,8 @@
 #include "completepaymentwindow.h"
 #include "ui_completepaymentwindow.h"
-CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser,
-        std::map<int, purchasedItem>&productsBought,   Customer& currentServingCustomer, int& totalToPay) :
+CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser, int& currentSaleId,
+        std::map<int, purchasedItem>&productsBought, bool &rewards,
+        float rewardTotal, bool &discounts, float discountTotal, Customer& currentServingCustomer, int& totalToPay) :
     QDialog(parent),
     ui(new Ui::CompletePaymentWindow)
 {
@@ -11,8 +12,12 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     amountToBePayed = new int;
     amountPaid = new int;
     balanceForClient = new int;
+    paymentConnection = new databaseConnection;
+    currentTransactionId = new int;
     *amountPaid = 0;
-
+    *currentTransactionId = currentSaleId;
+    remainingStock = new int;
+    updateTime = new QDateTime;
 //    *productToDatabasaeSales = productsBought;
     *userOnCashier = currentLoggedInUser;
     *amountToBePayed = totalToPay;
@@ -25,6 +30,13 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     ui->le_amountPaid->setFocus();
     QObject::connect(ui->le_amountPaid, SIGNAL(returnPressed()),
                      this, SLOT(getCashComputeBalance()));
+
+    productRewardsEnabled = new bool;
+    productDiscountsEnabled = new bool;
+
+    *productRewardsEnabled = rewards;
+    *productDiscountsEnabled = discounts;
+    customerAvailableRewards = new float;
 //ui->le_amountPaid->textChanged()
 
 
@@ -40,20 +52,33 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     *servingCustomer = currentServingCustomer;
     *productsToBill = productsBought;
 
-    for(auto& it: productsBought){
+    totalDiscount = new float;
+    totalRewards = new float;
+    single_product_discTotal = new float;
+    single_product_rewTotal = new float;
+    *totalDiscount = discountTotal;
+    *totalRewards = rewardTotal;
+    single_product_discTotal = 0;
+    single_product_rewTotal = 0;
+    paymentMethod = new QString;
+    *paymentMethod = "Cash";
 
-        LOGx("=====================================================");
-        LOGxy("purchased", it.first);
-        LOGxy("purchased", it.second.quantity_purchased);
-        LOGxy("bool dis", it.second.prod_discounted);
-        LOGxy("dis amount", it.second.discount_amount);
-        LOGxy("bool reward", it.second.prod_rewarded);
-        LOGxy("rew amount", it.second.reward_amount);
-        LOGx("=====================================================");
+    connect(ui->cb_paymentMethod, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            [=](int index){ /* ... */
+                if(index==0){
+                    *paymentMethod = "Cash";
+                }else if(index==1){
+                    *paymentMethod = "Credit";
+                }else if(index==2){
+                    *paymentMethod = "Cash+Credit";
+                }else if(index==3){
+                    *paymentMethod = "Cash+Rewards";
+                }else if(index==4){
+                    *paymentMethod = "Rewards";
+                }
 
-    }
-    LOGx(currentServingCustomer.phone.toStdString());
-    LOGx(currentUser->user_id.toInt());
+            });
+
 }
 
 CompletePaymentWindow::~CompletePaymentWindow()
@@ -138,3 +163,313 @@ void CompletePaymentWindow::on_le_amountPaid_textChanged(const QString &arg1)
     *amountPaid = ui->le_amountPaid->text().toInt();
     getCashComputeBalance();
 }
+void CompletePaymentWindow::updateSaleData() {
+    paymentConnection->conn_open();
+    updateStock();
+    if (stockUpdated && stockLogUpdated){
+        updatePayment();
+        if (paymentSuccessfullyUpdated){
+            updateSaleRecord(*updateTime);
+            if (saleUpdated){
+                if (*paymentMethod=="Cash" && *productRewardsEnabled && servingCustomer->customer_id!=NULL){
+                    updateRewards();
+                }
+            }
+
+        }
+
+//        updateSaleData();
+
+
+
+//        if(saleUpdated){
+//
+////            updateSaleRecord(*updateTime);
+////
+//        }
+    }
+//    updateSaleRecord();
+//    updateCustomerSaleData();
+    //send saleComplete
+}
+void CompletePaymentWindow::updatePayment() {
+    if (*paymentMethod=="Cash"){
+        updateCash();
+//        if (cashSuccessfullyUpdated){
+//            if (*productRewardsEnabled){
+//                updateSaleData();
+//                updateRewards();
+//            }
+//        }
+
+        //rewards enabled ->asign rewards
+
+    }else if (*paymentMethod=="Credit"){
+        //check if credit is equal to purchase
+        //if not, change payment to cash and credit
+    }else if (*paymentMethod=="Cash+Credit"){
+        //enter cash and check if credit suffices
+    }else if (*paymentMethod=="Cash+Rewards"){
+        //check rewards and see if cash suffices
+    }else if (*paymentMethod=="Rewards"){
+        //check if reward suffices
+    }else{
+        //Never get here
+    }
+    paymentSuccessfullyUpdated = true;
+}
+void CompletePaymentWindow::updateStock() {
+    int new_quantity;
+    int product_id;
+    int quantity_purchased;
+    float salePrice;
+    bool rewardsEnabled;
+    float rewardAmount;
+    bool discountEnabled;
+    float discountAmount;
+    QString manipulationType = "Sales";
+    QString effect = "Decrease";
+    QString discounted;
+    QString productRewarded;
+    float discountTotal;
+    float productRewardAmount;
+
+    for(auto& it: *productsToBill){
+        *updateTime = QDateTime::currentDateTime();
+        QString updatedTime = updateTime->toString("yyyyMMddhhmmss");
+        product_id = it.first;
+        quantity_purchased = it.second.quantity_purchased;
+        salePrice = it.second.salePrice;
+        rewardsEnabled = it.second.prod_rewarded;
+        rewardAmount = it.second.reward_amount;
+        discountEnabled = it.second.prod_discounted;
+        discountAmount = it.second.discount_amount;
+        if (*productDiscountsEnabled && discountEnabled) {
+            discounted = "Yes";
+            discountTotal = quantity_purchased * discountAmount;
+            *totalDiscount +=discountTotal;
+
+        } else{
+            discounted = "No";
+            discountTotal = 0;
+        }
+        if(*productRewardsEnabled && rewardsEnabled){
+            productRewarded = "Yes";
+            productRewardAmount = quantity_purchased*rewardAmount;
+            *totalRewards += productRewardAmount;
+
+        }else{
+            productRewarded = "No";
+            productRewardAmount = 0;
+        }
+            if (paymentConnection->conn_open()){
+            QSqlQuery query(QSqlDatabase::database("completeSales"));
+            query.prepare(QString("SELECT quantity FROM stock WHERE product_id = :productId"));
+            query.bindValue(":productId", product_id);
+            if(!query.exec()){
+                QMessageBox::critical(this, "Database Error", query.lastError().text());
+                return;
+            }else{
+                while (query.next()){
+                    int stock_available = query.value(0).toInt();
+                    new_quantity = stock_available-quantity_purchased;
+                    *remainingStock = new_quantity;
+                    query.exec(QString("UPDATE stock SET quantity="+QString::number(new_quantity)+", user_id= "+currentUser->user_id+" ,manipulatedOnDate = "+updatedTime+" WHERE product_id="+QString::number(product_id)));
+                    if (!query.exec()){
+                        QMessageBox::critical(this, "Database Error", query.lastError().text());
+                        return;
+                    }else{
+                        updateStockLogs(product_id, manipulationType, quantity_purchased, discountEnabled, discountTotal, rewardsEnabled, productRewardAmount,  effect);
+                        stockUpdated = true;
+                    }
+                }
+            }
+        } else{
+                QMessageBox::critical(this, "Database Not Open", "Database not open!");
+            }
+    }
+
+}
+
+void CompletePaymentWindow::updateStockLogs(int& product_id, QString& manipulationType, int&quantity_purchased, bool& discounted,
+        float & discountTotal, bool&productRewarded, float& productRewardAmount, QString &effect) {
+        LOGx("I was called to do a job");
+        if(paymentConnection->conn_open()){
+            QSqlQuery query(QSqlDatabase::database("completeSales"));
+            query.prepare(QString("INSERT INTO stock_log (product_id, manipulationType, quantity, total, discounted, discount_amount, rewarded, reward_amount, effect, sale_id, user_id, timeStamp)"
+                                  "VALUES(:productId, :manipulationType, :quantity, :total, :discounted, :discountAmount, :rewarded, :rewardAmount, :effect, :saleId, :userId, :timeStamp)"));
+
+            query.bindValue(":productId", product_id);
+            query.bindValue(":manipulationType", manipulationType);
+            query.bindValue(":quantity", quantity_purchased);
+            query.bindValue(":total", *remainingStock);
+            query.bindValue(":discounted", discounted);
+            query.bindValue(":discountAmount", discountTotal);
+            query.bindValue(":rewarded", productRewarded);
+            query.bindValue(":rewardAmount", productRewardAmount);
+            query.bindValue(":effect", effect);
+            query.bindValue(":saleId", *currentTransactionId);
+            query.bindValue(":userId", currentUser->user_id);
+            query.bindValue(":timeStamp", *updateTime);
+            if(!query.exec()){
+                QMessageBox::critical(this, "Database Error", query.lastError().text());
+            }else{
+                stockLogUpdated = true;
+            }
+        }
+}
+
+void CompletePaymentWindow::updateCash() {
+    float availableCash;
+    if(paymentConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("completeSales"));
+        query.prepare(QString("SELECT total FROM cash ORDER BY transaction_id DESC LIMIT 1"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else{
+            while(query.next()){
+                availableCash = query.value(0).toDouble();
+                increaseCash(availableCash);
+            }
+        }
+    }
+
+}
+void CompletePaymentWindow::increaseCash(float &cashAvailable) {
+    float new_cash= cashAvailable + *amountToBePayed;
+    QString effect = "increase";
+    QString tempTransactionType = "Sale";
+    if (paymentConnection->conn_open()) {
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("INSERT INTO cash (transaction_type, amount, sales_id, total, effect, user_id, transaction_timestamp)"
+                              "VALUES(:transactionType, :amount, :salesId, :total, :effect, :userId, :timeStamp)"));
+
+        query.bindValue(":transactionType", tempTransactionType);
+        query.bindValue(":amount", *amountToBePayed);
+        query.bindValue(":salesId", *currentTransactionId);
+        query.bindValue(":total", new_cash);
+        query.bindValue(":effect", effect);
+        query.bindValue(":userId", currentUser->user_id);
+        query.bindValue(":timeStamp", *updateTime);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+        }else{
+            cashSuccessfullyUpdated = true;
+        }
+    }
+}
+
+void CompletePaymentWindow::updateCustomerSaleData() {
+//    for(auto& it: *productsToBill){
+//        QDateTime updateTime = QDateTime::currentDateTime();
+//        QString updatedTime = updateTime.toString("yyyyMMddhhmmss");
+//
+//        int product_id = it.first;
+//        int quantity_purchased = it.second.quantity_purchased;
+//        float salePrice = it.second.salePrice;
+//        bool rewardsEnabled = it.second.prod_rewarded;
+//        float rewardAmount = it.second.reward_amount;
+//        bool discountEnabled = it.second.prod_discounted;
+//        float discountAmount = it.second.discount_amount;
+//        *totalDiscount =quantity_purchased*discountAmount;
+//        *totalRewards = quantity_purchased*rewardAmount;
+//
+//        if (paymentConnection->conn_open()){
+//            QSqlQuery query(QSqlDatabase::database("completeSales"));
+//            query.prepare(QString("SELECT quantity FROM stock WHERE product_id = :productId"));
+//            query.bindValue(":productId", product_id);
+//            LOGxy("product ID", product_id);
+//            if(!query.exec()){
+//                QMessageBox::critical(this, "Database Error", query.lastError().text());
+//                return;
+//            }else{
+//                while (query.next()){
+//                    int stock_available = query.value(0).toInt();
+//                    new_quantity = stock_available-quantity_purchased;
+//                    query.exec(QString("UPDATE stock SET quantity="+QString::number(new_quantity)+", user_id= "+currentUser->user_id+" ,manipulatedOnDate = "+updatedTime+" WHERE product_id="+QString::number(product_id)));
+//                    if (!query.exec()){
+//                        QMessageBox::critical(this, "Database Error", query.lastError().text());
+//                        return;
+//                    }else{
+//                        stockLogUpdated = true;
+//                    }
+//                }
+//
+//            }
+//        } else{
+//            QMessageBox::critical(this, "Database Not Open", "Database not open!");
+//        }
+//    }
+}
+
+
+void CompletePaymentWindow::on_btnCompleteSale_clicked()
+{
+    updateSaleData();
+}
+
+void CompletePaymentWindow::updateSaleRecord(QDateTime& transactionTime) {
+    if(paymentConnection->conn_open()){
+
+        QSqlQuery query(QSqlDatabase::database("completeSales"));
+        query.prepare(QString("INSERT INTO sales (sale_id, sale_amount, reward_amount, discount_amount, payment_method, customer_id, user_id, transaction_dateTime)"
+                              "VALUES(:saleId, :saleAmount, :rewardAmount, :discountAmount, :paymentMethod, :customerId, :userId, :transactionDateTime)"));
+
+        query.bindValue(":saleId", *currentTransactionId);
+        query.bindValue(":saleAmount", *amountToBePayed);
+        query.bindValue(":rewardAmount", *totalRewards);
+        query.bindValue(":discountAmount", *totalDiscount);
+        query.bindValue(":paymentMethod", *paymentMethod);
+        query.bindValue(":customerId", servingCustomer->customer_id);
+        query.bindValue(":userId", currentUser->user_id);
+        query.bindValue(":transactionDateTime", transactionTime);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+        }else{
+            saleUpdated = true;
+        }
+    }
+}
+void CompletePaymentWindow::updateRewards() {
+    float totalRewardsAfterSale;
+    if(paymentConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("completeSales"));
+        query.prepare(QString("SELECT  IFNULL(customerRewards.total_rewards, 0) "
+                              "FROM customerRewards WHERE customerRewards.customer_id =:customerId "
+                              "ORDER BY customerRewards.reward_id DESC LIMIT 1"));
+        query.bindValue(":customerId", servingCustomer->customer_id);
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else {
+            *customerAvailableRewards = query.value(0).toInt();
+            totalRewardsAfterSale = *customerAvailableRewards + *totalRewards;
+
+            while (query.next()){
+                *customerAvailableRewards = query.value(0).toInt();
+                totalRewardsAfterSale = *customerAvailableRewards + *totalRewards;
+            }
+            query.prepare(QString("INSERT INTO customerRewards (amount, customer_id, transaction_id, total_rewards)"
+                                  "VALUES(:amount, :customerId, :transactionId, :totalRewards)"));
+            query.bindValue(":amount", *totalRewards);
+            query.bindValue(":customerId", servingCustomer->customer_id);
+            query.bindValue(":transactionId", *currentTransactionId);
+            query.bindValue(":totalRewards", totalRewardsAfterSale);
+            if(!query.exec()){
+                LOGxy("[ERROR] ", query.lastError().text().toStdString());
+                QMessageBox::critical(this, "Database Error", query.lastError().text());
+                return;
+            }else {
+                //COME BACK COMPLETE SALES
+                LOGx("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+
+            }
+        }
+    }
+}
+
+
+
+
+

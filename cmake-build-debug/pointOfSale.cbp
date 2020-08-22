@@ -418,6 +418,15 @@
 		<Unit filename="/home/vee/pointOfSale/mainslice.h">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/ordersclient.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/ordersclient.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/ordersclient.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/passwordconfirmation.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>

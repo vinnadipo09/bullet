@@ -37,6 +37,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vee/pointOfSale/login.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/login.cpp.o"
   "/home/vee/pointOfSale/main.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/main.cpp.o"
   "/home/vee/pointOfSale/mainslice.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/mainslice.cpp.o"
+  "/home/vee/pointOfSale/ordersclient.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/ordersclient.cpp.o"
   "/home/vee/pointOfSale/passwordconfirmation.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/passwordconfirmation.cpp.o"
   "/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
   "/home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/mocs_compilation.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/pointOfSale_autogen/mocs_compilation.cpp.o"
