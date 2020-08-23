@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
-    <height>1290</height>
+    <width>1855</width>
+    <height>1226</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -841,6 +841,16 @@ padding: 2px;</string>
           </widget>
          </item>
          <item>
+          <widget class="QCheckBox" name="checkBox_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(143, 89, 2);</string>
+           </property>
+           <property name="text">
+            <string>Ordered by customer</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QLineEdit" name="leClient_2">
            <property name="minimumSize">
             <size>
@@ -1165,7 +1175,7 @@ color: rgb(238, 238, 236);
              </property>
              <property name="styleSheet">
               <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(78, 154, 6);
+color: rgb(238, 238, 236);
 margin-left:4px;
 text-align:center;</string>
              </property>
@@ -1290,6 +1300,30 @@ text-align:center;</string>
               <set>Qt::AlignCenter</set>
              </property>
             </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <widget class="QCheckBox" name="checkBox">
+               <property name="text">
+                <string>Free Delivery</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(143, 89, 2);</string>
+               </property>
+               <property name="text">
+                <string>Delivery Fee</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit"/>
+             </item>
+            </layout>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_18">

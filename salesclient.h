@@ -2,7 +2,6 @@
 #define SALESCLIENT_H
 
 #include <QMainWindow>
-#include <QCompleter>
 #include <QModelIndex>
 #include <QStandardItemModel>
 #include <QHeaderView>
@@ -13,7 +12,6 @@
 #include <iostream>
 #include <iterator>
 #include <map>
-#include <QCompleter>
 #include "debugger.h"
 #include "databaseconnection.h"
 #include "completepaymentwindow.h"
@@ -23,6 +21,7 @@
 #include "customerviewchoice.h"
 #include "sessioncontrol.h"
 #include "existingsessionverifier.h"
+#include "ordersclient.h"
 namespace Ui {
 class SalesClient;
 }
@@ -215,6 +214,9 @@ private:
     void addNewCustomerToDatabase();
     bool addNewCustomerAtPurchase = false;
     void loadLabelsWithCustomerData();
+
+private:
+    OrdersClient* orderClient;
 };
 
 

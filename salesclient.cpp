@@ -1110,7 +1110,6 @@ void SalesClient::loadSingleCustomerFromDb(QString &customerPhone) {
 }
 
 void SalesClient::setCurrentSaleId() {
-    LOGx("setting your id");
     if(salesConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
         query.prepare(QString("SELECT  IFNULL(sales.sale_id, 0) FROM sales ORDER BY sales.sale_id DESC LIMIT 1"));
@@ -1119,16 +1118,10 @@ void SalesClient::setCurrentSaleId() {
             return;
         }else {
             *lastId = query.value(0).toInt();
-            LOGxy("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", *lastId);
-
             *currentSaleId = *lastId+1;
-            LOGxy("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", *currentSaleId);
             while (query.next()){
                 *lastId = query.value(0).toInt();
-                LOGxy("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", *lastId);
-
                 *currentSaleId = *lastId+1;
-                LOGxy("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", *currentSaleId);
             }
         }
     }
@@ -1360,7 +1353,9 @@ void SalesClient::loadLabelsWithCustomerData() {
 
 void SalesClient::on_btnPlaceOrder_clicked()
 {
-
+    orderClient = new OrdersClient(this, *currentUser, *enableDiscounts, *enableRewards, *businessAuthorizedPaymentByRewards);
+    orderClient->show();
+    orderClient->setModal(true);
 }
 
 void SalesClient::on_btnViewPlacedOrders_clicked()

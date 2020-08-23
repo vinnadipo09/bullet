@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SalesClient_t {
-    QByteArrayData data[28];
-    char stringdata0[689];
+    QByteArrayData data[32];
+    char stringdata0[813];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -58,7 +58,11 @@ QT_MOC_LITERAL(23, 530, 38), // "on_checkBoxEnableRewardPaymen..."
 QT_MOC_LITERAL(24, 569, 7), // "checked"
 QT_MOC_LITERAL(25, 577, 44), // "on_checkBoxClientRewardAuthor..."
 QT_MOC_LITERAL(26, 622, 33), // "on_checkBoxEnableDiscount_tog..."
-QT_MOC_LITERAL(27, 656, 32) // "on_checkBoxEnableRewards_toggled"
+QT_MOC_LITERAL(27, 656, 32), // "on_checkBoxEnableRewards_toggled"
+QT_MOC_LITERAL(28, 689, 24), // "on_btnPlaceOrder_clicked"
+QT_MOC_LITERAL(29, 714, 30), // "on_btnViewPlacedOrders_clicked"
+QT_MOC_LITERAL(30, 745, 33), // "on_btnViewProcessedOrders_cli..."
+QT_MOC_LITERAL(31, 779, 33) // "on_btnViewDeliveredOrders_cli..."
 
     },
     "SalesClient\0send_salesClientClosed\0\0"
@@ -79,7 +83,11 @@ QT_MOC_LITERAL(27, 656, 32) // "on_checkBoxEnableRewards_toggled"
     "on_checkBoxEnableRewardPayment_toggled\0"
     "checked\0on_checkBoxClientRewardAuthorization_toggled\0"
     "on_checkBoxEnableDiscount_toggled\0"
-    "on_checkBoxEnableRewards_toggled"
+    "on_checkBoxEnableRewards_toggled\0"
+    "on_btnPlaceOrder_clicked\0"
+    "on_btnViewPlacedOrders_clicked\0"
+    "on_btnViewProcessedOrders_clicked\0"
+    "on_btnViewDeliveredOrders_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -89,7 +97,7 @@ static const uint qt_meta_data_SalesClient[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      24,   14, // methods
+      28,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -97,32 +105,36 @@ static const uint qt_meta_data_SalesClient[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,  134,    2, 0x06 /* Public */,
-       3,    0,  135,    2, 0x06 /* Public */,
-       4,    0,  136,    2, 0x06 /* Public */,
-       5,    0,  137,    2, 0x06 /* Public */,
+       1,    0,  154,    2, 0x06 /* Public */,
+       3,    0,  155,    2, 0x06 /* Public */,
+       4,    0,  156,    2, 0x06 /* Public */,
+       5,    0,  157,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,  138,    2, 0x08 /* Private */,
-       7,    0,  139,    2, 0x08 /* Private */,
-       8,    1,  140,    2, 0x08 /* Private */,
-      10,    0,  143,    2, 0x08 /* Private */,
-      11,    0,  144,    2, 0x08 /* Private */,
-      12,    0,  145,    2, 0x08 /* Private */,
-      13,    0,  146,    2, 0x08 /* Private */,
-      14,    0,  147,    2, 0x08 /* Private */,
-      15,    0,  148,    2, 0x08 /* Private */,
-      16,    0,  149,    2, 0x08 /* Private */,
-      17,    0,  150,    2, 0x08 /* Private */,
-      18,    0,  151,    2, 0x08 /* Private */,
-      19,    0,  152,    2, 0x08 /* Private */,
-      20,    0,  153,    2, 0x08 /* Private */,
-      21,    0,  154,    2, 0x08 /* Private */,
-      22,    0,  155,    2, 0x08 /* Private */,
-      23,    1,  156,    2, 0x08 /* Private */,
-      25,    1,  159,    2, 0x08 /* Private */,
-      26,    1,  162,    2, 0x08 /* Private */,
-      27,    1,  165,    2, 0x08 /* Private */,
+       6,    0,  158,    2, 0x08 /* Private */,
+       7,    0,  159,    2, 0x08 /* Private */,
+       8,    1,  160,    2, 0x08 /* Private */,
+      10,    0,  163,    2, 0x08 /* Private */,
+      11,    0,  164,    2, 0x08 /* Private */,
+      12,    0,  165,    2, 0x08 /* Private */,
+      13,    0,  166,    2, 0x08 /* Private */,
+      14,    0,  167,    2, 0x08 /* Private */,
+      15,    0,  168,    2, 0x08 /* Private */,
+      16,    0,  169,    2, 0x08 /* Private */,
+      17,    0,  170,    2, 0x08 /* Private */,
+      18,    0,  171,    2, 0x08 /* Private */,
+      19,    0,  172,    2, 0x08 /* Private */,
+      20,    0,  173,    2, 0x08 /* Private */,
+      21,    0,  174,    2, 0x08 /* Private */,
+      22,    0,  175,    2, 0x08 /* Private */,
+      23,    1,  176,    2, 0x08 /* Private */,
+      25,    1,  179,    2, 0x08 /* Private */,
+      26,    1,  182,    2, 0x08 /* Private */,
+      27,    1,  185,    2, 0x08 /* Private */,
+      28,    0,  188,    2, 0x08 /* Private */,
+      29,    0,  189,    2, 0x08 /* Private */,
+      30,    0,  190,    2, 0x08 /* Private */,
+      31,    0,  191,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -151,6 +163,10 @@ static const uint qt_meta_data_SalesClient[] = {
     QMetaType::Void, QMetaType::Bool,   24,
     QMetaType::Void, QMetaType::Bool,   24,
     QMetaType::Void, QMetaType::Bool,   24,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -185,6 +201,10 @@ void SalesClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 21: _t->on_checkBoxClientRewardAuthorization_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 22: _t->on_checkBoxEnableDiscount_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 23: _t->on_checkBoxEnableRewards_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 24: _t->on_btnPlaceOrder_clicked(); break;
+        case 25: _t->on_btnViewPlacedOrders_clicked(); break;
+        case 26: _t->on_btnViewProcessedOrders_clicked(); break;
+        case 27: _t->on_btnViewDeliveredOrders_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -245,13 +265,13 @@ int SalesClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 24)
+        if (_id < 28)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 28;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 24)
+        if (_id < 28)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 24;
+        _id -= 28;
     }
     return _id;
 }

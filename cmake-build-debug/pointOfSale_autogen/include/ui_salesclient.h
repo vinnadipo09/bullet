@@ -189,9 +189,13 @@ public:
     QGroupBox *groupBox_2;
     QGroupBox *groupBox_4;
     QGridLayout *gridLayout_5;
-    QPushButton *btn_viewCustomers;
-    QPushButton *btn_addNewCustomer;
+    QPushButton *btnPlaceOrder;
     QSpacerItem *verticalSpacer;
+    QPushButton *btnViewProcessedOrders;
+    QPushButton *btn_viewCustomers;
+    QPushButton *btnViewPlacedOrders;
+    QPushButton *btn_addNewCustomer;
+    QPushButton *btnViewDeliveredOrders;
     QMenuBar *menubar;
     QMenu *menuHome;
     QMenu *menuSales;
@@ -206,7 +210,7 @@ public:
     {
         if (SalesClient->objectName().isEmpty())
             SalesClient->setObjectName(QStringLiteral("SalesClient"));
-        SalesClient->resize(1916, 1200);
+        SalesClient->resize(1855, 1385);
         actionOne = new QAction(SalesClient);
         actionOne->setObjectName(QStringLiteral("actionOne"));
         actionTwo = new QAction(SalesClient);
@@ -1411,20 +1415,54 @@ public:
 
         groupBox_4 = new QGroupBox(frame_2);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setMinimumSize(QSize(0, 200));
+        groupBox_4->setMinimumSize(QSize(0, 300));
         gridLayout_5 = new QGridLayout(groupBox_4);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        btnPlaceOrder = new QPushButton(groupBox_4);
+        btnPlaceOrder->setObjectName(QStringLiteral("btnPlaceOrder"));
+        btnPlaceOrder->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding: 4px;\n"
+""));
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/resources/icons/rss-button (1).png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnPlaceOrder->setIcon(icon7);
+        btnPlaceOrder->setIconSize(QSize(24, 24));
+
+        gridLayout_5->addWidget(btnPlaceOrder, 3, 0, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_5->addItem(verticalSpacer, 2, 0, 1, 1);
+
+        btnViewProcessedOrders = new QPushButton(groupBox_4);
+        btnViewProcessedOrders->setObjectName(QStringLiteral("btnViewProcessedOrders"));
+        btnViewProcessedOrders->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding: 4px;\n"
+""));
+        btnViewProcessedOrders->setIcon(icon7);
+        btnViewProcessedOrders->setIconSize(QSize(24, 24));
+
+        gridLayout_5->addWidget(btnViewProcessedOrders, 5, 0, 1, 1);
+
         btn_viewCustomers = new QPushButton(groupBox_4);
         btn_viewCustomers->setObjectName(QStringLiteral("btn_viewCustomers"));
         btn_viewCustomers->setStyleSheet(QLatin1String("text-align:left;\n"
 "padding: 4px;\n"
 ""));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/resources/icons/rss-button (1).png"), QSize(), QIcon::Normal, QIcon::Off);
         btn_viewCustomers->setIcon(icon7);
         btn_viewCustomers->setIconSize(QSize(24, 24));
 
         gridLayout_5->addWidget(btn_viewCustomers, 1, 0, 1, 1);
+
+        btnViewPlacedOrders = new QPushButton(groupBox_4);
+        btnViewPlacedOrders->setObjectName(QStringLiteral("btnViewPlacedOrders"));
+        btnViewPlacedOrders->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding: 4px;\n"
+""));
+        btnViewPlacedOrders->setIcon(icon7);
+        btnViewPlacedOrders->setIconSize(QSize(24, 24));
+
+        gridLayout_5->addWidget(btnViewPlacedOrders, 4, 0, 1, 1);
 
         btn_addNewCustomer = new QPushButton(groupBox_4);
         btn_addNewCustomer->setObjectName(QStringLiteral("btn_addNewCustomer"));
@@ -1436,9 +1474,15 @@ public:
 
         gridLayout_5->addWidget(btn_addNewCustomer, 0, 0, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        btnViewDeliveredOrders = new QPushButton(groupBox_4);
+        btnViewDeliveredOrders->setObjectName(QStringLiteral("btnViewDeliveredOrders"));
+        btnViewDeliveredOrders->setStyleSheet(QLatin1String("text-align:left;\n"
+"padding: 4px;\n"
+""));
+        btnViewDeliveredOrders->setIcon(icon7);
+        btnViewDeliveredOrders->setIconSize(QSize(24, 24));
 
-        gridLayout_5->addItem(verticalSpacer, 2, 0, 1, 1);
+        gridLayout_5->addWidget(btnViewDeliveredOrders, 6, 0, 1, 1);
 
 
         gridLayout_3->addWidget(groupBox_4, 2, 0, 1, 1);
@@ -1452,7 +1496,7 @@ public:
         SalesClient->setCentralWidget(centralwidget);
         menubar = new QMenuBar(SalesClient);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1916, 20));
+        menubar->setGeometry(QRect(0, 0, 1855, 20));
         menuHome = new QMenu(menubar);
         menuHome->setObjectName(QStringLiteral("menuHome"));
         menuSales = new QMenu(menubar);
@@ -1617,8 +1661,12 @@ public:
         label_47->setText(QApplication::translate("SalesClient", "[F3]", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("SalesClient", "My Queues", Q_NULLPTR));
         groupBox_4->setTitle(QApplication::translate("SalesClient", "Customer Manager", Q_NULLPTR));
+        btnPlaceOrder->setText(QApplication::translate("SalesClient", "Place an Order", Q_NULLPTR));
+        btnViewProcessedOrders->setText(QApplication::translate("SalesClient", "View Processed Orders", Q_NULLPTR));
         btn_viewCustomers->setText(QApplication::translate("SalesClient", "View Customers", Q_NULLPTR));
+        btnViewPlacedOrders->setText(QApplication::translate("SalesClient", "View Placed Orders", Q_NULLPTR));
         btn_addNewCustomer->setText(QApplication::translate("SalesClient", "Add New Customer", Q_NULLPTR));
+        btnViewDeliveredOrders->setText(QApplication::translate("SalesClient", "View Delivered Orders", Q_NULLPTR));
         menuHome->setTitle(QApplication::translate("SalesClient", "Home", Q_NULLPTR));
         menuSales->setTitle(QApplication::translate("SalesClient", "Sales", Q_NULLPTR));
         menuCustomers->setTitle(QApplication::translate("SalesClient", "Customers", Q_NULLPTR));
