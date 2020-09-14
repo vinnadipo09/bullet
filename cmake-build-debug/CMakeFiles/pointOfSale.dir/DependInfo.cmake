@@ -46,6 +46,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vee/pointOfSale/productrewardeditor.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/productrewardeditor.cpp.o"
   "/home/vee/pointOfSale/profileviewer.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/profileviewer.cpp.o"
   "/home/vee/pointOfSale/qcustomplot.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/qcustomplot.cpp.o"
+  "/home/vee/pointOfSale/quantitycontrol.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o"
   "/home/vee/pointOfSale/salesclient.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/salesclient.cpp.o"
   "/home/vee/pointOfSale/sessioncontrol.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/sessioncontrol.cpp.o"
   "/home/vee/pointOfSale/supervisorwindow.cpp" "/home/vee/pointOfSale/cmake-build-debug/CMakeFiles/pointOfSale.dir/supervisorwindow.cpp.o"

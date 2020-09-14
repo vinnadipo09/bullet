@@ -165,5 +165,34 @@
         <file>resources/new_icons_2/icons8-wallet-52.png</file>
         <file>resources/new_icons_2/icons8-wallet-60.png</file>
         <file>resources/new_icons_2/icons8-wallet-100.png</file>
+        <file>resources/final/analysis.png</file>
+        <file>resources/final/buy.png</file>
+        <file>resources/final/coin.png</file>
+        <file>resources/final/data-analytics.png</file>
+        <file>resources/final/day.png</file>
+        <file>resources/final/group.png</file>
+        <file>resources/final/home-run.png</file>
+        <file>resources/final/home-run (1).png</file>
+        <file>resources/final/internet.png</file>
+        <file>resources/final/invoice.png</file>
+        <file>resources/final/logout.png</file>
+        <file>resources/final/logout (1).png</file>
+        <file>resources/final/logout (2).png</file>
+        <file>resources/final/man.png</file>
+        <file>resources/final/money.png</file>
+        <file>resources/final/real-estate.png</file>
+        <file>resources/final/risk.png</file>
+        <file>resources/final/sale.png</file>
+        <file>resources/final/sale (1).png</file>
+        <file>resources/final/stock-market.png</file>
+        <file>resources/final/sydney-opera-house.png</file>
+        <file>resources/final/team.png</file>
+        <file>resources/final/user.png</file>
+        <file>resources/final/user (1).png</file>
+        <file>resources/final/user (2).png</file>
+        <file>resources/final/wallet.png</file>
+        <file>resources/final/wallet (1).png</file>
+        <file>resources/final/wallet (2).png</file>
+        <file>resources/final/worker.png</file>
     </qresource>
 </RCC>

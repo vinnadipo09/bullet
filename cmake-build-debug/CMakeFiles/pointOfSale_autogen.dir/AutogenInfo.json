@@ -195,6 +195,11 @@
 			"EWIEGA46WW/moc_qcustomplot.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/quantitycontrol.h",
+			"MU",
+			"EWIEGA46WW/moc_quantitycontrol.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/salesclient.h",
 			"MU",
 			"EWIEGA46WW/moc_salesclient.cpp"
@@ -354,6 +359,7 @@
 		[ "/home/vee/pointOfSale/productrewardeditor.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/profileviewer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/qcustomplot.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/quantitycontrol.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/salesclient.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/sessioncontrol.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/supervisorwindow.cpp", "MU" ],

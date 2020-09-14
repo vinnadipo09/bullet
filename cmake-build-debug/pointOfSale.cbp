@@ -478,6 +478,15 @@
 		<Unit filename="/home/vee/pointOfSale/qcustomplot.h">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/quantitycontrol.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/quantitycontrol.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/quantitycontrol.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/resources.qrc">
 			<Option target="pointOfSale"/>
 		</Unit>

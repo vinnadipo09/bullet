@@ -124,6 +124,35 @@ pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/newIcons/icons8-e
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/newIcons/icons8-logout-rounded-left-96.png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/newIcons/icons8-credit-card-96\ (1).png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/newIcons/icons8-login-50.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/risk.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/buy.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/coin.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/data-analytics.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/team.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/day.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/logout.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/logout\ (2).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/man.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/stock-market.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/real-estate.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/money.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/sydney-opera-house.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/invoice.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/sale.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/logout\ (1).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/internet.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/group.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/wallet.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/wallet\ (2).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/analysis.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/home-run.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/sale\ (1).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/user.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/wallet\ (1).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/worker.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/home-run\ (1).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/user\ (2).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/user\ (1).png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/icons/man-avatar.png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/icons/user_small.png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/icons/eye\ (1).png
@@ -904,9 +933,22 @@ CMakeFiles/pointOfSale.dir/ordersclient.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/ordersclient.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/ordersclient.cpp -o CMakeFiles/pointOfSale.dir/ordersclient.cpp.s
 
+CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
+CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o: ../quantitycontrol.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o -c /home/vee/pointOfSale/quantitycontrol.cpp
+
+CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/quantitycontrol.cpp > CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.i
+
+CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/quantitycontrol.cpp -o CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.s
+
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o: pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp
 
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.i: cmake_force
@@ -971,6 +1013,7 @@ pointOfSale_OBJECTS = \
 "CMakeFiles/pointOfSale.dir/salesclient.cpp.o" \
 "CMakeFiles/pointOfSale.dir/existingsessionverifier.cpp.o" \
 "CMakeFiles/pointOfSale.dir/ordersclient.cpp.o" \
+"CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o" \
 "CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 
 # External object files for target pointOfSale
@@ -1028,6 +1071,7 @@ pointOfSale: CMakeFiles/pointOfSale.dir/qcustomplot.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/salesclient.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/existingsessionverifier.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/ordersclient.cpp.o
+pointOfSale: CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/build.make
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.9.5
@@ -1037,7 +1081,7 @@ pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.9.5
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.9.5
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
 pointOfSale: CMakeFiles/pointOfSale.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Linking CXX executable pointOfSale"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Linking CXX executable pointOfSale"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pointOfSale.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

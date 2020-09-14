@@ -1270,6 +1270,33 @@ qcustomplot.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/qcustomplot.cpp.s
 .PHONY : qcustomplot.cpp.s
 
+quantitycontrol.o: quantitycontrol.cpp.o
+
+.PHONY : quantitycontrol.o
+
+# target to build an object file
+quantitycontrol.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o
+.PHONY : quantitycontrol.cpp.o
+
+quantitycontrol.i: quantitycontrol.cpp.i
+
+.PHONY : quantitycontrol.i
+
+# target to preprocess a source file
+quantitycontrol.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.i
+.PHONY : quantitycontrol.cpp.i
+
+quantitycontrol.s: quantitycontrol.cpp.s
+
+.PHONY : quantitycontrol.s
+
+# target to generate assembly for a file
+quantitycontrol.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.s
+.PHONY : quantitycontrol.cpp.s
+
 salesclient.o: salesclient.cpp.o
 
 .PHONY : salesclient.o
@@ -1703,6 +1730,9 @@ help:
 	@echo "... qcustomplot.o"
 	@echo "... qcustomplot.i"
 	@echo "... qcustomplot.s"
+	@echo "... quantitycontrol.o"
+	@echo "... quantitycontrol.i"
+	@echo "... quantitycontrol.s"
 	@echo "... salesclient.o"
 	@echo "... salesclient.i"
 	@echo "... salesclient.s"

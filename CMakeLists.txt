@@ -235,6 +235,10 @@ else()
     ordersclient.cpp
     ordersclient.h
     ordersclient.ui
+
+    quantitycontrol.cpp
+    quantitycontrol.h
+    quantitycontrol.ui
   )
 endif()
 

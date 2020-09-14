@@ -12,6 +12,7 @@
 #include <iostream>
 #include <iterator>
 #include <map>
+#include <QKeyEvent>
 #include "debugger.h"
 #include "databaseconnection.h"
 #include "completepaymentwindow.h"
@@ -22,6 +23,7 @@
 #include "sessioncontrol.h"
 #include "existingsessionverifier.h"
 #include "ordersclient.h"
+#include "quantitycontrol.h"
 namespace Ui {
 class SalesClient;
 }
@@ -56,15 +58,10 @@ private:
     void addProductInRowCreated( int &rowCreated, int& quantityPurchased);
     void getScannedProductFromDB(QString barcodeScanned);
     QString uniqueID;
-    QString *addedProductName;
-    int *addedProductId;
-    QString *productQuantity;
     QString* discountOnItem;
     QString* pointsOnItem;
-    QString* unitPrice;
     QString *itemTotalPrice;
     QString *itemQuantityPurchased;
-    int *productPrice;
     int productId;
     QString productName;
     QString *customerPhone;
@@ -100,8 +97,8 @@ private:
     void grabBarcodeFromCompleter(QString&);
     QString* barCodeFromName;
     QString* processedProduct;
-    float* unitDiscount;
-    float* unitReward;
+
+
     float* discountTotal;
     float* rewardTotal;
     float* unitSubTotal;
@@ -127,12 +124,11 @@ private:
 private slots:
     void getRowToEdit();
     void reducedQuantityPurchased();
-    void on_btnReduceQtyByOne_clicked();
+//    void on_btnReduceQtyByOne_clicked();
 
     void on_btnOpenClose_clicked();
 
 private:
-    int* stockQuantityAvailable;
     void updateStockAndStockLogs(QString &, int &, int &);
     int* quantityToBeBought;
 private:
@@ -170,13 +166,15 @@ private slots:
 
     void on_checkBoxEnableRewards_toggled(bool checked);
 
-    void on_btnPlaceOrder_clicked();
+//    void on_btnPlaceOrder_clicked();
 
     void on_btnViewPlacedOrders_clicked();
 
     void on_btnViewProcessedOrders_clicked();
 
     void on_btnViewDeliveredOrders_clicked();
+
+    void on_actionOrder_Center_triggered();
 
 signals:
     void enableSystemsSent();
@@ -217,6 +215,28 @@ private:
 
 private:
     OrdersClient* orderClient;
+    //  QUANTITY CONTROL
+private:
+    QuantityControl* quantityControl;
+    void modifyItemQuantity(int &productId, int &currentQty);
+    void keyPressEvent(QKeyEvent *event);
+
+    int* productId_to_modify;
+    int* productQty_to_modify;
+
+
+
+
+    int tableRows;
+    int row_to_modify;
+    int product_id_to_modify;
+    int quantity_available;
+    int quantity_assigned;
+    ModifiedQuantity beforeModification;
+    //    ModifiedQuantity increaseItemQuantity();
+private slots:
+    void receive_modifyProductQuantity(int & productID, int& new_Quantity);
+    void on_tableWidget_cellActivated(int row, int column);
 };
 
 

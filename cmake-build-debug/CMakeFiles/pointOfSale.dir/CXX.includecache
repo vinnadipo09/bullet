@@ -6,6 +6,58 @@
 
 #IncludeRegexTransform: 
 
+/home/vee/pointOfSale/addcustomer.h
+QDialog
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
+
+/home/vee/pointOfSale/completepaymentwindow.h
+QDialog
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+map
+-
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
+
+/home/vee/pointOfSale/customerviewall.h
+QDialog
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
+QMessageBox
+-
+
+/home/vee/pointOfSale/customerviewchoice.h
+QDialog
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
+QCompleter
+-
+customerviewone.h
+-
+customerviewall.h
+/home/vee/pointOfSale/customerviewall.h
+
+/home/vee/pointOfSale/customerviewone.h
+QDialog
+-
+QCloseEvent
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
+
 /home/vee/pointOfSale/databaseconnection.h
 QDialog
 -
@@ -34,11 +86,11 @@ QDateTime
 QTimer
 -
 
-/home/vee/pointOfSale/ordersclient.cpp
-ordersclient.h
-/home/vee/pointOfSale/ordersclient.h
-ui_ordersclient.h
-/home/vee/pointOfSale/ui_ordersclient.h
+/home/vee/pointOfSale/existingsessionverifier.h
+QDialog
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
 
 /home/vee/pointOfSale/ordersclient.h
 QDialog
@@ -75,6 +127,76 @@ debugger.h
 /home/vee/pointOfSale/debugger.h
 databaseconnection.h
 /home/vee/pointOfSale/databaseconnection.h
+
+/home/vee/pointOfSale/quantitycontrol.h
+QDialog
+-
+QKeyEvent
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+
+/home/vee/pointOfSale/salesclient.cpp
+salesclient.h
+/home/vee/pointOfSale/salesclient.h
+ui_salesclient.h
+/home/vee/pointOfSale/ui_salesclient.h
+
+/home/vee/pointOfSale/salesclient.h
+QMainWindow
+-
+QModelIndex
+-
+QStandardItemModel
+-
+QHeaderView
+-
+QCloseEvent
+-
+QAbstractButton
+-
+QTableWidget
+-
+QMessageBox
+-
+iostream
+-
+iterator
+-
+map
+-
+QKeyEvent
+-
+debugger.h
+/home/vee/pointOfSale/debugger.h
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
+completepaymentwindow.h
+/home/vee/pointOfSale/completepaymentwindow.h
+addcustomer.h
+/home/vee/pointOfSale/addcustomer.h
+customerviewall.h
+/home/vee/pointOfSale/customerviewall.h
+customerviewone.h
+/home/vee/pointOfSale/customerviewone.h
+customerviewchoice.h
+/home/vee/pointOfSale/customerviewchoice.h
+sessioncontrol.h
+/home/vee/pointOfSale/sessioncontrol.h
+existingsessionverifier.h
+/home/vee/pointOfSale/existingsessionverifier.h
+ordersclient.h
+/home/vee/pointOfSale/ordersclient.h
+quantitycontrol.h
+/home/vee/pointOfSale/quantitycontrol.h
+
+/home/vee/pointOfSale/sessioncontrol.h
+QDialog
+-
+databaseconnection.h
+/home/vee/pointOfSale/databaseconnection.h
+debugger.h
+/home/vee/pointOfSale/debugger.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QDateTime
 qdatetime.h
@@ -1832,6 +1954,10 @@ QtCore/qscopedpointer.h
 qevent.h
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qevent.h
 
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QKeyEvent
+qevent.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qevent.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtGui/QStandardItemModel
 qstandarditemmodel.h
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qstandarditemmodel.h
@@ -2432,17 +2558,9 @@ qdialog.h
 qfiledialog.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFrame
-qframe.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGridLayout
-qgridlayout.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgridlayout.h
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGroupBox
-qgroupbox.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgroupbox.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFormLayout
+qformlayout.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qformlayout.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QHBoxLayout
 qboxlayout.h
@@ -2456,6 +2574,10 @@ qheaderview.h
 qlabel.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLayout
+qlayout.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayout.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit
 qlineedit.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlineedit.h
@@ -2463,6 +2585,14 @@ qlineedit.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMainWindow
 qmainwindow.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmainwindow.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMenu
+qmenu.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenu.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMenuBar
+qmenubar.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenubar.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox
 qmessagebox.h
@@ -2476,9 +2606,17 @@ qpushbutton.h
 qlayoutitem.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayoutitem.h
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QStatusBar
+qstatusbar.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstatusbar.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QTableWidget
 qtablewidget.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtablewidget.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QToolBar
+qtoolbar.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtoolbar.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QVBoxLayout
 qboxlayout.h
@@ -2652,6 +2790,12 @@ QtCore/qurl.h
 QtWidgets/qdialog.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qformlayout.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/QLayout
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h
 QtWidgets/qtwidgetsglobal.h
 -
@@ -2666,12 +2810,6 @@ QtWidgets/qlayout.h
 QtWidgets/qwidget.h
 -
 limits.h
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgroupbox.h
-QtWidgets/qtwidgetsglobal.h
--
-QtWidgets/qframe.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qheaderview.h
@@ -2754,6 +2892,24 @@ QtWidgets/qwidget.h
 QtWidgets/qtabwidget.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenu.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qwidget.h
+-
+QtCore/qstring.h
+-
+QtGui/qicon.h
+-
+QtWidgets/qaction.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmenubar.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qmenu.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h
 QtWidgets/qtwidgetsglobal.h
 -
@@ -2784,6 +2940,12 @@ QtCore/qalgorithms.h
 QtWidgets/qtwidgetsglobal.h
 -
 QtWidgets/qabstractslider.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstatusbar.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qwidget.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstyle.h
@@ -2862,6 +3024,14 @@ QtWidgets/qwidget.h
 QtGui/qicon.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtoolbar.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qaction.h
+-
+QtWidgets/qwidget.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h
@@ -2902,7 +3072,7 @@ QtGui/qkeysequence.h
 QtGui/qevent.h
 -
 
-pointOfSale_autogen/include/ui_ordersclient.h
+pointOfSale_autogen/include/ui_salesclient.h
 QtCore/QVariant
 -
 QtWidgets/QAction
@@ -2915,13 +3085,7 @@ QtWidgets/QCheckBox
 -
 QtWidgets/QComboBox
 -
-QtWidgets/QDialog
--
-QtWidgets/QFrame
--
-QtWidgets/QGridLayout
--
-QtWidgets/QGroupBox
+QtWidgets/QFormLayout
 -
 QtWidgets/QHBoxLayout
 -
@@ -2931,12 +3095,24 @@ QtWidgets/QLabel
 -
 QtWidgets/QLineEdit
 -
+QtWidgets/QMainWindow
+-
+QtWidgets/QMenu
+-
+QtWidgets/QMenuBar
+-
 QtWidgets/QPushButton
 -
 QtWidgets/QSpacerItem
 -
+QtWidgets/QStatusBar
+-
 QtWidgets/QTableWidget
 -
+QtWidgets/QToolBar
+-
 QtWidgets/QVBoxLayout
+-
+QtWidgets/QWidget
 -
 

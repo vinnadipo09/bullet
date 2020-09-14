@@ -34,6 +34,7 @@
 #include "EWIEGA46WW/moc_productrewardeditor.cpp"
 #include "EWIEGA46WW/moc_profileviewer.cpp"
 #include "EWIEGA46WW/moc_qcustomplot.cpp"
+#include "EWIEGA46WW/moc_quantitycontrol.cpp"
 #include "EWIEGA46WW/moc_salesclient.cpp"
 #include "EWIEGA46WW/moc_sessioncontrol.cpp"
 #include "EWIEGA46WW/moc_supervisorwindow.cpp"

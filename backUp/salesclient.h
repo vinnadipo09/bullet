@@ -2,16 +2,16 @@
 #define SALESCLIENT_H
 
 #include <QMainWindow>
-#include <QCompleter>
 #include <QModelIndex>
 #include <QStandardItemModel>
 #include <QHeaderView>
 #include <QCloseEvent>
+#include <QAbstractButton>
 #include <QTableWidget>
+#include <QMessageBox>
 #include <iostream>
 #include <iterator>
 #include <map>
-#include <QCompleter>
 #include "debugger.h"
 #include "databaseconnection.h"
 #include "completepaymentwindow.h"
@@ -20,6 +20,8 @@
 #include "customerviewone.h"
 #include "customerviewchoice.h"
 #include "sessioncontrol.h"
+#include "existingsessionverifier.h"
+#include "ordersclient.h"
 namespace Ui {
 class SalesClient;
 }
@@ -45,7 +47,7 @@ private:
 
 private:
     void scannedProductManagement(QString &, int& databaseId, int & stockAvailable);
-    std::map<int, int>*itemsBought;
+    std::map<int, purchasedItem>*itemsBought;
     void modifyProductInRowCreated( int &rowAffected, int &quantityValue);
     int initial_quantity=1;
     void createRowsToAddProductPurchased(int& quantityValue);
@@ -103,6 +105,7 @@ private:
     float* discountTotal;
     float* rewardTotal;
     float* unitSubTotal;
+    float* totalTax;
 
 private:
     CustomerViewChoice* customerViewChoice;
@@ -124,7 +127,7 @@ private:
 private slots:
     void getRowToEdit();
     void reducedQuantityPurchased();
-    void on_btnReduceQtyByOne_clicked();
+//    void on_btnReduceQtyByOne_clicked();
 
     void on_btnOpenClose_clicked();
 
@@ -155,12 +158,68 @@ private:
 
 private slots:
     void enableSystemsCalled();
+    void disableSystemsCalled();
     void receiveClosingComplete();
     void receiveOpeningComplete();
+
+    void on_checkBoxEnableRewardPayment_toggled(bool checked);
+
+    void on_checkBoxClientRewardAuthorization_toggled(bool checked);
+
+    void on_checkBoxEnableDiscount_toggled(bool checked);
+
+    void on_checkBoxEnableRewards_toggled(bool checked);
+
+//    void on_btnPlaceOrder_clicked();
+
+    void on_btnViewPlacedOrders_clicked();
+
+    void on_btnViewProcessedOrders_clicked();
+
+    void on_btnViewDeliveredOrders_clicked();
+
+    void on_actionOrder_Center_triggered();
 
 signals:
     void enableSystemsSent();
     void openingClosingDataChanged();
+
+private:
+    void openNewSession();
+    void sessionStartControl();
+    ExistingSessionVerifier* verifySession;
+//SALES EXECUTION
+private:
+    QString *saleType;
+    bool *enableRewards;
+    bool *enableDiscounts;
+    bool isCurrentCustomerDefined;
+    bool clientAuthorizedPaymentByRewards;
+    bool *businessAuthorizedPaymentByRewards;
+    void loadCustomerAgentFromCompleter(QString&);
+    QString *customerAgentToServe;
+    Customer* currentServingCustomer;
+    void loadSingleCustomerFromDb(QString &customerPhone);
+    int* currentSaleId;
+    void setCurrentSaleId();
+    int* lastId;
+    void establishWholesaleSale();
+    void resetCashierRecords();
+    void clearCustomerDetails();
+    void clearSalesData();
+    void setDefaultSalesValue();
+    void setFocusForSales();
+
+private:
+    void addCustomerAndDefineClient();
+    void selectLastCustomerAdded();
+    void addNewCustomerToDatabase();
+    bool addNewCustomerAtPurchase = false;
+    void loadLabelsWithCustomerData();
+
+private:
+    OrdersClient* orderClient;
 };
+
 
 #endif // SALESCLIENT_H

@@ -143,6 +143,11 @@ struct purchasedItem{
     int reward_amount;
     float salePrice;
 };
+struct ModifiedQuantity{
+    int itemId;
+    int oldQuantity;
+    int newQuantity;
+};
 class Debugger
 {
 public:

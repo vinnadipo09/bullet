@@ -43,6 +43,8 @@ private:
     void closeEvent(QCloseEvent *event);
 private slots:
     void showTime();
+    void grabBarcodeFromEntry();
+
 private:
     databaseConnection* ordersConnection;
     int* lastOrderId;
@@ -52,6 +54,43 @@ private:
     QString productName;
     QCompleter *completer;
     QString* processedProduct;
+
+private:
+    std::map<int, purchasedItem>*itemsOrdered;
+    productFromDb* scannedProduct;
+    QString uniqueID;
+    int initial_quantity=1;
+    float* discountTotal;
+    float* rewardTotal;
+    float* totalToPay;
+    int currentRowBeingInserted;
+
+
+
+    void scannedProductManagement(QString& barcode, int & currentProductId, int & stockAvailable);
+    void modifyProductInRowCreated(int &rowAffected, int &quantityValue);
+    void createRowsToAddProductPurchased(int &quantityValue);
+    void addProductInRowCreated(int &rowCreated, int &quantityPurchased);
+    void checkOutOrder();
+    void loadCustomerToCompleter();
+    void getScannedProductFromDb(QString &barcodeScanned);
+    QString *saleType;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    databaseConnection* salesConnection;
 //    void loadItemsFromDbToCompleter();

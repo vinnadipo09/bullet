@@ -23,15 +23,10 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
 
     addedProduct = new productFromDb;
-    addedProductName = new QString;
-    productQuantity = new QString;
-    addedProductId = new int;
     discountOnItem= new QString;
     pointsOnItem= new QString;
-    unitPrice = new QString;
     itemTotalPrice = new QString;
     itemQuantityPurchased = new QString;
-    productPrice = new int;
     totalToPay = new int;
     currentCashierUser = new loggedUser;
     barCodeFromName = new QString;
@@ -40,8 +35,6 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     ongoingSession = new session;
     newSession = new session;
     currentSaleId = new int;
-    unitDiscount = new float ;
-    unitReward = new float;
     unitSubTotal = new float;
     customerPhone = new QString;
     executionType = new QString;
@@ -58,7 +51,6 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
 
     rewardTotal = new float ;
     discountTotal = new float ;
-    stockQuantityAvailable = new int;
     loadItemsFromDbToCompleter();
     loadCustomersToCompleter();
     ui->le_barcodeEntry->setFocus();
@@ -144,7 +136,6 @@ SalesClient::SalesClient(QWidget *parent, loggedUser &currentLoggedInUser) :
     ui->lblOrderId->setText(QString::number(*currentSaleId));
     *rewardTotal = 0;
     *discountTotal = 0;
-
 
 }
 
@@ -258,6 +249,7 @@ void SalesClient::scannedProductManagement(QString& barcode, int & currentProduc
         itemsBought->insert(std::pair<int, purchasedItem>(currentProductId, myItem));
         createRowsToAddProductPurchased(initial_quantity);
         ui->le_barcodeEntry->clear();
+        uniqueID = "";
         ui->le_barcodeEntry->setFocus();
     }
 }
@@ -350,8 +342,8 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                 if(!idEntry){
                     idEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, idEntry);
-                }if(!addedProductId==NULL){
-                    idEntry->setText(QString::number(*addedProductId));
+                }if(addedProduct->product_id!=NULL){
+                    idEntry->setText(QString::number(addedProduct->product_id));
                 }
             }else if(i==1){
                 QTableWidgetItem* barCodeEntry = ui->tableWidget->item(rowCreated, i);
@@ -384,7 +376,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     unitPriceEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, unitPriceEntry);
                 }
-                if (!unitPrice->isEmpty()) {
+                if (addedProduct->product_rtprice!=NULL) {
                     unitPriceEntry->setText(QString::number(addedProduct->product_rtprice));
                 }
             }else if(i==5) {
@@ -393,7 +385,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     itemQtyPurchased = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, itemQtyPurchased);
                 }
-                int total = quantityPurchased*(*productPrice);
+                int total = quantityPurchased*(addedProduct->product_rtprice);
                 QString tempQuantityPurchased = QString::number(quantityPurchased);
                 *itemQuantityPurchased = tempQuantityPurchased;
                 if(!itemQuantityPurchased->isEmpty()){
@@ -406,7 +398,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     ui->tableWidget->setItem(rowCreated, i, discountEntry);
                 }
                 if (*enableDiscounts){
-                    QString tempDiscount = QString::number(*unitDiscount);
+                    QString tempDiscount = QString::number(addedProduct->product_discount);
                     *discountOnItem = tempDiscount;
                 }else{
                     QString tempDiscount = QString::number(0);
@@ -422,7 +414,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     ui->tableWidget->setItem(rowCreated, i, rewardEntry);
                 }
                 if(*enableRewards){
-                    QString tempPoints = QString::number(*unitReward);
+                    QString tempPoints = QString::number(addedProduct->product_rewards);
                     *pointsOnItem = tempPoints;
                 }else{
                     QString tempPoints = QString::number(0);
@@ -438,10 +430,10 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     ui->tableWidget->setItem(rowCreated, i, unitSubTotalEntry);
                 }
                 if(*enableDiscounts){
-                    int total = quantityPurchased*(*productPrice-*unitDiscount);
+                    int total = quantityPurchased*(addedProduct->product_rtprice-addedProduct->product_discount);
                     *itemTotalPrice = QString::number(total);
                 }else{
-                    int total = quantityPurchased*(*productPrice);
+                    int total = quantityPurchased*(addedProduct->product_rtprice);
                     *itemTotalPrice = QString::number(total);
                 }
 
@@ -457,8 +449,8 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                 if(!idEntry){
                     idEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, idEntry);
-                }if(!addedProductId==NULL){
-                    idEntry->setText(QString::number(*addedProductId));
+                }if(addedProduct->product_id!=NULL){
+                    idEntry->setText(QString::number(addedProduct->product_id));
                 }
             }else if(i==1){
                 QTableWidgetItem* barCodeEntry = ui->tableWidget->item(rowCreated, i);
@@ -491,7 +483,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     unitPriceEntry = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, unitPriceEntry);
                 }
-                if (!unitPrice->isEmpty()) {
+                if (addedProduct->product_wsprice!=NULL) {
                     unitPriceEntry->setText(QString::number(addedProduct->product_wsprice));
                 }
             }else if(i==5) {
@@ -500,7 +492,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     itemQtyPurchased = new QTableWidgetItem;
                     ui->tableWidget->setItem(rowCreated, i, itemQtyPurchased);
                 }
-                int total = quantityPurchased*(*productPrice);
+                int total = quantityPurchased*(addedProduct->product_wsprice);
                 QString tempQuantityPurchased = QString::number(quantityPurchased);
                 *itemQuantityPurchased = tempQuantityPurchased;
                 if(!itemQuantityPurchased->isEmpty()){
@@ -513,7 +505,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     ui->tableWidget->setItem(rowCreated, i, discountEntry);
                 }
                 if (*enableDiscounts){
-                    QString tempDiscount = QString::number(*unitDiscount);
+                    QString tempDiscount = QString::number(addedProduct->product_discount);
                     *discountOnItem = tempDiscount;
                 }else{
                     QString tempDiscount = QString::number(0);
@@ -529,7 +521,7 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     ui->tableWidget->setItem(rowCreated, i, rewardEntry);
                 }
                 if(*enableRewards){
-                    QString tempPoints = QString::number(*unitReward);
+                    QString tempPoints = QString::number(addedProduct->product_rewards);
                     *pointsOnItem = tempPoints;
                 }else{
                     QString tempPoints = QString::number(0);
@@ -545,10 +537,10 @@ void SalesClient::addProductInRowCreated(int &rowCreated, int &quantityPurchased
                     ui->tableWidget->setItem(rowCreated, i, unitSubTotalEntry);
                 }
                 if(*enableDiscounts){
-                    int total = quantityPurchased*(*productPrice-*unitDiscount);
+                    int total = quantityPurchased*(addedProduct->product_wsprice-addedProduct->product_discount);
                     *itemTotalPrice = QString::number(total);
                 }else{
-                    int total = quantityPurchased*(*productPrice);
+                    int total = quantityPurchased*(addedProduct->product_wsprice);
                     *itemTotalPrice = QString::number(total);
                 }
 
@@ -763,10 +755,10 @@ void SalesClient::modifyProductsInTableReduction(int &rowAffected, int &quantity
 
 
 
-void SalesClient::on_btnReduceQtyByOne_clicked()
-{
-    reducedQuantityPurchased();
-}
+//void SalesClient::on_btnReduceQtyByOne_clicked()
+//{
+//    reducedQuantityPurchased();
+//}
 
 void SalesClient::deleteProductFromCart(int &rowAffected, int &quantityValue) {
     int columnsToModifyProducts = 9;
@@ -1146,7 +1138,7 @@ void SalesClient::resetCashierRecords() {
 
 void SalesClient::clearCustomerDetails() {
     isCurrentCustomerDefined = false;
-    ui->lblCustomerPhone->clear();
+//    ui->lblCustomerPhone->clear();
     ui->lblServing->clear();
     ui->lblAvailableRewards->clear();
     ui->lblAvailableCredit->clear();
@@ -1178,7 +1170,7 @@ void SalesClient::setFocusForSales() {
 }
 //PRODUCT MANAGEMENT
 void SalesClient::grabBarcodeFromEntry() {
-    if (ui->le_barcodeEntry->text().isEmpty()){
+    if (ui->le_barcodeEntry->text().isEmpty()&&uniqueID==""){
         QMessageBox::critical(this, "Barcode Empty Cell Error!", "No barcode entered. Please enter a valid barcode!");
     }else{
         uniqueID = ui->le_barcodeEntry->text();
@@ -1212,18 +1204,18 @@ void SalesClient::grabBarcodeFromCompleter(QString& currentProduct) {
                 addedProduct->stockQuantity = query.value(9).toInt();
                 addedProduct->discounted = true;
                 addedProduct->rewarded = true;
-                *addedProductName = addedProduct->product_name;
-                *productQuantity = addedProduct->product_quantity;
-                *productPrice = addedProduct->product_rtprice;
-                *unitPrice = QString::number(*productPrice);
-                *stockQuantityAvailable = addedProduct->stockQuantity;
+//                *addedProductName = addedProduct->product_name;
+//                *productQuantity = addedProduct->product_quantity;
+//                *productPrice = addedProduct->product_rtprice;
+//                *unitPrice = QString::number(*productPrice);
+//                *stockQuantityAvailable = addedProduct->stockQuantity;
 
             }
-            if(!addedProductName->isEmpty()){
-//                scannedProductManagement(*barCodeFromName, *quantityToBeBought);
-            }else{
+//            if(!addedProductName->isEmpty()){
+////                scannedProductManagement(*barCodeFromName, *quantityToBeBought);
+//            }else{
 
-            }
+
         }
     }
 }
@@ -1254,25 +1246,21 @@ void SalesClient::getScannedProductFromDB(QString barcodeScanned) {
             addedProduct->product_rewards = query.value(8).toFloat();
             addedProduct->stockQuantity = query.value(9).toFloat();
 
-            *addedProductId = addedProduct->product_id;
-            *addedProductName = addedProduct->product_name;
-            *productQuantity = addedProduct->product_quantity;
-            *productPrice = addedProduct->product_rtprice;
-            *unitPrice = QString::number(*productPrice);
-            *unitReward = addedProduct->product_rewards;
-            *unitDiscount = addedProduct->product_discount;
-            *stockQuantityAvailable = addedProduct->stockQuantity;
 
         }
-        if(!addedProductName->isEmpty()){
-            if(*stockQuantityAvailable>0){
-                scannedProductManagement(barcodeScanned, *addedProductId, *stockQuantityAvailable);
+        if(addedProduct->product_id!=NULL && uniqueID==addedProduct->product_barcode){
+            if(addedProduct->stockQuantity>0){
+                scannedProductManagement(barcodeScanned, addedProduct->product_id, addedProduct->stockQuantity );
             }else{
                 QMessageBox::critical(this, "Out of Stock Error!", "Manage your stock. You are trying to sell a product out of stock!");
                 return;
             }
         }else{
-
+            QMessageBox::critical(this, "Wrong Barcode!", "Barcode does not exist!");
+            ui->le_barcodeEntry->clear();
+            uniqueID = "";
+            ui->le_barcodeEntry->setFocus();
+            return;
         }
     }
 }
@@ -1339,7 +1327,7 @@ void SalesClient::addNewCustomerToDatabase() {
 }
 
 void SalesClient::loadLabelsWithCustomerData() {
-    ui->lblCustomerPhone->setText(currentServingCustomer->phone);
+//    ui->lblCustomerPhone->setText(currentServingCustomer->phone);
     ui->lblServing->setText(currentServingCustomer->name +" :: "+
                             currentServingCustomer->phone);
     ui->lblAvailableRewards->setText(QString::number(currentServingCustomer->rewardsAvailable));
@@ -1351,12 +1339,12 @@ void SalesClient::loadLabelsWithCustomerData() {
                          QString::number(currentServingCustomer->totalActiveDebts));
 }
 
-void SalesClient::on_btnPlaceOrder_clicked()
-{
-    orderClient = new OrdersClient(this, *currentUser, *enableDiscounts, *enableRewards, *businessAuthorizedPaymentByRewards);
-    orderClient->show();
-    orderClient->setModal(true);
-}
+//void SalesClient::on_btnPlaceOrder_clicked()
+//{
+//    orderClient = new OrdersClient(this, *currentUser, *enableDiscounts, *enableRewards, *businessAuthorizedPaymentByRewards);
+//    orderClient->show();
+//    orderClient->setModal(true);
+//}
 
 void SalesClient::on_btnViewPlacedOrders_clicked()
 {
@@ -1371,4 +1359,116 @@ void SalesClient::on_btnViewProcessedOrders_clicked()
 void SalesClient::on_btnViewDeliveredOrders_clicked()
 {
 
+}
+
+void SalesClient::on_actionOrder_Center_triggered()
+{
+    orderClient = new OrdersClient(this, *currentUser, *enableDiscounts, *enableRewards, *businessAuthorizedPaymentByRewards);
+    orderClient->show();
+    orderClient->setModal(true);
+}
+
+void SalesClient::modifyItemQuantity(int &productId, int &currentQty) {
+    QSqlQuery query(QSqlDatabase::database("MyConnect"));
+    query.prepare(QString("SELECT products.product_id, products.productName, products.productBarcode, products.productMeasurement, products.productWSPrice"
+                          " , products.productRPrice, products.productImage, IFNULL(productDiscounts.amount, 0), IFNULL(productRewards.reward_amount, 0), stock.quantity  FROM products "
+                          " LEFT JOIN productDiscounts ON productDiscounts.product_id=products.product_id "
+                          " LEFT JOIN productRewards ON productRewards.product_id= products.product_id LEFT JOIN stock ON stock.product_id = products.product_id WHERE products.product_id = :productId"));
+    query.bindValue(":productId", productId);
+    if(!query.exec()){
+        QMessageBox::critical(this, "Database Error", query.lastError().text());
+        return;
+    }else {
+        while (query.next()) {
+            addedProduct->product_id = query.value(0).toInt();
+            addedProduct->product_name = query.value(1).toString();
+            addedProduct->product_barcode = query.value(2).toString();
+            addedProduct->product_quantity = query.value(3).toString();
+            addedProduct->product_wsprice = query.value(4).toInt();
+            addedProduct->product_rtprice = query.value(5).toInt();
+            addedProduct->product_image = query.value(6).toInt();
+            addedProduct->product_discount = query.value(7).toFloat();
+            addedProduct->product_rewards = query.value(8).toFloat();
+            addedProduct->stockQuantity = query.value(9).toFloat();
+            Debug(addedProduct->product_id);
+            Debug(addedProduct->stockQuantity);
+            quantityControl = new QuantityControl(this, *currentUser, productId, addedProduct->product_name, currentQty,addedProduct->stockQuantity);
+            quantityControl->show();
+            quantityControl->setModal(true);
+            QObject::connect(quantityControl, SIGNAL(send_Quantity_Changes(int &, int &)), this, SLOT(receive_modifyProductQuantity(int &, int &)));
+
+        }
+
+    }
+}
+
+void SalesClient::keyPressEvent(QKeyEvent *event) {
+    if (event->key()==Qt::Key_Up){
+        ui->tableWidget->setFocus();
+
+        tableRows = ui->tableWidget->rowCount();
+        int rowToModify = tableRows -1;
+
+        if(tableRows<1){
+            QMessageBox::critical(this, "Item Increase Error!", "There are no items to modify");
+        }else{
+//            int rowToModify = tableRows -1;
+//            ui->tableWidget->setCurrentCell(rowToModify, 5);
+
+                tableRows-=1;
+                ui->tableWidget->setCurrentCell(rowToModify, 5);
+            if (event->key()==Qt::Key_Enter){
+                product_id_to_modify = ui->tableWidget->item(rowToModify, 0)->text().toInt();
+                quantity_assigned = ui->tableWidget->item(rowToModify, 5)->text().toInt();
+                LOGxy("[old qty]", product_id_to_modify);
+                LOGxy("[id]", quantity_assigned);
+
+                modifyItemQuantity(product_id_to_modify, quantity_assigned);
+            }
+
+
+
+            //get the id and quantity and then query db for maximum quantity.
+        }
+//        LOGx("next item on list");
+//    }else if(event->key()==Qt::Key_Down){
+//        LOGx("previous item on list");
+//    }else if(event->key()==Qt::Key_Left){
+//        LOGx("decrease item on list");
+//    }else if(event->key()==Qt::Key_Right){
+//        LOGx("increase item on list");
+//    }else if(event->key()==Qt::Key_Delete){
+//        LOGx("increase item on list");
+//    }else if(event->key()==Qt::Key_Enter){
+//        LOGx("increase item on list");
+    }
+}
+
+void SalesClient::receive_modifyProductQuantity(int &productID, int &new_Quantity) {
+    std::map<int, purchasedItem>::iterator it;
+    it = itemsBought->find(productID);
+    if (it != itemsBought->end()) {
+        it->second.quantity_purchased = new_Quantity;
+            int rowsSearch = ui->tableWidget->rowCount();
+            for (int i = 0; i < rowsSearch; i++) {
+                if (ui->tableWidget->item(i, 0)->text().toInt() == productID) {
+                    modifyProductInRowCreated(i, it->second.quantity_purchased);
+                }
+            }
+            quantityControl->close();
+
+            ui->tableWidget->setFocusPolicy(Qt::NoFocus);
+            ui->le_barcodeEntry->clear();
+
+            ui->le_barcodeEntry->setFocus();
+        //update vector and update table
+
+    }
+}
+void SalesClient::on_tableWidget_cellActivated(int row, int column)
+{
+    product_id_to_modify = ui->tableWidget->item(row, 0)->text().toInt();
+    quantity_assigned = ui->tableWidget->item(row, 5)->text().toInt();
+
+    modifyItemQuantity(product_id_to_modify, quantity_assigned);
 }
