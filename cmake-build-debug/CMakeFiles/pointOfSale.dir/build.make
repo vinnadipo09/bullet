@@ -153,6 +153,28 @@ pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/worker.png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/home-run\ (1).png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/user\ (2).png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/final/user\ (1).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/analytics-technology-ss-1920.jpg
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/jgXYNK8U4o4itGBBMRtCKa-1200-80.jpg
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/AdobeStock_288993543-scaled.jpeg
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/big_data_analytics_analysis_statistics_thinkstock_626673360-100749740-large.jpg
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/GettyImages-1132660268.jpg
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/advanced-analytics.jpg
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/data_analytics-shutterstock489.jpg
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/notes.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/coin\ (1).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/circular-refreshment-arrow.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/dashboard.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/coin.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/barcode.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/coins-stack.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/cashier-machine.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/analytics.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/pie-chart.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/refresh-circular-arrow.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/stack-of-coins.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/analytics\ (1).png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/bar-code.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/complete/icons/cashier-machine\ (1).png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/icons/man-avatar.png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/icons/user_small.png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/icons/eye\ (1).png
@@ -235,6 +257,7 @@ pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/new_icons_2/icons
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/new_icons_2/icons8-barcode-scanner-400.png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/new_icons_2/icons8-invisible-90.png
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/new_icons_2/icons8-plus-128.png
+pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/background/bgsales.jpg
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/background/img_1.jpg
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/background/picklit2.jpg
 pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp: ../resources/background/bg1.jpg
@@ -946,9 +969,61 @@ CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/quantitycontrol.cpp -o CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.s
 
+CMakeFiles/pointOfSale.dir/businesslimits.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
+CMakeFiles/pointOfSale.dir/businesslimits.cpp.o: ../businesslimits.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/pointOfSale.dir/businesslimits.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/businesslimits.cpp.o -c /home/vee/pointOfSale/businesslimits.cpp
+
+CMakeFiles/pointOfSale.dir/businesslimits.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/businesslimits.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/businesslimits.cpp > CMakeFiles/pointOfSale.dir/businesslimits.cpp.i
+
+CMakeFiles/pointOfSale.dir/businesslimits.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/businesslimits.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/businesslimits.cpp -o CMakeFiles/pointOfSale.dir/businesslimits.cpp.s
+
+CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
+CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.o: ../viewbusinesslimit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.o -c /home/vee/pointOfSale/viewbusinesslimit.cpp
+
+CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/viewbusinesslimit.cpp > CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.i
+
+CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/viewbusinesslimit.cpp -o CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.s
+
+CMakeFiles/pointOfSale.dir/adminauthentication.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
+CMakeFiles/pointOfSale.dir/adminauthentication.cpp.o: ../adminauthentication.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/pointOfSale.dir/adminauthentication.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/adminauthentication.cpp.o -c /home/vee/pointOfSale/adminauthentication.cpp
+
+CMakeFiles/pointOfSale.dir/adminauthentication.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/adminauthentication.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/adminauthentication.cpp > CMakeFiles/pointOfSale.dir/adminauthentication.cpp.i
+
+CMakeFiles/pointOfSale.dir/adminauthentication.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/adminauthentication.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/adminauthentication.cpp -o CMakeFiles/pointOfSale.dir/adminauthentication.cpp.s
+
+CMakeFiles/pointOfSale.dir/orderscenter.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
+CMakeFiles/pointOfSale.dir/orderscenter.cpp.o: ../orderscenter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/pointOfSale.dir/orderscenter.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/orderscenter.cpp.o -c /home/vee/pointOfSale/orderscenter.cpp
+
+CMakeFiles/pointOfSale.dir/orderscenter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pointOfSale.dir/orderscenter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vee/pointOfSale/orderscenter.cpp > CMakeFiles/pointOfSale.dir/orderscenter.cpp.i
+
+CMakeFiles/pointOfSale.dir/orderscenter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pointOfSale.dir/orderscenter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vee/pointOfSale/orderscenter.cpp -o CMakeFiles/pointOfSale.dir/orderscenter.cpp.s
+
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o: CMakeFiles/pointOfSale.dir/flags.make
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o: pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/vee/pointOfSale/cmake-build-debug/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp
 
 CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.i: cmake_force
@@ -1014,6 +1089,10 @@ pointOfSale_OBJECTS = \
 "CMakeFiles/pointOfSale.dir/existingsessionverifier.cpp.o" \
 "CMakeFiles/pointOfSale.dir/ordersclient.cpp.o" \
 "CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o" \
+"CMakeFiles/pointOfSale.dir/businesslimits.cpp.o" \
+"CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.o" \
+"CMakeFiles/pointOfSale.dir/adminauthentication.cpp.o" \
+"CMakeFiles/pointOfSale.dir/orderscenter.cpp.o" \
 "CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 
 # External object files for target pointOfSale
@@ -1072,6 +1151,10 @@ pointOfSale: CMakeFiles/pointOfSale.dir/salesclient.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/existingsessionverifier.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/ordersclient.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/quantitycontrol.cpp.o
+pointOfSale: CMakeFiles/pointOfSale.dir/businesslimits.cpp.o
+pointOfSale: CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.o
+pointOfSale: CMakeFiles/pointOfSale.dir/adminauthentication.cpp.o
+pointOfSale: CMakeFiles/pointOfSale.dir/orderscenter.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/pointOfSale_autogen/EWIEGA46WW/qrc_resources.cpp.o
 pointOfSale: CMakeFiles/pointOfSale.dir/build.make
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.9.5
@@ -1081,7 +1164,7 @@ pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.9.5
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.9.5
 pointOfSale: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.9.5
 pointOfSale: CMakeFiles/pointOfSale.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Linking CXX executable pointOfSale"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vee/pointOfSale/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Linking CXX executable pointOfSale"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pointOfSale.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -15,7 +15,7 @@ class QuantityControl : public QDialog
     Q_OBJECT
 
 public:
-    explicit QuantityControl(QWidget *parent, loggedUser &currentLoggedInUser, int& productID, QString& product, int &currentQty, int &maxQty);
+    explicit QuantityControl(QWidget *parent, loggedUser &currentLoggedInUser, int& productID, QString& product, int &currentQty, int &maxQty, int &current_row);
     ~QuantityControl();
 
 private slots:
@@ -26,6 +26,8 @@ private slots:
 
     void on_btnOK_clicked();
 
+    void on_btnDeleteItem_clicked();
+
 private:
     Ui::QuantityControl *ui;
 private:
@@ -33,12 +35,16 @@ private:
     int* maximumQty;
     int* assignedQty;
     int* productID_toModify;
+    int* modifiedQty;
+    int* row_to_modify;
+
 private:
     void keyPressEvent(QKeyEvent *event);
     int minimumValue = 1;
 
 signals:
-    void send_Quantity_Changes(int &productId, int &quantity);
+    void sendQuantityChanged(int &productId, int &originalQty, int &newQty);
+    void itemDeleted(int &productId, int &originalQty, int &newQty);
 };
 
 #endif // QUANTITYCONTROL_H

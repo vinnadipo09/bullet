@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_QuantityControl_t {
-    QByteArrayData data[11];
-    char stringdata0[181];
+    QByteArrayData data[14];
+    char stringdata0[226];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,23 +32,27 @@ struct qt_meta_stringdata_QuantityControl_t {
 static const qt_meta_stringdata_QuantityControl_t qt_meta_stringdata_QuantityControl = {
     {
 QT_MOC_LITERAL(0, 0, 15), // "QuantityControl"
-QT_MOC_LITERAL(1, 16, 21), // "send_Quantity_Changes"
-QT_MOC_LITERAL(2, 38, 0), // ""
-QT_MOC_LITERAL(3, 39, 4), // "int&"
-QT_MOC_LITERAL(4, 44, 9), // "productId"
-QT_MOC_LITERAL(5, 54, 8), // "quantity"
-QT_MOC_LITERAL(6, 63, 38), // "on_lineEditProductQuantity_te..."
-QT_MOC_LITERAL(7, 102, 4), // "arg1"
-QT_MOC_LITERAL(8, 107, 31), // "on_spinBoxQuantity_valueChanged"
-QT_MOC_LITERAL(9, 139, 24), // "on_btnApproveQty_clicked"
-QT_MOC_LITERAL(10, 164, 16) // "on_btnOK_clicked"
+QT_MOC_LITERAL(1, 16, 19), // "sendQuantityChanged"
+QT_MOC_LITERAL(2, 36, 0), // ""
+QT_MOC_LITERAL(3, 37, 4), // "int&"
+QT_MOC_LITERAL(4, 42, 9), // "productId"
+QT_MOC_LITERAL(5, 52, 11), // "originalQty"
+QT_MOC_LITERAL(6, 64, 6), // "newQty"
+QT_MOC_LITERAL(7, 71, 11), // "itemDeleted"
+QT_MOC_LITERAL(8, 83, 38), // "on_lineEditProductQuantity_te..."
+QT_MOC_LITERAL(9, 122, 4), // "arg1"
+QT_MOC_LITERAL(10, 127, 31), // "on_spinBoxQuantity_valueChanged"
+QT_MOC_LITERAL(11, 159, 24), // "on_btnApproveQty_clicked"
+QT_MOC_LITERAL(12, 184, 16), // "on_btnOK_clicked"
+QT_MOC_LITERAL(13, 201, 24) // "on_btnDeleteItem_clicked"
 
     },
-    "QuantityControl\0send_Quantity_Changes\0"
-    "\0int&\0productId\0quantity\0"
-    "on_lineEditProductQuantity_textChanged\0"
+    "QuantityControl\0sendQuantityChanged\0"
+    "\0int&\0productId\0originalQty\0newQty\0"
+    "itemDeleted\0on_lineEditProductQuantity_textChanged\0"
     "arg1\0on_spinBoxQuantity_valueChanged\0"
-    "on_btnApproveQty_clicked\0on_btnOK_clicked"
+    "on_btnApproveQty_clicked\0on_btnOK_clicked\0"
+    "on_btnDeleteItem_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,28 +62,32 @@ static const uint qt_meta_data_QuantityControl[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   39,    2, 0x06 /* Public */,
+       1,    3,   49,    2, 0x06 /* Public */,
+       7,    3,   56,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   44,    2, 0x08 /* Private */,
-       8,    1,   47,    2, 0x08 /* Private */,
-       9,    0,   50,    2, 0x08 /* Private */,
-      10,    0,   51,    2, 0x08 /* Private */,
+       8,    1,   63,    2, 0x08 /* Private */,
+      10,    1,   66,    2, 0x08 /* Private */,
+      11,    0,   69,    2, 0x08 /* Private */,
+      12,    0,   70,    2, 0x08 /* Private */,
+      13,    0,   71,    2, 0x08 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3,    4,    5,
+    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3, 0x80000000 | 3,    4,    5,    6,
+    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3, 0x80000000 | 3,    4,    5,    6,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString,    7,
-    QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void, QMetaType::QString,    9,
+    QMetaType::Void, QMetaType::Int,    9,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -92,19 +100,28 @@ void QuantityControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         QuantityControl *_t = static_cast<QuantityControl *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->send_Quantity_Changes((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 1: _t->on_lineEditProductQuantity_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 2: _t->on_spinBoxQuantity_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 3: _t->on_btnApproveQty_clicked(); break;
-        case 4: _t->on_btnOK_clicked(); break;
+        case 0: _t->sendQuantityChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 1: _t->itemDeleted((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 2: _t->on_lineEditProductQuantity_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 3: _t->on_spinBoxQuantity_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->on_btnApproveQty_clicked(); break;
+        case 5: _t->on_btnOK_clicked(); break;
+        case 6: _t->on_btnDeleteItem_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            typedef void (QuantityControl::*_t)(int & , int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QuantityControl::send_Quantity_Changes)) {
+            typedef void (QuantityControl::*_t)(int & , int & , int & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QuantityControl::sendQuantityChanged)) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            typedef void (QuantityControl::*_t)(int & , int & , int & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QuantityControl::itemDeleted)) {
+                *result = 1;
                 return;
             }
         }
@@ -136,22 +153,29 @@ int QuantityControl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }
 
 // SIGNAL 0
-void QuantityControl::send_Quantity_Changes(int & _t1, int & _t2)
+void QuantityControl::sendQuantityChanged(int & _t1, int & _t2, int & _t3)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void QuantityControl::itemDeleted(int & _t1, int & _t2, int & _t3)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

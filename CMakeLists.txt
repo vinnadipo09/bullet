@@ -225,8 +225,8 @@ else()
     qcustomplot.h
 
     salesclient.cpp
-          salesclient.h
-          salesclient.ui
+    salesclient.h
+    salesclient.ui
 
     existingsessionverifier.cpp
     existingsessionverifier.h
@@ -239,7 +239,25 @@ else()
     quantitycontrol.cpp
     quantitycontrol.h
     quantitycontrol.ui
+
+    businesslimits.cpp
+    businesslimits.h
+    businesslimits.ui
+
+    viewbusinesslimit.cpp
+    viewbusinesslimit.h
+    viewbusinesslimit.ui
+
+    adminauthentication.cpp
+    adminauthentication.h
+    adminauthentication.ui
+
+    orderscenter.cpp
+    orderscenter.h
+    orderscenter.ui
+
+          
   )
 endif()
 
-target_link_libraries(pointOfSale PRIVATE Qt5::Widgets Qt5::Sql Qt5::Charts Qt5::PrintSupport libmysqlclient.so)
+target_link_libraries(pointOfSale PRIVATE Qt5::Widgets Qt5::Sql Qt5::Charts Qt5::PrintSupport )

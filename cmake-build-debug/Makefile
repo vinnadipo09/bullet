@@ -379,6 +379,33 @@ addtransactiontype.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/addtransactiontype.cpp.s
 .PHONY : addtransactiontype.cpp.s
 
+adminauthentication.o: adminauthentication.cpp.o
+
+.PHONY : adminauthentication.o
+
+# target to build an object file
+adminauthentication.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/adminauthentication.cpp.o
+.PHONY : adminauthentication.cpp.o
+
+adminauthentication.i: adminauthentication.cpp.i
+
+.PHONY : adminauthentication.i
+
+# target to preprocess a source file
+adminauthentication.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/adminauthentication.cpp.i
+.PHONY : adminauthentication.cpp.i
+
+adminauthentication.s: adminauthentication.cpp.s
+
+.PHONY : adminauthentication.s
+
+# target to generate assembly for a file
+adminauthentication.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/adminauthentication.cpp.s
+.PHONY : adminauthentication.cpp.s
+
 adminwindow.o: adminwindow.cpp.o
 
 .PHONY : adminwindow.o
@@ -405,6 +432,33 @@ adminwindow.s: adminwindow.cpp.s
 adminwindow.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/adminwindow.cpp.s
 .PHONY : adminwindow.cpp.s
+
+businesslimits.o: businesslimits.cpp.o
+
+.PHONY : businesslimits.o
+
+# target to build an object file
+businesslimits.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/businesslimits.cpp.o
+.PHONY : businesslimits.cpp.o
+
+businesslimits.i: businesslimits.cpp.i
+
+.PHONY : businesslimits.i
+
+# target to preprocess a source file
+businesslimits.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/businesslimits.cpp.i
+.PHONY : businesslimits.cpp.i
+
+businesslimits.s: businesslimits.cpp.s
+
+.PHONY : businesslimits.s
+
+# target to generate assembly for a file
+businesslimits.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/businesslimits.cpp.s
+.PHONY : businesslimits.cpp.s
 
 cashierwindow.o: cashierwindow.cpp.o
 
@@ -1027,6 +1081,33 @@ mainslice.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/mainslice.cpp.s
 .PHONY : mainslice.cpp.s
 
+orderscenter.o: orderscenter.cpp.o
+
+.PHONY : orderscenter.o
+
+# target to build an object file
+orderscenter.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/orderscenter.cpp.o
+.PHONY : orderscenter.cpp.o
+
+orderscenter.i: orderscenter.cpp.i
+
+.PHONY : orderscenter.i
+
+# target to preprocess a source file
+orderscenter.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/orderscenter.cpp.i
+.PHONY : orderscenter.cpp.i
+
+orderscenter.s: orderscenter.cpp.s
+
+.PHONY : orderscenter.s
+
+# target to generate assembly for a file
+orderscenter.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/orderscenter.cpp.s
+.PHONY : orderscenter.cpp.s
+
 ordersclient.o: ordersclient.cpp.o
 
 .PHONY : ordersclient.o
@@ -1486,6 +1567,33 @@ viaddialog.cpp.s:
 	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/viaddialog.cpp.s
 .PHONY : viaddialog.cpp.s
 
+viewbusinesslimit.o: viewbusinesslimit.cpp.o
+
+.PHONY : viewbusinesslimit.o
+
+# target to build an object file
+viewbusinesslimit.cpp.o:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.o
+.PHONY : viewbusinesslimit.cpp.o
+
+viewbusinesslimit.i: viewbusinesslimit.cpp.i
+
+.PHONY : viewbusinesslimit.i
+
+# target to preprocess a source file
+viewbusinesslimit.cpp.i:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.i
+.PHONY : viewbusinesslimit.cpp.i
+
+viewbusinesslimit.s: viewbusinesslimit.cpp.s
+
+.PHONY : viewbusinesslimit.s
+
+# target to generate assembly for a file
+viewbusinesslimit.cpp.s:
+	$(MAKE) -f CMakeFiles/pointOfSale.dir/build.make CMakeFiles/pointOfSale.dir/viewbusinesslimit.cpp.s
+.PHONY : viewbusinesslimit.cpp.s
+
 viewcustomer.o: viewcustomer.cpp.o
 
 .PHONY : viewcustomer.o
@@ -1631,9 +1739,15 @@ help:
 	@echo "... addtransactiontype.o"
 	@echo "... addtransactiontype.i"
 	@echo "... addtransactiontype.s"
+	@echo "... adminauthentication.o"
+	@echo "... adminauthentication.i"
+	@echo "... adminauthentication.s"
 	@echo "... adminwindow.o"
 	@echo "... adminwindow.i"
 	@echo "... adminwindow.s"
+	@echo "... businesslimits.o"
+	@echo "... businesslimits.i"
+	@echo "... businesslimits.s"
 	@echo "... cashierwindow.o"
 	@echo "... cashierwindow.i"
 	@echo "... cashierwindow.s"
@@ -1703,6 +1817,9 @@ help:
 	@echo "... mainslice.o"
 	@echo "... mainslice.i"
 	@echo "... mainslice.s"
+	@echo "... orderscenter.o"
+	@echo "... orderscenter.i"
+	@echo "... orderscenter.s"
 	@echo "... ordersclient.o"
 	@echo "... ordersclient.i"
 	@echo "... ordersclient.s"
@@ -1754,6 +1871,9 @@ help:
 	@echo "... viaddialog.o"
 	@echo "... viaddialog.i"
 	@echo "... viaddialog.s"
+	@echo "... viewbusinesslimit.o"
+	@echo "... viewbusinesslimit.i"
+	@echo "... viewbusinesslimit.s"
 	@echo "... viewcustomer.o"
 	@echo "... viewcustomer.i"
 	@echo "... viewcustomer.s"

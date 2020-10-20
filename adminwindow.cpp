@@ -33,13 +33,14 @@ AdminWindow::AdminWindow(QWidget *parent, loggedUser &currentLoggedInUser) :
     loadProductCategory();
     loadSuppliers();
     loadZones();
-    loadStockValues();
+//    loadStockValues();
     loadCashTransactions();
     loadAllCustomers();
     loadAllAgents();
     loadOpeningsAndClosings();
-//    ui->stackedWidget->setCurrentIndex(0);
-//    loadCharts();
+    loadBusinessLimits();
+    ui->stackedWidget->setCurrentIndex(0);
+    loadCharts();
 }
 
 AdminWindow::~AdminWindow()
@@ -640,7 +641,7 @@ void AdminWindow::on_pb_loadTransactionTypes_clicked()
 
 void AdminWindow::loadTransactionTypes() {
     ui->tw_transactionTypes->horizontalHeader()->setVisible(true);
-    ui->tw_transactionTypes->horizontalHeader()->setDefaultSectionSize(200);
+    ui->tw_transactionTypes->horizontalHeader()->setDefaultSectionSize(150);
     ui->tw_transactionTypes->horizontalHeader()->setStretchLastSection(true);
     if(mainWindowConnection->conn_open()){
         QSqlQuery query(QSqlDatabase::database("MyConnect"));
@@ -652,7 +653,7 @@ void AdminWindow::loadTransactionTypes() {
             while (query.next()){
                 int num_transaction_type_rows = query.value(0).toInt();
                 ui->tw_transactionTypes->setRowCount(num_transaction_type_rows);
-                query.prepare("SELECT transaction_type.transaction_type, transaction_type.effect, users.username FROM (transaction_type "
+                query.prepare("SELECT transaction_type.trans_type_id, transaction_type.transaction_type, transaction_type.effect, users.username FROM (transaction_type "
                               "INNER JOIN users ON transaction_type.user_id = users.user_id)");
                 if(!query.exec()){
                     QMessageBox::critical(this, "Database Error", query.lastError().text());
@@ -660,16 +661,11 @@ void AdminWindow::loadTransactionTypes() {
 
                     for(rows=0, query.first(); query.isValid(); query.next(), rows++){
                         for(columns=0; columns<5; columns++){
-                            if(columns==3){
+                            if(columns==4){
                                 QPushButton* btn_viewTransaction = new QPushButton;
                                 btn_viewTransaction->setText("View");
-                                ui->tw_transactionTypes->setCellWidget(rows, 3, btn_viewTransaction);
+                                ui->tw_transactionTypes->setCellWidget(rows, 4, btn_viewTransaction);
                                 QObject::connect(btn_viewTransaction, &QPushButton::clicked, this, &AdminWindow::receiveViewTransType);
-                            }else if(columns==4){
-                                QPushButton* btn_deleteTransType = new QPushButton;
-                                btn_deleteTransType->setText("Delete");
-                                ui->tw_transactionTypes->setCellWidget(rows, 4, btn_deleteTransType);
-                                QObject::connect(btn_deleteTransType, &QPushButton::clicked, this, &AdminWindow::receiveDeleteTransType);
                             }
                             ui->tw_transactionTypes->setItem(rows, columns, new QTableWidgetItem(query.value(columns).toString()));
 
@@ -730,6 +726,104 @@ void AdminWindow::deleteTransactionType(QString &currentTransType) {
     }
 
 }
+void AdminWindow::loadBusinessLimits() {
+    ui->twBusinessLImits->horizontalHeader()->setVisible(true);
+    ui->twBusinessLImits->horizontalHeader()->setDefaultSectionSize(120);
+    ui->twBusinessLImits->horizontalHeader()->setStretchLastSection(true);
+    if(mainWindowConnection->conn_open()){
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+        query.prepare(QString("SELECT COUNT(limit_id) FROM business_limits"));
+        if(!query.exec()){
+            QMessageBox::critical(this, "Database Error", query.lastError().text());
+            return;
+        }else{
+            while (query.next()){
+                int num_limit_rows = query.value(0).toInt();
+                ui->twBusinessLImits->setRowCount(num_limit_rows);
+                query.prepare("SELECT business_limits.limit_id, business_limits.limit_name, business_limits.limit_scale, business_limits.limit_amount, users.username FROM (business_limits "
+                              "INNER JOIN users ON business_limits.user_id = users.user_id)");
+                if(!query.exec()){
+                    QMessageBox::critical(this, "Database Error", query.lastError().text());
+                }else{
+
+                    for(rows=0, query.first(); query.isValid(); query.next(), rows++){
+                        for(columns=0; columns<6; columns++){
+                            if(columns==5){
+                                QPushButton* btn_viewLimit = new QPushButton;
+                                btn_viewLimit->setText("View");
+                                ui->twBusinessLImits->setCellWidget(rows, 5, btn_viewLimit);
+                                QObject::connect(btn_viewLimit, &QPushButton::clicked, this, &AdminWindow::receive_viewLimitCalled);
+                            }
+                            ui->twBusinessLImits->setItem(rows, columns, new QTableWidgetItem(query.value(columns).toString()));
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+void AdminWindow::receive_viewLimitCalled() {
+    int row;
+    int col;
+    for(row=0; row<ui->twBusinessLImits->rowCount(); row++){
+        for(col=0; col<ui->twBusinessLImits->columnCount(); col++){
+            if(sender() == ui->twBusinessLImits->cellWidget(row,col)){
+                int currentLimitId = ui->twBusinessLImits->item(row, 0)->text().toInt();
+                QString limitName = ui->twBusinessLImits->item(row, 1)->text();
+                QString limitScale = ui->twBusinessLImits->item(row, 2)->text();
+                int limitAmount = ui->twBusinessLImits->item(row, 3)->text().toInt();
+
+                viewBusinessLimit = new ViewBusinessLimit(this, *adminUser, currentLimitId,
+                        limitName, limitAmount, limitScale);
+                viewBusinessLimit->show();
+                viewBusinessLimit->setModal(true);
+
+                QObject::connect(viewBusinessLimit, SIGNAL(sendEditJobComplete()), this,
+                                 SLOT(receiveUpdateFromLimit()));
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void AdminWindow::loadUsersDataFromDb() {
     loadSuperAdmins();
@@ -1293,6 +1387,7 @@ void AdminWindow::loadStockLogs() {
                     query.bindValue(":myOffset", *stockLogsOffset);
                     if (!query.exec()) {
                         QMessageBox::critical(this, "Database Error", query.lastError().text());
+                        Debug(query.lastError());
                     } else {
                         for (rows = 0, query.first(); query.isValid(); query.next(), rows++) {
                             for (columns = 0; columns < 9; columns++) {
@@ -1711,3 +1806,27 @@ void AdminWindow::loadCharts() {
 //    this->setCentralWidget(chartView);
 //    this->show();
 }
+
+void AdminWindow::on_btnNewLimit_clicked()
+{
+    businessLimits = new BusinessLimits(this, *adminUser);
+    businessLimits->setModal(true);
+    businessLimits->show();
+    QObject::connect(businessLimits, SIGNAL(sendLimitTaskCompleteWithoutModifications()), this,
+                     SLOT(receiveLimitUpdate()));
+    QObject::connect(businessLimits, SIGNAL(sendNewLimitAddedSuccessfully()), this,
+                     SLOT(receiveLimitUpdate()));
+}
+
+void AdminWindow::receiveLimitUpdate() {
+    businessLimits->close();
+    loadBusinessLimits();
+}
+
+void AdminWindow::receiveUpdateFromLimit() {
+    viewBusinessLimit->close();
+    loadBusinessLimits();
+}
+
+
+

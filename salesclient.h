@@ -12,6 +12,7 @@
 #include <iostream>
 #include <iterator>
 #include <map>
+#include <QFocusEvent>
 #include <QKeyEvent>
 #include "debugger.h"
 #include "databaseconnection.h"
@@ -24,6 +25,8 @@
 #include "existingsessionverifier.h"
 #include "ordersclient.h"
 #include "quantitycontrol.h"
+#include "adminauthentication.h"
+#include "orderscenter.h"
 namespace Ui {
 class SalesClient;
 }
@@ -50,7 +53,9 @@ private:
 private:
     void scannedProductManagement(QString &, int& databaseId, int & stockAvailable);
     std::map<int, purchasedItem>*itemsBought;
-    void modifyProductInRowCreated( int &rowAffected, int &quantityValue);
+    void increaseProductInExistingRow( int &rowAffected, int &quantityValue);
+    void decreaseProductInExistingRow( int &rowAffected, int &quantityValue);
+    void maintainProductInExistingRow( int &rowAffected, int &quantityValue);
     int initial_quantity=1;
     void createRowsToAddProductPurchased(int& quantityValue);
     int currentRowBeingInserted;
@@ -218,15 +223,10 @@ private:
     //  QUANTITY CONTROL
 private:
     QuantityControl* quantityControl;
-    void modifyItemQuantity(int &productId, int &currentQty);
+    void modifyItemQuantity(int &productId, int &currentQty, int current_row);
     void keyPressEvent(QKeyEvent *event);
-
     int* productId_to_modify;
     int* productQty_to_modify;
-
-
-
-
     int tableRows;
     int row_to_modify;
     int product_id_to_modify;
@@ -234,9 +234,116 @@ private:
     int quantity_assigned;
     ModifiedQuantity beforeModification;
     //    ModifiedQuantity increaseItemQuantity();
+    void alteredProductManagement(int & currentProductId, int & stockAvailable, int &newQty);
+    int* quantityChange;
+    int* originallyAssignedQty;
+    int* priorityRow;
+    void deleteProductFromCart(int & rowAffected, int &productId, int &subTotal, int &rewards, int &discount);
+    void setUpdatedSalesValues();
 private slots:
-    void receive_modifyProductQuantity(int & productID, int& new_Quantity);
+    void receiveQtyChange(int & productId, int &originalQty, int &newQty);
     void on_tableWidget_cellActivated(int row, int column);
+
+    void on_cbAdminPriviledges_stateChanged(int arg1);
+
+    void on_cbAdminPriviledges_clicked();
+
+    void receiveAdminAuthenticationSuccessful();
+    void receiveAdminAuthenticationFailed();
+
+private:
+    void updateDiscountEnable(int & productId, int & quantityBought);
+    void updateDiscountDisable(int & productId);
+    void updateRewardsEnable(int & productId, int & quantityBought);
+    void updateRewardsDisable(int & productId);
+    void updateRewardsMidway(std::map<int, purchasedItem>&itemsBought);
+    void updateDiscountsMidway(std::map<int, purchasedItem>&itemsBought);
+    void changeToWholesaleMidway(std::map<int, purchasedItem>&itemsBought);
+    void changeToRetailMidway(std::map<int, purchasedItem>&itemsBought);
+
+    bool* discountEnabledBeforeWholesale;
+    bool* rewardsEnabledBeforeWholesale;
+    bool* rewardsPaymentEnabledBeforeWholesale;
+
+    void setToWholesaleMigration();
+    void setToRetailMigration();
+
+    void setWholesalePrices(std::map<int, purchasedItem> &itemsBought);
+    void obtainWholesaleValuesAndUpdateTable(int & productId);
+
+    void setRetailPrices(std::map<int, purchasedItem> &itemsBought);
+    void obtainRetailValuesAndUpdateTable(int & productId);
+
+    void toWholeSaleDisableSystems();
+    void fromWholeSaleEnableSystems();
+
+private:
+    void addLimitsToCombobox();
+    void setDefaultMinimumRewardLimit();
+    void setDefaultMaximumCredit();
+
+private:
+    AdminAuthentication* adminAuthentication;
+    int* minimumRewardForPayment;
+    int* maximumCreditAllowedByBusiness;
+private:
+    OrdersCenter* ordersCenter;
+    void delete_item_from_dialog();
+private slots:
+    void edit_item_in_row(int row, int column);
+    void on_btn_queue_one_clicked();
+    void on_btn_queue_two_clicked();
+    void on_btn_queue_three_clicked();
+    void on_btn_queue_four_clicked();
+
+    void on_btnQueueSale_clicked();
+
+private:
+    std::map<int, bool>*queue_control;
+    void initialize_queue(std::map<int, bool> &);
+    void check_empty_queue(std::map<int, bool> &);
+    void load_queue(int &);
+    std::map<int, queue_item> *queue_items;
+    bool check_queue_occupied();
+    int free_queue;
+    int *occupied_queues;
+    void set_queue_button(int &);
+    void update_queue_control(int &);
+    bool queue_available = false;
+    void reset_sale_values();
+    void restore_queue_client(int &, std::map<int, queue_item> &);
+    void check_if_sale_in_progress();
+    void complete_queue_restoration(int &, std::map<int, queue_item> &);
+    bool sale_in_progress = false;
+    void load_items_with_predefined_quantity(QString &, int&);
+    void empty_queue(int&);
+    bool queue_one_occupied = false;
+    bool queue_two_occupied = false;
+    bool queue_three_occupied = false;
+    bool queue_four_occupied = false;
+    void set_queue_status_to_occupied(std::map<int, queue_item>&);
+
+
+
+
+
+
+
+
+    bool check_if_products_on_table();
+    bool products_on_table;
+;
+    //get products bought-all data
+    //get discount enabled-if was enabled and now disabled
+    //get customer data if defined
+    //leave current id
+    //assign a button
+    //check if queue one is free
+    //check if two is free
+    //check if any quee is occupied
+    //data pushed to a new vector
+
+
 };
 
 

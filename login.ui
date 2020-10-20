@@ -10,6 +10,18 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Login</string>
   </property>
@@ -26,7 +38,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/resources/wood.jpg);</string>
+    <string notr="true">background-image: url(:/resources/complete/data_analytics-shutterstock489.jpg);</string>
    </property>
    <property name="text">
     <string/>
@@ -49,9 +61,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>257</y>
-     <width>371</width>
-     <height>71</height>
+     <y>10</y>
+     <width>381</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -63,7 +75,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(46, 52, 54);
+    <string notr="true">background-color: rgb(52, 101, 164);
 color: rgb(238, 238, 236);
 border-radius: 12px;</string>
    </property>
@@ -74,8 +86,8 @@ border-radius: 12px;</string>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>15</x>
-     <y>270</y>
+     <x>10</x>
+     <y>0</y>
      <width>51</width>
      <height>51</height>
     </rect>
@@ -91,11 +103,14 @@ border-radius: 5px;</string>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>220</y>
-     <width>301</width>
-     <height>181</height>
+     <x>190</x>
+     <y>210</y>
+     <width>421</width>
+     <height>241</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(114, 159, 207);</string>
    </property>
    <property name="title">
     <string>User Login</string>
@@ -103,10 +118,10 @@ border-radius: 5px;</string>
    <widget class="QLineEdit" name="le_username">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>40</y>
+      <x>100</x>
+      <y>60</y>
       <width>221</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursorPosition">
@@ -119,10 +134,10 @@ border-radius: 5px;</string>
    <widget class="QPushButton" name="btnLogin">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>130</y>
-      <width>91</width>
-      <height>31</height>
+      <x>100</x>
+      <y>160</y>
+      <width>101</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -142,10 +157,10 @@ border-radius: 5px;</string>
    <widget class="QLineEdit" name="le_userPassword">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>80</y>
+      <x>100</x>
+      <y>100</y>
       <width>221</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="echoMode">
@@ -158,10 +173,10 @@ border-radius: 5px;</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>80</y>
-      <width>20</width>
-      <height>20</height>
+      <x>50</x>
+      <y>100</y>
+      <width>31</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -174,10 +189,10 @@ border-radius: 5px;</string>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>20</width>
-      <height>20</height>
+      <x>49</x>
+      <y>59</y>
+      <width>31</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -190,10 +205,10 @@ border-radius: 5px;</string>
    <widget class="QPushButton" name="btnCancel">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>130</y>
-      <width>91</width>
-      <height>31</height>
+      <x>220</x>
+      <y>160</y>
+      <width>101</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -214,8 +229,8 @@ border-radius: 5px;</string>
   <widget class="QLabel" name="lblTime">
    <property name="geometry">
     <rect>
-     <x>278</x>
-     <y>330</y>
+     <x>690</x>
+     <y>560</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -226,7 +241,7 @@ border-radius: 5px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">
+    <string notr="true">background-color: rgb(52, 101, 164);
 color: rgb(255, 255, 255);
 padding-left:8px;
 border-radius: 8px;</string>
@@ -238,8 +253,8 @@ border-radius: 8px;</string>
   <widget class="QLabel" name="lblDate">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>330</y>
+     <x>562</x>
+     <y>560</y>
      <width>111</width>
      <height>31</height>
     </rect>
@@ -250,7 +265,7 @@ border-radius: 8px;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">
+    <string notr="true">background-color: rgb(52, 101, 164);
 color: rgb(255, 255, 255);
 padding-left:8px;
 border-radius: 8px;</string>
@@ -262,8 +277,8 @@ border-radius: 8px;</string>
   <widget class="Line" name="line_2">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>330</y>
+     <x>682</x>
+     <y>560</y>
      <width>3</width>
      <height>30</height>
     </rect>

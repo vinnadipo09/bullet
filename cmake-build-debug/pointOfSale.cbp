@@ -211,6 +211,15 @@
 		<Unit filename="/home/vee/pointOfSale/addtransactiontype.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/adminauthentication.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/adminauthentication.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/adminauthentication.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/adminwindow.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>
@@ -218,6 +227,15 @@
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/adminwindow.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/businesslimits.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/businesslimits.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/businesslimits.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/cashierwindow.cpp">
@@ -418,6 +436,15 @@
 		<Unit filename="/home/vee/pointOfSale/mainslice.h">
 			<Option target="pointOfSale"/>
 		</Unit>
+		<Unit filename="/home/vee/pointOfSale/orderscenter.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/orderscenter.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/orderscenter.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
 		<Unit filename="/home/vee/pointOfSale/ordersclient.cpp">
 			<Option target="pointOfSale"/>
 		</Unit>
@@ -551,6 +578,15 @@
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/viaddialog.ui">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewbusinesslimit.cpp">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewbusinesslimit.h">
+			<Option target="pointOfSale"/>
+		</Unit>
+		<Unit filename="/home/vee/pointOfSale/viewbusinesslimit.ui">
 			<Option target="pointOfSale"/>
 		</Unit>
 		<Unit filename="/home/vee/pointOfSale/viewcustomer.cpp">

@@ -2,7 +2,8 @@
 #include "ui_completepaymentwindow.h"
 CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser, int& currentSaleId,
         std::map<int, purchasedItem>&productsBought, bool &rewards,
-        float rewardTotal, bool &discounts, float discountTotal, Customer& currentServingCustomer, int& totalToPay) :
+        float rewardTotal, bool &discounts, float discountTotal,
+        Customer& currentServingCustomer, int& totalToPay, int& minimumReward, int & maximumCredit) :
     QDialog(parent),
     ui(new Ui::CompletePaymentWindow)
 {
@@ -24,11 +25,9 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     ui->cb_paymentMethod->setCurrentIndex(1);
 
     ui->le_amountTotal->setText(QString::number(*amountToBePayed));
-    ui->le_paymentMethod->setText(ui->cb_paymentMethod->currentText());
-    ui->le_amountPaid->setText(QString::number(*amountPaid));
-    setPaymentLabel();
-    ui->le_amountPaid->setFocus();
-    QObject::connect(ui->le_amountPaid, SIGNAL(returnPressed()),
+    ui->lblValueOne->setText(QString::number(*amountPaid));
+    ui->lblValueOne->setFocus();
+    QObject::connect(ui->lblValueOne, SIGNAL(returnPressed()),
                      this, SLOT(getCashComputeBalance()));
 
     productRewardsEnabled = new bool;
@@ -39,7 +38,12 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     customerAvailableRewards = new float;
 //ui->le_amountPaid->textChanged()
 
+    minimumRewardForPayment = new int;
+    maximumBusinessCredit= new int;
 
+    //COME MANAGE ME LATER
+    *minimumRewardForPayment = minimumReward;
+    *maximumBusinessCredit= maximumCredit;
 
 
 
@@ -48,9 +52,18 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     servingCustomer = new Customer;
     productsToBill = new std::map<int, purchasedItem>;
 
+    cashValue = new int;
+    creditValue =new int;
+    rewardValue = new int;
+
+    *cashValue = 0;
+    creditValue = 0;
+    rewardValue = 0;
+
     *currentUser = currentLoggedInUser;
     *servingCustomer = currentServingCustomer;
     *productsToBill = productsBought;
+
 
     totalDiscount = new float;
     totalRewards = new float;
@@ -66,18 +79,54 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     connect(ui->cb_paymentMethod, QOverload<int>::of(&QComboBox::currentIndexChanged),
             [=](int index){ /* ... */
                 if(index==0){
+                    ui->lblValueOneTitle->setText("Cash: ");
+                    ui->lblValueOne->setFocus();
+                    ui->lblValueTwo->setDisabled(true);
                     *paymentMethod = "Cash";
                 }else if(index==1){
+                    ui->lblValueOneTitle->setText("Credit: ");
+                    ui->lblValueOne->setText(QString::number(*amountToBePayed));
+                    ui->lblValueTwo->setDisabled(true);
                     *paymentMethod = "Credit";
                 }else if(index==2){
-                    *paymentMethod = "Cash+Credit";
+                    if (*totalRewards< *minimumRewardForPayment){
+                        QMessageBox::critical(this, "Insufficient Reward Error", "Your total rewards" +QString::number(*totalRewards)+" is less than the minimum acceptable, "+QString::number(*minimumRewardForPayment)+" .");
+                        ui->cb_paymentMethod->setCurrentIndex(0);
+                    } else{
+                        if (*amountToBePayed<=*totalRewards){
+                            ui->lblValueOneTitle->setText("Rewards: ");
+                            ui->lblValueOne->setText(QString::number(*amountToBePayed));
+                            ui->lblValueTwo->setDisabled(true);
+                            *paymentMethod = "Rewards";
+
+                        } else{
+                            ui->cb_paymentMethod->setCurrentIndex(4);
+                        }
+                    }
                 }else if(index==3){
-                    *paymentMethod = "Cash+Rewards";
+                    ui->lblValueOne->setFocus();
+                    ui->lblValueOneTitle->setText("Cash: ");
+                    ui->lblValueTwoTitle->setText("Credit: ");
+                    *paymentMethod = "Cash+Credit";
                 }else if(index==4){
-                    *paymentMethod = "Rewards";
+                    *paymentMethod = "Cash+Rewards";
+                }else{
+                    LOGx("Should never get here");
                 }
 
             });
+
+    int customerAvailableCredit = servingCustomer->creditRemaining;
+    ui->lblCreditAvailable->setText(QString::number(customerAvailableCredit));
+
+    int customerAvailableCash = servingCustomer->cashOnBusiness;
+    ui->lblCreditAvailable->setText(QString::number(customerAvailableCash));
+
+    int customerAvailableRewards = servingCustomer->rewardsAvailable;
+    ui->lblCreditAvailable->setText(QString::number(customerAvailableRewards));
+
+
+    ui->saleReward->setText(QString::number(*totalRewards));
 
 }
 
@@ -85,66 +134,80 @@ CompletePaymentWindow::~CompletePaymentWindow()
 {
     delete ui;
 }
+void CompletePaymentWindow::on_lblValueOne_returnPressed()
+{
+    if (ui->cb_paymentMethod->currentText()==0){
+        if (ui->lblValueOne->text().toInt()>=*amountToBePayed){
+//            getCashComputeBalance();
+            ui->btnCompleteSale->setFocus();
+        }else{
+            QMessageBox::critical(this, "Payment Amount Error", "Please enter a value equal to the bill or greater!");
+            ui->lblValueOne->clear();
+            return;
+        }
+    }else if (ui->cb_paymentMethod->currentText()==3){
 
-void CompletePaymentWindow::setPaymentLabel() {
-    if(ui->cb_paymentMethod->currentIndex()==1){
-        QPixmap mypix("/home/vee/pointOfSale/resources/new_icons_2/money.jpg");
-        ui->lbl_paymentMethod->setPixmap(mypix.scaled(ui->lbl_paymentMethod->size(), Qt::KeepAspectRatio));
-//        ui->lbl_myavatar->setPixmap(mypix.scaled(ui->lbl_myavatar->size(), Qt::KeepAspectRatio));
-//        ui->lbl_paymentMethod->setStyleSheet(mypix);
-    }else if(ui->cb_paymentMethod->currentIndex()==2){
-
-    }else if(ui->cb_paymentMethod->currentIndex()==3){
-
-    }else if(ui->cb_paymentMethod->currentIndex()==4){
-
-    }else if(ui->cb_paymentMethod->currentIndex()==1){
-
-    }else{
-        LOGx("Nothing");
+        if (*cashValue<*amountToBePayed){
+            *cashValue = ui->lblValueOne->text().toInt();
+            *creditValue = *amountToBePayed - *cashValue;
+            ui->lblValueTwo->setText(QString::number(*creditValue));
+        }else if (*cashValue==*amountToBePayed){
+            QMessageBox::critical(this, "Payment Method Error", "Redirecting your payment to cash method");
+            ui->cb_paymentMethod->setCurrentIndex(0);
+            ui->lblValueOne->setText(QString::number(*cashValue));
+        }else if (*cashValue>*amountToBePayed){
+            QMessageBox::critical(this, "Payment Amount Error", "You are paying more than you owe. Please Check your values again");
+            ui->lblValueOne->clear();
+        }
     }
 }
+
+void CompletePaymentWindow::on_lblValueTwo_returnPressed()
+{
+
+}
+
 
 void CompletePaymentWindow::on_btn_fifty_clicked()
 {
     *amountPaid+=50;
-    ui->le_amountPaid->setText(QString::number(*amountPaid));
-    ui->le_amountPaid->setFocus();
+    ui->lblValueOne->setText(QString::number(*amountPaid));
+    ui->lblValueOne->setFocus();
 
 }
 void CompletePaymentWindow::on_btn_oneHundred_clicked()
 {
     *amountPaid+=100;
-    ui->le_amountPaid->setText(QString::number(*amountPaid));
-    ui->le_amountPaid->setFocus();
+    ui->lblValueOne->setText(QString::number(*amountPaid));
+    ui->lblValueOne->setFocus();
 
 }
 void CompletePaymentWindow::on_btn_twoHundred_clicked()
 {
     *amountPaid+=200;
-    ui->le_amountPaid->setText(QString::number(*amountPaid));
-    ui->le_amountPaid->setFocus();
+    ui->lblValueOne->setText(QString::number(*amountPaid));
+    ui->lblValueOne->setFocus();
 }
 
 void CompletePaymentWindow::on_btn_fiveHundred_clicked()
 {
     *amountPaid+=500;
-    ui->le_amountPaid->setText(QString::number(*amountPaid));
-    ui->le_amountPaid->setFocus();
+    ui->lblValueOne->setText(QString::number(*amountPaid));
+    ui->lblValueOne->setFocus();
 }
 
 void CompletePaymentWindow::on_btn_oneThousand_clicked()
 {
     *amountPaid+=1000;
-    ui->le_amountPaid->setText(QString::number(*amountPaid));
-    ui->le_amountPaid->setFocus();
+    ui->lblValueOne->setText(QString::number(*amountPaid));
+    ui->lblValueOne->setFocus();
 }
 
 void CompletePaymentWindow::on_btn_credit_clicked()
 {
     *amountPaid+=100;
-    ui->le_amountPaid->setText(QString::number(*amountPaid));
-    ui->le_amountPaid->setFocus();
+    ui->lblValueOne->setText(QString::number(*amountPaid));
+    ui->lblValueOne->setFocus();
 }
 
 void CompletePaymentWindow::postSaleToDb(loggedUser &, std::map<QString, int> &, int &) {
@@ -160,7 +223,7 @@ void CompletePaymentWindow::getCashComputeBalance() {
 }
 void CompletePaymentWindow::on_le_amountPaid_textChanged(const QString &arg1)
 {
-    *amountPaid = ui->le_amountPaid->text().toInt();
+    *amountPaid = ui->lblValueOne->text().toInt();
     getCashComputeBalance();
 }
 void CompletePaymentWindow::updateSaleData() {
@@ -472,4 +535,15 @@ void CompletePaymentWindow::updateRewards() {
 
 
 
+
+
+void CompletePaymentWindow::on_btnEditSale_clicked()
+{
+
+}
+
+void CompletePaymentWindow::on_btnSaveCash_clicked()
+{
+
+}
 

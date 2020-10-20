@@ -25,13 +25,20 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_OrdersClient
 {
 public:
-    QVBoxLayout *verticalLayout_2;
+    QLabel *label_15;
+    QLabel *label_21;
+    QLabel *label_10;
+    QTableWidget *tableWidget;
+    QLabel *label_35;
+    QLabel *label_36;
+    QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QLabel *label_40;
     QLabel *lblUserAvatar;
@@ -56,7 +63,7 @@ public:
     QLabel *lblDate;
     QLabel *lblTimeHolder;
     QLabel *lblTime;
-    QLabel *label_15;
+    QWidget *widget1;
     QHBoxLayout *horizontalLayout_9;
     QComboBox *cbSalesType;
     QSpacerItem *horizontalSpacer_5;
@@ -71,16 +78,14 @@ public:
     QLabel *lblServing_2;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *btnExitClient;
-    QLabel *label_21;
+    QWidget *widget2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *lblBarCodeHolder;
     QLineEdit *le_barcodeEntry;
     QLabel *lblSearchProductHolder;
     QLineEdit *le_SearchProduct;
     QSpacerItem *horizontalSpacer_2;
-    QLabel *label_10;
-    QTableWidget *tableWidget;
-    QLabel *label_35;
+    QWidget *widget3;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_54;
     QLabel *label_53;
@@ -141,427 +146,35 @@ public:
     QLabel *label_58;
     QLabel *label_56;
     QLabel *label_57;
-    QLabel *label_36;
 
     void setupUi(QDialog *OrdersClient)
     {
         if (OrdersClient->objectName().isEmpty())
             OrdersClient->setObjectName(QStringLiteral("OrdersClient"));
-        OrdersClient->resize(1627, 1080);
+        OrdersClient->resize(1676, 1080);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(OrdersClient->sizePolicy().hasHeightForWidth());
         OrdersClient->setSizePolicy(sizePolicy);
-        verticalLayout_2 = new QVBoxLayout(OrdersClient);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label_40 = new QLabel(OrdersClient);
-        label_40->setObjectName(QStringLiteral("label_40"));
-        label_40->setMinimumSize(QSize(64, 64));
-        label_40->setMaximumSize(QSize(64, 64));
-        label_40->setStyleSheet(QStringLiteral("border-image: url(:/resources/icons/Logo2.png);"));
-        label_40->setFrameShape(QFrame::Panel);
-        label_40->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_40);
-
-        lblUserAvatar = new QLabel(OrdersClient);
-        lblUserAvatar->setObjectName(QStringLiteral("lblUserAvatar"));
-        lblUserAvatar->setMinimumSize(QSize(40, 40));
-        lblUserAvatar->setMaximumSize(QSize(40, 40));
-        lblUserAvatar->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-
-        horizontalLayout->addWidget(lblUserAvatar);
-
-        lblUserName = new QLabel(OrdersClient);
-        lblUserName->setObjectName(QStringLiteral("lblUserName"));
-        lblUserName->setMinimumSize(QSize(120, 40));
-        lblUserName->setMaximumSize(QSize(120, 40));
-        lblUserName->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"color: rgb(255, 255, 255);\n"
-""));
-        lblUserName->setFrameShape(QFrame::Panel);
-        lblUserName->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(lblUserName);
-
-        label_11 = new QLabel(OrdersClient);
-        label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setMinimumSize(QSize(10, 40));
-        label_11->setMaximumSize(QSize(10, 40));
-        label_11->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
-        label_11->setFrameShape(QFrame::Panel);
-        label_11->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_11);
-
-        label_5 = new QLabel(OrdersClient);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setMinimumSize(QSize(10, 40));
-        label_5->setMaximumSize(QSize(10, 40));
-        label_5->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-        label_5->setFrameShape(QFrame::Panel);
-        label_5->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_5);
-
-        label_12 = new QLabel(OrdersClient);
-        label_12->setObjectName(QStringLiteral("label_12"));
-        label_12->setMinimumSize(QSize(10, 40));
-        label_12->setMaximumSize(QSize(10, 40));
-        label_12->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
-        label_12->setFrameShape(QFrame::Panel);
-        label_12->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_12);
-
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_6);
-
-        lblTime_4 = new QLabel(OrdersClient);
-        lblTime_4->setObjectName(QStringLiteral("lblTime_4"));
-        lblTime_4->setMinimumSize(QSize(180, 40));
-        lblTime_4->setMaximumSize(QSize(180, 40));
-        QFont font;
-        font.setFamily(QStringLiteral("Waree"));
-        font.setPointSize(11);
-        font.setBold(true);
-        font.setWeight(75);
-        lblTime_4->setFont(font);
-        lblTime_4->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-        lblTime_4->setFrameShape(QFrame::Panel);
-        lblTime_4->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(lblTime_4);
-
-        lblServing = new QLabel(OrdersClient);
-        lblServing->setObjectName(QStringLiteral("lblServing"));
-        lblServing->setMinimumSize(QSize(250, 40));
-        lblServing->setMaximumSize(QSize(250, 40));
-        QFont font1;
-        font1.setFamily(QStringLiteral("Waree"));
-        font1.setPointSize(11);
-        lblServing->setFont(font1);
-        lblServing->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"color: rgb(238, 238, 236);\n"
-""));
-        lblServing->setFrameShape(QFrame::Panel);
-        lblServing->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(lblServing);
-
-        label_39 = new QLabel(OrdersClient);
-        label_39->setObjectName(QStringLiteral("label_39"));
-        label_39->setMinimumSize(QSize(10, 40));
-        label_39->setMaximumSize(QSize(10, 40));
-        label_39->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
-        label_39->setFrameShape(QFrame::Panel);
-        label_39->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_39);
-
-        label_37 = new QLabel(OrdersClient);
-        label_37->setObjectName(QStringLiteral("label_37"));
-        label_37->setMinimumSize(QSize(10, 40));
-        label_37->setMaximumSize(QSize(10, 40));
-        label_37->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-        label_37->setFrameShape(QFrame::Panel);
-        label_37->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_37);
-
-        label_41 = new QLabel(OrdersClient);
-        label_41->setObjectName(QStringLiteral("label_41"));
-        label_41->setMinimumSize(QSize(10, 40));
-        label_41->setMaximumSize(QSize(10, 40));
-        label_41->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
-        label_41->setFrameShape(QFrame::Panel);
-        label_41->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_41);
-
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_7);
-
-        lblTime_5 = new QLabel(OrdersClient);
-        lblTime_5->setObjectName(QStringLiteral("lblTime_5"));
-        lblTime_5->setMinimumSize(QSize(100, 40));
-        lblTime_5->setMaximumSize(QSize(100, 40));
-        lblTime_5->setFont(font);
-        lblTime_5->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-        lblTime_5->setFrameShape(QFrame::Panel);
-        lblTime_5->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(lblTime_5);
-
-        lblOrderId = new QLabel(OrdersClient);
-        lblOrderId->setObjectName(QStringLiteral("lblOrderId"));
-        lblOrderId->setMinimumSize(QSize(200, 40));
-        lblOrderId->setMaximumSize(QSize(200, 40));
-        lblOrderId->setFont(font1);
-        lblOrderId->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"color: rgb(238, 238, 236);"));
-        lblOrderId->setFrameShape(QFrame::Panel);
-        lblOrderId->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(lblOrderId);
-
-        label_43 = new QLabel(OrdersClient);
-        label_43->setObjectName(QStringLiteral("label_43"));
-        label_43->setMinimumSize(QSize(10, 40));
-        label_43->setMaximumSize(QSize(10, 40));
-        label_43->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
-        label_43->setFrameShape(QFrame::Panel);
-        label_43->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_43);
-
-        label_48 = new QLabel(OrdersClient);
-        label_48->setObjectName(QStringLiteral("label_48"));
-        label_48->setMinimumSize(QSize(10, 40));
-        label_48->setMaximumSize(QSize(10, 40));
-        label_48->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-        label_48->setFrameShape(QFrame::Panel);
-        label_48->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_48);
-
-        label_49 = new QLabel(OrdersClient);
-        label_49->setObjectName(QStringLiteral("label_49"));
-        label_49->setMinimumSize(QSize(10, 40));
-        label_49->setMaximumSize(QSize(10, 40));
-        label_49->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
-        label_49->setFrameShape(QFrame::Panel);
-        label_49->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(label_49);
-
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_8);
-
-        lblDateHolder = new QLabel(OrdersClient);
-        lblDateHolder->setObjectName(QStringLiteral("lblDateHolder"));
-        lblDateHolder->setMinimumSize(QSize(60, 30));
-        lblDateHolder->setMaximumSize(QSize(40, 40));
-        lblDateHolder->setFont(font);
-        lblDateHolder->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"padding: 2px;"));
-        lblDateHolder->setFrameShape(QFrame::Panel);
-        lblDateHolder->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(lblDateHolder);
-
-        lblDate = new QLabel(OrdersClient);
-        lblDate->setObjectName(QStringLiteral("lblDate"));
-        lblDate->setMinimumSize(QSize(120, 40));
-        lblDate->setMaximumSize(QSize(120, 40));
-        lblDate->setFont(font1);
-        lblDate->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"color: rgb(238, 238, 236);"));
-        lblDate->setFrameShape(QFrame::Panel);
-        lblDate->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(lblDate);
-
-        lblTimeHolder = new QLabel(OrdersClient);
-        lblTimeHolder->setObjectName(QStringLiteral("lblTimeHolder"));
-        lblTimeHolder->setMinimumSize(QSize(60, 40));
-        lblTimeHolder->setMaximumSize(QSize(50, 40));
-        lblTimeHolder->setFont(font);
-        lblTimeHolder->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"padding: 2px;"));
-        lblTimeHolder->setFrameShape(QFrame::Panel);
-        lblTimeHolder->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(lblTimeHolder);
-
-        lblTime = new QLabel(OrdersClient);
-        lblTime->setObjectName(QStringLiteral("lblTime"));
-        lblTime->setMinimumSize(QSize(120, 40));
-        lblTime->setMaximumSize(QSize(120, 40));
-        lblTime->setFont(font1);
-        lblTime->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"color: rgb(238, 238, 236);\n"
-""));
-        lblTime->setFrameShape(QFrame::Panel);
-        lblTime->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout->addWidget(lblTime);
-
-
-        verticalLayout_2->addLayout(horizontalLayout);
-
         label_15 = new QLabel(OrdersClient);
         label_15->setObjectName(QStringLiteral("label_15"));
+        label_15->setGeometry(QRect(9, 81, 16, 16));
         label_15->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_15->setFrameShape(QFrame::Panel);
         label_15->setFrameShadow(QFrame::Raised);
-
-        verticalLayout_2->addWidget(label_15);
-
-        horizontalLayout_9 = new QHBoxLayout();
-        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        cbSalesType = new QComboBox(OrdersClient);
-        cbSalesType->setObjectName(QStringLiteral("cbSalesType"));
-        cbSalesType->setMinimumSize(QSize(30, 30));
-        cbSalesType->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-
-        horizontalLayout_9->addWidget(cbSalesType);
-
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_9->addItem(horizontalSpacer_5);
-
-        lblSaleType = new QLabel(OrdersClient);
-        lblSaleType->setObjectName(QStringLiteral("lblSaleType"));
-        lblSaleType->setMinimumSize(QSize(0, 30));
-        lblSaleType->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"border-radius:3px;"));
-        lblSaleType->setFrameShape(QFrame::Panel);
-        lblSaleType->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout_9->addWidget(lblSaleType);
-
-        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_9->addItem(horizontalSpacer_9);
-
-        lblClientNameHolder = new QLabel(OrdersClient);
-        lblClientNameHolder->setObjectName(QStringLiteral("lblClientNameHolder"));
-        lblClientNameHolder->setMinimumSize(QSize(0, 30));
-        lblClientNameHolder->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"padding: 2px;"));
-        lblClientNameHolder->setFrameShape(QFrame::Panel);
-        lblClientNameHolder->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout_9->addWidget(lblClientNameHolder);
-
-        leClient = new QLineEdit(OrdersClient);
-        leClient->setObjectName(QStringLiteral("leClient"));
-        leClient->setMinimumSize(QSize(0, 30));
-        leClient->setMaximumSize(QSize(250, 16777215));
-
-        horizontalLayout_9->addWidget(leClient);
-
-        lblClientNameHolder_2 = new QLabel(OrdersClient);
-        lblClientNameHolder_2->setObjectName(QStringLiteral("lblClientNameHolder_2"));
-        lblClientNameHolder_2->setMinimumSize(QSize(0, 30));
-        lblClientNameHolder_2->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"padding: 2px;"));
-        lblClientNameHolder_2->setFrameShape(QFrame::Panel);
-        lblClientNameHolder_2->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout_9->addWidget(lblClientNameHolder_2);
-
-        checkBoxClientOrdered = new QCheckBox(OrdersClient);
-        checkBoxClientOrdered->setObjectName(QStringLiteral("checkBoxClientOrdered"));
-        checkBoxClientOrdered->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-
-        horizontalLayout_9->addWidget(checkBoxClientOrdered);
-
-        leOrderingClient = new QLineEdit(OrdersClient);
-        leOrderingClient->setObjectName(QStringLiteral("leOrderingClient"));
-        leOrderingClient->setMinimumSize(QSize(0, 30));
-        leOrderingClient->setMaximumSize(QSize(250, 16777215));
-
-        horizontalLayout_9->addWidget(leOrderingClient);
-
-        lblTime_6 = new QLabel(OrdersClient);
-        lblTime_6->setObjectName(QStringLiteral("lblTime_6"));
-        lblTime_6->setMinimumSize(QSize(180, 40));
-        lblTime_6->setMaximumSize(QSize(180, 40));
-        lblTime_6->setFont(font);
-        lblTime_6->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-        lblTime_6->setFrameShape(QFrame::Panel);
-        lblTime_6->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout_9->addWidget(lblTime_6);
-
-        lblServing_2 = new QLabel(OrdersClient);
-        lblServing_2->setObjectName(QStringLiteral("lblServing_2"));
-        lblServing_2->setMinimumSize(QSize(250, 40));
-        lblServing_2->setMaximumSize(QSize(250, 40));
-        lblServing_2->setFont(font1);
-        lblServing_2->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
-"color: rgb(238, 238, 236);\n"
-""));
-        lblServing_2->setFrameShape(QFrame::Panel);
-        lblServing_2->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout_9->addWidget(lblServing_2);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_9->addItem(horizontalSpacer_3);
-
-        btnExitClient = new QPushButton(OrdersClient);
-        btnExitClient->setObjectName(QStringLiteral("btnExitClient"));
-
-        horizontalLayout_9->addWidget(btnExitClient);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_9);
-
         label_21 = new QLabel(OrdersClient);
         label_21->setObjectName(QStringLiteral("label_21"));
+        label_21->setGeometry(QRect(9, 151, 16, 16));
         label_21->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_21->setFrameShape(QFrame::Panel);
         label_21->setFrameShadow(QFrame::Raised);
-
-        verticalLayout_2->addWidget(label_21);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        lblBarCodeHolder = new QLabel(OrdersClient);
-        lblBarCodeHolder->setObjectName(QStringLiteral("lblBarCodeHolder"));
-        lblBarCodeHolder->setMaximumSize(QSize(40, 40));
-        lblBarCodeHolder->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-        lblBarCodeHolder->setFrameShape(QFrame::Panel);
-        lblBarCodeHolder->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout_2->addWidget(lblBarCodeHolder);
-
-        le_barcodeEntry = new QLineEdit(OrdersClient);
-        le_barcodeEntry->setObjectName(QStringLiteral("le_barcodeEntry"));
-        le_barcodeEntry->setMaximumSize(QSize(200, 16777215));
-
-        horizontalLayout_2->addWidget(le_barcodeEntry);
-
-        lblSearchProductHolder = new QLabel(OrdersClient);
-        lblSearchProductHolder->setObjectName(QStringLiteral("lblSearchProductHolder"));
-        lblSearchProductHolder->setMaximumSize(QSize(250, 16777215));
-        lblSearchProductHolder->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
-        lblSearchProductHolder->setFrameShape(QFrame::Panel);
-        lblSearchProductHolder->setFrameShadow(QFrame::Raised);
-
-        horizontalLayout_2->addWidget(lblSearchProductHolder);
-
-        le_SearchProduct = new QLineEdit(OrdersClient);
-        le_SearchProduct->setObjectName(QStringLiteral("le_SearchProduct"));
-        le_SearchProduct->setMaximumSize(QSize(300, 16777215));
-
-        horizontalLayout_2->addWidget(le_SearchProduct);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer_2);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_2);
-
         label_10 = new QLabel(OrdersClient);
         label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(9, 204, 16, 16));
         label_10->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_10->setFrameShape(QFrame::Panel);
         label_10->setFrameShadow(QFrame::Raised);
-
-        verticalLayout_2->addWidget(label_10);
-
         tableWidget = new QTableWidget(OrdersClient);
         if (tableWidget->columnCount() < 9)
             tableWidget->setColumnCount(9);
@@ -584,22 +197,410 @@ public:
         QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(8, __qtablewidgetitem8);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        tableWidget->setGeometry(QRect(9, 226, 256, 300));
         tableWidget->setMinimumSize(QSize(0, 300));
         tableWidget->setStyleSheet(QStringLiteral("background-color: rgb(211, 215, 207);"));
-
-        verticalLayout_2->addWidget(tableWidget);
-
         label_35 = new QLabel(OrdersClient);
         label_35->setObjectName(QStringLiteral("label_35"));
+        label_35->setGeometry(QRect(9, 741, 16, 16));
         label_35->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_35->setFrameShape(QFrame::Panel);
         label_35->setFrameShadow(QFrame::Raised);
+        label_36 = new QLabel(OrdersClient);
+        label_36->setObjectName(QStringLiteral("label_36"));
+        label_36->setGeometry(QRect(9, 1055, 16, 16));
+        label_36->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        label_36->setFrameShape(QFrame::Panel);
+        label_36->setFrameShadow(QFrame::Raised);
+        widget = new QWidget(OrdersClient);
+        widget->setObjectName(QStringLiteral("widget"));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        label_40 = new QLabel(widget);
+        label_40->setObjectName(QStringLiteral("label_40"));
+        label_40->setMinimumSize(QSize(64, 64));
+        label_40->setMaximumSize(QSize(64, 64));
+        label_40->setStyleSheet(QStringLiteral("border-image: url(:/resources/icons/Logo2.png);"));
+        label_40->setFrameShape(QFrame::Panel);
+        label_40->setFrameShadow(QFrame::Raised);
 
-        verticalLayout_2->addWidget(label_35);
+        horizontalLayout->addWidget(label_40);
 
-        horizontalLayout_6 = new QHBoxLayout();
+        lblUserAvatar = new QLabel(widget);
+        lblUserAvatar->setObjectName(QStringLiteral("lblUserAvatar"));
+        lblUserAvatar->setMinimumSize(QSize(40, 40));
+        lblUserAvatar->setMaximumSize(QSize(40, 40));
+        lblUserAvatar->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+
+        horizontalLayout->addWidget(lblUserAvatar);
+
+        lblUserName = new QLabel(widget);
+        lblUserName->setObjectName(QStringLiteral("lblUserName"));
+        lblUserName->setMinimumSize(QSize(120, 40));
+        lblUserName->setMaximumSize(QSize(120, 40));
+        lblUserName->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"color: rgb(255, 255, 255);\n"
+""));
+        lblUserName->setFrameShape(QFrame::Panel);
+        lblUserName->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(lblUserName);
+
+        label_11 = new QLabel(widget);
+        label_11->setObjectName(QStringLiteral("label_11"));
+        label_11->setMinimumSize(QSize(10, 40));
+        label_11->setMaximumSize(QSize(10, 40));
+        label_11->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        label_11->setFrameShape(QFrame::Panel);
+        label_11->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(label_11);
+
+        label_5 = new QLabel(widget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setMinimumSize(QSize(10, 40));
+        label_5->setMaximumSize(QSize(10, 40));
+        label_5->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+        label_5->setFrameShape(QFrame::Panel);
+        label_5->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(label_5);
+
+        label_12 = new QLabel(widget);
+        label_12->setObjectName(QStringLiteral("label_12"));
+        label_12->setMinimumSize(QSize(10, 40));
+        label_12->setMaximumSize(QSize(10, 40));
+        label_12->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        label_12->setFrameShape(QFrame::Panel);
+        label_12->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(label_12);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_6);
+
+        lblTime_4 = new QLabel(widget);
+        lblTime_4->setObjectName(QStringLiteral("lblTime_4"));
+        lblTime_4->setMinimumSize(QSize(180, 40));
+        lblTime_4->setMaximumSize(QSize(180, 40));
+        QFont font;
+        font.setFamily(QStringLiteral("Waree"));
+        font.setPointSize(11);
+        font.setBold(true);
+        font.setWeight(75);
+        lblTime_4->setFont(font);
+        lblTime_4->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+        lblTime_4->setFrameShape(QFrame::Panel);
+        lblTime_4->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(lblTime_4);
+
+        lblServing = new QLabel(widget);
+        lblServing->setObjectName(QStringLiteral("lblServing"));
+        lblServing->setMinimumSize(QSize(250, 40));
+        lblServing->setMaximumSize(QSize(250, 40));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Waree"));
+        font1.setPointSize(11);
+        lblServing->setFont(font1);
+        lblServing->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"color: rgb(238, 238, 236);\n"
+""));
+        lblServing->setFrameShape(QFrame::Panel);
+        lblServing->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(lblServing);
+
+        label_39 = new QLabel(widget);
+        label_39->setObjectName(QStringLiteral("label_39"));
+        label_39->setMinimumSize(QSize(10, 40));
+        label_39->setMaximumSize(QSize(10, 40));
+        label_39->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        label_39->setFrameShape(QFrame::Panel);
+        label_39->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(label_39);
+
+        label_37 = new QLabel(widget);
+        label_37->setObjectName(QStringLiteral("label_37"));
+        label_37->setMinimumSize(QSize(10, 40));
+        label_37->setMaximumSize(QSize(10, 40));
+        label_37->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+        label_37->setFrameShape(QFrame::Panel);
+        label_37->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(label_37);
+
+        label_41 = new QLabel(widget);
+        label_41->setObjectName(QStringLiteral("label_41"));
+        label_41->setMinimumSize(QSize(10, 40));
+        label_41->setMaximumSize(QSize(10, 40));
+        label_41->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        label_41->setFrameShape(QFrame::Panel);
+        label_41->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(label_41);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_7);
+
+        lblTime_5 = new QLabel(widget);
+        lblTime_5->setObjectName(QStringLiteral("lblTime_5"));
+        lblTime_5->setMinimumSize(QSize(100, 40));
+        lblTime_5->setMaximumSize(QSize(100, 40));
+        lblTime_5->setFont(font);
+        lblTime_5->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+        lblTime_5->setFrameShape(QFrame::Panel);
+        lblTime_5->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(lblTime_5);
+
+        lblOrderId = new QLabel(widget);
+        lblOrderId->setObjectName(QStringLiteral("lblOrderId"));
+        lblOrderId->setMinimumSize(QSize(200, 40));
+        lblOrderId->setMaximumSize(QSize(200, 40));
+        lblOrderId->setFont(font1);
+        lblOrderId->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"color: rgb(238, 238, 236);"));
+        lblOrderId->setFrameShape(QFrame::Panel);
+        lblOrderId->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(lblOrderId);
+
+        label_43 = new QLabel(widget);
+        label_43->setObjectName(QStringLiteral("label_43"));
+        label_43->setMinimumSize(QSize(10, 40));
+        label_43->setMaximumSize(QSize(10, 40));
+        label_43->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        label_43->setFrameShape(QFrame::Panel);
+        label_43->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(label_43);
+
+        label_48 = new QLabel(widget);
+        label_48->setObjectName(QStringLiteral("label_48"));
+        label_48->setMinimumSize(QSize(10, 40));
+        label_48->setMaximumSize(QSize(10, 40));
+        label_48->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+        label_48->setFrameShape(QFrame::Panel);
+        label_48->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(label_48);
+
+        label_49 = new QLabel(widget);
+        label_49->setObjectName(QStringLiteral("label_49"));
+        label_49->setMinimumSize(QSize(10, 40));
+        label_49->setMaximumSize(QSize(10, 40));
+        label_49->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        label_49->setFrameShape(QFrame::Panel);
+        label_49->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(label_49);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_8);
+
+        lblDateHolder = new QLabel(widget);
+        lblDateHolder->setObjectName(QStringLiteral("lblDateHolder"));
+        lblDateHolder->setMinimumSize(QSize(60, 30));
+        lblDateHolder->setMaximumSize(QSize(40, 40));
+        lblDateHolder->setFont(font);
+        lblDateHolder->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"padding: 2px;"));
+        lblDateHolder->setFrameShape(QFrame::Panel);
+        lblDateHolder->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(lblDateHolder);
+
+        lblDate = new QLabel(widget);
+        lblDate->setObjectName(QStringLiteral("lblDate"));
+        lblDate->setMinimumSize(QSize(120, 40));
+        lblDate->setMaximumSize(QSize(120, 40));
+        lblDate->setFont(font1);
+        lblDate->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"color: rgb(238, 238, 236);"));
+        lblDate->setFrameShape(QFrame::Panel);
+        lblDate->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(lblDate);
+
+        lblTimeHolder = new QLabel(widget);
+        lblTimeHolder->setObjectName(QStringLiteral("lblTimeHolder"));
+        lblTimeHolder->setMinimumSize(QSize(60, 40));
+        lblTimeHolder->setMaximumSize(QSize(50, 40));
+        lblTimeHolder->setFont(font);
+        lblTimeHolder->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"padding: 2px;"));
+        lblTimeHolder->setFrameShape(QFrame::Panel);
+        lblTimeHolder->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(lblTimeHolder);
+
+        lblTime = new QLabel(widget);
+        lblTime->setObjectName(QStringLiteral("lblTime"));
+        lblTime->setMinimumSize(QSize(120, 40));
+        lblTime->setMaximumSize(QSize(120, 40));
+        lblTime->setFont(font1);
+        lblTime->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"color: rgb(238, 238, 236);\n"
+""));
+        lblTime->setFrameShape(QFrame::Panel);
+        lblTime->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout->addWidget(lblTime);
+
+        widget1 = new QWidget(OrdersClient);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        horizontalLayout_9 = new QHBoxLayout(widget1);
+        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
+        horizontalLayout_9->setContentsMargins(0, 0, 0, 0);
+        cbSalesType = new QComboBox(widget1);
+        cbSalesType->setObjectName(QStringLiteral("cbSalesType"));
+        cbSalesType->setMinimumSize(QSize(30, 30));
+        cbSalesType->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+
+        horizontalLayout_9->addWidget(cbSalesType);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_5);
+
+        lblSaleType = new QLabel(widget1);
+        lblSaleType->setObjectName(QStringLiteral("lblSaleType"));
+        lblSaleType->setMinimumSize(QSize(0, 30));
+        lblSaleType->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"border-radius:3px;"));
+        lblSaleType->setFrameShape(QFrame::Panel);
+        lblSaleType->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout_9->addWidget(lblSaleType);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_9);
+
+        lblClientNameHolder = new QLabel(widget1);
+        lblClientNameHolder->setObjectName(QStringLiteral("lblClientNameHolder"));
+        lblClientNameHolder->setMinimumSize(QSize(0, 30));
+        lblClientNameHolder->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"padding: 2px;"));
+        lblClientNameHolder->setFrameShape(QFrame::Panel);
+        lblClientNameHolder->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout_9->addWidget(lblClientNameHolder);
+
+        leClient = new QLineEdit(widget1);
+        leClient->setObjectName(QStringLiteral("leClient"));
+        leClient->setMinimumSize(QSize(0, 30));
+        leClient->setMaximumSize(QSize(250, 16777215));
+
+        horizontalLayout_9->addWidget(leClient);
+
+        lblClientNameHolder_2 = new QLabel(widget1);
+        lblClientNameHolder_2->setObjectName(QStringLiteral("lblClientNameHolder_2"));
+        lblClientNameHolder_2->setMinimumSize(QSize(0, 30));
+        lblClientNameHolder_2->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"padding: 2px;"));
+        lblClientNameHolder_2->setFrameShape(QFrame::Panel);
+        lblClientNameHolder_2->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout_9->addWidget(lblClientNameHolder_2);
+
+        checkBoxClientOrdered = new QCheckBox(widget1);
+        checkBoxClientOrdered->setObjectName(QStringLiteral("checkBoxClientOrdered"));
+        checkBoxClientOrdered->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+
+        horizontalLayout_9->addWidget(checkBoxClientOrdered);
+
+        leOrderingClient = new QLineEdit(widget1);
+        leOrderingClient->setObjectName(QStringLiteral("leOrderingClient"));
+        leOrderingClient->setMinimumSize(QSize(0, 30));
+        leOrderingClient->setMaximumSize(QSize(250, 16777215));
+
+        horizontalLayout_9->addWidget(leOrderingClient);
+
+        lblTime_6 = new QLabel(widget1);
+        lblTime_6->setObjectName(QStringLiteral("lblTime_6"));
+        lblTime_6->setMinimumSize(QSize(180, 40));
+        lblTime_6->setMaximumSize(QSize(180, 40));
+        lblTime_6->setFont(font);
+        lblTime_6->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+        lblTime_6->setFrameShape(QFrame::Panel);
+        lblTime_6->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout_9->addWidget(lblTime_6);
+
+        lblServing_2 = new QLabel(widget1);
+        lblServing_2->setObjectName(QStringLiteral("lblServing_2"));
+        lblServing_2->setMinimumSize(QSize(250, 40));
+        lblServing_2->setMaximumSize(QSize(250, 40));
+        lblServing_2->setFont(font1);
+        lblServing_2->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
+"color: rgb(238, 238, 236);\n"
+""));
+        lblServing_2->setFrameShape(QFrame::Panel);
+        lblServing_2->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout_9->addWidget(lblServing_2);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_3);
+
+        btnExitClient = new QPushButton(widget1);
+        btnExitClient->setObjectName(QStringLiteral("btnExitClient"));
+
+        horizontalLayout_9->addWidget(btnExitClient);
+
+        widget2 = new QWidget(OrdersClient);
+        widget2->setObjectName(QStringLiteral("widget2"));
+        horizontalLayout_2 = new QHBoxLayout(widget2);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        lblBarCodeHolder = new QLabel(widget2);
+        lblBarCodeHolder->setObjectName(QStringLiteral("lblBarCodeHolder"));
+        lblBarCodeHolder->setMaximumSize(QSize(40, 40));
+        lblBarCodeHolder->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+        lblBarCodeHolder->setFrameShape(QFrame::Panel);
+        lblBarCodeHolder->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout_2->addWidget(lblBarCodeHolder);
+
+        le_barcodeEntry = new QLineEdit(widget2);
+        le_barcodeEntry->setObjectName(QStringLiteral("le_barcodeEntry"));
+        le_barcodeEntry->setMaximumSize(QSize(200, 16777215));
+
+        horizontalLayout_2->addWidget(le_barcodeEntry);
+
+        lblSearchProductHolder = new QLabel(widget2);
+        lblSearchProductHolder->setObjectName(QStringLiteral("lblSearchProductHolder"));
+        lblSearchProductHolder->setMaximumSize(QSize(250, 16777215));
+        lblSearchProductHolder->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
+        lblSearchProductHolder->setFrameShape(QFrame::Panel);
+        lblSearchProductHolder->setFrameShadow(QFrame::Raised);
+
+        horizontalLayout_2->addWidget(lblSearchProductHolder);
+
+        le_SearchProduct = new QLineEdit(widget2);
+        le_SearchProduct->setObjectName(QStringLiteral("le_SearchProduct"));
+        le_SearchProduct->setMaximumSize(QSize(300, 16777215));
+
+        horizontalLayout_2->addWidget(le_SearchProduct);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
+
+        widget3 = new QWidget(OrdersClient);
+        widget3->setObjectName(QStringLiteral("widget3"));
+        horizontalLayout_6 = new QHBoxLayout(widget3);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        label_54 = new QLabel(OrdersClient);
+        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
+        label_54 = new QLabel(widget3);
         label_54->setObjectName(QStringLiteral("label_54"));
         label_54->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_54->setFrameShape(QFrame::Panel);
@@ -607,7 +608,7 @@ public:
 
         horizontalLayout_6->addWidget(label_54);
 
-        label_53 = new QLabel(OrdersClient);
+        label_53 = new QLabel(widget3);
         label_53->setObjectName(QStringLiteral("label_53"));
         label_53->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_53->setFrameShape(QFrame::Panel);
@@ -615,7 +616,7 @@ public:
 
         horizontalLayout_6->addWidget(label_53);
 
-        label_55 = new QLabel(OrdersClient);
+        label_55 = new QLabel(widget3);
         label_55->setObjectName(QStringLiteral("label_55"));
         label_55->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_55->setFrameShape(QFrame::Panel);
@@ -625,7 +626,7 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        label = new QLabel(OrdersClient);
+        label = new QLabel(widget3);
         label->setObjectName(QStringLiteral("label"));
         label->setMaximumSize(QSize(16777215, 40));
         QFont font2;
@@ -641,7 +642,7 @@ public:
 
         formLayout_4 = new QFormLayout();
         formLayout_4->setObjectName(QStringLiteral("formLayout_4"));
-        label_14 = new QLabel(OrdersClient);
+        label_14 = new QLabel(widget3);
         label_14->setObjectName(QStringLiteral("label_14"));
         label_14->setMinimumSize(QSize(150, 30));
         label_14->setMaximumSize(QSize(16777215, 16777215));
@@ -655,14 +656,14 @@ public:
 
         formLayout_4->setWidget(0, QFormLayout::LabelRole, label_14);
 
-        lblCashOnBusiness = new QLabel(OrdersClient);
+        lblCashOnBusiness = new QLabel(widget3);
         lblCashOnBusiness->setObjectName(QStringLiteral("lblCashOnBusiness"));
         lblCashOnBusiness->setMinimumSize(QSize(250, 0));
         lblCashOnBusiness->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
 
         formLayout_4->setWidget(0, QFormLayout::FieldRole, lblCashOnBusiness);
 
-        label_16 = new QLabel(OrdersClient);
+        label_16 = new QLabel(widget3);
         label_16->setObjectName(QStringLiteral("label_16"));
         label_16->setMinimumSize(QSize(150, 30));
         label_16->setMaximumSize(QSize(16777215, 16777215));
@@ -671,14 +672,14 @@ public:
 
         formLayout_4->setWidget(1, QFormLayout::LabelRole, label_16);
 
-        lblAvailableRewards = new QLabel(OrdersClient);
+        lblAvailableRewards = new QLabel(widget3);
         lblAvailableRewards->setObjectName(QStringLiteral("lblAvailableRewards"));
         lblAvailableRewards->setMinimumSize(QSize(250, 0));
         lblAvailableRewards->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
 
         formLayout_4->setWidget(1, QFormLayout::FieldRole, lblAvailableRewards);
 
-        label_2 = new QLabel(OrdersClient);
+        label_2 = new QLabel(widget3);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setMinimumSize(QSize(150, 30));
         label_2->setMaximumSize(QSize(16777215, 16777215));
@@ -687,14 +688,14 @@ public:
 
         formLayout_4->setWidget(2, QFormLayout::LabelRole, label_2);
 
-        lblAvailableCredit = new QLabel(OrdersClient);
+        lblAvailableCredit = new QLabel(widget3);
         lblAvailableCredit->setObjectName(QStringLiteral("lblAvailableCredit"));
         lblAvailableCredit->setMinimumSize(QSize(250, 0));
         lblAvailableCredit->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
 
         formLayout_4->setWidget(2, QFormLayout::FieldRole, lblAvailableCredit);
 
-        label_13 = new QLabel(OrdersClient);
+        label_13 = new QLabel(widget3);
         label_13->setObjectName(QStringLiteral("label_13"));
         label_13->setMinimumSize(QSize(150, 30));
         label_13->setMaximumSize(QSize(16777215, 16777215));
@@ -703,14 +704,14 @@ public:
 
         formLayout_4->setWidget(3, QFormLayout::LabelRole, label_13);
 
-        lblDebt = new QLabel(OrdersClient);
+        lblDebt = new QLabel(widget3);
         lblDebt->setObjectName(QStringLiteral("lblDebt"));
         lblDebt->setMinimumSize(QSize(250, 0));
         lblDebt->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
 
         formLayout_4->setWidget(3, QFormLayout::FieldRole, lblDebt);
 
-        pushButton = new QPushButton(OrdersClient);
+        pushButton = new QPushButton(widget3);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         QIcon icon;
@@ -720,7 +721,7 @@ public:
 
         formLayout_4->setWidget(4, QFormLayout::LabelRole, pushButton);
 
-        checkBoxClientRewardAuthorization = new QCheckBox(OrdersClient);
+        checkBoxClientRewardAuthorization = new QCheckBox(widget3);
         checkBoxClientRewardAuthorization->setObjectName(QStringLiteral("checkBoxClientRewardAuthorization"));
         checkBoxClientRewardAuthorization->setMinimumSize(QSize(0, 30));
         checkBoxClientRewardAuthorization->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
@@ -733,7 +734,7 @@ public:
 
         horizontalLayout_6->addLayout(verticalLayout);
 
-        label_51 = new QLabel(OrdersClient);
+        label_51 = new QLabel(widget3);
         label_51->setObjectName(QStringLiteral("label_51"));
         label_51->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_51->setFrameShape(QFrame::Panel);
@@ -741,7 +742,7 @@ public:
 
         horizontalLayout_6->addWidget(label_51);
 
-        label_50 = new QLabel(OrdersClient);
+        label_50 = new QLabel(widget3);
         label_50->setObjectName(QStringLiteral("label_50"));
         label_50->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_50->setFrameShape(QFrame::Panel);
@@ -749,7 +750,7 @@ public:
 
         horizontalLayout_6->addWidget(label_50);
 
-        label_52 = new QLabel(OrdersClient);
+        label_52 = new QLabel(widget3);
         label_52->setObjectName(QStringLiteral("label_52"));
         label_52->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_52->setFrameShape(QFrame::Panel);
@@ -761,24 +762,24 @@ public:
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         formLayout = new QFormLayout();
         formLayout->setObjectName(QStringLiteral("formLayout"));
-        label_4 = new QLabel(OrdersClient);
+        label_4 = new QLabel(widget3);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_4);
 
-        lineEditDeliveryFee = new QLineEdit(OrdersClient);
+        lineEditDeliveryFee = new QLineEdit(widget3);
         lineEditDeliveryFee->setObjectName(QStringLiteral("lineEditDeliveryFee"));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, lineEditDeliveryFee);
 
-        label_9 = new QLabel(OrdersClient);
+        label_9 = new QLabel(widget3);
         label_9->setObjectName(QStringLiteral("label_9"));
         label_9->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_9);
 
-        checkBoxFreeDelivery = new QCheckBox(OrdersClient);
+        checkBoxFreeDelivery = new QCheckBox(widget3);
         checkBoxFreeDelivery->setObjectName(QStringLiteral("checkBoxFreeDelivery"));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, checkBoxFreeDelivery);
@@ -786,7 +787,7 @@ public:
 
         verticalLayout_4->addLayout(formLayout);
 
-        lblComputedTotal = new QLabel(OrdersClient);
+        lblComputedTotal = new QLabel(widget3);
         lblComputedTotal->setObjectName(QStringLiteral("lblComputedTotal"));
         lblComputedTotal->setMinimumSize(QSize(300, 150));
         lblComputedTotal->setMaximumSize(QSize(16777215, 16777215));
@@ -805,27 +806,27 @@ public:
 
         formLayout_2 = new QFormLayout();
         formLayout_2->setObjectName(QStringLiteral("formLayout_2"));
-        label_19 = new QLabel(OrdersClient);
+        label_19 = new QLabel(widget3);
         label_19->setObjectName(QStringLiteral("label_19"));
         label_19->setMinimumSize(QSize(100, 20));
         label_19->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
 
         formLayout_2->setWidget(0, QFormLayout::LabelRole, label_19);
 
-        lblPossibleRewards = new QLabel(OrdersClient);
+        lblPossibleRewards = new QLabel(widget3);
         lblPossibleRewards->setObjectName(QStringLiteral("lblPossibleRewards"));
         lblPossibleRewards->setMinimumSize(QSize(250, 30));
         lblPossibleRewards->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
 
         formLayout_2->setWidget(0, QFormLayout::FieldRole, lblPossibleRewards);
 
-        label_22 = new QLabel(OrdersClient);
+        label_22 = new QLabel(widget3);
         label_22->setObjectName(QStringLiteral("label_22"));
         label_22->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
 
         formLayout_2->setWidget(1, QFormLayout::LabelRole, label_22);
 
-        lblPossibleDiscounts = new QLabel(OrdersClient);
+        lblPossibleDiscounts = new QLabel(widget3);
         lblPossibleDiscounts->setObjectName(QStringLiteral("lblPossibleDiscounts"));
         lblPossibleDiscounts->setMinimumSize(QSize(250, 30));
         lblPossibleDiscounts->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
@@ -838,7 +839,7 @@ public:
 
         horizontalLayout_6->addLayout(verticalLayout_4);
 
-        label_63 = new QLabel(OrdersClient);
+        label_63 = new QLabel(widget3);
         label_63->setObjectName(QStringLiteral("label_63"));
         label_63->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_63->setFrameShape(QFrame::Panel);
@@ -846,7 +847,7 @@ public:
 
         horizontalLayout_6->addWidget(label_63);
 
-        label_62 = new QLabel(OrdersClient);
+        label_62 = new QLabel(widget3);
         label_62->setObjectName(QStringLiteral("label_62"));
         label_62->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_62->setFrameShape(QFrame::Panel);
@@ -854,7 +855,7 @@ public:
 
         horizontalLayout_6->addWidget(label_62);
 
-        label_64 = new QLabel(OrdersClient);
+        label_64 = new QLabel(widget3);
         label_64->setObjectName(QStringLiteral("label_64"));
         label_64->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_64->setFrameShape(QFrame::Panel);
@@ -864,7 +865,7 @@ public:
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        label_23 = new QLabel(OrdersClient);
+        label_23 = new QLabel(widget3);
         label_23->setObjectName(QStringLiteral("label_23"));
         label_23->setMinimumSize(QSize(40, 0));
         label_23->setMaximumSize(QSize(16777215, 40));
@@ -876,7 +877,7 @@ public:
 
         formLayout_3 = new QFormLayout();
         formLayout_3->setObjectName(QStringLiteral("formLayout_3"));
-        label_26 = new QLabel(OrdersClient);
+        label_26 = new QLabel(widget3);
         label_26->setObjectName(QStringLiteral("label_26"));
         label_26->setMinimumSize(QSize(150, 0));
         label_26->setFont(font2);
@@ -885,7 +886,7 @@ public:
 
         formLayout_3->setWidget(0, QFormLayout::LabelRole, label_26);
 
-        lblSaleValue = new QLabel(OrdersClient);
+        lblSaleValue = new QLabel(widget3);
         lblSaleValue->setObjectName(QStringLiteral("lblSaleValue"));
         lblSaleValue->setMinimumSize(QSize(200, 0));
         QFont font5;
@@ -900,7 +901,7 @@ public:
 
         formLayout_3->setWidget(0, QFormLayout::FieldRole, lblSaleValue);
 
-        label_27 = new QLabel(OrdersClient);
+        label_27 = new QLabel(widget3);
         label_27->setObjectName(QStringLiteral("label_27"));
         label_27->setMinimumSize(QSize(150, 0));
         label_27->setFont(font2);
@@ -909,7 +910,7 @@ public:
 
         formLayout_3->setWidget(1, QFormLayout::LabelRole, label_27);
 
-        lblSaleTax = new QLabel(OrdersClient);
+        lblSaleTax = new QLabel(widget3);
         lblSaleTax->setObjectName(QStringLiteral("lblSaleTax"));
         lblSaleTax->setMinimumSize(QSize(200, 0));
         lblSaleTax->setFont(font5);
@@ -919,7 +920,7 @@ public:
 
         formLayout_3->setWidget(1, QFormLayout::FieldRole, lblSaleTax);
 
-        label_28 = new QLabel(OrdersClient);
+        label_28 = new QLabel(widget3);
         label_28->setObjectName(QStringLiteral("label_28"));
         label_28->setMinimumSize(QSize(150, 0));
         label_28->setFont(font2);
@@ -928,7 +929,7 @@ public:
 
         formLayout_3->setWidget(2, QFormLayout::LabelRole, label_28);
 
-        lblThisSaleTotal = new QLabel(OrdersClient);
+        lblThisSaleTotal = new QLabel(widget3);
         lblThisSaleTotal->setObjectName(QStringLiteral("lblThisSaleTotal"));
         lblThisSaleTotal->setMinimumSize(QSize(200, 0));
         lblThisSaleTotal->setFont(font5);
@@ -944,7 +945,7 @@ public:
 
         horizontalLayout_6->addLayout(verticalLayout_5);
 
-        label_60 = new QLabel(OrdersClient);
+        label_60 = new QLabel(widget3);
         label_60->setObjectName(QStringLiteral("label_60"));
         label_60->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_60->setFrameShape(QFrame::Panel);
@@ -952,7 +953,7 @@ public:
 
         horizontalLayout_6->addWidget(label_60);
 
-        label_59 = new QLabel(OrdersClient);
+        label_59 = new QLabel(widget3);
         label_59->setObjectName(QStringLiteral("label_59"));
         label_59->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_59->setFrameShape(QFrame::Panel);
@@ -960,7 +961,7 @@ public:
 
         horizontalLayout_6->addWidget(label_59);
 
-        label_61 = new QLabel(OrdersClient);
+        label_61 = new QLabel(widget3);
         label_61->setObjectName(QStringLiteral("label_61"));
         label_61->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_61->setFrameShape(QFrame::Panel);
@@ -970,7 +971,7 @@ public:
 
         verticalLayout_7 = new QVBoxLayout();
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
-        btnCompleteSales_2 = new QPushButton(OrdersClient);
+        btnCompleteSales_2 = new QPushButton(widget3);
         btnCompleteSales_2->setObjectName(QStringLiteral("btnCompleteSales_2"));
         btnCompleteSales_2->setMinimumSize(QSize(150, 0));
         btnCompleteSales_2->setStyleSheet(QLatin1String("background-color: rgb(143, 89, 2);\n"
@@ -984,7 +985,7 @@ public:
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
-        btnPlaceOrder = new QPushButton(OrdersClient);
+        btnPlaceOrder = new QPushButton(widget3);
         btnPlaceOrder->setObjectName(QStringLiteral("btnPlaceOrder"));
         btnPlaceOrder->setStyleSheet(QLatin1String("text-align:left;\n"
 "padding: 4px;\n"
@@ -1001,7 +1002,7 @@ public:
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        btnQueueSale_2 = new QPushButton(OrdersClient);
+        btnQueueSale_2 = new QPushButton(widget3);
         btnQueueSale_2->setObjectName(QStringLiteral("btnQueueSale_2"));
         btnQueueSale_2->setStyleSheet(QLatin1String("background-color: rgb(233, 185, 110);\n"
 "color: rgb(0, 0, 0);"));
@@ -1012,7 +1013,7 @@ public:
 
         horizontalLayout_8->addWidget(btnQueueSale_2);
 
-        btnCancelSale_2 = new QPushButton(OrdersClient);
+        btnCancelSale_2 = new QPushButton(widget3);
         btnCancelSale_2->setObjectName(QStringLiteral("btnCancelSale_2"));
         btnCancelSale_2->setStyleSheet(QLatin1String("background-color: rgb(239, 41, 41);\n"
 "color: rgb(0, 0, 0);"));
@@ -1028,7 +1029,7 @@ public:
 
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
-        btn_addNewCustomer = new QPushButton(OrdersClient);
+        btn_addNewCustomer = new QPushButton(widget3);
         btn_addNewCustomer->setObjectName(QStringLiteral("btn_addNewCustomer"));
         btn_addNewCustomer->setStyleSheet(QLatin1String("text-align:left;\n"
 "padding: 4px;\n"
@@ -1038,7 +1039,7 @@ public:
 
         horizontalLayout_10->addWidget(btn_addNewCustomer);
 
-        btn_viewCustomers = new QPushButton(OrdersClient);
+        btn_viewCustomers = new QPushButton(widget3);
         btn_viewCustomers->setObjectName(QStringLiteral("btn_viewCustomers"));
         btn_viewCustomers->setStyleSheet(QLatin1String("text-align:left;\n"
 "padding: 4px;\n"
@@ -1054,7 +1055,7 @@ public:
 
         horizontalLayout_6->addLayout(verticalLayout_7);
 
-        label_58 = new QLabel(OrdersClient);
+        label_58 = new QLabel(widget3);
         label_58->setObjectName(QStringLiteral("label_58"));
         label_58->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_58->setFrameShape(QFrame::Panel);
@@ -1062,7 +1063,7 @@ public:
 
         horizontalLayout_6->addWidget(label_58);
 
-        label_56 = new QLabel(OrdersClient);
+        label_56 = new QLabel(widget3);
         label_56->setObjectName(QStringLiteral("label_56"));
         label_56->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         label_56->setFrameShape(QFrame::Panel);
@@ -1070,24 +1071,13 @@ public:
 
         horizontalLayout_6->addWidget(label_56);
 
-        label_57 = new QLabel(OrdersClient);
+        label_57 = new QLabel(widget3);
         label_57->setObjectName(QStringLiteral("label_57"));
         label_57->setStyleSheet(QStringLiteral("background-color: rgb(143, 89, 2);"));
         label_57->setFrameShape(QFrame::Panel);
         label_57->setFrameShadow(QFrame::Raised);
 
         horizontalLayout_6->addWidget(label_57);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_6);
-
-        label_36 = new QLabel(OrdersClient);
-        label_36->setObjectName(QStringLiteral("label_36"));
-        label_36->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
-        label_36->setFrameShape(QFrame::Panel);
-        label_36->setFrameShadow(QFrame::Raised);
-
-        verticalLayout_2->addWidget(label_36);
 
 
         retranslateUi(OrdersClient);
@@ -1098,42 +1088,8 @@ public:
     void retranslateUi(QDialog *OrdersClient)
     {
         OrdersClient->setWindowTitle(QApplication::translate("OrdersClient", "Dialog", Q_NULLPTR));
-        label_40->setText(QString());
-        lblUserAvatar->setText(QString());
-        lblUserName->setText(QString());
-        label_11->setText(QString());
-        label_5->setText(QString());
-        label_12->setText(QString());
-        lblTime_4->setText(QApplication::translate("OrdersClient", "Currently Serving:", Q_NULLPTR));
-        lblServing->setText(QString());
-        label_39->setText(QString());
-        label_37->setText(QString());
-        label_41->setText(QString());
-        lblTime_5->setText(QApplication::translate("OrdersClient", "Order Id:", Q_NULLPTR));
-        lblOrderId->setText(QString());
-        label_43->setText(QString());
-        label_48->setText(QString());
-        label_49->setText(QString());
-        lblDateHolder->setText(QApplication::translate("OrdersClient", "Date:", Q_NULLPTR));
-        lblDate->setText(QString());
-        lblTimeHolder->setText(QApplication::translate("OrdersClient", "Time:", Q_NULLPTR));
-        lblTime->setText(QString());
         label_15->setText(QString());
-        cbSalesType->clear();
-        cbSalesType->insertItems(0, QStringList()
-         << QApplication::translate("OrdersClient", "Retail", Q_NULLPTR)
-         << QApplication::translate("OrdersClient", "Wholesale", Q_NULLPTR)
-        );
-        lblSaleType->setText(QApplication::translate("OrdersClient", "Transaction Type", Q_NULLPTR));
-        lblClientNameHolder->setText(QApplication::translate("OrdersClient", "Enter Client Phone:", Q_NULLPTR));
-        lblClientNameHolder_2->setText(QApplication::translate("OrdersClient", "Enter Ordering Client:", Q_NULLPTR));
-        checkBoxClientOrdered->setText(QApplication::translate("OrdersClient", "Ordered by customer", Q_NULLPTR));
-        lblTime_6->setText(QApplication::translate("OrdersClient", "Order Placed By:", Q_NULLPTR));
-        lblServing_2->setText(QString());
-        btnExitClient->setText(QApplication::translate("OrdersClient", "Exit Order Client", Q_NULLPTR));
         label_21->setText(QString());
-        lblBarCodeHolder->setText(QApplication::translate("OrdersClient", "#", Q_NULLPTR));
-        lblSearchProductHolder->setText(QApplication::translate("OrdersClient", "Search Product:", Q_NULLPTR));
         label_10->setText(QString());
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("OrdersClient", "Product Id", Q_NULLPTR));
@@ -1154,6 +1110,41 @@ public:
         QTableWidgetItem *___qtablewidgetitem8 = tableWidget->horizontalHeaderItem(8);
         ___qtablewidgetitem8->setText(QApplication::translate("OrdersClient", "Sub Total", Q_NULLPTR));
         label_35->setText(QString());
+        label_36->setText(QString());
+        label_40->setText(QString());
+        lblUserAvatar->setText(QString());
+        lblUserName->setText(QString());
+        label_11->setText(QString());
+        label_5->setText(QString());
+        label_12->setText(QString());
+        lblTime_4->setText(QApplication::translate("OrdersClient", "Currently Serving:", Q_NULLPTR));
+        lblServing->setText(QString());
+        label_39->setText(QString());
+        label_37->setText(QString());
+        label_41->setText(QString());
+        lblTime_5->setText(QApplication::translate("OrdersClient", "Order Id:", Q_NULLPTR));
+        lblOrderId->setText(QString());
+        label_43->setText(QString());
+        label_48->setText(QString());
+        label_49->setText(QString());
+        lblDateHolder->setText(QApplication::translate("OrdersClient", "Date:", Q_NULLPTR));
+        lblDate->setText(QString());
+        lblTimeHolder->setText(QApplication::translate("OrdersClient", "Time:", Q_NULLPTR));
+        lblTime->setText(QString());
+        cbSalesType->clear();
+        cbSalesType->insertItems(0, QStringList()
+         << QApplication::translate("OrdersClient", "Retail", Q_NULLPTR)
+         << QApplication::translate("OrdersClient", "Wholesale", Q_NULLPTR)
+        );
+        lblSaleType->setText(QApplication::translate("OrdersClient", "Transaction Type", Q_NULLPTR));
+        lblClientNameHolder->setText(QApplication::translate("OrdersClient", "Enter Client Phone:", Q_NULLPTR));
+        lblClientNameHolder_2->setText(QApplication::translate("OrdersClient", "Enter Ordering Client:", Q_NULLPTR));
+        checkBoxClientOrdered->setText(QApplication::translate("OrdersClient", "Ordered by customer", Q_NULLPTR));
+        lblTime_6->setText(QApplication::translate("OrdersClient", "Order Placed By:", Q_NULLPTR));
+        lblServing_2->setText(QString());
+        btnExitClient->setText(QApplication::translate("OrdersClient", "Exit Order Client", Q_NULLPTR));
+        lblBarCodeHolder->setText(QApplication::translate("OrdersClient", "#", Q_NULLPTR));
+        lblSearchProductHolder->setText(QApplication::translate("OrdersClient", "Search Product:", Q_NULLPTR));
         label_54->setText(QString());
         label_53->setText(QString());
         label_55->setText(QString());
@@ -1201,7 +1192,6 @@ public:
         label_58->setText(QString());
         label_56->setText(QString());
         label_57->setText(QString());
-        label_36->setText(QString());
     } // retranslateUi
 
 };

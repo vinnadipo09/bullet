@@ -49,9 +49,19 @@
 			"EWIEGA46WW/moc_addtransactiontype.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/adminauthentication.h",
+			"MU",
+			"EWIEGA46WW/moc_adminauthentication.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/adminwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_adminwindow.cpp"
+		],
+		[
+			"/home/vee/pointOfSale/businesslimits.h",
+			"MU",
+			"EWIEGA46WW/moc_businesslimits.cpp"
 		],
 		[
 			"/home/vee/pointOfSale/cashierwindow.h",
@@ -160,6 +170,11 @@
 			"EWIEGA46WW/moc_mainslice.cpp"
 		],
 		[
+			"/home/vee/pointOfSale/orderscenter.h",
+			"MU",
+			"EWIEGA46WW/moc_orderscenter.cpp"
+		],
+		[
 			"/home/vee/pointOfSale/ordersclient.h",
 			"MU",
 			"EWIEGA46WW/moc_ordersclient.cpp"
@@ -233,6 +248,11 @@
 			"/home/vee/pointOfSale/viaddialog.h",
 			"MU",
 			"EWIEGA46WW/moc_viaddialog.cpp"
+		],
+		[
+			"/home/vee/pointOfSale/viewbusinesslimit.h",
+			"MU",
+			"EWIEGA46WW/moc_viewbusinesslimit.cpp"
 		],
 		[
 			"/home/vee/pointOfSale/viewcustomer.h",
@@ -328,7 +348,9 @@
 		[ "/home/vee/pointOfSale/addproductzone.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addsupplier.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/addtransactiontype.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/adminauthentication.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/adminwindow.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/businesslimits.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/cashierwindow.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/changeavatar.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/changedebtlimit.cpp", "MU" ],
@@ -352,6 +374,7 @@
 		[ "/home/vee/pointOfSale/login.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/main.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/mainslice.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/orderscenter.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/ordersclient.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/passwordconfirmation.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/productdiscounteditor.cpp", "MU" ],
@@ -367,6 +390,7 @@
 		[ "/home/vee/pointOfSale/verifynewproduct.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/verifynewuser.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/viaddialog.cpp", "MU" ],
+		[ "/home/vee/pointOfSale/viewbusinesslimit.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/viewcustomer.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/viewproduct.cpp", "MU" ],
 		[ "/home/vee/pointOfSale/viewsupplier.cpp", "MU" ],

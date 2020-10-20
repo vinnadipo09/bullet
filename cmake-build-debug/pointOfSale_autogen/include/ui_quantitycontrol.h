@@ -36,6 +36,7 @@ public:
     QSpinBox *spinBoxQuantity;
     QLineEdit *lineEditProductQuantity;
     QLabel *lblQty;
+    QPushButton *btnDeleteItem;
     QGridLayout *gridLayout;
     QLabel *label_2;
 
@@ -70,12 +71,12 @@ public:
         btnApproveQty->setIconSize(QSize(24, 24));
         btnOK = new QPushButton(groupBox);
         btnOK->setObjectName(QStringLiteral("btnOK"));
-        btnOK->setGeometry(QRect(150, 140, 114, 30));
+        btnOK->setGeometry(QRect(30, 140, 114, 30));
         btnOK->setIcon(icon);
         btnOK->setIconSize(QSize(24, 24));
         btnCancel = new QPushButton(groupBox);
         btnCancel->setObjectName(QStringLiteral("btnCancel"));
-        btnCancel->setGeometry(QRect(280, 140, 101, 30));
+        btnCancel->setGeometry(QRect(300, 140, 101, 30));
         QIcon icon1;
         icon1.addFile(QStringLiteral(":/resources/newIcons/missed-calls-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         btnCancel->setIcon(icon1);
@@ -94,6 +95,13 @@ public:
 "color: rgb(238, 238, 236);"));
         lblQty->setFrameShape(QFrame::Panel);
         lblQty->setFrameShadow(QFrame::Sunken);
+        btnDeleteItem = new QPushButton(groupBox);
+        btnDeleteItem->setObjectName(QStringLiteral("btnDeleteItem"));
+        btnDeleteItem->setGeometry(QRect(170, 140, 114, 30));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/resources/new_icons_2/icons8-minus-96.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btnDeleteItem->setIcon(icon2);
+        btnDeleteItem->setIconSize(QSize(24, 24));
         gridLayout = new QGridLayout(QuantityControl);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         label_2 = new QLabel(QuantityControl);
@@ -121,6 +129,7 @@ public:
         btnOK->setText(QApplication::translate("QuantityControl", "OK", Q_NULLPTR));
         btnCancel->setText(QApplication::translate("QuantityControl", "Cancel", Q_NULLPTR));
         lblQty->setText(QApplication::translate("QuantityControl", "QTY", Q_NULLPTR));
+        btnDeleteItem->setText(QApplication::translate("QuantityControl", "Delete Item", Q_NULLPTR));
         label_2->setText(QString());
     } // retranslateUi
 

@@ -29,7 +29,9 @@
 #include "editproductzone.h"
 #include "addproduct.h"
 #include "addcash.h"
-#include <salesclient.h>
+#include "salesclient.h"
+#include "businesslimits.h"
+#include "viewbusinesslimit.h"
 namespace Ui {
 class AdminWindow;
 }
@@ -136,8 +138,7 @@ private:
     AddTransactionType* addTransactionType;
     void loadTransactionTypes();
     void viewTransactionType();
-    void receiveViewTransType();
-    void receiveDeleteTransType();
+
     void deleteTransactionType(QString &);
 
 private:
@@ -248,9 +249,20 @@ private:
 
 private slots:
     void receiveOpeningClosingChanged();
-
+    void on_btnNewLimit_clicked();
+    void receiveLimitUpdate();
+    //taken from private
+    void receiveViewTransType();
+    void receiveDeleteTransType();
+    void receive_viewLimitCalled();
+    void receiveUpdateFromLimit();
 private:
     void loadCharts();
+    BusinessLimits* businessLimits;
+    ViewBusinessLimit* viewBusinessLimit;
+    void loadBusinessLimits();
+
+
 };
 
 #endif // ADMINWINDOW_H

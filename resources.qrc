@@ -194,5 +194,28 @@
         <file>resources/final/wallet (1).png</file>
         <file>resources/final/wallet (2).png</file>
         <file>resources/final/worker.png</file>
+        <file>resources/background/bgsales.jpg</file>
+        <file>resources/complete/AdobeStock_288993543-scaled.jpeg</file>
+        <file>resources/complete/advanced-analytics.jpg</file>
+        <file>resources/complete/analytics-technology-ss-1920.jpg</file>
+        <file>resources/complete/big_data_analytics_analysis_statistics_thinkstock_626673360-100749740-large.jpg</file>
+        <file>resources/complete/data_analytics-shutterstock489.jpg</file>
+        <file>resources/complete/GettyImages-1132660268.jpg</file>
+        <file>resources/complete/jgXYNK8U4o4itGBBMRtCKa-1200-80.jpg</file>
+        <file>resources/complete/icons/analytics.png</file>
+        <file>resources/complete/icons/analytics (1).png</file>
+        <file>resources/complete/icons/barcode.png</file>
+        <file>resources/complete/icons/bar-code.png</file>
+        <file>resources/complete/icons/cashier-machine.png</file>
+        <file>resources/complete/icons/cashier-machine (1).png</file>
+        <file>resources/complete/icons/coin.png</file>
+        <file>resources/complete/icons/coin (1).png</file>
+        <file>resources/complete/icons/coins-stack.png</file>
+        <file>resources/complete/icons/dashboard.png</file>
+        <file>resources/complete/icons/notes.png</file>
+        <file>resources/complete/icons/pie-chart.png</file>
+        <file>resources/complete/icons/stack-of-coins.png</file>
+        <file>resources/complete/icons/circular-refreshment-arrow.png</file>
+        <file>resources/complete/icons/refresh-circular-arrow.png</file>
     </qresource>
 </RCC>

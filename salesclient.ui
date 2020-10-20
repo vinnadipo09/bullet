@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1600</width>
+    <width>1962</width>
     <height>1874</height>
    </rect>
   </property>
@@ -14,7 +14,21 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_6">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(136, 138, 133);
+background-color: rgb(114, 159, 207);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -60,7 +74,13 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="text">
          <string/>
@@ -82,9 +102,13 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-color: rgb(255, 255, 255);
-</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -140,7 +164,13 @@ color: rgb(255, 255, 255);
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(52, 101, 164);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -182,19 +212,6 @@ color: rgb(255, 255, 255);
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <widget class="QLabel" name="lblTime_4">
         <property name="minimumSize">
          <size>
@@ -210,15 +227,21 @@ color: rgb(255, 255, 255);
         </property>
         <property name="font">
          <font>
-          <family>Waree</family>
+          <family>Umpush</family>
           <pointsize>11</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -247,14 +270,21 @@ color: rgb(255, 255, 255);
         </property>
         <property name="font">
          <font>
-          <family>Waree</family>
+          <family>Umpush</family>
           <pointsize>11</pointsize>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-color: rgb(238, 238, 236);
-</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -310,7 +340,13 @@ color: rgb(238, 238, 236);
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(52, 101, 164);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -352,6 +388,56 @@ color: rgb(238, 238, 236);
        </widget>
       </item>
       <item>
+       <widget class="QLabel" name="lblClientNameHolder">
+        <property name="minimumSize">
+         <size>
+          <width>180</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>180</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="text">
+         <string>Enter Client Phone:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="leClient">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_7">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -380,14 +466,21 @@ color: rgb(238, 238, 236);
         </property>
         <property name="font">
          <font>
-          <family>Waree</family>
+          <family>Umpush</family>
           <pointsize>11</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -416,13 +509,21 @@ color: rgb(238, 238, 236);
         </property>
         <property name="font">
          <font>
-          <family>Waree</family>
+          <family>Umpush</family>
           <pointsize>11</pointsize>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-color: rgb(238, 238, 236);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -478,7 +579,13 @@ color: rgb(238, 238, 236);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(52, 101, 164);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -548,15 +655,21 @@ color: rgb(238, 238, 236);</string>
         </property>
         <property name="font">
          <font>
-          <family>Waree</family>
+          <family>Umpush</family>
           <pointsize>11</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-padding: 2px;</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -585,13 +698,21 @@ padding: 2px;</string>
         </property>
         <property name="font">
          <font>
-          <family>Waree</family>
+          <family>Umpush</family>
           <pointsize>11</pointsize>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-color: rgb(238, 238, 236);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -620,15 +741,21 @@ color: rgb(238, 238, 236);</string>
         </property>
         <property name="font">
          <font>
-          <family>Waree</family>
+          <family>Umpush</family>
           <pointsize>11</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-padding: 2px;</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -657,14 +784,21 @@ padding: 2px;</string>
         </property>
         <property name="font">
          <font>
-          <family>Waree</family>
+          <family>Umpush</family>
           <pointsize>11</pointsize>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-color: rgb(238, 238, 236);
-</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -701,12 +835,24 @@ color: rgb(238, 238, 236);
        <widget class="QComboBox" name="cbSalesType">
         <property name="minimumSize">
          <size>
-          <width>30</width>
+          <width>120</width>
           <height>30</height>
          </size>
         </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(52, 101, 164);</string>
         </property>
         <item>
          <property name="text">
@@ -737,13 +883,24 @@ color: rgb(238, 238, 236);
        <widget class="QLabel" name="lblSaleType">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>150</width>
           <height>30</height>
          </size>
         </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-border-radius:3px;</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -770,45 +927,6 @@ border-radius:3px;</string>
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="lblClientNameHolder">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);
-padding: 2px;</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string>Enter Client Phone:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="leClient">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>250</width>
-          <height>16777215</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
        <spacer name="horizontalSpacer_3">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -820,6 +938,111 @@ padding: 2px;</string>
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="cbAdminPriviledges">
+        <property name="text">
+         <string>Unlock Admin Priviledges</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="lblClientNameHolder_2">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="text">
+           <string>Minimum Reward Payment Limit</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cbMinimumReward">
+          <item>
+           <property name="text">
+            <string>Select Lower Reward Limit</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_10">
+        <item>
+         <widget class="QLabel" name="lblClientNameHolder_4">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="text">
+           <string>Maximum Credit Allowed</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cbmaximumCredit">
+          <item>
+           <property name="text">
+            <string>Select Maximum Credit</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QCheckBox" name="checkBoxEnableRewardPayment">
@@ -910,7 +1133,13 @@ padding: 2px;</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -942,7 +1171,13 @@ padding: 2px;</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
+         <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -1011,7 +1246,7 @@ padding: 2px;</string>
         </property>
         <column>
          <property name="text">
-          <string>Product Id</string>
+          <string>New Column</string>
          </property>
         </column>
         <column>
@@ -1026,12 +1261,12 @@ padding: 2px;</string>
         </column>
         <column>
          <property name="text">
-          <string>Measuerment</string>
+          <string>Units</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Unit Price</string>
+          <string>Price</string>
          </property>
         </column>
         <column>
@@ -1051,7 +1286,7 @@ padding: 2px;</string>
         </column>
         <column>
          <property name="text">
-          <string>Sub Total</string>
+          <string>Total</string>
          </property>
         </column>
        </widget>
@@ -1076,359 +1311,6 @@ padding: 2px;</string>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_5">
-      <item>
-       <widget class="QLabel" name="label_54">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_53">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 0, 0);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_55">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Waree</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(78, 154, 6);</string>
-          </property>
-          <property name="text">
-           <string>Customer Data</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QFormLayout" name="formLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_14">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Waree</family>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);
-</string>
-            </property>
-            <property name="text">
-             <string>Cash</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="lblCashOnBusiness">
-            <property name="minimumSize">
-             <size>
-              <width>250</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);
-</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_16">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Waree</family>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
-            </property>
-            <property name="text">
-             <string>Rewards</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="lblAvailableRewards">
-            <property name="minimumSize">
-             <size>
-              <width>250</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Waree</family>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
-            </property>
-            <property name="text">
-             <string>Avl Credit:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="lblAvailableCredit">
-            <property name="minimumSize">
-             <size>
-              <width>250</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_13">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Waree</family>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
-            </property>
-            <property name="text">
-             <string>Debts:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLabel" name="lblDebt">
-            <property name="minimumSize">
-             <size>
-              <width>250</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QPushButton" name="pushButton">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
-            </property>
-            <property name="text">
-             <string>View This Customer</string>
-            </property>
-            <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/resources/new_icons_2/icons8-invisible-100.png</normaloff>:/resources/new_icons_2/icons8-invisible-100.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>24</width>
-              <height>24</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QCheckBox" name="checkBoxClientRewardAuthorization">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
-            </property>
-            <property name="text">
-             <string>Authorize rewards Payment</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_51">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_50">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 0, 0);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_52">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -1455,7 +1337,7 @@ padding: 2px;</string>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(78, 154, 6);
+color: rgb(255, 255, 255);
 margin-left:4px;
 text-align:center;</string>
           </property>
@@ -1475,7 +1357,13 @@ text-align:center;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
             </property>
             <property name="text">
              <string>Possible Reward:</string>
@@ -1491,7 +1379,13 @@ text-align:center;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
             </property>
             <property name="text">
              <string/>
@@ -1501,7 +1395,13 @@ text-align:center;</string>
           <item row="1" column="0">
            <widget class="QLabel" name="label_20">
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
             </property>
             <property name="text">
              <string>Possible Discount:</string>
@@ -1517,7 +1417,13 @@ text-align:center;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
             </property>
             <property name="text">
              <string/>
@@ -1546,14 +1452,21 @@ text-align:center;</string>
           </property>
           <property name="font">
            <font>
-            <family>Waree</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <family>Umpush</family>
+            <pointsize>11</pointsize>
+            <weight>3</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(78, 154, 6);</string>
+           <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
           </property>
           <property name="text">
            <string>Sale information</string>
@@ -1575,14 +1488,21 @@ text-align:center;</string>
             </property>
             <property name="font">
              <font>
-              <family>Waree</family>
-              <pointsize>12</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
+              <family>Umpush</family>
+              <pointsize>11</pointsize>
+              <weight>3</weight>
+              <italic>false</italic>
+              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
             </property>
             <property name="text">
              <string>Sale Value:</string>
@@ -1628,14 +1548,21 @@ padding:4px;</string>
             </property>
             <property name="font">
              <font>
-              <family>Waree</family>
-              <pointsize>12</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
+              <family>Umpush</family>
+              <pointsize>11</pointsize>
+              <weight>3</weight>
+              <italic>false</italic>
+              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
             </property>
             <property name="text">
              <string>Sale Tax(16%):</string>
@@ -1681,14 +1608,21 @@ padding: 4px;</string>
             </property>
             <property name="font">
              <font>
-              <family>Waree</family>
-              <pointsize>12</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
+              <family>Umpush</family>
+              <pointsize>11</pointsize>
+              <weight>3</weight>
+              <italic>false</italic>
+              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(78, 154, 6);</string>
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
             </property>
             <property name="text">
              <string>Sale Total:</string>
@@ -1729,51 +1663,343 @@ padding: 4px;</string>
        </layout>
       </item>
       <item>
-       <widget class="QLabel" name="label_60">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Umpush</family>
+            <pointsize>11</pointsize>
+            <weight>3</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+          </property>
+          <property name="text">
+           <string>Customer Data</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout_4">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_14">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Umpush</family>
+              <pointsize>11</pointsize>
+              <weight>3</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+            </property>
+            <property name="text">
+             <string>Cash</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="lblCashOnBusiness">
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_16">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Umpush</family>
+              <pointsize>11</pointsize>
+              <weight>3</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+            </property>
+            <property name="text">
+             <string>Rewards</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="lblAvailableRewards">
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Umpush</family>
+              <pointsize>11</pointsize>
+              <weight>3</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+            </property>
+            <property name="text">
+             <string>Avl Credit:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="lblAvailableCredit">
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Umpush</family>
+              <pointsize>11</pointsize>
+              <weight>3</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+            </property>
+            <property name="text">
+             <string>Debts:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="lblDebt">
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLabel" name="label_59">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 0, 0);</string>
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
+       </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label_61">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Queue Conrol Center</string>
         </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QPushButton" name="btn_queue_one">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(138, 226, 52);</string>
+           </property>
+           <property name="text">
+            <string>Queue One</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_queue_two">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(138, 226, 52);</string>
+           </property>
+           <property name="text">
+            <string>Queue Two</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_queue_three">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(138, 226, 52);</string>
+           </property>
+           <property name="text">
+            <string>Queue Three</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_queue_four">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(138, 226, 52);</string>
+           </property>
+           <property name="text">
+            <string>Queue Four</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
       <item>
@@ -1787,8 +2013,13 @@ padding: 4px;</string>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(78, 154, 6);
-color: rgb(0, 0, 0);</string>
+           <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(52, 101, 164);</string>
           </property>
           <property name="text">
            <string>Apply</string>
@@ -1878,6 +2109,54 @@ color: rgb(0, 0, 0);</string>
          </layout>
         </item>
         <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="styleSheet">
+           <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(52, 101, 164);</string>
+          </property>
+          <property name="text">
+           <string>View This Customer</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/resources/new_icons_2/icons8-invisible-100.png</normaloff>:/resources/new_icons_2/icons8-invisible-100.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBoxClientRewardAuthorization">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">text-align:left;
+color: rgb(243, 243, 243);
+font: 25 11pt &quot;Umpush&quot;;
+padding-left:2px;
+padding: 1.5px;
+margin: 0px;
+background-color: rgb(114, 159, 207);</string>
+          </property>
+          <property name="text">
+           <string>Authorize rewards Payment</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
            <widget class="QPushButton" name="btn_addNewCustomer">
@@ -1927,54 +2206,6 @@ padding: 4px;
         </item>
        </layout>
       </item>
-      <item>
-       <widget class="QLabel" name="label_58">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_56">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 0, 0);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_57">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(78, 154, 6);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item>
@@ -2000,7 +2231,7 @@ padding: 4px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1600</width>
+     <width>1962</width>
      <height>20</height>
     </rect>
    </property>

@@ -12,6 +12,7 @@
 
 #define LOGx(x) std::cout<< x << std::endl
 #define LOGxy(x,y) std::cout<< x << y << std::endl
+#define LOGmn(m,n) std::cout<< m << n << std::endl
 #define Debug(x) qDebug()<<(x)
 
 struct posUser{
@@ -148,6 +149,26 @@ struct ModifiedQuantity{
     int oldQuantity;
     int newQuantity;
 };
+struct queue_product{
+    QString id;
+    QString barcode;
+    QString description;
+    QString measurement;
+    QString unit_price;
+    int quantity;
+    float discount;
+    float reward;
+    QString sub_total;
+    bool discounted;
+    bool rewarded;
+};
+struct queue_item{
+    QString cus_id;
+    std::map<int, purchasedItem>list_products;
+    bool discount_enabled;
+    bool rewards_enabled;
+};
+
 class Debugger
 {
 public:
