@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SalesClient_t {
-    QByteArrayData data[50];
-    char stringdata0[1166];
+    QByteArrayData data[51];
+    char stringdata0[1195];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -80,7 +80,8 @@ QT_MOC_LITERAL(45, 1039, 24), // "on_btn_queue_one_clicked"
 QT_MOC_LITERAL(46, 1064, 24), // "on_btn_queue_two_clicked"
 QT_MOC_LITERAL(47, 1089, 26), // "on_btn_queue_three_clicked"
 QT_MOC_LITERAL(48, 1116, 25), // "on_btn_queue_four_clicked"
-QT_MOC_LITERAL(49, 1142, 23) // "on_btnQueueSale_clicked"
+QT_MOC_LITERAL(49, 1142, 23), // "on_btnQueueSale_clicked"
+QT_MOC_LITERAL(50, 1166, 28) // "load_product_by_product_name"
 
     },
     "SalesClient\0send_salesClientClosed\0\0"
@@ -115,7 +116,8 @@ QT_MOC_LITERAL(49, 1142, 23) // "on_btnQueueSale_clicked"
     "on_btn_queue_two_clicked\0"
     "on_btn_queue_three_clicked\0"
     "on_btn_queue_four_clicked\0"
-    "on_btnQueueSale_clicked"
+    "on_btnQueueSale_clicked\0"
+    "load_product_by_product_name"
 };
 #undef QT_MOC_LITERAL
 
@@ -125,7 +127,7 @@ static const uint qt_meta_data_SalesClient[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      39,   14, // methods
+      40,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -133,47 +135,48 @@ static const uint qt_meta_data_SalesClient[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,  209,    2, 0x06 /* Public */,
-       3,    0,  210,    2, 0x06 /* Public */,
-       4,    0,  211,    2, 0x06 /* Public */,
-       5,    0,  212,    2, 0x06 /* Public */,
+       1,    0,  214,    2, 0x06 /* Public */,
+       3,    0,  215,    2, 0x06 /* Public */,
+       4,    0,  216,    2, 0x06 /* Public */,
+       5,    0,  217,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,  213,    2, 0x08 /* Private */,
-       7,    0,  214,    2, 0x08 /* Private */,
-       8,    1,  215,    2, 0x08 /* Private */,
-      10,    0,  218,    2, 0x08 /* Private */,
-      11,    0,  219,    2, 0x08 /* Private */,
-      12,    0,  220,    2, 0x08 /* Private */,
-      13,    0,  221,    2, 0x08 /* Private */,
-      14,    0,  222,    2, 0x08 /* Private */,
-      15,    0,  223,    2, 0x08 /* Private */,
-      16,    0,  224,    2, 0x08 /* Private */,
-      17,    0,  225,    2, 0x08 /* Private */,
-      18,    0,  226,    2, 0x08 /* Private */,
-      19,    0,  227,    2, 0x08 /* Private */,
-      20,    0,  228,    2, 0x08 /* Private */,
-      21,    0,  229,    2, 0x08 /* Private */,
-      22,    1,  230,    2, 0x08 /* Private */,
-      24,    1,  233,    2, 0x08 /* Private */,
-      25,    1,  236,    2, 0x08 /* Private */,
-      26,    1,  239,    2, 0x08 /* Private */,
-      27,    0,  242,    2, 0x08 /* Private */,
-      28,    0,  243,    2, 0x08 /* Private */,
-      29,    0,  244,    2, 0x08 /* Private */,
-      30,    0,  245,    2, 0x08 /* Private */,
-      31,    3,  246,    2, 0x08 /* Private */,
-      36,    2,  253,    2, 0x08 /* Private */,
-      39,    1,  258,    2, 0x08 /* Private */,
-      41,    0,  261,    2, 0x08 /* Private */,
-      42,    0,  262,    2, 0x08 /* Private */,
-      43,    0,  263,    2, 0x08 /* Private */,
-      44,    2,  264,    2, 0x08 /* Private */,
-      45,    0,  269,    2, 0x08 /* Private */,
-      46,    0,  270,    2, 0x08 /* Private */,
-      47,    0,  271,    2, 0x08 /* Private */,
-      48,    0,  272,    2, 0x08 /* Private */,
-      49,    0,  273,    2, 0x08 /* Private */,
+       6,    0,  218,    2, 0x08 /* Private */,
+       7,    0,  219,    2, 0x08 /* Private */,
+       8,    1,  220,    2, 0x08 /* Private */,
+      10,    0,  223,    2, 0x08 /* Private */,
+      11,    0,  224,    2, 0x08 /* Private */,
+      12,    0,  225,    2, 0x08 /* Private */,
+      13,    0,  226,    2, 0x08 /* Private */,
+      14,    0,  227,    2, 0x08 /* Private */,
+      15,    0,  228,    2, 0x08 /* Private */,
+      16,    0,  229,    2, 0x08 /* Private */,
+      17,    0,  230,    2, 0x08 /* Private */,
+      18,    0,  231,    2, 0x08 /* Private */,
+      19,    0,  232,    2, 0x08 /* Private */,
+      20,    0,  233,    2, 0x08 /* Private */,
+      21,    0,  234,    2, 0x08 /* Private */,
+      22,    1,  235,    2, 0x08 /* Private */,
+      24,    1,  238,    2, 0x08 /* Private */,
+      25,    1,  241,    2, 0x08 /* Private */,
+      26,    1,  244,    2, 0x08 /* Private */,
+      27,    0,  247,    2, 0x08 /* Private */,
+      28,    0,  248,    2, 0x08 /* Private */,
+      29,    0,  249,    2, 0x08 /* Private */,
+      30,    0,  250,    2, 0x08 /* Private */,
+      31,    3,  251,    2, 0x08 /* Private */,
+      36,    2,  258,    2, 0x08 /* Private */,
+      39,    1,  263,    2, 0x08 /* Private */,
+      41,    0,  266,    2, 0x08 /* Private */,
+      42,    0,  267,    2, 0x08 /* Private */,
+      43,    0,  268,    2, 0x08 /* Private */,
+      44,    2,  269,    2, 0x08 /* Private */,
+      45,    0,  274,    2, 0x08 /* Private */,
+      46,    0,  275,    2, 0x08 /* Private */,
+      47,    0,  276,    2, 0x08 /* Private */,
+      48,    0,  277,    2, 0x08 /* Private */,
+      49,    0,  278,    2, 0x08 /* Private */,
+      50,    0,  279,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -212,6 +215,7 @@ static const uint qt_meta_data_SalesClient[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   37,   38,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -266,6 +270,7 @@ void SalesClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 36: _t->on_btn_queue_three_clicked(); break;
         case 37: _t->on_btn_queue_four_clicked(); break;
         case 38: _t->on_btnQueueSale_clicked(); break;
+        case 39: _t->load_product_by_product_name(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -326,13 +331,13 @@ int SalesClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 39)
+        if (_id < 40)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 39;
+        _id -= 40;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 39)
+        if (_id < 40)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 39;
+        _id -= 40;
     }
     return _id;
 }

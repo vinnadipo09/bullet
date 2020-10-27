@@ -1246,7 +1246,7 @@ background-color: rgb(114, 159, 207);</string>
         </property>
         <column>
          <property name="text">
-          <string>New Column</string>
+          <string>System Id</string>
          </property>
         </column>
         <column>
@@ -1366,7 +1366,7 @@ margin: 0px;
 background-color: rgb(114, 159, 207);</string>
             </property>
             <property name="text">
-             <string>Possible Reward:</string>
+             <string>Total Sale Rewards:</string>
             </property>
            </widget>
           </item>
@@ -1404,7 +1404,7 @@ margin: 0px;
 background-color: rgb(114, 159, 207);</string>
             </property>
             <property name="text">
-             <string>Possible Discount:</string>
+             <string>Total Sale Discount:</string>
             </property>
            </widget>
           </item>
@@ -1962,40 +1962,40 @@ background-color: rgb(114, 159, 207);</string>
          <item>
           <widget class="QPushButton" name="btn_queue_one">
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(138, 226, 52);</string>
+            <string notr="true">background-color: green;</string>
            </property>
            <property name="text">
-            <string>Queue One</string>
+            <string>Queue One: Free</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btn_queue_two">
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(138, 226, 52);</string>
+            <string notr="true">background-color: green;</string>
            </property>
            <property name="text">
-            <string>Queue Two</string>
+            <string>Queue Two: Free</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btn_queue_three">
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(138, 226, 52);</string>
+            <string notr="true">background-color: green;</string>
            </property>
            <property name="text">
-            <string>Queue Three</string>
+            <string>Queue Three: Free</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btn_queue_four">
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(138, 226, 52);</string>
+            <string notr="true">background-color: green;</string>
            </property>
            <property name="text">
-            <string>Queue Four</string>
+            <string>Queue Four: Free</string>
            </property>
           </widget>
          </item>

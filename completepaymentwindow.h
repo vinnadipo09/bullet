@@ -17,7 +17,7 @@ class CompletePaymentWindow : public QDialog
 public:
     explicit CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser,
             int& currentSaleId, std::map<int, purchasedItem>&productsBought, bool &rewards, float rewardTotal,
-            bool &discounts, float discountTotal, Customer&, int& totalToPay, int& minimumReward, int & maximumCredit);
+            bool &discounts, float discountTotal, Customer&, float& totalToPay, int& minimumReward, int & maximumCredit);
     ~CompletePaymentWindow();
 
 private slots:
@@ -39,6 +39,14 @@ private slots:
     void on_lblValueOne_returnPressed();
 
     void on_lblValueTwo_returnPressed();
+
+    void on_lbl_cash_display_textChanged(const QString &arg1);
+
+    void on_lbl_credit_display_textChanged(const QString &arg1);
+
+    void on_lbl_reward_display_textChanged(const QString &arg1);
+
+    void on_cb_MPesa_display_currentTextChanged(const QString &arg1);
 
 private:
     Ui::CompletePaymentWindow *ui;
@@ -97,6 +105,17 @@ private:
     int* cashValue;
     int* creditValue;
     int* rewardValue;
+private:
+    void set_payment_to_cash();
+    void set_payment_to_mpesa();
+    void set_payment_to_mpesa_cash();
+    void set_payment_to_mpesa_credit();
+    void set_payment_to_credit();
+    void set_payment_to_rewards();
+    void set_payment_to_cash_credit();
+    void set_payment_to_cash_rewards();
+    void set_payment_to_mpesa_rewards();
+    QString payment_method;
 };
 
 #endif // COMPLETEPAYMENTWINDOW_H

@@ -3,7 +3,7 @@
 CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &currentLoggedInUser, int& currentSaleId,
         std::map<int, purchasedItem>&productsBought, bool &rewards,
         float rewardTotal, bool &discounts, float discountTotal,
-        Customer& currentServingCustomer, int& totalToPay, int& minimumReward, int & maximumCredit) :
+        Customer& currentServingCustomer, float& totalToPay, int& minimumReward, int & maximumCredit) :
     QDialog(parent),
     ui(new Ui::CompletePaymentWindow)
 {
@@ -22,13 +22,13 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
 //    *productToDatabasaeSales = productsBought;
     *userOnCashier = currentLoggedInUser;
     *amountToBePayed = totalToPay;
-    ui->cb_paymentMethod->setCurrentIndex(1);
-
-    ui->le_amountTotal->setText(QString::number(*amountToBePayed));
-    ui->lblValueOne->setText(QString::number(*amountPaid));
-    ui->lblValueOne->setFocus();
-    QObject::connect(ui->lblValueOne, SIGNAL(returnPressed()),
-                     this, SLOT(getCashComputeBalance()));
+//    ui->cb_paymentMethod->setCurrentIndex(1);
+//
+//    ui->le_amountTotal->setText(QString::number(*amountToBePayed));
+//    ui->lblValueOne->setText(QString::number(*amountPaid));
+//    ui->lblValueOne->setFocus();
+//    QObject::connect(ui->lblValueOne, SIGNAL(returnPressed()),
+//                     this, SLOT(getCashComputeBalance()));
 
     productRewardsEnabled = new bool;
     productDiscountsEnabled = new bool;
@@ -75,46 +75,63 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
     single_product_rewTotal = 0;
     paymentMethod = new QString;
     *paymentMethod = "Cash";
-
-    connect(ui->cb_paymentMethod, QOverload<int>::of(&QComboBox::currentIndexChanged),
+    set_payment_to_cash();
+    connect(ui->cb_display_payment_method, QOverload<int>::of(&QComboBox::currentIndexChanged),
             [=](int index){ /* ... */
                 if(index==0){
-                    ui->lblValueOneTitle->setText("Cash: ");
-                    ui->lblValueOne->setFocus();
-                    ui->lblValueTwo->setDisabled(true);
                     *paymentMethod = "Cash";
+                    set_payment_to_cash();
                 }else if(index==1){
-                    ui->lblValueOneTitle->setText("Credit: ");
-                    ui->lblValueOne->setText(QString::number(*amountToBePayed));
-                    ui->lblValueTwo->setDisabled(true);
-                    *paymentMethod = "Credit";
+                    *paymentMethod = "MPesa";
+                    set_payment_to_mpesa();
                 }else if(index==2){
-                    if (*totalRewards< *minimumRewardForPayment){
-                        QMessageBox::critical(this, "Insufficient Reward Error", "Your total rewards" +QString::number(*totalRewards)+" is less than the minimum acceptable, "+QString::number(*minimumRewardForPayment)+" .");
-                        ui->cb_paymentMethod->setCurrentIndex(0);
-                    } else{
-                        if (*amountToBePayed<=*totalRewards){
-                            ui->lblValueOneTitle->setText("Rewards: ");
-                            ui->lblValueOne->setText(QString::number(*amountToBePayed));
-                            ui->lblValueTwo->setDisabled(true);
-                            *paymentMethod = "Rewards";
+                    *paymentMethod = "Credit";
+                    set_payment_to_credit();
 
-                        } else{
-                            ui->cb_paymentMethod->setCurrentIndex(4);
-                        }
-                    }
+//                    if (*totalRewards< *minimumRewardForPayment){
+//                        QMessageBox::critical(this, "Insufficient Reward Error", "Your total rewards" +QString::number(*totalRewards)+" is less than the minimum acceptable, "+QString::number(*minimumRewardForPayment)+" .");
+//                        ui->cb_paymentMethod->setCurrentIndex(0);
+//                    } else{
+//                        if (*amountToBePayed<=*totalRewards){
+//                            ui->lblValueOneTitle->setText("Rewards: ");
+//                            ui->lblValueOne->setText(QString::number(*amountToBePayed));
+//                            ui->lblValueTwo->setDisabled(true);
+//                            *paymentMethod = "Rewards";
+//
+//                        } else{
+//                            ui->cb_paymentMethod->setCurrentIndex(4);
+//                        }
+//                    }
                 }else if(index==3){
-                    ui->lblValueOne->setFocus();
-                    ui->lblValueOneTitle->setText("Cash: ");
-                    ui->lblValueTwoTitle->setText("Credit: ");
-                    *paymentMethod = "Cash+Credit";
+//                    ui->lblValueOne->setFocus();
+//                    ui->lblValueOneTitle->setText("Cash: ");
+//                    ui->lblValueTwoTitle->setText("Credit: ");
+                    *paymentMethod = "CashCredit";
+                    set_payment_to_cash_credit();
                 }else if(index==4){
-                    *paymentMethod = "Cash+Rewards";
-                }else{
+                    *paymentMethod = "MPesaCash";
+                    set_payment_to_mpesa_cash();
+                }else if(index==5){
+                    *paymentMethod = "MPesaCredit";
+                    set_payment_to_mpesa_credit();
+                }else if(index==6){
+                    *paymentMethod = "MPesaRewards";
+                    set_payment_to_mpesa_rewards();
+                }else if(index==7){
+                    *paymentMethod = "Rewards";
+                    set_payment_to_rewards();
+                }else if(index==8){
+                    *paymentMethod = "CashRewards";
+                    set_payment_to_cash_rewards();
+                }
+
+                else{
                     LOGx("Should never get here");
                 }
 
             });
+
+
 
     int customerAvailableCredit = servingCustomer->creditRemaining;
     ui->lblCreditAvailable->setText(QString::number(customerAvailableCredit));
@@ -127,6 +144,8 @@ CompletePaymentWindow::CompletePaymentWindow(QWidget *parent, loggedUser &curren
 
 
     ui->saleReward->setText(QString::number(*totalRewards));
+//    ui->lblValueTwoTitle->hide();
+//    ui->lblValueOne->hide();
 
 }
 
@@ -136,30 +155,30 @@ CompletePaymentWindow::~CompletePaymentWindow()
 }
 void CompletePaymentWindow::on_lblValueOne_returnPressed()
 {
-    if (ui->cb_paymentMethod->currentText()==0){
-        if (ui->lblValueOne->text().toInt()>=*amountToBePayed){
-//            getCashComputeBalance();
-            ui->btnCompleteSale->setFocus();
-        }else{
-            QMessageBox::critical(this, "Payment Amount Error", "Please enter a value equal to the bill or greater!");
-            ui->lblValueOne->clear();
-            return;
-        }
-    }else if (ui->cb_paymentMethod->currentText()==3){
-
-        if (*cashValue<*amountToBePayed){
-            *cashValue = ui->lblValueOne->text().toInt();
-            *creditValue = *amountToBePayed - *cashValue;
-            ui->lblValueTwo->setText(QString::number(*creditValue));
-        }else if (*cashValue==*amountToBePayed){
-            QMessageBox::critical(this, "Payment Method Error", "Redirecting your payment to cash method");
-            ui->cb_paymentMethod->setCurrentIndex(0);
-            ui->lblValueOne->setText(QString::number(*cashValue));
-        }else if (*cashValue>*amountToBePayed){
-            QMessageBox::critical(this, "Payment Amount Error", "You are paying more than you owe. Please Check your values again");
-            ui->lblValueOne->clear();
-        }
-    }
+//    if (ui->cb_paymentMethod->currentText()==0){
+//        if (ui->lblValueOne->text().toInt()>=*amountToBePayed){
+////            getCashComputeBalance();
+//            ui->btnCompleteSale->setFocus();
+//        }else{
+//            QMessageBox::critical(this, "Payment Amount Error", "Please enter a value equal to the bill or greater!");
+//            ui->lblValueOne->clear();
+//            return;
+//        }
+//    }else if (ui->cb_paymentMethod->currentText()==3){
+//
+//        if (*cashValue<*amountToBePayed){
+//            *cashValue = ui->lblValueOne->text().toInt();
+//            *creditValue = *amountToBePayed - *cashValue;
+//            ui->lblValueTwo->setText(QString::number(*creditValue));
+//        }else if (*cashValue==*amountToBePayed){
+//            QMessageBox::critical(this, "Payment Method Error", "Redirecting your payment to cash method");
+//            ui->cb_paymentMethod->setCurrentIndex(0);
+//            ui->lblValueOne->setText(QString::number(*cashValue));
+//        }else if (*cashValue>*amountToBePayed){
+//            QMessageBox::critical(this, "Payment Amount Error", "You are paying more than you owe. Please Check your values again");
+//            ui->lblValueOne->clear();
+//        }
+//    }
 }
 
 void CompletePaymentWindow::on_lblValueTwo_returnPressed()
@@ -171,43 +190,169 @@ void CompletePaymentWindow::on_lblValueTwo_returnPressed()
 void CompletePaymentWindow::on_btn_fifty_clicked()
 {
     *amountPaid+=50;
-    ui->lblValueOne->setText(QString::number(*amountPaid));
-    ui->lblValueOne->setFocus();
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+//    ui->lblValueOne->setText(QString::number(*amountPaid));
+//    ui->lblValueOne->setFocus();
 
 }
 void CompletePaymentWindow::on_btn_oneHundred_clicked()
 {
     *amountPaid+=100;
-    ui->lblValueOne->setText(QString::number(*amountPaid));
-    ui->lblValueOne->setFocus();
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+//    ui->lblValueOne->setText(QString::number(*amountPaid));
+//    ui->lblValueOne->setFocus();
 
 }
 void CompletePaymentWindow::on_btn_twoHundred_clicked()
 {
     *amountPaid+=200;
-    ui->lblValueOne->setText(QString::number(*amountPaid));
-    ui->lblValueOne->setFocus();
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+//    ui->lblValueOne->setText(QString::number(*amountPaid));
+//    ui->lblValueOne->setFocus();
 }
 
 void CompletePaymentWindow::on_btn_fiveHundred_clicked()
 {
     *amountPaid+=500;
-    ui->lblValueOne->setText(QString::number(*amountPaid));
-    ui->lblValueOne->setFocus();
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+//    ui->lblValueOne->setText(QString::number(*amountPaid));
+//    ui->lblValueOne->setFocus();
 }
 
 void CompletePaymentWindow::on_btn_oneThousand_clicked()
 {
     *amountPaid+=1000;
-    ui->lblValueOne->setText(QString::number(*amountPaid));
-    ui->lblValueOne->setFocus();
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+//    ui->lblValueOne->setText(QString::number(*amountPaid));
+//    ui->lblValueOne->setFocus();
 }
 
 void CompletePaymentWindow::on_btn_credit_clicked()
 {
     *amountPaid+=100;
-    ui->lblValueOne->setText(QString::number(*amountPaid));
-    ui->lblValueOne->setFocus();
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+//    ui->lblValueOne->setText(QString::number(*amountPaid));
+//    ui->lblValueOne->setFocus();
 }
 
 void CompletePaymentWindow::postSaleToDb(loggedUser &, std::map<QString, int> &, int &) {
@@ -223,7 +368,7 @@ void CompletePaymentWindow::getCashComputeBalance() {
 }
 void CompletePaymentWindow::on_le_amountPaid_textChanged(const QString &arg1)
 {
-    *amountPaid = ui->lblValueOne->text().toInt();
+//    *amountPaid = ui->lblValueOne->text().toInt();
     getCashComputeBalance();
 }
 void CompletePaymentWindow::updateSaleData() {
@@ -546,4 +691,236 @@ void CompletePaymentWindow::on_btnSaveCash_clicked()
 {
 
 }
+//DEFINING THE PAYMENT METHOD
+void CompletePaymentWindow::set_payment_to_cash() {
+    LOGx("CASH");
+    ui->lbl_cash_value->show();
+    ui->lbl_cash_display->show();
+    ui->lbl_MPesa_payment->hide();
+    ui->cb_MPesa_display->hide();
+    ui->lbl_credit_payment->hide();
+    ui->lbl_credit_display->hide();
+    ui->lbl_reward_payment->hide();
+    ui->lbl_reward_display->hide();
+    ui->lbl_display_amount_to_pay->setFocus();
+}
 
+void CompletePaymentWindow::set_payment_to_mpesa() {
+    LOGx("MPESA");
+    ui->lbl_cash_value->hide();
+    ui->lbl_cash_display->hide();
+    ui->lbl_MPesa_payment->show();
+    ui->cb_MPesa_display->show();
+    ui->lbl_credit_payment->hide();
+    ui->lbl_credit_display->hide();
+    ui->lbl_reward_payment->hide();
+    ui->lbl_reward_display->hide();
+    ui->cb_MPesa_display->setFocus();
+}
+
+void CompletePaymentWindow::set_payment_to_mpesa_cash() {
+    ui->lbl_cash_value->show();
+    ui->lbl_cash_display->show();
+    ui->lbl_MPesa_payment->show();
+    ui->cb_MPesa_display->show();
+    ui->lbl_credit_payment->hide();
+    ui->lbl_credit_display->hide();
+    ui->lbl_reward_payment->hide();
+    ui->lbl_reward_display->hide();
+    ui->lbl_cash_display->setFocus();
+    LOGx("MPESA+CASH");
+
+}
+
+void CompletePaymentWindow::set_payment_to_mpesa_credit() {
+    LOGx("MPESA+CREDIT");
+    ui->lbl_cash_value->hide();
+    ui->lbl_cash_display->hide();
+    ui->lbl_MPesa_payment->show();
+    ui->cb_MPesa_display->show();
+    ui->lbl_credit_payment->show();
+    ui->lbl_credit_display->show();
+    ui->lbl_reward_payment->hide();
+    ui->lbl_reward_display->hide();
+    ui->lbl_credit_display->setFocus();
+
+}
+
+void CompletePaymentWindow::set_payment_to_credit() {
+    LOGx("CREDIT");
+    ui->lbl_cash_value->hide();
+    ui->lbl_cash_display->hide();
+    ui->lbl_MPesa_payment->hide();
+    ui->cb_MPesa_display->hide();
+    ui->lbl_credit_payment->show();
+    ui->lbl_credit_display->show();
+    ui->lbl_reward_payment->hide();
+    ui->lbl_reward_display->hide();
+    ui->lbl_credit_display->setFocus();
+
+}
+
+void CompletePaymentWindow::set_payment_to_rewards() {
+    LOGx("REWARDS");
+    ui->lbl_cash_value->hide();
+    ui->lbl_cash_display->hide();
+    ui->lbl_MPesa_payment->hide();
+    ui->cb_MPesa_display->hide();
+    ui->lbl_credit_payment->hide();
+    ui->lbl_credit_display->hide();
+    ui->lbl_reward_payment->show();
+    ui->lbl_reward_display->show();
+    ui->lbl_reward_display->setFocus();
+
+}
+
+void CompletePaymentWindow::set_payment_to_cash_credit() {
+    LOGx("CREDIT+CASH");
+    ui->lbl_cash_value->show();
+    ui->lbl_cash_display->show();
+    ui->lbl_MPesa_payment->hide();
+    ui->cb_MPesa_display->hide();
+    ui->lbl_credit_payment->show();
+    ui->lbl_credit_display->show();
+    ui->lbl_reward_payment->hide();
+    ui->lbl_reward_display->hide();
+    ui->lbl_cash_display->setFocus();
+
+}
+
+void CompletePaymentWindow::set_payment_to_cash_rewards() {
+    LOGx("REWARDS+CASH");
+    ui->lbl_cash_value->show();
+    ui->lbl_cash_display->show();
+    ui->lbl_MPesa_payment->hide();
+    ui->cb_MPesa_display->hide();
+    ui->lbl_credit_payment->hide();
+    ui->lbl_credit_display->hide();
+    ui->lbl_reward_payment->show();
+    ui->lbl_reward_display->show();
+    ui->lbl_cash_display->setFocus();
+
+}
+
+void CompletePaymentWindow::set_payment_to_mpesa_rewards() {
+    LOGx("MPESA+REWARDS");
+    ui->lbl_cash_value->hide();
+    ui->lbl_cash_display->hide();
+    ui->lbl_MPesa_payment->show();
+    ui->cb_MPesa_display->show();
+    ui->lbl_credit_payment->hide();
+    ui->lbl_credit_display->hide();
+    ui->lbl_reward_payment->show();
+    ui->lbl_reward_display->show();
+    ui->lbl_reward_display->setFocus();
+
+}
+
+
+void CompletePaymentWindow::on_lbl_cash_display_textChanged(const QString &amount_paid)
+{
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+
+    LOGx(amount_paid.toStdString());
+}
+
+void CompletePaymentWindow::on_lbl_credit_display_textChanged(const QString &credit_changed)
+{
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+
+    LOGx(credit_changed.toStdString());
+}
+
+void CompletePaymentWindow::on_lbl_reward_display_textChanged(const QString &reward_amount)
+{
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+
+    LOGx(reward_amount.toStdString());
+}
+
+void CompletePaymentWindow::on_cb_MPesa_display_currentTextChanged(const QString &transaction_data)
+{
+    if (*paymentMethod=="Cash"){
+
+    }else if (*paymentMethod=="MPesa"){
+
+    }else if (*paymentMethod=="Credit"){
+
+    }else if (*paymentMethod=="CashCredit"){
+
+    }else if (*paymentMethod=="MPesaCash"){
+
+    }else if (*paymentMethod=="MPesaCredit"){
+
+    }else if (*paymentMethod=="MPesaRewards"){
+
+    }else if (*paymentMethod=="Rewards"){
+
+    }else if (*paymentMethod=="CashRewards"){
+
+    }else {
+
+    }
+
+    LOGx(transaction_data.toStdString());
+}

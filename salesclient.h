@@ -59,7 +59,6 @@ private:
     int initial_quantity=1;
     void createRowsToAddProductPurchased(int& quantityValue);
     int currentRowBeingInserted;
-    int* totalToPay;
     void addProductInRowCreated( int &rowCreated, int& quantityPurchased);
     void getScannedProductFromDB(QString barcodeScanned);
     QString uniqueID;
@@ -73,6 +72,11 @@ private:
     QCompleter *completer;
     QCompleter *customerCompleter;
     QStandardItemModel *model;
+
+
+
+
+
     QStandardItem *item;
     productFromDb* addedProduct;
     loggedUser* currentCashierUser;
@@ -89,21 +93,16 @@ private slots:
     void on_btn_addNewCustomer_clicked();
     void showTime();
     void on_btn_viewCustomers_clicked();
-
     void receiveCustomerAdditionComplete();
     void receiveCustomerSingleViewComplete();
-
 private:
     void addProductToCart();
     loggedUser* currentUser;
     AddCustomer* addNewCustomer;
-
     void addProductFromCompleter();
     void grabBarcodeFromCompleter(QString&);
     QString* barCodeFromName;
     QString* processedProduct;
-
-
     float* discountTotal;
     float* rewardTotal;
     float* unitSubTotal;
@@ -123,16 +122,12 @@ private:
     int* rowToEditFromSelection;
     void modifyProductsInTableReduction(int &rowAffected, int &quantityValue);
     void deleteProductFromCart(int &rowAffected, int &quantityValue);
-
     void loadCustomersToCompleter();
-
 private slots:
     void getRowToEdit();
     void reducedQuantityPurchased();
 //    void on_btnReduceQtyByOne_clicked();
-
     void on_btnOpenClose_clicked();
-
 private:
     void updateStockAndStockLogs(QString &, int &, int &);
     int* quantityToBeBought;
@@ -144,7 +139,6 @@ private:
     bool wholesalePricesOption = false;
     bool rewardsPaymentAuthorizedByCustomer = false;
     bool thereIsOpenSession;
-
 private:
     void disableSystems();
     void enableSystems();
@@ -152,48 +146,38 @@ private:
     session* ongoingSession;
     session* newSession;
     QString* executionType;
-
 private:
     SessionControl* sessionControl;
     QMessageBox * sessionStarter;
-
 private slots:
     void enableSystemsCalled();
     void disableSystemsCalled();
     void receiveClosingComplete();
     void receiveOpeningComplete();
-
     void on_checkBoxEnableRewardPayment_toggled(bool checked);
-
     void on_checkBoxClientRewardAuthorization_toggled(bool checked);
-
     void on_checkBoxEnableDiscount_toggled(bool checked);
-
     void on_checkBoxEnableRewards_toggled(bool checked);
-
 //    void on_btnPlaceOrder_clicked();
-
     void on_btnViewPlacedOrders_clicked();
-
     void on_btnViewProcessedOrders_clicked();
-
     void on_btnViewDeliveredOrders_clicked();
-
     void on_actionOrder_Center_triggered();
-
 signals:
     void enableSystemsSent();
     void openingClosingDataChanged();
-
 private:
     void openNewSession();
     void sessionStartControl();
     ExistingSessionVerifier* verifySession;
 //SALES EXECUTION
 private:
+    float* price_to_pay;
+    float* total_discount_accrued;
+    float* total_rewards_accrued;
     QString *saleType;
-    bool *enableRewards;
-    bool *enableDiscounts;
+    bool *product_rewards_enabled;
+    bool *product_discounts_enabled;
     bool isCurrentCustomerDefined;
     bool clientAuthorizedPaymentByRewards;
     bool *businessAuthorizedPaymentByRewards;
@@ -210,14 +194,12 @@ private:
     void clearSalesData();
     void setDefaultSalesValue();
     void setFocusForSales();
-
 private:
     void addCustomerAndDefineClient();
     void selectLastCustomerAdded();
     void addNewCustomerToDatabase();
     bool addNewCustomerAtPurchase = false;
     void loadLabelsWithCustomerData();
-
 private:
     OrdersClient* orderClient;
     //  QUANTITY CONTROL
@@ -243,45 +225,34 @@ private:
 private slots:
     void receiveQtyChange(int & productId, int &originalQty, int &newQty);
     void on_tableWidget_cellActivated(int row, int column);
-
     void on_cbAdminPriviledges_stateChanged(int arg1);
-
     void on_cbAdminPriviledges_clicked();
-
     void receiveAdminAuthenticationSuccessful();
     void receiveAdminAuthenticationFailed();
-
 private:
-    void updateDiscountEnable(int & productId, int & quantityBought);
-    void updateDiscountDisable(int & productId);
-    void updateRewardsEnable(int & productId, int & quantityBought);
-    void updateRewardsDisable(int & productId);
+    void enable_sale_discount_midway(int & productId, int & quantityBought);
+    void disable_discount_midway(int & productId, int & quantity);
+    void enable_rewards_midway(int & productId, int & quantityBought);
+    void disable_rewards_midway(int & productId, int &);
     void updateRewardsMidway(std::map<int, purchasedItem>&itemsBought);
     void updateDiscountsMidway(std::map<int, purchasedItem>&itemsBought);
     void changeToWholesaleMidway(std::map<int, purchasedItem>&itemsBought);
     void changeToRetailMidway(std::map<int, purchasedItem>&itemsBought);
-
     bool* discountEnabledBeforeWholesale;
     bool* rewardsEnabledBeforeWholesale;
     bool* rewardsPaymentEnabledBeforeWholesale;
-
     void setToWholesaleMigration();
     void setToRetailMigration();
-
     void setWholesalePrices(std::map<int, purchasedItem> &itemsBought);
     void obtainWholesaleValuesAndUpdateTable(int & productId);
-
     void setRetailPrices(std::map<int, purchasedItem> &itemsBought);
     void obtainRetailValuesAndUpdateTable(int & productId);
-
     void toWholeSaleDisableSystems();
     void fromWholeSaleEnableSystems();
-
 private:
     void addLimitsToCombobox();
     void setDefaultMinimumRewardLimit();
     void setDefaultMaximumCredit();
-
 private:
     AdminAuthentication* adminAuthentication;
     int* minimumRewardForPayment;
@@ -295,19 +266,38 @@ private slots:
     void on_btn_queue_two_clicked();
     void on_btn_queue_three_clicked();
     void on_btn_queue_four_clicked();
-
     void on_btnQueueSale_clicked();
-
+    void load_product_by_product_name();
 private:
+    void get_product_from_db_no_barcode(QString &);
     std::map<int, bool>*queue_control;
     void initialize_queue(std::map<int, bool> &);
     void check_empty_queue(std::map<int, bool> &);
     void load_queue(int &);
+    void check_occupancy();
+    void request_queue_current();
+    bool sales_occupied = false;
+
+    float* base_price;
+    float *amount_to_pay;
+    float* sale_tax;
+
+
+
+
+
+
+
+
+
+
+
     std::map<int, queue_item> *queue_items;
     bool check_queue_occupied();
     int free_queue;
     int *occupied_queues;
     void set_queue_button(int &);
+    void reset_queue_button(int &);
     void update_queue_control(int &);
     bool queue_available = false;
     void reset_sale_values();
@@ -321,18 +311,10 @@ private:
     bool queue_two_occupied = false;
     bool queue_three_occupied = false;
     bool queue_four_occupied = false;
-    void set_queue_status_to_occupied(std::map<int, queue_item>&);
-
-
-
-
-
-
-
-
+    void set_queue_status_to_free(int & current_id, std::map<int, bool>&queue_control, std::map<int, queue_item>& current_queue);
     bool check_if_products_on_table();
     bool products_on_table;
-;
+    void set_sale_data();
     //get products bought-all data
     //get discount enabled-if was enabled and now disabled
     //get customer data if defined
@@ -342,8 +324,6 @@ private:
     //check if two is free
     //check if any quee is occupied
     //data pushed to a new vector
-
-
 };
 
 

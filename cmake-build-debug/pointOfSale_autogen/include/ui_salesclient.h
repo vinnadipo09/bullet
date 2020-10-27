@@ -1213,25 +1213,25 @@ public:
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
         btn_queue_one = new QPushButton(groupBox);
         btn_queue_one->setObjectName(QStringLiteral("btn_queue_one"));
-        btn_queue_one->setStyleSheet(QStringLiteral("background-color: rgb(138, 226, 52);"));
+        btn_queue_one->setStyleSheet(QStringLiteral("background-color: green;"));
 
         verticalLayout_5->addWidget(btn_queue_one);
 
         btn_queue_two = new QPushButton(groupBox);
         btn_queue_two->setObjectName(QStringLiteral("btn_queue_two"));
-        btn_queue_two->setStyleSheet(QStringLiteral("background-color: rgb(138, 226, 52);"));
+        btn_queue_two->setStyleSheet(QStringLiteral("background-color: green;"));
 
         verticalLayout_5->addWidget(btn_queue_two);
 
         btn_queue_three = new QPushButton(groupBox);
         btn_queue_three->setObjectName(QStringLiteral("btn_queue_three"));
-        btn_queue_three->setStyleSheet(QStringLiteral("background-color: rgb(138, 226, 52);"));
+        btn_queue_three->setStyleSheet(QStringLiteral("background-color: green;"));
 
         verticalLayout_5->addWidget(btn_queue_three);
 
         btn_queue_four = new QPushButton(groupBox);
         btn_queue_four->setObjectName(QStringLiteral("btn_queue_four"));
-        btn_queue_four->setStyleSheet(QStringLiteral("background-color: rgb(138, 226, 52);"));
+        btn_queue_four->setStyleSheet(QStringLiteral("background-color: green;"));
 
         verticalLayout_5->addWidget(btn_queue_four);
 
@@ -1527,7 +1527,7 @@ public:
         lblSearchProductHolder->setText(QApplication::translate("SalesClient", "Search Product:", Q_NULLPTR));
         label_10->setText(QString());
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("SalesClient", "New Column", Q_NULLPTR));
+        ___qtablewidgetitem->setText(QApplication::translate("SalesClient", "System Id", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QApplication::translate("SalesClient", "Barcode", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
@@ -1546,9 +1546,9 @@ public:
         ___qtablewidgetitem8->setText(QApplication::translate("SalesClient", "Total", Q_NULLPTR));
         label_35->setText(QString());
         lblComputedTotal->setText(QApplication::translate("SalesClient", " 00.00", Q_NULLPTR));
-        label_18->setText(QApplication::translate("SalesClient", "Possible Reward:", Q_NULLPTR));
+        label_18->setText(QApplication::translate("SalesClient", "Total Sale Rewards:", Q_NULLPTR));
         lblPossibleRewards->setText(QString());
-        label_20->setText(QApplication::translate("SalesClient", "Possible Discount:", Q_NULLPTR));
+        label_20->setText(QApplication::translate("SalesClient", "Total Sale Discount:", Q_NULLPTR));
         lblPossibleDiscounts->setText(QString());
         label_17->setText(QApplication::translate("SalesClient", "Sale information", Q_NULLPTR));
         label_7->setText(QApplication::translate("SalesClient", "Sale Value:", Q_NULLPTR));
@@ -1567,10 +1567,10 @@ public:
         label_13->setText(QApplication::translate("SalesClient", "Debts:", Q_NULLPTR));
         lblDebt->setText(QString());
         groupBox->setTitle(QApplication::translate("SalesClient", "Queue Conrol Center", Q_NULLPTR));
-        btn_queue_one->setText(QApplication::translate("SalesClient", "Queue One", Q_NULLPTR));
-        btn_queue_two->setText(QApplication::translate("SalesClient", "Queue Two", Q_NULLPTR));
-        btn_queue_three->setText(QApplication::translate("SalesClient", "Queue Three", Q_NULLPTR));
-        btn_queue_four->setText(QApplication::translate("SalesClient", "Queue Four", Q_NULLPTR));
+        btn_queue_one->setText(QApplication::translate("SalesClient", "Queue One: Free", Q_NULLPTR));
+        btn_queue_two->setText(QApplication::translate("SalesClient", "Queue Two: Free", Q_NULLPTR));
+        btn_queue_three->setText(QApplication::translate("SalesClient", "Queue Three: Free", Q_NULLPTR));
+        btn_queue_four->setText(QApplication::translate("SalesClient", "Queue Four: Free", Q_NULLPTR));
         btnCompleteSales->setText(QApplication::translate("SalesClient", "Apply", Q_NULLPTR));
         btnPlaceOrder->setText(QApplication::translate("SalesClient", "Place an Order", Q_NULLPTR));
         btnQueueSale->setText(QApplication::translate("SalesClient", "Queue", Q_NULLPTR));

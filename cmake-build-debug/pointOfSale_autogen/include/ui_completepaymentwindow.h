@@ -35,14 +35,18 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QHBoxLayout *horizontalLayout_4;
     QFormLayout *formLayout;
-    QLabel *label_3;
-    QLineEdit *le_amountTotal;
-    QComboBox *cb_paymentMethod;
-    QLabel *lblValueOneTitle;
-    QLineEdit *lblValueOne;
-    QLabel *lblValueTwoTitle;
-    QLineEdit *lblValueTwo;
-    QLabel *label_7;
+    QLabel *lbl_amount_to_pay;
+    QLineEdit *lbl_display_amount_to_pay;
+    QLabel *lbl_payment_method;
+    QComboBox *cb_display_payment_method;
+    QLabel *lbl_cash_value;
+    QLineEdit *lbl_cash_display;
+    QLabel *lbl_MPesa_payment;
+    QComboBox *cb_MPesa_display;
+    QLabel *lbl_credit_payment;
+    QLineEdit *lbl_credit_display;
+    QLabel *lbl_reward_payment;
+    QLineEdit *lbl_reward_display;
     QFormLayout *formLayout_2;
     QLabel *label_4;
     QLabel *lblCreditAvailable;
@@ -52,7 +56,7 @@ public:
     QLabel *lblRewardsAvailable;
     QLabel *label_11;
     QLabel *saleReward;
-    QSpacerItem *verticalSpacer_3;
+    QPushButton *pushButton;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *btn_fifty;
     QPushButton *btn_oneHundred;
@@ -61,13 +65,11 @@ public:
     QPushButton *btn_fiveHundred;
     QPushButton *btn_oneThousand;
     QPushButton *btn_credit;
-    QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_5;
     QLineEdit *le_balanceOwed;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *btnSaveCash;
-    QSpacerItem *verticalSpacer_4;
     QHBoxLayout *horizontalLayout;
     QPushButton *btnCompleteSale;
     QPushButton *btnEditSale;
@@ -77,7 +79,7 @@ public:
     {
         if (CompletePaymentWindow->objectName().isEmpty())
             CompletePaymentWindow->setObjectName(QStringLiteral("CompletePaymentWindow"));
-        CompletePaymentWindow->resize(738, 783);
+        CompletePaymentWindow->resize(744, 783);
         CompletePaymentWindow->setStyleSheet(QStringLiteral("background-color: rgb(211, 215, 207);"));
         verticalLayout = new QVBoxLayout(CompletePaymentWindow);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
@@ -109,110 +111,157 @@ public:
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         formLayout = new QFormLayout();
         formLayout->setObjectName(QStringLiteral("formLayout"));
-        label_3 = new QLabel(CompletePaymentWindow);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setMinimumSize(QSize(250, 50));
+        lbl_amount_to_pay = new QLabel(CompletePaymentWindow);
+        lbl_amount_to_pay->setObjectName(QStringLiteral("lbl_amount_to_pay"));
+        lbl_amount_to_pay->setMinimumSize(QSize(250, 50));
         QFont font1;
         font1.setFamily(QStringLiteral("Waree"));
         font1.setPointSize(16);
         font1.setBold(false);
         font1.setWeight(50);
-        label_3->setFont(font1);
-        label_3->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
+        lbl_amount_to_pay->setFont(font1);
+        lbl_amount_to_pay->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
 "color: rgb(238, 238, 236);\n"
 "border-radius:4px;\n"
 "padding:4px;"));
-        label_3->setFrameShape(QFrame::Panel);
-        label_3->setFrameShadow(QFrame::Raised);
+        lbl_amount_to_pay->setFrameShape(QFrame::Panel);
+        lbl_amount_to_pay->setFrameShadow(QFrame::Raised);
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label_3);
+        formLayout->setWidget(0, QFormLayout::LabelRole, lbl_amount_to_pay);
 
-        le_amountTotal = new QLineEdit(CompletePaymentWindow);
-        le_amountTotal->setObjectName(QStringLiteral("le_amountTotal"));
-        le_amountTotal->setMinimumSize(QSize(250, 50));
-        le_amountTotal->setMaximumSize(QSize(250, 16777215));
+        lbl_display_amount_to_pay = new QLineEdit(CompletePaymentWindow);
+        lbl_display_amount_to_pay->setObjectName(QStringLiteral("lbl_display_amount_to_pay"));
+        lbl_display_amount_to_pay->setMinimumSize(QSize(250, 50));
+        lbl_display_amount_to_pay->setMaximumSize(QSize(250, 16777215));
         QFont font2;
         font2.setFamily(QStringLiteral("DejaVu Sans"));
         font2.setPointSize(16);
         font2.setBold(true);
         font2.setWeight(75);
-        le_amountTotal->setFont(font2);
-        le_amountTotal->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
+        lbl_display_amount_to_pay->setFont(font2);
+        lbl_display_amount_to_pay->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 255, 255);\n"
 ""));
-        le_amountTotal->setReadOnly(true);
+        lbl_display_amount_to_pay->setReadOnly(true);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, le_amountTotal);
+        formLayout->setWidget(0, QFormLayout::FieldRole, lbl_display_amount_to_pay);
 
-        cb_paymentMethod = new QComboBox(CompletePaymentWindow);
-        cb_paymentMethod->setObjectName(QStringLiteral("cb_paymentMethod"));
-        cb_paymentMethod->setMinimumSize(QSize(250, 50));
-        cb_paymentMethod->setFont(font1);
-        cb_paymentMethod->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
+        lbl_payment_method = new QLabel(CompletePaymentWindow);
+        lbl_payment_method->setObjectName(QStringLiteral("lbl_payment_method"));
+        lbl_payment_method->setMinimumSize(QSize(250, 50));
+        lbl_payment_method->setFont(font1);
+        lbl_payment_method->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
+"color: rgb(238, 238, 236);\n"
+"border-radius:4px;\n"
+"padding:4px;"));
+        lbl_payment_method->setFrameShape(QFrame::Panel);
+        lbl_payment_method->setFrameShadow(QFrame::Raised);
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, lbl_payment_method);
+
+        cb_display_payment_method = new QComboBox(CompletePaymentWindow);
+        cb_display_payment_method->setObjectName(QStringLiteral("cb_display_payment_method"));
+        cb_display_payment_method->setMinimumSize(QSize(250, 50));
+        cb_display_payment_method->setFont(font1);
+        cb_display_payment_method->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
 "color: rgb(238, 238, 236);\n"
 "border-radius:4px;\n"
 "padding:4px;"));
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, cb_paymentMethod);
+        formLayout->setWidget(1, QFormLayout::FieldRole, cb_display_payment_method);
 
-        lblValueOneTitle = new QLabel(CompletePaymentWindow);
-        lblValueOneTitle->setObjectName(QStringLiteral("lblValueOneTitle"));
-        lblValueOneTitle->setMinimumSize(QSize(250, 50));
-        lblValueOneTitle->setFont(font1);
-        lblValueOneTitle->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
+        lbl_cash_value = new QLabel(CompletePaymentWindow);
+        lbl_cash_value->setObjectName(QStringLiteral("lbl_cash_value"));
+        lbl_cash_value->setMinimumSize(QSize(250, 50));
+        lbl_cash_value->setFont(font1);
+        lbl_cash_value->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
 "color: rgb(238, 238, 236);\n"
 "border-radius:4px;\n"
 "padding:4px;"));
-        lblValueOneTitle->setFrameShape(QFrame::Panel);
-        lblValueOneTitle->setFrameShadow(QFrame::Raised);
+        lbl_cash_value->setFrameShape(QFrame::Panel);
+        lbl_cash_value->setFrameShadow(QFrame::Raised);
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, lblValueOneTitle);
+        formLayout->setWidget(2, QFormLayout::LabelRole, lbl_cash_value);
 
-        lblValueOne = new QLineEdit(CompletePaymentWindow);
-        lblValueOne->setObjectName(QStringLiteral("lblValueOne"));
-        lblValueOne->setMinimumSize(QSize(0, 50));
-        lblValueOne->setMaximumSize(QSize(250, 16777215));
-        lblValueOne->setFont(font2);
-        lblValueOne->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
+        lbl_cash_display = new QLineEdit(CompletePaymentWindow);
+        lbl_cash_display->setObjectName(QStringLiteral("lbl_cash_display"));
+        lbl_cash_display->setMinimumSize(QSize(0, 50));
+        lbl_cash_display->setMaximumSize(QSize(250, 16777215));
+        lbl_cash_display->setFont(font2);
+        lbl_cash_display->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 255, 255);"));
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, lblValueOne);
+        formLayout->setWidget(2, QFormLayout::FieldRole, lbl_cash_display);
 
-        lblValueTwoTitle = new QLabel(CompletePaymentWindow);
-        lblValueTwoTitle->setObjectName(QStringLiteral("lblValueTwoTitle"));
-        lblValueTwoTitle->setMinimumSize(QSize(250, 50));
-        lblValueTwoTitle->setFont(font1);
-        lblValueTwoTitle->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
+        lbl_MPesa_payment = new QLabel(CompletePaymentWindow);
+        lbl_MPesa_payment->setObjectName(QStringLiteral("lbl_MPesa_payment"));
+        lbl_MPesa_payment->setMinimumSize(QSize(250, 50));
+        lbl_MPesa_payment->setFont(font1);
+        lbl_MPesa_payment->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
 "color: rgb(238, 238, 236);\n"
 "border-radius:4px;\n"
 "padding:4px;"));
-        lblValueTwoTitle->setFrameShape(QFrame::Panel);
-        lblValueTwoTitle->setFrameShadow(QFrame::Raised);
+        lbl_MPesa_payment->setFrameShape(QFrame::Panel);
+        lbl_MPesa_payment->setFrameShadow(QFrame::Raised);
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, lblValueTwoTitle);
+        formLayout->setWidget(3, QFormLayout::LabelRole, lbl_MPesa_payment);
 
-        lblValueTwo = new QLineEdit(CompletePaymentWindow);
-        lblValueTwo->setObjectName(QStringLiteral("lblValueTwo"));
-        lblValueTwo->setMinimumSize(QSize(0, 50));
-        lblValueTwo->setMaximumSize(QSize(250, 16777215));
-        lblValueTwo->setFont(font2);
-        lblValueTwo->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
+        cb_MPesa_display = new QComboBox(CompletePaymentWindow);
+        cb_MPesa_display->setObjectName(QStringLiteral("cb_MPesa_display"));
+        cb_MPesa_display->setMinimumSize(QSize(250, 50));
+        cb_MPesa_display->setFont(font1);
+        cb_MPesa_display->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
+"color: rgb(238, 238, 236);\n"
+"border-radius:4px;\n"
+"padding:4px;"));
+
+        formLayout->setWidget(3, QFormLayout::FieldRole, cb_MPesa_display);
+
+        lbl_credit_payment = new QLabel(CompletePaymentWindow);
+        lbl_credit_payment->setObjectName(QStringLiteral("lbl_credit_payment"));
+        lbl_credit_payment->setMinimumSize(QSize(250, 50));
+        lbl_credit_payment->setFont(font1);
+        lbl_credit_payment->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
+"color: rgb(238, 238, 236);\n"
+"border-radius:4px;\n"
+"padding:4px;"));
+        lbl_credit_payment->setFrameShape(QFrame::Panel);
+        lbl_credit_payment->setFrameShadow(QFrame::Raised);
+
+        formLayout->setWidget(4, QFormLayout::LabelRole, lbl_credit_payment);
+
+        lbl_credit_display = new QLineEdit(CompletePaymentWindow);
+        lbl_credit_display->setObjectName(QStringLiteral("lbl_credit_display"));
+        lbl_credit_display->setMinimumSize(QSize(0, 50));
+        lbl_credit_display->setMaximumSize(QSize(250, 16777215));
+        lbl_credit_display->setFont(font2);
+        lbl_credit_display->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 255, 255);"));
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, lblValueTwo);
+        formLayout->setWidget(4, QFormLayout::FieldRole, lbl_credit_display);
 
-        label_7 = new QLabel(CompletePaymentWindow);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setMinimumSize(QSize(250, 50));
-        label_7->setFont(font1);
-        label_7->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
+        lbl_reward_payment = new QLabel(CompletePaymentWindow);
+        lbl_reward_payment->setObjectName(QStringLiteral("lbl_reward_payment"));
+        lbl_reward_payment->setMinimumSize(QSize(250, 50));
+        lbl_reward_payment->setFont(font1);
+        lbl_reward_payment->setStyleSheet(QLatin1String("background-color: rgb(136, 138, 133);\n"
 "color: rgb(238, 238, 236);\n"
 "border-radius:4px;\n"
 "padding:4px;"));
-        label_7->setFrameShape(QFrame::Panel);
-        label_7->setFrameShadow(QFrame::Raised);
+        lbl_reward_payment->setFrameShape(QFrame::Panel);
+        lbl_reward_payment->setFrameShadow(QFrame::Raised);
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_7);
+        formLayout->setWidget(5, QFormLayout::LabelRole, lbl_reward_payment);
+
+        lbl_reward_display = new QLineEdit(CompletePaymentWindow);
+        lbl_reward_display->setObjectName(QStringLiteral("lbl_reward_display"));
+        lbl_reward_display->setMinimumSize(QSize(0, 50));
+        lbl_reward_display->setMaximumSize(QSize(250, 16777215));
+        lbl_reward_display->setFont(font2);
+        lbl_reward_display->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
+"color: rgb(255, 255, 255);"));
+
+        formLayout->setWidget(5, QFormLayout::FieldRole, lbl_reward_display);
 
 
         horizontalLayout_4->addLayout(formLayout);
@@ -339,15 +388,16 @@ public:
 
         formLayout_2->setWidget(3, QFormLayout::FieldRole, saleReward);
 
+        pushButton = new QPushButton(CompletePaymentWindow);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        formLayout_2->setWidget(4, QFormLayout::LabelRole, pushButton);
+
 
         horizontalLayout_5->addLayout(formLayout_2);
 
 
         verticalLayout->addLayout(horizontalLayout_5);
-
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout->addItem(verticalSpacer_3);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
@@ -404,10 +454,6 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout->addItem(verticalSpacer);
-
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
         label_5 = new QLabel(CompletePaymentWindow);
@@ -450,10 +496,6 @@ public:
 
 
         verticalLayout->addLayout(horizontalLayout_6);
-
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout->addItem(verticalSpacer_4);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -500,18 +542,35 @@ public:
     {
         CompletePaymentWindow->setWindowTitle(QApplication::translate("CompletePaymentWindow", "Dialog", Q_NULLPTR));
         label_2->setText(QApplication::translate("CompletePaymentWindow", "Complete Sale", Q_NULLPTR));
-        label_3->setText(QApplication::translate("CompletePaymentWindow", "Total Amount:", Q_NULLPTR));
-        cb_paymentMethod->clear();
-        cb_paymentMethod->insertItems(0, QStringList()
+        lbl_amount_to_pay->setText(QApplication::translate("CompletePaymentWindow", "Total Amount:", Q_NULLPTR));
+        lbl_payment_method->setText(QApplication::translate("CompletePaymentWindow", "Payment Method:", Q_NULLPTR));
+        cb_display_payment_method->clear();
+        cb_display_payment_method->insertItems(0, QStringList()
          << QApplication::translate("CompletePaymentWindow", "Cash", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "M-Pesa", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "Credit", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "Cash+Credit", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "M-Pesa+Cash", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "M-Pesa+Credit", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "M-Pesa+Rewards", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "Rewards", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "Cash+Rewards", Q_NULLPTR)
+        );
+        lbl_cash_value->setText(QApplication::translate("CompletePaymentWindow", "Cash Amount:", Q_NULLPTR));
+        lbl_MPesa_payment->setText(QApplication::translate("CompletePaymentWindow", "M-Pesa Transaction:", Q_NULLPTR));
+        cb_MPesa_display->clear();
+        cb_MPesa_display->insertItems(0, QStringList()
+         << QApplication::translate("CompletePaymentWindow", "Cash", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "M-Pesa", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "M-Pesa+Cash", Q_NULLPTR)
+         << QApplication::translate("CompletePaymentWindow", "M-Pesa+Credit", Q_NULLPTR)
          << QApplication::translate("CompletePaymentWindow", "Credit", Q_NULLPTR)
          << QApplication::translate("CompletePaymentWindow", "Rewards", Q_NULLPTR)
          << QApplication::translate("CompletePaymentWindow", "Cash+Credit", Q_NULLPTR)
          << QApplication::translate("CompletePaymentWindow", "Cash+Rewards", Q_NULLPTR)
         );
-        lblValueOneTitle->setText(QApplication::translate("CompletePaymentWindow", "Payment One:", Q_NULLPTR));
-        lblValueTwoTitle->setText(QApplication::translate("CompletePaymentWindow", "Payment Two:", Q_NULLPTR));
-        label_7->setText(QApplication::translate("CompletePaymentWindow", "Payment Method:", Q_NULLPTR));
+        lbl_credit_payment->setText(QApplication::translate("CompletePaymentWindow", "Credit Amount:", Q_NULLPTR));
+        lbl_reward_payment->setText(QApplication::translate("CompletePaymentWindow", "Rewards Amount:", Q_NULLPTR));
         label_4->setText(QApplication::translate("CompletePaymentWindow", "Credit Avl:", Q_NULLPTR));
         lblCreditAvailable->setText(QApplication::translate("CompletePaymentWindow", "0.00", Q_NULLPTR));
         label_6->setText(QApplication::translate("CompletePaymentWindow", "Cash Avl:", Q_NULLPTR));
@@ -520,6 +579,7 @@ public:
         lblRewardsAvailable->setText(QApplication::translate("CompletePaymentWindow", "0.00", Q_NULLPTR));
         label_11->setText(QApplication::translate("CompletePaymentWindow", "Rew/Disc:", Q_NULLPTR));
         saleReward->setText(QApplication::translate("CompletePaymentWindow", "0.00", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("CompletePaymentWindow", "Initiate M-Pesa", Q_NULLPTR));
         btn_fifty->setText(QString());
         btn_oneHundred->setText(QString());
         btn_twoHundred->setText(QString());

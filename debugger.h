@@ -143,6 +143,7 @@ struct purchasedItem{
     bool prod_rewarded;
     int reward_amount;
     float salePrice;
+    float actual_price;
 };
 struct ModifiedQuantity{
     int itemId;
